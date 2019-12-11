@@ -5,4 +5,6 @@
 
 <template:template pageTitle="${pageTitle}">
 	<h1>Hallo Welt</h1>
+	
+	<p>Hallo Welt2</p>
 </template:template>

@@ -5,5 +5,4 @@
 
 <template:template pageTitle="${pageTitle}">
 
-	
 </template:template>
