@@ -26,7 +26,7 @@
 	
 		<!-- CSS -->
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap/bootstrap.min.css">
-		<link href="${pageContext.request.contextPath}/static/fontawesome/fontawesome.min.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/static/fontawesome/fontawesome.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	    <link href="${pageContext.request.contextPath}/static/bootstrap/bootstrap4-toggle.min.css" rel="stylesheet">
 	    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css" />
@@ -38,13 +38,13 @@
 		<script src="${pageContext.request.contextPath}/static/bootstrap/bootstrap.min.js"></script>
 		<!-- Popper JS -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script src="${pageContext.request.contextPath}/static/fontawesome/fontawesome.js"></script> 
 	    
 	
 	
 		
 	    <script src="http://localhost:35729/livereload.js"></script>
 	   	<script src="${pageContext.request.contextPath}/static/js/global.js"></script>
-		<script src="${pageContext.request.contextPath}/static/js/header.js"></script>
 		
 	</head>
 

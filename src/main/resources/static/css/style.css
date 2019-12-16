@@ -1,5 +1,110 @@
-/* DAS IST DIE HAUPT LESS */
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 5;
+body
+{
+	font-family: arial;
+	font-size: 15px;
+}
+
+
+/*Hintergrundformatierung für die Navigationsleiste*/
+.navigationline
+{
+	background-color: white;
+}
+
+/*Formatieruung von "Planner" in der Navigationsleiste*/
+.navigationtext
+{
+	color: #4E5F67;	
+	font-size: 27px
+}
+
+/*Formatierung der Navigationsliste oben rechts*/
+.navigationlist
+{
+	color: #4E5F67;	
+}
+/*Formatierung der Hover Funktion der Navigationsliste oben rechts*/
+.navigationlist:hover
+{
+	color: white;
+	background-color: #4E5F67;
+}
+
+/*Default Settings für Hyperlinks*/
+a:hover
+{
+	color: #4E5F67;	
+}
+.DHBWbutton {
+	
+  background-color: #4E5F67;
+  color: white;
+  border: 2px solid #4E5F67;
+  height: 50px;
+  font-weight: bold;
+}
+/*Login Button Hover Formatierung*/
+.DHBWbutton:hover {
+  background-color: white; 
+  color: #4E5F67;
+  border: 2px solid #4E5F67;
+  font-weight: bold;
+  
+
+}
+
+/*Formatierung der Textbox Heading: Dozentbersicht*/
+.dozentuebersicht
+{
+	background-color: #E2001A;
+}
+
+/*Formatierung des Text innerhalb der Dozentuebersichtbox*/
+.dozentuebersichttext
+{
+	font-size: 35px;
+	color: white;
+}
+
+/*Formatierung der Home Leiste*/
+.homeleiste
+{
+	background-color: #E2001A;
+}
+
+/*Formatierung des Textes innerhalb der Homeleiste*/
+.homeleistetext
+{
+	font-size: 35px;
+	color: white;
+}
+
+/*Formatierung der Willkommensleiste*/
+.willkommensleiste
+{
+	background-color: #E5E5E5;
+	border-width: 1px;
+	border-color: #4E5F67;
+}
+
+/*Formatierung der großen Icons auf der Hauptpage*/
+.btnTwoIcons
+{
+	background-color: #4E5F67;
+	color: white;
+}
+
+.btnTwoIcons:hover
+{
+	background-color: white;
+	color:#4E5F67;
+	border-color: #4E5F67;
+	border-width:2px;
+}
+
+.orientierungsbox
+{
+	background-color: #E5E5E5;
+	border-width: 1px;
+	border-color: #4E5F67;
 }
