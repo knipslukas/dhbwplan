@@ -1,7 +1,7 @@
 package de.amc17.dhbwplan.controller;
 
 import java.util.Optional;
-import java.util.UUID;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +22,7 @@ import de.amc17.dhbwplan.service.DozentService;
 @RequestMapping(path = "/dozent")
 
 public class DozentController {
+	
 
 	@Autowired
 	private DozentService mDozentService;
@@ -52,23 +53,25 @@ public class DozentController {
 		 
 	 }
 	 
-	 @GetMapping(path="/getByID/{aID}") // (path= "/{aID}") ??
+	 @GetMapping(path="/getByID/{aID}") 
 	 @ResponseBody
 	 public Dozent getDozentByID(@PathVariable int aID) {
 		 return mDozentService.getDozentByID(aID);
 	 }
-//	 
-//	 @GetMapping(path="/get/Dozent/Nachname") 
-//	 public String getDozentNachnameByID(@RequestParam UUID aID) {
-//		 return mDozentService.getDozentNachnameByID(aID);
-//		 
-//	 }
-//	 
-//	 @GetMapping(path="/Get/Dozent/Email") 
-//	 public String getDozentEmailByID(@RequestParam UUID aID) {
-//		 return mDozentService.getDozentEmailByID(aID);
-//		 
-//	 }
+	 
+	 @GetMapping(path="/get/Nachname/{aID}") 
+	 @ResponseBody
+	 public String getDozentNachnameByID(@PathVariable int aID) {
+		 return mDozentService.getDozentNachnameByID(aID);
+		 
+	 }
+	 
+	 @GetMapping(path="/get/Email/{aID}") 
+	 @ResponseBody
+	 public String getDozentEmailByID(@PathVariable int aID) {
+		 return mDozentService.getDozentEmailByID(aID);
+		
+	 }
 
 //	 @GetMapping(path="/Get/Dozent/MoeglicheFaecher") 
 //	 public Iterable<Modul> getDozentMoeglicheFaecherByID(@RequestParam UUID aID) {

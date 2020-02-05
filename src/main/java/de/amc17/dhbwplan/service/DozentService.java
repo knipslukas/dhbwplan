@@ -45,5 +45,20 @@ public class DozentService {
 		Optional<Dozent> temp = dozentRepository.findById(aDID);
 		return temp.orElse(new Dozent());
 	}
+	
+
+	public String getDozentNachnameByID(int aDID) {
+		
+		Optional<Dozent> temp = dozentRepository.findById(aDID);
+		return temp.orElse(new Dozent()).getmNachname();
+		
+	}
+	
+	public String getDozentEmailByID(int aDID) {
+		
+		Optional<Dozent> temp = dozentRepository.findById(aDID);
+		return temp.orElse(new Dozent()).getmEmail();
+		
+	}
 
 }
