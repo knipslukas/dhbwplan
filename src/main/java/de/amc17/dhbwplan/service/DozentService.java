@@ -1,5 +1,6 @@
 package de.amc17.dhbwplan.service;
 
+
 import java.util.Optional;
 
 import javax.annotation.Resource;
@@ -9,11 +10,21 @@ import org.springframework.stereotype.Service;
 import de.amc17.dhbwplan.entity.Dozent;
 import de.amc17.dhbwplan.repository.DozentRepository;
 
+import java.util.List;
+import java.util.UUID;
+
+import javax.annotation.Resource;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Service;
+
+
 @Service
 public class DozentService {
 
 	@Resource
 	private DozentRepository dozentRepository;
+
 
 	public Dozent addDozent(int aDID, Dozent aDozent) {
 
