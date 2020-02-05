@@ -52,7 +52,7 @@ public class DozentController {
 		 
 	 }
 	 
-	 @GetMapping(path="/getByID/{aID}") // (path= "/{aID}") ??
+	 @GetMapping(path="/getByID/{aID}") 
 	 @ResponseBody
 	 public Dozent getDozentByID(@PathVariable int aID) {
 		 return mDozentService.getDozentByID(aID);
