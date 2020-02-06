@@ -19,14 +19,14 @@ public class Dozent implements Serializable {
 	private int mDID;
 	
 	private String mVorname;
-	  private String mNachname;
+	private String mNachname;
+	private String mEmail;
 //	  private String mAnrede;
 //	  private String mTitel;
 //	  private boolean mHauptamtlich;
 	// private ArrayList<Fach> mFächer;
 	// private ArrayList<Fach> mGehalteneFächer;
 //	  private String mKommentar;
-	  private String mEmail;
 //	  private String mPasswort;
 
 //	  @ManyToMany(mappedBy="dozenten")
@@ -49,15 +49,25 @@ public class Dozent implements Serializable {
 		mVorname = avorname;
 	}
 
-		public String getmNachname()
-		{
-			return mNachname;
-		}
-		
-		public void setmNachname(String aNachname)
-		{
-			mNachname = aNachname;
-		}
+	public String getmNachname()
+	{
+		return mNachname;
+	}
+	
+	public void setmNachname(String aNachname)
+	{
+		mNachname = aNachname;
+	}
+	
+	public String getmEmail()
+	{
+		return mEmail;
+	}
+	
+	public void setmEmail(String aEmail)
+	{
+		mEmail = aEmail;
+	}
 //		
 //		public String getAnrede()
 //		{
@@ -99,15 +109,7 @@ public class Dozent implements Serializable {
 //			mKommentar = aKommentar;
 //		}
 //		
-		public String getmEmail()
-		{
-			return mEmail;
-		}
-		
-		public void setmEmail(String aEmail)
-		{
-			mEmail = aEmail;
-		}
+
 //		
 //		public String getPasswort()
 //		{
