@@ -60,11 +60,11 @@ public class DozentController {
 		 return mDozentService.getDozentByID(aID);
 	 }
 	 
+
 	 @GetMapping(path="/getByNachname/{aNachname}") 
 	 @ResponseBody
 	 public List<Dozent> getDozentByNachname(@PathVariable String aNachname) {
-		 return mDozentService.getDozentByNachname(aNachname);
-		 
+		 return mDozentService.getDozentByNachname(aNachname);	 
 	 }
 	 
 	 @GetMapping(path="/getByEmail/{aEmail}") 

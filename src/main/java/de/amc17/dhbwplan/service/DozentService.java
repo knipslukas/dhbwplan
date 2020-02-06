@@ -60,7 +60,10 @@ public class DozentService {
 	
 
 	public List<Dozent> getDozentByNachname(String aNachname) {
-		
+//
+//		List<Dozent> temp = dozentRepository.findBymNachname(aNachname);
+//		return temp;
+
 		List<Dozent> temp = dozentRepository.findAll();
 		List<Dozent> result = temp.stream()
 			     .filter(item -> item.getmNachname().equals(aNachname))
@@ -72,6 +75,9 @@ public class DozentService {
 	
 	public List<Dozent> getDozentByEmail(String aEmail) {
 		
+//		List<Dozent> temp = dozentRepository.findBymEmail(aEmail);
+//		return temp;
+
 		List<Dozent> temp = dozentRepository.findAll();
 		List<Dozent> result = temp.stream()
 			     .filter(item -> item.getmEmail().equals(aEmail))
