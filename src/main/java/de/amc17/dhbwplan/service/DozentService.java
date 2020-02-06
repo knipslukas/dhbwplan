@@ -64,7 +64,7 @@ public class DozentService {
 //		List<Dozent> temp = dozentRepository.findBymNachname(aNachname);
 //		return temp;
 
-		//Das hier falsch
+		//Funktioniert, aber Arbeistspeicherlastig
 		List<Dozent> temp = dozentRepository.findAll();
 		List<Dozent> result = temp.stream()
 			     .filter(item -> item.getmNachname().equals(aNachname))
