@@ -58,17 +58,17 @@ public class DozentService {
 	}
 	
 
-	public String getDozentNachnameByID(int aDID) {
+	public List<Dozent> getDozentByNachname(String aNachname) {
 		
-		Optional<Dozent> temp = dozentRepository.findById(aDID);
-		return temp.orElse(new Dozent()).getmNachname();
+		List<Dozent> temp = dozentRepository.findBymNachname(aNachname);
+		return temp;
 		
 	}
 	
-	public String getDozentEmailByID(int aDID) {
+	public List<Dozent> getDozentByEmail(String aEmail) {
 		
-		Optional<Dozent> temp = dozentRepository.findById(aDID);
-		return temp.orElse(new Dozent()).getmEmail();
+		List<Dozent> temp = dozentRepository.findBymEmail(aEmail);
+		return temp;
 		
 	}
 

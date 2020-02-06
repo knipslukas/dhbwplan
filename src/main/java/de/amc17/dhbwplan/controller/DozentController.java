@@ -1,5 +1,6 @@
 package de.amc17.dhbwplan.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -59,17 +60,17 @@ public class DozentController {
 		 return mDozentService.getDozentByID(aID);
 	 }
 	 
-	 @GetMapping(path="/get/Nachname/{aID}") 
+	 @GetMapping(path="/get/nachname/{aNachname}") 
 	 @ResponseBody
-	 public String getDozentNachnameByID(@PathVariable int aID) {
-		 return mDozentService.getDozentNachnameByID(aID);
+	 public List<Dozent> getDozentNachnameByID(@PathVariable String aNachname) {
+		 return mDozentService.getDozentByNachname(aNachname);
 		 
 	 }
 	 
-	 @GetMapping(path="/get/Email/{aID}") 
+	 @GetMapping(path="/get/email/{aEmail}") 
 	 @ResponseBody
-	 public String getDozentEmailByID(@PathVariable int aID) {
-		 return mDozentService.getDozentEmailByID(aID);
+	 public List<Dozent> getDozentEmailByID(@PathVariable String aEmail) {
+		 return mDozentService.getDozentByEmail(aEmail);
 		
 	 }
 
