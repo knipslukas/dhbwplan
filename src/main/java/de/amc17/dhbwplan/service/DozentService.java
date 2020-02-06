@@ -60,10 +60,11 @@ public class DozentService {
 	
 
 	public List<Dozent> getDozentByNachname(String aNachname) {
-//
+//      Das hier richtig
 //		List<Dozent> temp = dozentRepository.findBymNachname(aNachname);
 //		return temp;
 
+		//Das hier falsch
 		List<Dozent> temp = dozentRepository.findAll();
 		List<Dozent> result = temp.stream()
 			     .filter(item -> item.getmNachname().equals(aNachname))
