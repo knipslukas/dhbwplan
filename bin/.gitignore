@@ -33,6 +33,3 @@ build/
 
 /src/main/node_modules/
 watchLess.bat
-
-
-/bin/
