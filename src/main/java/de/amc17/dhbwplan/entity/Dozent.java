@@ -16,18 +16,29 @@ import org.hibernate.annotations.GenericGenerator;
 public class Dozent implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="ID")
 	private int mDID;
 	
+	@Column(name="Vorname")
 	private String mVorname;
+	
+	@Column(name="Nachname")
 	private String mNachname;
+	
+	@Column(name="Email")
 	private String mEmail;
-//	  private String mAnrede;
-//	  private String mTitel;
-//	  private boolean mHauptamtlich;
+//  @Column(name="Anrede")
+//	private String mAnrede;
+//	@Column(name="Titel")
+//	private String mTitel;
+//	@Column(name="Hauptamtlich") 
+//	private boolean mHauptamtlich;
 	// private ArrayList<Fach> mFächer;
 	// private ArrayList<Fach> mGehalteneFächer;
-//	  private String mKommentar;
-//	  private String mPasswort;
+//	@Column(name="Kommentar")
+//	private String mKommentar;
+//	@Column(name="Passwort") 
+//	private String mPasswort;
 
 //	  @ManyToMany(mappedBy="dozenten")
 //	  private Set<Modul> mFächer;
@@ -41,7 +52,7 @@ public class Dozent implements Serializable {
 		mDID = aDID;
 	}
 
-	public String getmVorname() {
+	public String getmVorname() {  //getter, setter müssen den gleichen Namen wie die Variablen bekommen !!! 
 		return mVorname;
 	}
 
