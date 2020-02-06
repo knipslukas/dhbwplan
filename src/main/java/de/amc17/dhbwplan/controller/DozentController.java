@@ -60,16 +60,16 @@ public class DozentController {
 		 return mDozentService.getDozentByID(aID);
 	 }
 	 
-	 @GetMapping(path="/get/nachname/{aNachname}") 
+
+	 @GetMapping(path="/getByNachname/{aNachname}") 
 	 @ResponseBody
-	 public List<Dozent> getDozentNachnameByID(@PathVariable String aNachname) {
-		 return mDozentService.getDozentByNachname(aNachname);
-		 
+	 public List<Dozent> getDozentByNachname(@PathVariable String aNachname) {
+		 return mDozentService.getDozentByNachname(aNachname);	 
 	 }
 	 
-	 @GetMapping(path="/get/email/{aEmail}") 
+	 @GetMapping(path="/getByEmail/{aEmail}") 
 	 @ResponseBody
-	 public List<Dozent> getDozentEmailByID(@PathVariable String aEmail) {
+	 public List<Dozent> getDozentByEmail(@PathVariable String aEmail) {
 		 return mDozentService.getDozentByEmail(aEmail);
 		
 	 }

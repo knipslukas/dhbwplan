@@ -12,6 +12,7 @@ import de.amc17.dhbwplan.repository.DozentRepository;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
 
@@ -59,17 +60,30 @@ public class DozentService {
 	
 
 	public List<Dozent> getDozentByNachname(String aNachname) {
+//
+//		List<Dozent> temp = dozentRepository.findBymNachname(aNachname);
+//		return temp;
+
+		List<Dozent> temp = dozentRepository.findAll();
+		List<Dozent> result = temp.stream()
+			     .filter(item -> item.getmNachname().equals(aNachname))
+			     .collect(Collectors.toList());
 		
-		List<Dozent> temp = dozentRepository.findBymNachname(aNachname);
-		return temp;
+		return result;
 		
 	}
 	
 	public List<Dozent> getDozentByEmail(String aEmail) {
 		
-		List<Dozent> temp = dozentRepository.findBymEmail(aEmail);
-		return temp;
+//		List<Dozent> temp = dozentRepository.findBymEmail(aEmail);
+//		return temp;
+
+		List<Dozent> temp = dozentRepository.findAll();
+		List<Dozent> result = temp.stream()
+			     .filter(item -> item.getmEmail().equals(aEmail))
+			     .collect(Collectors.toList());
 		
+		return result;
 	}
 
 }
