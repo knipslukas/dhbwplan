@@ -9,6 +9,5 @@ import de.amc17.dhbwplan.entity.Dozent;
 
 public interface DozentRepository extends CrudRepository<Dozent, Integer> {
 	
-	public List<Dozent> findBymNachname(String name);
-	public List<Dozent> findAll();
+		public List<Dozent> findAll();
 }
