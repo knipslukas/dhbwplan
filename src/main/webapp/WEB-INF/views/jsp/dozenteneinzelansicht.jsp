@@ -8,21 +8,21 @@
 	<!-- Start Orientierungszeile -->
     <div class="mx-2 mt-3">
         <div class="alert homeleiste" role="alert">
-                <div class="row">
-                    <!-- Orientierungstext -->
-                    <div class="col homeleistetext">
-                        Dozenteneinzelansicht
-                    </div>
-                    <!-- Button "Zurück" -->
-                    <div class="dhbw_kursanlegen" style="text-align: right;">
-                        <button type="button" class="btn btn-primary btn-sm DHBWbutton">Zurück</button>
-                    </div>
-                </div>
-            </div>
+           <div class="row">
+               <!-- Orientierungstext -->
+               <div class="col homeleistetext">
+                   Dozenteneinzelansicht
+               </div>
+               <!-- Button "Zurück" -->
+               <div class="dhbw_kursanlegen" style="text-align: right;">
+                   <button type="button" class="btn btn-primary btn-sm DHBWbutton">Zurück</button>
+               </div>
+           </div>
+       </div>
     </div>
     <!-- Ende Orentierungszeile -->
     
-     <!-- Start Content -->
+    <!-- Start Content -->
     <div class="mx-2">
          
          <!-- Start Steckbrief -->
