@@ -28,7 +28,7 @@ public class Dozent implements Serializable {
 	
 	@Column(name="Email")
 	private String email;
-//  @Column(name="Anrede")
+//  @Column(name="Anrede") 							//TODO: Umbenennen restlicher Attribute
 //	private String mAnrede;
 //	@Column(name="Titel")
 //	private String mTitel;

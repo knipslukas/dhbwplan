@@ -32,7 +32,7 @@ public class DozentController {
 	@PostMapping(path = "/add")
 	public String addDozent(@RequestBody Dozent aDozent, Model model) {
 		model.addAttribute(mDozentService.addDozent(aDozent));
-		model.addAttribute(aDozent); //wenns übergeben werden soll
+		model.addAttribute(aDozent); //wenns übergeben werden soll (?)
 		
 		return "dozentenübersicht";
 	}

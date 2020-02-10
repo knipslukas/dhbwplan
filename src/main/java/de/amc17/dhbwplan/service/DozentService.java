@@ -85,10 +85,6 @@ public class DozentService {
 ////		List<Dozent> temp = dozentRepository.findBymEmail(aEmail);
 ////		return temp;
 //
-//		List<Dozent> temp = dozentRepository.findAll();
-//		List<Dozent> result = temp.stream()
-//			     .filter(item -> item.getmEmail().equals(aEmail))
-//			     .collect(Collectors.toList());
 //		
 //		return result;
 //	}
