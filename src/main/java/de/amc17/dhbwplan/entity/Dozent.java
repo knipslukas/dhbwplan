@@ -1,6 +1,7 @@
 package de.amc17.dhbwplan.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,61 +13,72 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "dozent")
+@Table(name = "dozent")																				
 public class Dozent implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int mDID;
+	@Column(name="DID")
+	private int DID;
 	
-	private String mVorname;
-	private String mNachname;
-	private String mEmail;
-//	  private String mAnrede;
-//	  private String mTitel;
-//	  private boolean mHauptamtlich;
-	// private ArrayList<Fach> mFächer;
-	// private ArrayList<Fach> mGehalteneFächer;
-//	  private String mKommentar;
-//	  private String mPasswort;
+	@Column(name="Vorname")
+	private String vorname;
+	
+	@Column(name="Nachname")
+	private String nachname;
+	
+	@Column(name="Email")
+	private String email;
+//  @Column(name="Anrede") 							//TODO: Umbenennen restlicher Attribute
+//	private String mAnrede;
+//	@Column(name="Titel")
+//	private String mTitel;
+//	@Column(name="Hauptamtlich") 
+//	private boolean mHauptamtlich;
+	//private ArrayList<Fach> moeglicheFaecher;
+	//private ArrayList<Fach> gehalteneFaecher;
+//	@Column(name="Kommentar")
+//	private String mKommentar;
+//	@Column(name="Passwort") 
+//	private String mPasswort;
 
 //	  @ManyToMany(mappedBy="dozenten")
 //	  private Set<Modul> mFächer;
 //	  private Set<Modul> mGehalteneFächer
 
 	public int getDID() {
-		return mDID;
+		return DID;
 	}
 
-	public void setDID(int aDID) {
-		mDID = aDID;
+	public void setDID(int aID) {
+		DID = aID;
 	}
 
-	public String getmVorname() {
-		return mVorname;
+	public String getvorname() {  //getter, setter müssen den gleichen Namen wie die Variablen bekommen !!! 
+		return vorname;
 	}
 
-	public void setmVorname(String avorname) {
-		mVorname = avorname;
+	public void setvorname(String avorname) {
+		vorname = avorname;
 	}
 
-	public String getmNachname()
+	public String getnachname()
 	{
-		return mNachname;
+		return nachname;
 	}
 	
-	public void setmNachname(String aNachname)
+	public void setnachname(String aNachname)
 	{
-		mNachname = aNachname;
+		nachname = aNachname;
 	}
 	
-	public String getmEmail()
+	public String getemail()
 	{
-		return mEmail;
+		return email;
 	}
 	
-	public void setmEmail(String aEmail)
+	public void setemail(String aEmail)
 	{
-		mEmail = aEmail;
+		email = aEmail;
 	}
 //		
 //		public String getAnrede()
