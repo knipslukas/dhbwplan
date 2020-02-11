@@ -40,7 +40,7 @@ public class DozentController {
 	@PostMapping(value = "/delete/{aID}")
 	public String deleteDozent( Model model, @PathVariable int aID) {
 		model.addAttribute(mDozentService.deleteDozent(aID));
-		return "";
+		return "dozentenübersicht";
 	}
 
 	@PostMapping(path = "/update/{aID}")
@@ -52,14 +52,15 @@ public class DozentController {
 	}
 	 
 	 @GetMapping(path="/getAll") //TO DO other params (?) Faecher etc.
-	 public String getAllDozent(Model model, @RequestParam (required = false) String nachname, @RequestParam (required = false) String email) {
+	 public String getAllDozent(Model model, @RequestParam(required = false) String nachname, @RequestParam(required = false) String email) {
 		 model.addAllAttributes(mDozentService.getAllDozent(nachname, email));		 
 		 return "";
 		 
+		 
 	 }
 	 
-	 @GetMapping(path="/getEinzelansicht//{aID}") 
-	 public String getAllDozent(Model model, @PathVariable int aID) {
+	 @GetMapping(path="/getEinzelansicht/{aID}") 
+	 public String getEinzelansicht(Model model, @PathVariable int aID) {
 		 model.addAttribute(mDozentService.getDozentByID(aID));		 
 		 return "";
 		 

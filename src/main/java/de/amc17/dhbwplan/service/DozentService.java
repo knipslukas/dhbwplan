@@ -49,9 +49,14 @@ public class DozentService {
 	
 	public boolean updateDozent(int aDID, Dozent aDozent) {
 		try {
-			dozentRepository.findById(aDID); 
-			dozentRepository.save(aDozent);
+			if (dozentRepository.findById(aDozent.getDID()).isPresent()) { 
+				aDozent.setDID(aDID);
+				dozentRepository.save(aDozent);
+			} else {
+				return false;
+			}
 		} catch (Exception e) {
+			
 			return false;
 		}
 		
@@ -59,12 +64,17 @@ public class DozentService {
 	}
 
 	public List<Dozent> getAllDozent(String aNachname, String aEmail) {
-		
-		if (!aNachname.isEmpty()) {
-			return dozentRepository.findBynachname(aNachname);			
-		} else if (!aEmail.isEmpty()) {
-			return dozentRepository.findByemail(aEmail);
-		}
+		try {
+			
+			if (aNachname != null) {
+				return dozentRepository.findBynachname(aNachname);			
+				} else if (aEmail != null) {
+					return dozentRepository.findByemail(aEmail);
+				}
+			
+			} catch (Exception e) {
+				return  null;
+			}
 		
 		return dozentRepository.findAll();
 	}

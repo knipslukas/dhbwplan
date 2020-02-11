@@ -12,8 +12,8 @@ public interface DozentRepository extends CrudRepository<Dozent, Integer> {
 	
 	public List<Dozent> findBynachname(String name);
 	public List<Dozent> findByemail(String mail);
-	public List<Dozent> findBygehalteneFaecher(String mail); 
-	public List<Dozent> findBymoeglicheFaecher(String mail);
+	//public List<Dozent> findBygehalteneFaecher(String mail); 
+	// public List<Dozent> findBymoeglicheFaecher(String mail);
 	
 	public List<Dozent> findAll();
 	public Dozent findByDID(int id);
