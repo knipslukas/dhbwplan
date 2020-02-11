@@ -80,8 +80,11 @@ public class DozentService {
 	}
 
 	public Dozent getDozentByID(int aDID) {
-		
-			return dozentRepository.findByDID(aDID);
+		try {
+			return dozentRepository.findByDID(aDID); 
+		} catch (Exception e ){
+			return null;
+		}
 	}
 //	
 // 
