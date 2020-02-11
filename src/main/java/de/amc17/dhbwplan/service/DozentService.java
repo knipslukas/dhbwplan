@@ -27,57 +27,66 @@ public class DozentService {
 	private DozentRepository dozentRepository;
 
 
-	public Dozent addDozent(int aDID, Dozent aDozent) {
-
-		dozentRepository.save(aDozent);
-		return aDozent;
+	public boolean addDozent(Dozent aDozent) {
+		
+		try {
+			dozentRepository.save(aDozent);
+		} catch (Exception e) {
+			return false;
+		}
+		 
+		return true;
 	}
 
-	public Dozent deleteDozent(int aDID) {
-		Optional<Dozent> deleted = dozentRepository.findById(aDID);
-		if (deleted.isPresent())
+	public boolean deleteDozent(int aDID) {
+		try {
 			dozentRepository.deleteById(aDID);
-		return deleted.orElse(new Dozent());
+		} catch (Exception e){
+			return false;
+		}
+		return true;
 	}
 	
-	public Dozent updateDozent(int aDID, Dozent aDozent) {
-		Optional<Dozent> updated = dozentRepository.findById(aDID);
-		if (updated.isPresent())
+	public boolean updateDozent(int aDID, Dozent aDozent) {
+		try {
+			dozentRepository.findById(aDID); 
 			dozentRepository.save(aDozent);
-		return updated.orElse(new Dozent());
+		} catch (Exception e) {
+			return false;
+		}
+		
+		return true;
 	}
 
-	public Iterable<Dozent> getAllDozent() {
+	public List<Dozent> getAllDozent(String aNachname, String aEmail) {
+		
+		if (!aNachname.isEmpty()) {
+			return dozentRepository.findBynachname(aNachname);			
+		} else if (!aEmail.isEmpty()) {
+			return dozentRepository.findByemail(aEmail);
+		}
 		
 		return dozentRepository.findAll();
 	}
 
 	public Dozent getDozentByID(int aDID) {
 		
-		Optional<Dozent> temp = dozentRepository.findById(aDID);
-		return temp.orElse(new Dozent());
+			return dozentRepository.findByDID(aDID);
 	}
-	
-
-	public List<Dozent> getDozentByNachname(String aNachname) {
-		
-		List<Dozent> temp = dozentRepository.findAll();
-		List<Dozent> result = temp.stream()
-			     .filter(item -> item.getmNachname().equals(aNachname))
-			     .collect(Collectors.toList());
-		
-		return result;
-		
-	}
-	
-	public List<Dozent> getDozentByEmail(String aEmail) {
-		
-		List<Dozent> temp = dozentRepository.findAll();
-		List<Dozent> result = temp.stream()
-			     .filter(item -> item.getmEmail().equals(aEmail))
-			     .collect(Collectors.toList());
-		
-		return result;
-	}
+//	
+// 
+//	public List<Dozent> getDozentByNachname(String aNachname) {
+//		
+//		return dozentRepository.findBynachname(aNachname);	
+//	}
+//	
+//	public List<Dozent> getDozentByEmail(String aEmail) {
+//		
+////		List<Dozent> temp = dozentRepository.findBymEmail(aEmail);
+////		return temp;
+//
+//		
+//		return result;
+//	}
 
 }

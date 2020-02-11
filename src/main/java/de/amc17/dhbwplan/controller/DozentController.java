@@ -1,23 +1,18 @@
 package de.amc17.dhbwplan.controller;
 
-import java.util.List;
-import java.util.Optional;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import de.amc17.dhbwplan.entity.Dozent;
 import de.amc17.dhbwplan.service.DozentService;
+import de.amc17.dhbwplan.service.UserService;
 
 @Controller
 @RequestMapping(path = "/dozent")
@@ -27,52 +22,95 @@ public class DozentController {
 
 	@Autowired
 	private DozentService mDozentService;
+	
+	@Autowired
+	private UserService userServ;
 
 	@PostMapping(path = "/add")
-	@ResponseBody
-	public Dozent addDozent(@RequestBody Dozent aDozent) {
-		return mDozentService.addDozent(aDozent.getDID(), aDozent);
+	public String addDozent(@RequestBody Dozent aDozent, Model model) {
+		if (mDozentService.addDozent(aDozent)) {
+			model.addAttribute("dozentCreated", true);
+		}
+		else {
+			model.addAttribute("dozentCreated", false);
+		}
+
+		model.addAttribute("pageTitle", "DHBW - Dozentansicht");
+		model.addAttribute("userName", userServ.getCurrentUser().getUsername());
+		return "dozentenübersicht";
 	}
 
 	@PostMapping(value = "/delete/{aID}")
-	@ResponseBody
-	public Dozent deleteDozent(@PathVariable int aID) {
-		return mDozentService.deleteDozent(aID);
+	public String deleteDozent( Model model, @PathVariable int aID) {
+		if (mDozentService.deleteDozent(aID)) {
+			model.addAttribute("dozentDeleted", true);
+		}
+		else {
+			model.addAttribute("dozentDeleted", false);
+		}
+		model.addAttribute("pageTitle", "DHBW - Dozentansicht");
+		model.addAttribute("userName", userServ.getCurrentUser().getUsername());
+		return "dozentuebersicht";
 	}
 
 	@PostMapping(path = "/update/{aID}")
-	@ResponseBody
-	public Dozent updateDozent(@PathVariable int aID, @RequestBody Dozent aDozent) {
+	public String updateDozent(Model model, @PathVariable int aID, @RequestBody Dozent aDozent) {
 		aDozent.setDID(aID);
-		return mDozentService.updateDozent(aID, aDozent);
+		if (mDozentService.updateDozent(aID, aDozent)) {
+			model.addAttribute("dozentUpdated", true);
+		}
+		else {
+			model.addAttribute("dozentUpdated", false);
+		}
+		model.addAttribute("pageTitle", "DHBW - Dozentansicht");
+		model.addAttribute("userName", userServ.getCurrentUser().getUsername());
+		return "dozentuebersicht";
 	}
 	 
-	 @GetMapping(path="/getAll") 
-	 @ResponseBody
-	 public Iterable<Dozent> getAllDozent() {
-		 return mDozentService.getAllDozent();
+	 @GetMapping(path="/getAll") //TO DO other params (?) Faecher etc.
+	 public String getAllDozent(Model model, @RequestParam (required = false) String nachname, @RequestParam (required = false) String email) {
+		 model.addAttribute("dozentList", mDozentService.getAllDozent(nachname, email));		
+		 model.addAttribute("pageTitle", "DHBW - Übersicht Dozenten");
+		 model.addAttribute("userName", userServ.getCurrentUser().getUsername());
+		 return "dozentuebersicht";
 		 
 	 }
 	 
-	 @GetMapping(path="/getByID/{aID}") 
-	 @ResponseBody
-	 public Dozent getDozentByID(@PathVariable int aID) {
-		 return mDozentService.getDozentByID(aID);
-	 }
-	 
-	 @GetMapping(path="/getByNachname/{aNachname}") 
-	 @ResponseBody
-	 public List<Dozent> getDozentByNachname(@PathVariable String aNachname) {
-		 return mDozentService.getDozentByNachname(aNachname);
+	 @GetMapping(path="/getEinzelansicht/{aID}") 
+	 public String getAllDozent(Model model, @PathVariable int aID) {
+		 model.addAttribute("dozent", mDozentService.getDozentByID(aID));	
+		 model.addAttribute("pageTitle", "DHBW - Dozentansicht");
+		 model.addAttribute("userName", userServ.getCurrentUser().getUsername());
+		 return "dozenteinzelansicht";
 		 
 	 }
 	 
-	 @GetMapping(path="/getByEmail/{aEmail}") 
-	 @ResponseBody
-	 public List<Dozent> getDozentByEmail(@PathVariable String aEmail) {
-		 return mDozentService.getDozentByEmail(aEmail);
-		
+	 @GetMapping(value ="/add")
+	 public String addDozentUi(Model model) {
+		 model.addAttribute("pageTitle", "DHBW - Dozent Anlegen");
+		 model.addAttribute("userName", userServ.getCurrentUser().getUsername());
+		 return "dozentanlegen";
 	 }
+	 
+//	 @GetMapping(path="/getByID/{aID}") 
+//	 @ResponseBody
+//	 public Dozent getDozentByID(@PathVariable int aID) {
+//		 return mDozentService.getDozentByID(aID);
+//	 }
+//	 
+//
+//	 @GetMapping(path="/getByNachname/{aNachname}") 
+//	 @ResponseBody
+//	 public List<Dozent> getDozentByNachname(@PathVariable String aNachname) {
+//		 return mDozentService.getDozentByNachname(aNachname);	 
+//	 }
+//	 
+//	 @GetMapping(path="/getByEmail/{aEmail}") 
+//	 @ResponseBody
+//	 public List<Dozent> getDozentByEmail(@PathVariable String aEmail) {
+//		 return mDozentService.getDozentByEmail(aEmail);
+//		
+//	 }
 
 //	 @GetMapping(path="/Get/Dozent/MoeglicheFaecher") 
 //	 public Iterable<Modul> getDozentMoeglicheFaecherByID(@RequestParam UUID aID) {
