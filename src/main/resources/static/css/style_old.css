@@ -1,12 +1,11 @@
-ï»¿body
+body
 {
 	font-family: arial;
 	font-size: 15px;
 }
 
-/*General*/
 
-/*Hintergrundformatierung fÃ¼r die Navigationsleiste*/
+/*Hintergrundformatierung für die Navigationsleiste*/
 .navigationline
 {
 	background-color: white;
@@ -31,12 +30,11 @@
 	background-color: #4E5F67;
 }
 
-/*Default Settings fÃ¼r Hyperlinks*/
+/*Default Settings für Hyperlinks*/
 a:hover
 {
 	color: #4E5F67;	
 }
-
 .DHBWbutton {
 	
   background-color: #4E5F67;
@@ -51,11 +49,10 @@ a:hover
   color: #4E5F67;
   border: 2px solid #4E5F67;
   font-weight: bold;
+  
+
 }
 
-
-
-/*Dozentuebersicht*/
 /*Formatierung der Textbox Heading: Dozentbersicht*/
 .dozentuebersicht
 {
@@ -69,24 +66,6 @@ a:hover
 	color: white;
 }
 
-
-
-/*Kursuebersicht*/
-/*Formatierung der Textbox Heading: Kursuebersicht*/
-.kursuebersicht
-{
-	background-color: #E2001A;
-}
-
-/*Formatierung des Text innerhalb der Kursuebersicht*/
-.kursuebersichttext
-{
-	font-size: 35px;
-	color: white;
-}
-
-
-/*Home*/
 /*Formatierung der Home Leiste*/
 .homeleiste
 {
@@ -108,7 +87,7 @@ a:hover
 	border-color: #4E5F67;
 }
 
-/*Formatierung der groÃŸen Icons auf der Hauptpage*/
+/*Formatierung der großen Icons auf der Hauptpage*/
 .btnTwoIcons
 {
 	background-color: #4E5F67;
@@ -123,63 +102,9 @@ a:hover
 	border-width:2px;
 }
 
-
-
-/*Landing Page*/
-/*Formatierung der grauen Box in der Mitte mit grauem Rahmen*/
 .orientierungsbox
 {
 	background-color: #E5E5E5;
 	border-width: 1px;
 	border-color: #4E5F67;
 }
-
-/*New defined classes and ids*/
-.dhbw_logo
-{
-	height: 40px;
-	width: auto;
-}
-
-.dhbw_listenpunkt
-{
-	padding-right: 10px;
-}
-
-.dhbw_user
-{
-	border-left: 1px solid #cacaca;
-	padding-left: 10px;
-}
-
-.dhbw_orientierungszeile
-{
-	margin: 0 auto;
-	width: 98%;
-}
-
-.dhbw_kursanlegen
-{
-	text-align: right;
-}
-
-.dhbw_content
-{
-	margin: 0 auto;
-	width: 96%;
-}
-
-.dozentNotizen
-{
-	width: 100%;
-	color: #4E5F67;
-}
-
-.kursNeueZeile 
-{
-	margin-top: 10px;
-}
-
-
-	
-
