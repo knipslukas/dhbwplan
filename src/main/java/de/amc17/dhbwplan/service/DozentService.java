@@ -60,13 +60,18 @@ public class DozentService {
 
 	public List<Dozent> getAllDozent(String aNachname, String aEmail) {
 		
-		if (!aNachname.isEmpty()) {
-			return dozentRepository.findBynachname(aNachname);			
-		} else if (!aEmail.isEmpty()) {
-			return dozentRepository.findByemail(aEmail);
+		try {
+			if (!aNachname.isEmpty()) {
+				return dozentRepository.findBynachname(aNachname);			
+			} else if (!aEmail.isEmpty()) {
+				return dozentRepository.findByemail(aEmail);
+			}
+			
+			return dozentRepository.findAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
-		
-		return dozentRepository.findAll();
 	}
 
 	public Dozent getDozentByID(int aDID) {

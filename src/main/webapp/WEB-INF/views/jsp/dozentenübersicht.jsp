@@ -15,7 +15,7 @@
                     </div>
                     <!-- Button "Dozent anlegen" -->
                     <div class="col" style="text-align: right;">
-                        <button type="button" class="btn btn-primary btn-sm DHBWbutton">Dozent anlegen</button>
+                        <a href="/dozent/add" class="btn btn-primary btn-sm DHBWbutton">Dozent anlegen</a>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
          <table class="table table-hover">
               <thead>
                 <tr>
-                  <td scope="col"><strong>#</strong></td>
+                  <td scope="col"><strong>Dozenten Nummer</strong></td>
                   <td scope="col"><strong>Nachname</strong></td>
                   <td scope="col"><strong>Vorname</strong></td>
                   <td scope="col"><strong>Email</strong></td>
@@ -36,13 +36,28 @@
               </thead>
               <tbody>
                 <!-- Beispieleintrag --> 
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Matt</td>
-                  <td>Michael</td>
-                  <td>michael.matt@dhbw-mannheim.de</td>
-                  <td>+49 176 123456</td>
-                </tr>
+                <c:choose>
+                	<c:when test="${dozentList ne null }">
+                		<c:forEach items="${dozentList}" var="dozent">
+                			<tr>
+				                <td scope="row">${dozent.DID }</td>
+				                <td>${dozent.nachname }</td>
+				                <td>${dozent.vorname }</td>
+				                <td>${dozent.email }</td>
+				                <td></td>
+			                </tr>
+                		</c:forEach>
+                	</c:when>
+                	<c:otherwise>
+                		<tr class="table-warning">
+                			<td>Keine Dozenten vorhanden</td>
+                			<td></td>
+                			<td></td>
+                			<td></td>
+                			<td></td>
+                		</tr>
+                	</c:otherwise>
+                </c:choose>
 
               </tbody>
             </table>

@@ -71,8 +71,8 @@ public class DozentController {
 	 public String getAllDozent(Model model, @RequestParam (required = false) String nachname, @RequestParam (required = false) String email) {
 		 model.addAttribute("dozentList", mDozentService.getAllDozent(nachname, email));		
 		 model.addAttribute("pageTitle", "DHBW - Übersicht Dozenten");
-		 model.addAttribute("userName", userServ.getCurrentUser().getUsername());
-		 return "dozentuebersicht";
+		 //model.addAttribute("userName", userServ.getCurrentUser().getUsername());
+		 return "dozentenübersicht";
 		 
 	 }
 	 
