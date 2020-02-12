@@ -37,7 +37,7 @@
 		<!-- Bootstrap core JavaScript -->
 		<script src="${pageContext.request.contextPath}/static/bootstrap/bootstrap.min.js"></script>
 		<!-- Popper JS -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script src="${pageContext.request.contextPath}/static/js/umd/popper.min.js"></script>
 		<script src="${pageContext.request.contextPath}/static/fontawesome/fontawesome.js"></script> 
 	    
 	

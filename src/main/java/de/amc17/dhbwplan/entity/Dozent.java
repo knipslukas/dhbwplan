@@ -28,18 +28,25 @@ public class Dozent implements Serializable {
 	
 	@Column(name="Email")
 	private String email;
-//  @Column(name="Anrede") 							//TODO: Umbenennen restlicher Attribute
-//	private String mAnrede;
-//	@Column(name="Titel")
-//	private String mTitel;
+	
+    @Column(name="Anrede") 							//TODO: Umbenennen restlicher Attribute
+	private String anrede;
+	
+	@Column(name="Titel")
+	private String titel;
+	
+	private String telefonnummer;
+	
 //	@Column(name="Hauptamtlich") 
 //	private boolean mHauptamtlich;
+	
 	//private ArrayList<Fach> moeglicheFaecher;
+	
+	//Funktioniert so nicht, Abbildung so nicht moeglich
 	//private ArrayList<Fach> gehalteneFaecher;
-//	@Column(name="Kommentar")
-//	private String mKommentar;
-//	@Column(name="Passwort") 
-//	private String mPasswort;
+	@Column(name="Kommentar")
+	private String mKommentar;
+
 
 //	  @ManyToMany(mappedBy="dozenten")
 //	  private Set<Modul> mFächer;
@@ -80,58 +87,56 @@ public class Dozent implements Serializable {
 	{
 		email = aEmail;
 	}
-//		
-//		public String getAnrede()
-//		{
-//			return mAnrede;
-//		}
-//		
-//		public void setAnrede(String aAnrede)
-//		{
-//			mAnrede = aAnrede;
-//		}
-//	
-//		public String getTitel()
-//		{
-//			return mTitel;
-//		}
-//		
-//		public void setTitel(String aTitel)
-//		{
-//			mTitel = aTitel;
-//		}
-//		
-//		public boolean getHauptamtlich()
-//		{
-//			return mHauptamtlich;
-//		}
-//		
-//		public void setHauptamtlich(boolean aHauptamtlich)
-//		{
-//			mHauptamtlich = aHauptamtlich;
-//		}
-//		
-//		public String getKommentar()
-//		{
-//			return mKommentar;
-//		}
-//		
-//		public void setKommentar(String aKommentar)
-//		{
-//			mKommentar = aKommentar;
-//		}
-//		
+		
+	public String getAnrede()
+	{
+		return anrede;
+	}
+	
+	public void setAnrede(String aAnrede)
+	{
+		anrede = aAnrede;
+	}
 
-//		
-//		public String getPasswort()
-//		{
-//			return mPasswort;
-//		}
-//		
-//		public void setPasswort(String aPasswort)
-//		{
-//			mPasswort = aPasswort;
-//		}
+	public String getTitel()
+	{
+		return titel;
+	}
+	
+	public void setTitel(String aTitel)
+	{
+		titel = aTitel;
+	}
+	
+//	public boolean getHauptamtlich()
+//	{
+//		return mHauptamtlich;
+//	}
+//	
+//	public void setHauptamtlich(boolean aHauptamtlich)
+//	{
+//		mHauptamtlich = aHauptamtlich;
+//	}
+	
+	public String getTelefonnummer() {
+		return telefonnummer;
+	}
+
+	public void setTelefonnummer(String telefonnummer) {
+		this.telefonnummer = telefonnummer;
+	}
+
+	public String getKommentar()
+	{
+		return mKommentar;
+	}
+	
+	public void setKommentar(String aKommentar)
+	{
+		mKommentar = aKommentar;
+	}
+		
+
 
 //
 //		public Set<Modul> getFächer() 

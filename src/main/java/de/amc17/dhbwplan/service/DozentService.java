@@ -61,13 +61,16 @@ public class DozentService {
 	public List<Dozent> getAllDozent(String aNachname, String aEmail) {
 		
 		try {
-			if (!aNachname.isEmpty()) {
+			if (aNachname != null) {
 				return dozentRepository.findBynachname(aNachname);			
-			} else if (!aEmail.isEmpty()) {
+			} else if (aEmail != null) {
 				return dozentRepository.findByemail(aEmail);
 			}
-			
-			return dozentRepository.findAll();
+			List<Dozent> list = dozentRepository.findAll();
+			if (!list.isEmpty()) {
+				return list;
+			}
+			else return null;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

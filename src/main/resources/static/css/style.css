@@ -1,4 +1,4 @@
-ï»¿body
+body
 {
 	font-family: arial;
 	font-size: 15px;
@@ -6,7 +6,7 @@
 
 /*General*/
 
-/*Hintergrundformatierung fÃ¼r die Navigationsleiste*/
+/*Hintergrundformatierung für die Navigationsleiste*/
 .navigationline
 {
 	background-color: white;
@@ -31,7 +31,7 @@
 	background-color: #4E5F67;
 }
 
-/*Default Settings fÃ¼r Hyperlinks*/
+/*Default Settings für Hyperlinks*/
 a:hover
 {
 	color: #4E5F67;	
@@ -42,7 +42,6 @@ a:hover
   background-color: #4E5F67;
   color: white;
   border: 2px solid #4E5F67;
-  height: 50px;
   font-weight: bold;
 }
 /*Login Button Hover Formatierung*/
@@ -108,7 +107,7 @@ a:hover
 	border-color: #4E5F67;
 }
 
-/*Formatierung der groÃŸen Icons auf der Hauptpage*/
+/*Formatierung der großen Icons auf der Hauptpage*/
 .btnTwoIcons
 {
 	background-color: #4E5F67;
