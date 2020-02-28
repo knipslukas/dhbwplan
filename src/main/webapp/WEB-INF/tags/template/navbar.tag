@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav class="navbar navbar-expand-sm navigationline">
 	<div class="container-fluid navigationline">
-		<a class="navbar-brand navigationtext" href="#">
+		<a class="navbar-brand navigationtext" href="/">
             <img src="${pageContext.request.contextPath}/static/images/dhbw_logo.PNG" width="auto" height="40" class="d-inline-block align-top rounded-corners" alt="">
             Planner
         </a>
@@ -9,7 +9,7 @@
         <!-- Navigationslinks -->
         <ul class="nav navbar-nav navbar-right">
         	<li class="nav-item">
-                <a class="nav-link navigationlist" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link navigationlist" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             
             <li class="nav-item">
@@ -17,7 +17,7 @@
             </li>
             
             <li class="nav-item" style="padding-right: 10px;">
-                <a class="nav-link navigationlist" href="#">Dozenten</a>
+                <a class="nav-link navigationlist" href="/dozent/getAll">Dozenten</a>
             </li>
             
 			<li class="nav-item dropdown" style="padding-right: 10px;">

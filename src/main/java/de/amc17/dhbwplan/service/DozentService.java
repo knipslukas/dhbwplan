@@ -63,20 +63,22 @@ public class DozentService {
 		return true;
 	}
 
-	public List<Dozent> getAllDozent(String aNachname, String aEmail) {
+	public List<Dozent> getAllDozent(String aNachname, String aEmail) {		
 		try {
-			
 			if (aNachname != null) {
 				return dozentRepository.findBynachname(aNachname);			
-				} else if (aEmail != null) {
-					return dozentRepository.findByemail(aEmail);
-				}
-			
-			} catch (Exception e) {
-				return  null;
+			} else if (aEmail != null) {
+				return dozentRepository.findByemail(aEmail);
 			}
-		
-		return dozentRepository.findAll();
+			List<Dozent> list = dozentRepository.findAll();
+			if (!list.isEmpty()) {
+				return list;
+			}
+			else return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public Dozent getDozentByID(int aDID) {

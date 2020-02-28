@@ -42,13 +42,13 @@
                 </button>
             </div>
             <div class="col" style="text-align: center">
-                <button type="button" class="btn btn-outline-secondary btnTwoIcons" style="height: 300px; width: 300px;">
+                <a href="dozent/getAll" class="btn btn-outline-secondary btnTwoIcons" style="height: 300px; width: 300px;">
                     <font size="100">
                         Dozenten
                         <br>
                         <i class="fas fa-chalkboard-teacher"></i>
                     </font>
-                </button>
+                </a>
             </div>
         </div>
     </div>
