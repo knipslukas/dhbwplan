@@ -29,7 +29,7 @@ public class Dozent implements Serializable {
 	@Column(name="Email")
 	private String email;
 	
-    @Column(name="Anrede") 							//TODO: Umbenennen restlicher Attribute
+  @Column(name="Anrede") 							//TODO: Umbenennen restlicher Attribute
 	private String anrede;
 	
 	@Column(name="Titel")
@@ -39,7 +39,6 @@ public class Dozent implements Serializable {
 	
 //	@Column(name="Hauptamtlich") 
 //	private boolean mHauptamtlich;
-	
 	//private ArrayList<Fach> moeglicheFaecher;
 	
 	//Funktioniert so nicht, Abbildung so nicht moeglich
@@ -47,10 +46,9 @@ public class Dozent implements Serializable {
 	@Column(name="Kommentar")
 	private String mKommentar;
 
-
 //	  @ManyToMany(mappedBy="dozenten")
-//	  private Set<Modul> mFächer;
-//	  private Set<Modul> mGehalteneFächer
+//	  private Set<Modul> faecher;
+//	  private Set<Modul> gehalteneFaecher
 
 	public int getDID() {
 		return DID;
@@ -137,42 +135,25 @@ public class Dozent implements Serializable {
 	}
 		
 
-
 //
-//		public Set<Modul> getFächer() 
+//		public Set<Modul> getfaecher() 
 //		{
-//			return mFächer;
+//			return faecher;
 //		}
 //
-//		public void setFächer(Set<Modul> aFächer) 
+//		public void setfaecher(Set<Modul> aFächer) 
 //		{
-//			mFächer = aFächer;
+//			faecher = aFächer;
 //		}
 //		
-//		public Set<Modul> getGehalteneFächer() 
+//		public Set<Modul> getgehalteneFaecher() 
 //		{
-//			return mGehalteneFächer;
+//			return gehaltenefaecher;
 //		}
 //
-//		public void setGehalteneFächer(Set<Modul> aGehalteneFächer) 
+//		public void setgehalteneFaecher(Set<Modul> aGehalteneFächer) 
 //		{
-//			mGehalteneFächer = aGehalteneFächer;
+//			gehalteneFaecher = aGehalteneFächer;
 //		}
-
-	// Test Kathi
-//	@Id
-
-//	@GeneratedValue(strategy=GenerationType.AUTO)
-//	private UUID mDID; 
-//	
-//	private String mVorname; 
-//	
-//	
-//	 public String getVorname() {
-//		    return mVorname;
-//		  }
-//	public UUID getDID() {
-//		// TODO Auto-generated method stub
-//		return mDID;
-//	}
+	
 }

@@ -49,17 +49,21 @@ public class DozentService {
 	
 	public boolean updateDozent(int aDID, Dozent aDozent) {
 		try {
-			dozentRepository.findById(aDID); 
-			dozentRepository.save(aDozent);
+			if (dozentRepository.findById(aDozent.getDID()).isPresent()) { 
+				aDozent.setDID(aDID);
+				dozentRepository.save(aDozent);
+			} else {
+				return false;
+			}
 		} catch (Exception e) {
+			
 			return false;
 		}
 		
 		return true;
 	}
 
-	public List<Dozent> getAllDozent(String aNachname, String aEmail) {
-		
+	public List<Dozent> getAllDozent(String aNachname, String aEmail) {		
 		try {
 			if (aNachname != null) {
 				return dozentRepository.findBynachname(aNachname);			
@@ -78,8 +82,11 @@ public class DozentService {
 	}
 
 	public Dozent getDozentByID(int aDID) {
-		
-			return dozentRepository.findByDID(aDID);
+		try {
+			return dozentRepository.findByDID(aDID); 
+		} catch (Exception e ){
+			return null;
+		}
 	}
 //	
 // 
