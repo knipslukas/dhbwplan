@@ -1,6 +1,6 @@
 {
-  "name": "opinionUi",
-  "version": "0.0.0",
+  "name": "dhbwplan",
+  "version": "1.0.0",
   "description": "grunt config for the accelerator",
   "private": true,
   "scripts": {
