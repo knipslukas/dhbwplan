@@ -122,7 +122,6 @@
             <version>1.6.2</version>
         </dependency>
 	</dependencies>
-
 	<build>
 		<finalName>${artifactId}</finalName>
 		<plugins>
@@ -132,5 +131,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
