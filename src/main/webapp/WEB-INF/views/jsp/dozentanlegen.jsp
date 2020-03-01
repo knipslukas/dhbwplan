@@ -6,24 +6,24 @@
 <template:template pageTitle="${pageTitle}">
     <template:navbar />
 
-	<div class="container">
-    <!-- Start Orentierungszeile -->
-    	<div class="mx-2 mt-3">
-        	<div class="alert  dozentuebersicht" role="alert">
-                <div class="row">
-                    <!-- Orientierungstext -->
-                    <div class="col dozentuebersichttext">
-                        Dozent anlegen
-                    </div>
-                    <!-- Button "Dozent anlegen" -->
-                    <div class="col">
-                        <a href="/dozent/" class="btn btn-light float-right DHBWbutton">Zurück</a>
-                    </div>
-                </div>
-            </div>
-	    </div>
-	    <!-- Ende Orentierungszeile -->
 	
+    <!-- Start Orentierungszeile -->
+   	<div class="mx-2 mt-3">
+       	<div class="alert  dozentuebersicht" role="alert">
+	        <div class="row">
+	            <!-- Orientierungstext -->
+	            <div class="col dozentuebersichttext">
+	                Dozent anlegen
+	            </div>
+	            <!-- Button "Dozent anlegen" -->
+	            <div class="col">
+	                <a href="/dozent/" class="btn btn-light float-right DHBWbutton">Zurück</a>
+	            </div>
+	        </div>
+    	</div>
+    </div>
+    <!-- Ende Orentierungszeile -->
+	<div class="container">
 	    <!-- Start Content -->
 	    <div class="dhbw_content">
 	        <!-- Start Formular -->
@@ -48,7 +48,7 @@
 	                <input type="text" name="dozentName" class="form-control" placeholder="Enter Nachname">
 	            </div>
 	
-	            <!--<div class="form-group">
+	            <div class="form-group">
 	                <label>Unternehmen</label>
 	                <input type="text" name="dozentUnternehmen" class="form-control" placeholder="Enter Unternehmen">
 	            </div>
@@ -66,7 +66,7 @@
 	            <div class="form-group">
 	                <label>Stadt</label>
 	                <input type="text" name="dozentStadt" class="form-control" placeholder="Enter Stadt">
-	            </div>-->
+	            </div>
 	
 	            <div class="form-group">
 	                <label>E-Mail</label>
@@ -78,7 +78,7 @@
 	                <input type="text" name="dozentTele" class="form-control" placeholder="Enter Telefonnummer">
 	            </div>
 	
-	            <!-- <div class="form-group">
+	            <div class="form-group">
 	                <label>Unterrichtsfächer</label>
 	                <input type="text" name="dozentUnterrichtsfaecher" class="form-control"
 	                    placeholder="Enter Unterrichtsfächer">
@@ -89,22 +89,19 @@
 	                <input type="text" name="dozentSchwerpunkte" class="form-control" placeholder="Enter Schwerpunkte">
 	            </div>
 	
-	            <div class="dropdown">
-	                <label>Zeitpräferenzen</label>
-	                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
-	                    Zeitraum
-	                </button>
-	                <div class="dropdown-menu">
-	                    <a class="dropdown-item navigationlist">Vormittags</a>
-	                    <a class="dropdown-item navigationlist">Nachmittags</a>
-	                    <a class="dropdown-item navigationlist">Abends</a>
-	                </div>
+	            <div class="form-group">
+	                <label for="timespaces">Zeitpräferenzen</label>
+	                <select class="form-control" id="timespaces" name="dozentZeitPraef">
+	                	<option value="0">Vormittags</option>
+	                	<option value="1">Nachmittags</option>
+	                	<option value="2">Abends</option>
+	                </select>
 	            </div>
 	
 	            <div class="form-group">
 	                <label>Notizen</label> <br>
 	                <textarea class="dozentNotizen"> Hier können Sie Notizen ergänzen </textarea>
-	            </div>-->
+	            </div>
 	
 	            <!-- Final Buttons-->
 	            <div class="finalButtons">
