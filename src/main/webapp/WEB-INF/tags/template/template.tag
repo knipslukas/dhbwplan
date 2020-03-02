@@ -30,6 +30,8 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	    <link href="${pageContext.request.contextPath}/static/bootstrap/bootstrap4-toggle.min.css" rel="stylesheet">
 	    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css" />
+	    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+
 	    
 	  	<!-- SCRIPTS -->
 		<!-- JQuery -->
@@ -39,6 +41,7 @@
 		<!-- Popper JS -->
 		<script src="${pageContext.request.contextPath}/static/js/umd/popper.min.js"></script>
 		<script src="${pageContext.request.contextPath}/static/fontawesome/fontawesome.js"></script> 
+		<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 	    
 	
 	

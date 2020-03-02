@@ -1,9 +1,11 @@
 package de.amc17.dhbwplan.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,18 +35,8 @@ public class DozentController {
 	}
 
 	@PostMapping(path = "/add")
-	public String addDozent(@RequestParam String dozentAnrede, 
-			@RequestParam String dozentTitel, @RequestParam String dozentVorname, 
-			@RequestParam String dozentName, @RequestParam String dozentEmail,
-			@RequestParam String dozentTele, RedirectAttributes redirectAttributes) {
-		Dozent d = new Dozent();
-		d.setAnrede(dozentAnrede);
-		d.setnachname(dozentName);
-		d.setTitel(dozentTitel);
-		d.setvorname(dozentVorname);
-		d.setemail(dozentEmail);
-		d.setTelefonnummer(dozentTele);
-		if (mDozentService.addDozent(d)) {
+	public String addDozent(@ModelAttribute Dozent doz, RedirectAttributes redirectAttributes) {
+		if (mDozentService.addDozent(doz)) {
 			redirectAttributes.addAttribute("dozentCreated", true);
 		}
 		else {
@@ -66,9 +58,8 @@ public class DozentController {
 	}
 
 	@PostMapping(path = "/update/{aID}")
-	public String updateDozent(Model model, @PathVariable int aID, @RequestBody Dozent aDozent) {
-		aDozent.setDID(aID);
-		if (mDozentService.updateDozent(aID, aDozent)) {
+	public String updateDozent(Model model, @RequestBody Dozent aDozent) {
+		if (mDozentService.updateDozent(aDozent)) {
 			model.addAttribute("dozentUpdated", true);
 		}
 		else {
