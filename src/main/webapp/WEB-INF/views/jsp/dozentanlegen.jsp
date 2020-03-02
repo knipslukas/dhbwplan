@@ -106,7 +106,7 @@
 	
 	            <div class="form-group">
 	                <label>Notizen</label> <br>
-	                <textarea class="notiz"> Hier können Sie Notizen ergänzen</textarea>
+	                <textarea class="form-control" name="notiz"> Hier können Sie Notizen ergänzen</textarea>
 	            </div>
 	
 	            <!-- Final Buttons-->
