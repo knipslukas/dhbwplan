@@ -6,24 +6,26 @@
 <template:template pageTitle="${pageTitle}">
     <template:navbar />
 
-	
-    <!-- Start Orentierungszeile -->
-   	<div class="mx-2 mt-3">
-       	<div class="alert  dozentuebersicht" role="alert">
-	        <div class="row">
-	            <!-- Orientierungstext -->
-	            <div class="col dozentuebersichttext">
-	                Dozent anlegen
-	            </div>
-	            <!-- Button "Dozent anlegen" -->
-	            <div class="col">
-	                <a href="/dozent/" class="btn btn-light float-right DHBWbutton">Zurück</a>
-	            </div>
-	        </div>
-    	</div>
-    </div>
-    <!-- Ende Orentierungszeile -->
+
 	<div class="container">
+	
+    	<!-- Start Orentierungszeile -->
+	   	<div class="mx-2 mt-3">
+	       	<div class="alert  dozentuebersicht" role="alert">
+		        <div class="row">
+		            <!-- Orientierungstext -->
+		            <div class="col dozentuebersichttext">
+		                Dozent anlegen
+		            </div>
+		            <!-- Button "Dozent anlegen" -->
+		            <div class="col">
+		                <a href="/dozent/" class="btn btn-light float-right DHBWbutton">Zurück</a>
+		            </div>
+		        </div>
+	    	</div>
+	    </div>
+    <!-- Ende Orentierungszeile -->
+	
 	    <!-- Start Content -->
 	    <div class="dhbw_content">
 	        <!-- Start Formular -->
