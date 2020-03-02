@@ -14,6 +14,11 @@ import de.amc17.dhbwplan.enums.Zeitpraeferenzen;
 @Entity
 @Table(name = "dozent")																				
 public class Dozent implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6950667849042772275L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="DID")
