@@ -49,25 +49,25 @@
 						<input type="text" class="form-control" name="dozentName"  placeholder="Nachname" value="${dozent.nachname }" disabled>
 					</div>
 					
-					<!-- <div class="form-group">
+					<div class="form-group">
 						<label >Unternehmen</label>
-						<input type="text" class="form-control" name="dozentUnternehmen" placeholder="Unternehmen">
+						<input type="text" class="form-control" name="dozentUnternehmen" placeholder="Unternehmen" value="${dozent.unternehmen }" disabled>
 					</div>
 					
 					<div class="form-group">
 						<label >Straße und Hausnummer</label>
-						<input type="text" class="form-control" name="dozentAdresse" placeholder="Straße und Hausnummer">
+						<input type="text" class="form-control" name="dozentAdresse" placeholder="Straße und Hausnummer" value="${dozent.strasshaus }" disabled>
 					</div>
 					
 					<div class="form-group">
 						<label >Postleitzahl</label>
-						<input type="text" class="form-control" name="dozentPLZ"  placeholder="Postleitzahl">
+						<input type="text" class="form-control" name="dozentPLZ"  placeholder="Postleitzahl" value="${dozent.plz }" disabled>
 					</div>
 					
 					<div class="form-group">
 						<label >Stadt</label>
-						<input type="text" class="form-control" name="dozentStadt"  placeholder="Stadt">
-					</div>-->
+						<input type="text" class="form-control" name="dozentStadt"  placeholder="Stadt" value="${dozent.stadt }" disabled>
+					</div>
 					
 					<div class="form-group">
 						<label >E-Mail</label>
@@ -79,32 +79,34 @@
 						<input type="text" class="form-control" name="dozentTelnr" placeholder="Telefonnummer" value="${dozent.telefonnummer }" disabled>
 					</div>
 					
-					<!-- <div class="form-group">
+					<div class="form-group">
 						<label >Unterrichtsfächer</label>
-						<input type="text" class="form-control" name="dozentUnterrichtsfaecher" placeholder="Unterrichtsfächer">
+						<input type="text" class="form-control" name="dozentUnterrichtsfaecher" placeholder="Unterrichtsfächer" value="${dozent.faecher }" disabled>
 					</div>
 					
 					<div class="form-group">
 						<label >Schwerpunkte</label>
-						<input type="text" class="form-control" name="dozentSchwerpunkte" placeholder="Schwerpunkte">
+						<input type="text" class="form-control" name="dozentSchwerpunkte" placeholder="Schwerpunkte" value="${dozent.schwerpunkte }" disabled>
+					</div>
+					<div class="form-group js-zeitpraef-text">
+						<label >Zeitpräferenzen</label>
+						<input type="text" class="form-control" name="dozentSchwerpunkte" placeholder="Schwerpunkte" value="${dozent.schwerpunkte }" disabled>
 					</div>
 					
-					<div class="dropdown">
-						<label >Zeitpräferenzen</label>
-						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Zeitraum
-						 </button>
-						 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<a class="dropdown-item navigationlist">Vormittags</a>
-							<a class="dropdown-item navigationlist">Nachmittags</a>
-							<a class="dropdown-item navigationlist">Abends</a>
-						 </div>
-					</div>
+					<div class="form-group d-none js-zeitpraef">
+		                <label for="timespaces">Zeitpräferenzen</label>
+		                <select class="form-control" id="timespaces" name="dozentZeitPraef">
+		                	<option value="0">Vormittags</option>
+		                	<option value="1">Nachmittags</option>
+		                	<option value="2">Abends</option>
+		                </select>
+		            </div>
+				
 					
 					<div class="form-group">
 						<label >Notizen</label> <br>
-						<textarea class="dozentNotizen"> Hier können Sie Notizen ergänzen </textarea>
-					</div>-->	
+						<textarea class="dozentNotizen" disabled>${dozent.notizen }</textarea>
+					</div>
 					
 					
 				</form>
