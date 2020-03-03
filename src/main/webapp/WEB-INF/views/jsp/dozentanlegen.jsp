@@ -29,10 +29,15 @@
 	    <!-- Start Content -->
 	    <div class="dhbw_content">
 	        <!-- Start Formular -->
-	        <form class="pb-3 js-form-dozanleg" method="POST" action="/dozent/add">
+	        <form class="pb-3 js-form-dozanleg" method="POST" action="/dozent/add">	            
 	            <div class="form-group">
-	                <label>Anrede</label>
-	                <input type="text" name="anrede" class="form-control" placeholder="Anrede eingeben">
+	                <label for="anrede">Anrede</label>
+	                <select class="form-control" id="anrede" name="anrede">
+	                	<option disabled selected>Anrede Auswählen</option>
+	                	<option value="Herr">Herr</option>
+	                	<option value="Frau">Frau</option>
+	                	<option value="Divers">Divers</option>
+	                </select>
 	            </div>
 	
 	            <div class="form-group">
@@ -56,8 +61,8 @@
 	            </div>
 	            
 	            <div class="form-group">
-	            	<label>DHBW Intern</label>
-	            	<input type="checkbox" data-toggle="toggle" data-on="Ja" data-off="Nein" name="intern" data-style="mr-1">
+	            	<label>DHBW Intern</label><br>
+	            	<input type="checkbox" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="intern" data-style="mr-1">
 	            </div>
 	
 	            <div class="form-group">
@@ -98,6 +103,7 @@
 	            <div class="form-group">
 	                <label for="timespaces">Zeitpräferenzen</label>
 	                <select class="form-control" id="timespaces" name="zeitpraef">
+	                	<option disabled selected>Bitte Auswählen</option>
 	                	<option value="VORMITTAG">Vormittags</option>
 	                	<option value="NACHMITTAG">Nachmittags</option>
 	                	<option value="ABEND">Abends</option>
@@ -106,7 +112,7 @@
 	
 	            <div class="form-group">
 	                <label>Notizen</label> <br>
-	                <textarea class="form-control" name="notiz"> Hier können Sie Notizen ergänzen</textarea>
+	                <textarea class="form-control" name="notiz" placeholder="Hier können Sie Notizen ergänzen"></textarea>
 	            </div>
 	
 	            <!-- Final Buttons-->
