@@ -47,10 +47,9 @@ public class DozentService {
 		return true;
 	}
 	
-	public boolean updateDozent(int aDID, Dozent aDozent) {
+	public boolean updateDozent(Dozent aDozent) {
 		try {
 			if (dozentRepository.findById(aDozent.getDID()).isPresent()) { 
-				aDozent.setDID(aDID);
 				dozentRepository.save(aDozent);
 			} else {
 				return false;

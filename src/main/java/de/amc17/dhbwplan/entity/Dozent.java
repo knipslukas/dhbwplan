@@ -11,8 +11,7 @@ import javax.persistence.Table;
 
 import de.amc17.dhbwplan.enums.Zeitpraeferenzen;
 
-@Entity
-@Table(name = "dozent")																				
+@Entity																			
 public class Dozent implements Serializable {
 	/**
 	 * 

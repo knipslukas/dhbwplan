@@ -29,80 +29,90 @@
 	    <!-- Start Content -->
 	    <div class="dhbw_content">
 	        <!-- Start Formular -->
-	        <form class="pb-3" action="/dozent/add" method="post">
+	        <form class="pb-3 js-form-dozanleg" method="POST" action="/dozent/add">	            
 	            <div class="form-group">
-	                <label>Anrede</label>
-	                <input type="text" name="dozentAnrede" class="form-control" placeholder="Enter Anrede">
+	                <label for="anrede">Anrede</label>
+	                <select class="form-control" id="anrede" name="anrede">
+	                	<option disabled selected>Anrede Auswählen</option>
+	                	<option value="Herr">Herr</option>
+	                	<option value="Frau">Frau</option>
+	                	<option value="Divers">Divers</option>
+	                </select>
 	            </div>
 	
 	            <div class="form-group">
 	                <label>Titel</label>
-	                <input type="text" name="dozentTitel" class="form-control" placeholder="Enter Titel">
+	                <input type="text" name="titel" class="form-control" placeholder="Titel eingeben">
 	            </div>
 	
 	            <div class="form-group">
 	                <label>Vorname</label>
-	                <input type="text" name="dozentVorname" class="form-control" placeholder="Enter Vorname">
+	                <input type="text" name="vorname" class="form-control" placeholder="Vorname eingeben">
 	            </div>
 	
 	            <div class="form-group">
 	                <label>Nachname</label>
-	                <input type="text" name="dozentName" class="form-control" placeholder="Enter Nachname">
+	                <input type="text" name="nachname" class="form-control" placeholder="Nachname eingeben">
 	            </div>
 	
 	            <div class="form-group">
 	                <label>Unternehmen</label>
-	                <input type="text" name="dozentUnternehmen" class="form-control" placeholder="Enter Unternehmen">
+	                <input type="text" name="unternehmen" class="form-control" placeholder="Unternehmen eingeben">
+	            </div>
+	            
+	            <div class="form-group">
+	            	<label>DHBW Intern</label><br>
+	            	<input type="checkbox" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="intern" data-style="mr-1">
 	            </div>
 	
 	            <div class="form-group">
 	                <label>Straße und Hausnummer</label>
-	                <input type="text" name="dozentStrasse" class="form-control" placeholder="Enter Straße und Hausnummer">
+	                <input type="text" name="strassehaus" class="form-control" placeholder="Straße und Hausnummer eingeben">
 	            </div>
 	
 	            <div class="form-group">
 	                <label>Postleitzahl</label>
-	                <input type="text" name="dozentPLZ" class="form-control" placeholder="Enter Postleitzahl">
+	                <input type="text" name="plz" class="form-control" placeholder="Postleitzahl eingeben">
 	            </div>
 	
 	            <div class="form-group">
 	                <label>Stadt</label>
-	                <input type="text" name="dozentStadt" class="form-control" placeholder="Enter Stadt">
+	                <input type="text" name="stadt" class="form-control" placeholder="Stadt eingeben">
 	            </div>
 	
 	            <div class="form-group">
 	                <label>E-Mail</label>
-	                <input type="text" name="dozentEmail" class="form-control" placeholder="Enter E-Mail">
+	                <input type="text" name="email" class="form-control" placeholder="E-Mail eingeben">
 	            </div>
 	
 	            <div class="form-group">
 	                <label>Telefonnummer</label>
-	                <input type="text" name="dozentTele" class="form-control" placeholder="Enter Telefonnummer">
+	                <input type="text" name="telefonnummer" class="form-control" placeholder="Telefonnummer eingeben">
 	            </div>
 	
 	            <div class="form-group">
 	                <label>Unterrichtsfächer</label>
-	                <input type="text" name="dozentUnterrichtsfaecher" class="form-control"
-	                    placeholder="Enter Unterrichtsfächer">
+	                <input type="text" name="unterrichtet" class="form-control" placeholder="Unterrichtsfächer eingeben">
 	            </div>
 	
 	            <div class="form-group">
 	                <label>Schwerpunkte</label>
-	                <input type="text" name="dozentSchwerpunkte" class="form-control" placeholder="Enter Schwerpunkte">
+	                <input type="text" name="schwerpunkt" class="form-control" placeholder="Schwerpunkte eingeben">
 	            </div>
 	
 	            <div class="form-group">
 	                <label for="timespaces">Zeitpräferenzen</label>
-	                <select class="form-control" id="timespaces" name="dozentZeitPraef">
-	                	<option value="0">Vormittags</option>
-	                	<option value="1">Nachmittags</option>
-	                	<option value="2">Abends</option>
+	                <select class="form-control" id="timespaces" name="zeitpraef">
+	                	<option disabled selected>Bitte Auswählen</option>
+	                	<option value="VORMITTAG">Vormittags</option>
+	                	<option value="NACHMITTAG">Nachmittags</option>
+	                	<option value="ABEND">Abends</option>
 	                </select>
 	            </div>
 	
 	            <div class="form-group">
 	                <label>Notizen</label> <br>
-	                <textarea class="dozentNotizen"> Hier können Sie Notizen ergänzen </textarea>
+	                <textarea class="form-control" name="notiz" placeholder="Hier können Sie Notizen ergänzen"></textarea>
 	            </div>
 	
 	            <!-- Final Buttons-->
@@ -118,5 +128,7 @@
 	        <!-- Ende Content -->
 	    </div>
 	</div>
+	
+
 
 </template:template>
