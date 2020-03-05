@@ -24,7 +24,7 @@
 	    <!-- Ende Orentierungszeile -->
     
 	    <c:choose>
-	    	<c:when test="${dozentCreated ne null}">
+	    	<c:when test="${dozentCreated}">
 		    	<div class="alert alert-success">
 		    		<Strong>Dozent erfolgreich erstellt</Strong>
 		    	</div>
