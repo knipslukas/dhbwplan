@@ -5,60 +5,59 @@
 
 <template:template pageTitle="${pageTitle}">
 	<template:navbar />
+	
 	<!-- Start Orientierungszeile -->
 	<div class="container">
-		<div class="mx-2 mt-3">
-        	<div class="alert  dozentuebersicht" role="alert">
-                <div class="row">
-                    <!-- Orientierungstext -->
-                    <div class="col dozentuebersichttext">
-                        Dozentenübersicht
-                    </div>
-                    <!-- Button "Dozent anlegen" -->
-                    <div class="col">
-                        <a href="/dozent/add" class="btn btn-light float-right DHBWbutton">Dozent anlegen</a>
-                    </div>
-                </div>
-            </div>
-	    </div>
-	    <!-- Ende Orentierungszeile -->
-    
-	    <c:choose>
+	
+		<c:choose>
 	    	<c:when test="${dozentCreated}">
-		    	<div class="alert alert-success">
+		    	<div class="alert alert-success alert-dismissible">
+		    		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		    		<Strong>Dozent erfolgreich erstellt</Strong>
 		    	</div>
 	    	</c:when>
 	    	<c:when test="${dozentCreated eq false}">
-	    		<div class="alert alert-danger">
+	    		<div class="alert alert-danger alert-dismissible">
+	    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		    		<Strong>Dozent konnte nicht erstellt werden</Strong>
 		    	</div>
 	    	</c:when>
 	    </c:choose>
 	    <c:choose>
 	    	<c:when test="${dozentDeleted}">
-		    	<div class="alert alert-success">
-	    		<Strong>Dozent erfolgreich gelöscht</Strong>
-	    	</div>
+		    	<div class="alert alert-success alert-dismissible">
+			    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		    		<Strong>Dozent erfolgreich gelöscht</Strong>
+	    		</div>
 	    	</c:when>
 	    	<c:when test="${dozentDeleted eq false}">
-	    		<div class="alert alert-danger">
+	    		<div class="alert alert-danger alert-dismissible">
+	    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		    		<Strong>Dozent konnte nicht gelöscht werden</Strong>
 		    	</div>
 	    	</c:when>
-	    </c:choose>
+	   	</c:choose>
+	   	
+	   	
+       	<div class="alert dozentuebersicht d-flex align-items-center" role="alert">
+			<h1 class="text-white">Dozentenübersicht</h1>
+			<a href="/dozent/add" class="btn ml-auto DHBWbutton">Dozent anlegen</a>
+        </div>
+        
+	    <!-- Ende Orentierungszeile -->
+    
 	
 	    <!-- Start Content -->
-	    <div class="mx-2">
+	    <div class="mt-5">
 	         <table class="table table-hover">
-	              <thead>
+	              <thead class="thead-light">
 	                <tr>
-	                  <td scope="col"><strong>Dozenten Nummer</strong></td>
-	                  <td scope="col"><strong>Nachname</strong></td>
-	                  <td scope="col"><strong>Vorname</strong></td>
-	                  <td scope="col"><strong>Email</strong></td>
-	                  <td scope="col"><strong>Telefon</strong></td>
-	                  <td scope="col"><strong>Aktionen</strong></td>
+	                  <th scope="col"><strong>Dozenten Nummer</strong></th>
+	                  <th scope="col"><strong>Nachname</strong></th>
+	                  <th scope="col"><strong>Vorname</strong></th>
+	                  <th scope="col"><strong>Email</strong></th>
+	                  <th scope="col"><strong>Telefon</strong></th>
+	                  <th scope="col"><strong>Aktionen</strong></th>
 	                </tr>
 	              </thead>
 	              <tbody>
@@ -89,7 +88,7 @@
 	                </c:choose>
 	
 	              </tbody>
-	            </table>
+	         </table>
 	    </div>
 	</div>
 </template:template>

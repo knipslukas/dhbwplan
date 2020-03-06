@@ -6,10 +6,13 @@ body
 
 /*General*/
 
-/*Hintergrundformatierung für die Navigationsleiste*/
+/*Hintergrundformatierung fï¿½r die Navigationsleiste*/
 .navigationline
 {
 	background-color: white;
+	-webkit-box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.2);
 }
 
 /*Formatieruung von "Planner" in der Navigationsleiste*/
@@ -31,7 +34,7 @@ body
 	background-color: #4E5F67;
 }
 
-/*Default Settings für Hyperlinks*/
+/*Default Settings fï¿½r Hyperlinks*/
 a:hover
 {
 	color: #4E5F67;	
@@ -41,7 +44,7 @@ a:hover
 	
   background-color: #4E5F67;
   color: white;
-  border: 2px solid #4E5F67;
+  border: 2px solid #FFF;
   font-weight: bold;
 }
 /*Login Button Hover Formatierung*/
@@ -59,6 +62,9 @@ a:hover
 .dozentuebersicht
 {
 	background-color: #E2001A;
+	-webkit-box-shadow: 0px 7px 15px 0px rgba(0,0,0,0.4);
+	-moz-box-shadow: 0px 7px 15px 0px rgba(0,0,0,0.4);
+	box-shadow: 0px 7px 15px 0px rgba(0,0,0,0.4);
 }
 
 /*Formatierung des Text innerhalb der Dozentuebersichtbox*/
@@ -107,7 +113,7 @@ a:hover
 	border-color: #4E5F67;
 }
 
-/*Formatierung der großen Icons auf der Hauptpage*/
+/*Formatierung der groï¿½en Icons auf der Hauptpage*/
 .btnTwoIcons
 {
 	background-color: #4E5F67;
@@ -180,5 +186,6 @@ a:hover
 }
 
 
-	
-
+.alert {
+	border-radius: 0;
+}

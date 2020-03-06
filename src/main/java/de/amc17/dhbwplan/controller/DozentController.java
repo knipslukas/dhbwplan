@@ -67,7 +67,7 @@ public class DozentController {
 		}
 		model.addAttribute("pageTitle", "DHBW - Dozentansicht");
 		model.addAttribute("userName", userServ.getCurrentUser().getUsername());
-		return "dozentuebersicht";
+		return "dozent/dozentuebersicht";
 	}
 	 
 	 @GetMapping(path="/getAll") //TO DO other params (?) Faecher etc.
@@ -80,7 +80,7 @@ public class DozentController {
 		 model.addAttribute("dozentDeleted", dozentDeleted);
 		 model.addAttribute("pageTitle", "DHBW - Übersicht Dozenten");
 		 //model.addAttribute("userName", userServ.getCurrentUser().getUsername());
-		 return "dozentenübersicht";
+		 return "dozent/dozentenübersicht";
 	 }
 	 
 	 @GetMapping(path="/show/{aID}") 
@@ -88,7 +88,7 @@ public class DozentController {
 		 model.addAttribute("dozent", mDozentService.getDozentByID(aID));	
 		 model.addAttribute("pageTitle", "DHBW - Dozentansicht");
 		 //model.addAttribute("userName", userServ.getCurrentUser().getUsername());
-		 return "dozenteneinzelansicht";
+		 return "dozent/dozenteneinzelansicht";
 		 
 	 }
 	 
@@ -96,7 +96,7 @@ public class DozentController {
 	 public String addDozentUi(Model model) {
 		 model.addAttribute("pageTitle", "DHBW - Dozent Anlegen");
 		 //model.addAttribute("userName", userServ.getCurrentUser().getUsername());
-		 return "dozentanlegen";
+		 return "dozent/dozentanlegen";
 	 }
 	 
 //	 @GetMapping(path="/getByID/{aID}") 
