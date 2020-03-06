@@ -40,7 +40,7 @@
 	   	
 	   	
        	<div class="alert dozentuebersicht d-flex align-items-center" role="alert">
-			<h1 class="text-white">Dozentenübersicht</h1>
+			<h1 class="text-white my-1">Dozentenübersicht</h1>
 			<a href="/dozent/add" class="btn ml-auto DHBWbutton">Dozent anlegen</a>
         </div>
         
@@ -66,12 +66,12 @@
 	                	<c:when test="${dozentList ne null }">
 	                		<c:forEach items="${dozentList}" var="dozent">
 	                			<tr>
-					                <td scope="row">${dozent.DID }</td>
-					                <td>${dozent.nachname }</td>
-					                <td>${dozent.vorname }</td>
-					                <td>${dozent.email }</td>
-					                <td>${dozent.telefonnummer }</td>
-					                <td><a href="/dozent/show/${dozent.DID}" class="btn btn-sm btn-secondary">Anzeigen</a></td>
+					                <td scope="row" class="align-middle">${dozent.DID }</td>
+					                <td scope="row" class="align-middle">${dozent.nachname }</td>
+					                <td scope="row" class="align-middle">${dozent.vorname }</td>
+					                <td scope="row" class="align-middle">${dozent.email }</td>
+					                <td scope="row" class="align-middle">${dozent.telefonnummer }</td>
+					                <td scope="row" class="align-middle"><a href="/dozent/show/${dozent.DID}" class="btn btn-sm btn-secondary">Anzeigen</a></td>
 				                </tr>
 	                		</c:forEach>
 	                	</c:when>
