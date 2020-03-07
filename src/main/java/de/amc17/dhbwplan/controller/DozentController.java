@@ -88,7 +88,7 @@ public class DozentController {
 		 model.addAttribute("dozent", mDozentService.getDozentByID(aID));	
 		 model.addAttribute("pageTitle", "DHBW - Dozentansicht");
 		 //model.addAttribute("userName", userServ.getCurrentUser().getUsername());
-		 return "dozent/dozenteneinzelansicht";
+		 return "dozent/doz_einzel_test";
 		 
 	 }
 	 
