@@ -18,8 +18,8 @@
     	
     	<div class="row">
 	    	<div class="card col-sm-11 col-md-9 col-lg-6 mx-auto">
-	    		<div class="card-header">
-	    			<i class="fa fa-user-circle-o fa-5x" aria-hidden="true"></i>
+	    		<div class="card-header text-center">
+	    			<i class="fas fa-user-tie fa-5x"></i>
 	    		</div>
 	   			<div class="card-body">
 	   				<h1 class="card-title"><strong>${dozent.anrede} ${dozent.nachname }</strong></h1>
