@@ -16,19 +16,23 @@
         </div>
     	<!-- Ende Orentierungszeile -->
     	
-    	<div class="card d-flex justify-content-center">
-   			<div class="card-body">
-   				<h4 class="card-title">${dozent.anrede} ${dozent.nachname }</h4>
-   				<div class="row">
-   					<div class="col-2"><h5>Name</h5></div>
-   					<div class="col-10">
-   						<p>${dozent.vorname } ${dozent.nachname }</p>
-   					</div>
-   				</div>
-   				
-   			</div>
-    	</div>
-	
+    	<div class="row">
+	    	<div class="card col-sm-11 col-md-9 col-lg-6 mx-auto">
+	    		<div class="card-header">
+	    			<i class="fa fa-user-circle-o fa-5x" aria-hidden="true"></i>
+	    		</div>
+	   			<div class="card-body">
+	   				<h1 class="card-title"><strong>${dozent.anrede} ${dozent.nachname }</strong></h1>
+	   				<div class="row">
+	   					<div class="col-lg-2 col-md-4 col-sm-6"><p>Name</p></div>
+	   					<div class="col-lg-10 col-md-8 col-sm-6">
+	   						<p>${dozent.vorname } ${dozent.nachname }</p>
+	   					</div>
+	   				</div>
+	   				
+	   			</div>
+	    	</div>
+		</div>
 	</div>
 	
 	<script src="${pageContext.request.contextPath}/static/js/dozent.js"></script>
