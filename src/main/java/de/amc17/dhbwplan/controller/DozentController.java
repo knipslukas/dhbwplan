@@ -1,7 +1,6 @@
 package de.amc17.dhbwplan.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -67,7 +66,7 @@ public class DozentController {
 		}
 		model.addAttribute("pageTitle", "DHBW - Dozentansicht");
 		model.addAttribute("userName", userServ.getCurrentUser().getUsername());
-		return "dozent/dozentuebersicht";
+		return "dozent/doz_overview";
 	}
 	 
 	 @GetMapping(path="/getAll") //TO DO other params (?) Faecher etc.
@@ -80,7 +79,7 @@ public class DozentController {
 		 model.addAttribute("dozentDeleted", dozentDeleted);
 		 model.addAttribute("pageTitle", "DHBW - Übersicht Dozenten");
 		 //model.addAttribute("userName", userServ.getCurrentUser().getUsername());
-		 return "dozent/dozentenübersicht";
+		 return "dozent/doz_overview";
 	 }
 	 
 	 @GetMapping(path="/show/{aID}") 
@@ -88,15 +87,22 @@ public class DozentController {
 		 model.addAttribute("dozent", mDozentService.getDozentByID(aID));	
 		 model.addAttribute("pageTitle", "DHBW - Dozentansicht");
 		 //model.addAttribute("userName", userServ.getCurrentUser().getUsername());
-		 return "dozent/doz_einzel_test";
+		 return "dozent/doz_einzel";
 		 
+	 }
+	 
+	 @GetMapping(value = "/edit/{dID}")
+	 public String editDozent(Model model, @PathVariable int dID) {
+		 model.addAttribute("dozent", mDozentService.getDozentByID(dID));
+		 model.addAttribute("pageTitle", "DHBW - Dozent bearbeiten");
+		 return "dozent/doz_edit";
 	 }
 	 
 	 @GetMapping(value ="/add")
 	 public String addDozentUi(Model model) {
 		 model.addAttribute("pageTitle", "DHBW - Dozent Anlegen");
 		 //model.addAttribute("userName", userServ.getCurrentUser().getUsername());
-		 return "dozent/dozentanlegen";
+		 return "dozent/doz_add";
 	 }
 	 
 //	 @GetMapping(path="/getByID/{aID}") 

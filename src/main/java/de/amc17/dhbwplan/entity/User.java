@@ -26,6 +26,8 @@ public class User implements Serializable {
 	
 	private String password;
 	
+	private Dozent dozent;
+	
 	@ManyToMany
 	private Set<Role> roles;
 
@@ -59,6 +61,14 @@ public class User implements Serializable {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public Dozent getDozent() {
+		return dozent;
+	}
+
+	public void setDozent(Dozent dozent) {
+		this.dozent = dozent;
 	}
 	
 }

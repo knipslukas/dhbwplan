@@ -1,13 +1,14 @@
 package de.amc17.dhbwplan.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.PrePersist;
 
 import de.amc17.dhbwplan.enums.Zeitpraeferenzen;
 
@@ -45,13 +46,14 @@ public class Dozent implements Serializable {
 	
 	private String telefonnummer;
 	
-	private String unterrichtet;
-	
 	private String schwerpunkt;
 	
 	private Zeitpraeferenzen zeitpraef;
 	
 	private String notiz;
+	
+	private String faecher;
+	
 
 	public String getTitel() {
 		return titel;
@@ -133,14 +135,6 @@ public class Dozent implements Serializable {
 		this.telefonnummer = telefonnummer;
 	}
 
-	public String getUnterrichtet() {
-		return unterrichtet;
-	}
-
-	public void setUnterrichtet(String unterrichtet) {
-		this.unterrichtet = unterrichtet;
-	}
-
 	public String getSchwerpunkt() {
 		return schwerpunkt;
 	}
@@ -177,5 +171,12 @@ public class Dozent implements Serializable {
 		this.anrede = anrede;
 	}
 
+	public String getFaecher() {
+		return faecher;
+	}
+
+	public void setFaecher(String faecher) {
+		this.faecher = faecher;
+	}
 	
 }

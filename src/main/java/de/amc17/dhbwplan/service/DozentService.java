@@ -30,6 +30,8 @@ public class DozentService {
 	public boolean addDozent(Dozent aDozent) {
 		
 		try {
+			if (aDozent.getNotiz() == "") aDozent.setNotiz("Keine Daten");
+			if (aDozent.getSchwerpunkt() == "") aDozent.setSchwerpunkt("Keine Daten");
 			dozentRepository.save(aDozent);
 		} catch (Exception e) {
 			return false;

@@ -186,3 +186,12 @@ a:hover
 .alert {
 	border-radius: 0;
 }
+
+.doz-card .card-header {
+	background-color: inherit;
+	border: none;
+}
+
+.doz-einzel-adresse p {
+	margin-bottom: 0;
+}

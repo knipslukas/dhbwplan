@@ -43,28 +43,35 @@
 	            <div class="form-group row">
 	                <label class="col-2 col-form-label">Vorname</label>
 	                <div class="col-10">
-	                	<input type="text" name="vorname" class="form-control" placeholder="Vorname eingeben">
+	                	<input type="text" name="vorname" class="form-control" placeholder="Vorname eingeben" required>
 	                </div>
 	            </div>
 	
-	            <div class="form-group row">
+	            <div class="form-group row mb-5">
 	                <label class="col-2 col-form-label">Nachname</label>
 	                <div class="col-10">
-						<input type="text" name="nachname" class="form-control" placeholder="Nachname eingeben">	                
+						<input type="text" name="nachname" class="form-control" placeholder="Nachname eingeben" required>	                
 	                </div>
 	            </div>
 	            
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Straße und Hausnummer</label>
+	                <label class="col-2 col-form-label">Adresse</label>
 	                <div class="col-10">
-	                	<input type="text" name="strassehaus" class="form-control" placeholder="Straße und Hausnummer eingeben">
+	                	<input type="text" name="strassehaus" class="form-control" placeholder="Straße und Hausnummer eingeben" required>
 	                </div>
 	            </div>
 	
 	            <div class="form-group row">
 	                <label class="col-2 col-form-label">Postleitzahl</label>
 	                <div class="col-10">
-	                	<input type="text" name="plz" class="form-control" placeholder="Postleitzahl eingeben">
+	                	<input type="text" name="plz" class="form-control" placeholder="Postleitzahl eingeben" required>
+	                </div>
+	            </div>
+	            
+	            <div class="form-group row mb-5">
+	                <label class="col-2 col-form-label">Stadt</label>
+	                <div class="col-10">
+	                	<input type="text" name="stadt" class="form-control" placeholder="Stadt eingeben" required>
 	                </div>
 	            </div>
 	
@@ -79,36 +86,22 @@
 	            	<div class="form-group row">
 		                <label class="col-2 col-form-label">Unternehmen</label>
 		                <div class="col-10">
-		                	<input type="text" name="unternehmen" class="form-control js-toggle-untern" placeholder="Unternehmen eingeben">
+		                	<input type="text" name="unternehmen" class="form-control js-toggle-untern" placeholder="Unternehmen eingeben" value="DHBW Intern">
 		                </div>
 		            </div>
 	            </div> 
-
-	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Stadt</label>
-	                <div class="col-10">
-	                	<input type="text" name="stadt" class="form-control" placeholder="Stadt eingeben">
-	                </div>
-	            </div>
 	
 	            <div class="form-group row">
 	                <label class="col-2 col-form-label">E-Mail</label>
 	                <div class="col-10">
-	                	<input type="text" name="email" class="form-control" placeholder="E-Mail eingeben">
+	                	<input type="text" name="email" class="form-control" placeholder="E-Mail eingeben" required>
 	                </div>
 	            </div>
 	
-	            <div class="form-group row">
+	            <div class="form-group row mb-5">
 	                <label class="col-2 col-form-label">Telefonnummer</label>
 	                <div class="col-10">
-	                	<input type="text" name="telefonnummer" class="form-control" placeholder="Telefonnummer eingeben">
-	                </div>
-	            </div>
-	
-	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Unterrichtsfächer</label>
-	                <div class="col-10">
-	                	<input type="text" name="unterrichtet" class="form-control" placeholder="Unterrichtsfächer eingeben">
+	                	<input type="text" name="telefonnummer" class="form-control" placeholder="Telefonnummer eingeben" required>
 	                </div>
 	            </div>
 	
@@ -127,6 +120,7 @@
 		                	<option value="VORMITTAG">Vormittags</option>
 		                	<option value="NACHMITTAG">Nachmittags</option>
 		                	<option value="ABEND">Abends</option>
+		                	<option value="NONE">Keine Vorgabe</option>
 		                </select>
 	                </div>
 	            </div>
@@ -140,8 +134,8 @@
 	
 	            <!-- Final Buttons-->
 	            <div class="finalButtons">
-	                <button type="submit" class="btn btn-primary btn-sm DHBWbutton">Speichern </button>
-	                <button type="reset" class="btn btn-primary btn-sm DHBWbutton">Abbrechen </button>
+	                <button type="submit" class="btn btn-primary DHBWbutton">Speichern </button>
+	                <button type="reset" class="btn btn-primary DHBWbutton">Zurücksetzen </button>
 	            </div>
 	
 	        </form>
