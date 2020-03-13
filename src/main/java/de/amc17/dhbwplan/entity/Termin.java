@@ -1,7 +1,6 @@
 package de.amc17.dhbwplan.entity;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Column;

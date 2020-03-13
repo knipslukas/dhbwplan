@@ -22,25 +22,27 @@ public class Modulkatalog implements Serializable {
 	@Column(name="MKID")
 	private int MKID;
 	
-	private Date gültigVon;
+	private Date gueltigVon;
 	
-	private Date gültigBis;
+	private Date gueltigBis;
 
-	public Date getGültigVon() {
-		return gültigVon;
+	public Date getGueltigVon() {
+		return gueltigVon;
 	}
 
-	public void setGültigVon(Date gültigVon) {
-		this.gültigVon = gültigVon;
+	public void setGueltigVon(Date gueltigVon) {
+		this.gueltigVon = gueltigVon;
 	}
 
-	public Date getGültigBis() {
-		return gültigBis;
+	public Date getGueltigBis() {
+		return gueltigBis;
 	}
 
-	public void setGültigBis(Date gültigBis) {
-		this.gültigBis = gültigBis;
+	public void setGueltigBis(Date gueltigBis) {
+		this.gueltigBis = gueltigBis;
 	}
+
+	
 	
 	
 }

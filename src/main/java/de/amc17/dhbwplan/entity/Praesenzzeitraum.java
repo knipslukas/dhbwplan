@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Präsenzzeitraum implements Serializable {
+public class Praesenzzeitraum implements Serializable {
 
 	/**
 	 * 

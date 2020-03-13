@@ -21,16 +21,16 @@ public class Lerneinheit implements Serializable {
 	@Column(name="LEID")
 	private int LEID;
 	
-	private int präsenzzeit;
+	private int praesenzzeit;
 	
 	private int selbststudium;
 
-	public int getPräsenzzeit() {
-		return präsenzzeit;
+	public int getPraesenzzeit() {
+		return praesenzzeit;
 	}
 
-	public void setPräsenzzeit(int präsenzzeit) {
-		this.präsenzzeit = präsenzzeit;
+	public void setPräsenzzeit(int praesenzzeit) {
+		this.praesenzzeit = praesenzzeit;
 	}
 
 	public int getSelbststudium() {

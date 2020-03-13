@@ -23,7 +23,7 @@ public class Modul implements Serializable {
 	
 	private String bezeichnung;
 	
-	private int semester;
+	private int studienjahr;
 	
 	private int selbststudium;
 	
@@ -31,13 +31,13 @@ public class Modul implements Serializable {
 	
 	private String modulart;
 	
-	private String prüfungsleistung;
+	private String pruefungsleistung;
 	
 	private String beschreibung;
 	
 	private String sprache;
 	
-	private int präsenzzeit;
+	private int praesenzzeit;
 	
 	private int ectsPunkte;
 
@@ -47,14 +47,6 @@ public class Modul implements Serializable {
 
 	public void setBezeichnung(String bezeichnung) {
 		this.bezeichnung = bezeichnung;
-	}
-
-	public int getSemester() {
-		return semester;
-	}
-
-	public void setSemester(int semester) {
-		this.semester = semester;
 	}
 
 	public int getSelbststudium() {
@@ -82,11 +74,11 @@ public class Modul implements Serializable {
 	}
 
 	public String getPrüfungsleistung() {
-		return prüfungsleistung;
+		return pruefungsleistung;
 	}
 
 	public void setPrüfungsleistung(String prüfungsleistung) {
-		this.prüfungsleistung = prüfungsleistung;
+		this.pruefungsleistung = prüfungsleistung;
 	}
 
 	public String getBeschreibung() {
@@ -105,13 +97,6 @@ public class Modul implements Serializable {
 		this.sprache = sprache;
 	}
 
-	public int getPräsenzzeit() {
-		return präsenzzeit;
-	}
-
-	public void setPräsenzzeit(int präsenzzeit) {
-		this.präsenzzeit = präsenzzeit;
-	}
 
 	public int getEctsPunkte() {
 		return ectsPunkte;
@@ -119,5 +104,21 @@ public class Modul implements Serializable {
 
 	public void setEctsPunkte(int ectsPunkte) {
 		this.ectsPunkte = ectsPunkte;
+	}
+
+	public int getPraesenzzeit() {
+		return praesenzzeit;
+	}
+
+	public void setPraesenzzeit(int praesenzzeit) {
+		this.praesenzzeit = praesenzzeit;
+	}
+
+	public int getStudienjahr() {
+		return studienjahr;
+	}
+
+	public void setStudienjahr(int studienjahr) {
+		this.studienjahr = studienjahr;
 	}
 }
