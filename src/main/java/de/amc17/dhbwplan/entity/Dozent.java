@@ -162,6 +162,10 @@ public class Dozent implements Serializable {
 	public int getDID() {
 		return DID;
 	}
+	
+	public void setDID(int DID) {
+		this.DID = DID;
+	}
 
 	public String getAnrede() {
 		return anrede;

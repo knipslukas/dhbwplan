@@ -9,20 +9,6 @@
 	<!-- Start Orientierungszeile -->
 	<div class="container">
 	
-		<c:choose>
-	    	<c:when test="${dozentCreated}">
-		    	<div class="alert alert-success alert-dismissible">
-		    		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		    		<Strong>Dozent erfolgreich erstellt</Strong>
-		    	</div>
-	    	</c:when>
-	    	<c:when test="${dozentCreated eq false}">
-	    		<div class="alert alert-danger alert-dismissible">
-	    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		    		<Strong>Dozent konnte nicht erstellt werden</Strong>
-		    	</div>
-	    	</c:when>
-	    </c:choose>
 	    <c:choose>
 	    	<c:when test="${dozentDeleted}">
 		    	<div class="alert alert-success alert-dismissible">
@@ -34,6 +20,13 @@
 	    		<div class="alert alert-danger alert-dismissible">
 	    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		    		<Strong>Dozent konnte nicht gelöscht werden</Strong>
+		    	</div>
+	    	</c:when>
+	    	
+	    	<c:when test="${dozentCreated eq false}">
+	    		<div class="alert alert-danger alert-dismissible">
+	    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		    		<Strong>Dozent konnte nicht angelegt werden</Strong>
 		    	</div>
 	    	</c:when>
 	   	</c:choose>
@@ -52,7 +45,7 @@
 	         <table class="table table-hover">
 	              <thead class="thead-light">
 	                <tr>
-	                  <th scope="col"><strong>Dozenten Nummer</strong></th>
+<!-- 	                  <th scope="col"><strong>Dozenten Nummer</strong></th> -->
 	                  <th scope="col"><strong>Nachname</strong></th>
 	                  <th scope="col"><strong>Vorname</strong></th>
 	                  <th scope="col"><strong>Email</strong></th>
@@ -66,7 +59,7 @@
 	                	<c:when test="${dozentList ne null }">
 	                		<c:forEach items="${dozentList}" var="dozent">
 	                			<tr>
-					                <td scope="row" class="align-middle">${dozent.DID }</td>
+<%-- 					                <td scope="row" class="align-middle">${dozent.DID }</td> --%>
 					                <td scope="row" class="align-middle">${dozent.nachname }</td>
 					                <td scope="row" class="align-middle">${dozent.vorname }</td>
 					                <td scope="row" class="align-middle">${dozent.email }</td>

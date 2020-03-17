@@ -36,12 +36,12 @@ public class DozentController {
 	@PostMapping(path = "/add")
 	public String addDozent(@ModelAttribute Dozent doz, RedirectAttributes redirectAttributes) {
 		if (mDozentService.addDozent(doz)) {
-			redirectAttributes.addAttribute("dozentCreated", true);
+			return "redirect:/dozent/show/"+doz.getDID();
 		}
 		else {
 			redirectAttributes.addAttribute("dozentCreated", false);
 		}
-		return "redirect:/dozent/getAll";
+		return "redirect:/dozent/getAll/";
 	}
 
 	@GetMapping(value = "/delete/{aID}")
@@ -57,16 +57,14 @@ public class DozentController {
 	}
 
 	@PostMapping(path = "/update/{aID}")
-	public String updateDozent(Model model, @RequestBody Dozent aDozent) {
+	public String updateDozent(RedirectAttributes redirectAttributes, @ModelAttribute Dozent aDozent) {
 		if (mDozentService.updateDozent(aDozent)) {
-			model.addAttribute("dozentUpdated", true);
+			redirectAttributes.addAttribute("dozentUpdated", true);
 		}
 		else {
-			model.addAttribute("dozentUpdated", false);
+			redirectAttributes.addAttribute("dozentUpdated", false);
 		}
-		model.addAttribute("pageTitle", "DHBW - Dozentansicht");
-		model.addAttribute("userName", userServ.getCurrentUser().getUsername());
-		return "dozent/doz_overview";
+		return "redirect:/dozent/show/"+aDozent.getDID();
 	}
 	 
 	 @GetMapping(path="/getAll") //TO DO other params (?) Faecher etc.
@@ -75,16 +73,17 @@ public class DozentController {
 			 @RequestParam(required = false) Object dozentCreated) {
 		 
 		 model.addAttribute("dozentList", mDozentService.getAllDozent(nachname, email));
-		 model.addAttribute("dozentCreated", dozentCreated);
 		 model.addAttribute("dozentDeleted", dozentDeleted);
+		 model.addAttribute("dozentCreated", dozentCreated);
 		 model.addAttribute("pageTitle", "DHBW - Übersicht Dozenten");
 		 //model.addAttribute("userName", userServ.getCurrentUser().getUsername());
 		 return "dozent/doz_overview";
 	 }
 	 
 	 @GetMapping(path="/show/{aID}") 
-	 public String getAllDozent(Model model, @PathVariable int aID) {
-		 model.addAttribute("dozent", mDozentService.getDozentByID(aID));	
+	 public String getAllDozent(Model model, @PathVariable int aID, @RequestParam(required = false) Object dozentUpdated) {
+		 model.addAttribute("dozent", mDozentService.getDozentByID(aID));
+		 model.addAttribute("dozentUpdated", dozentUpdated);
 		 model.addAttribute("pageTitle", "DHBW - Dozentansicht");
 		 //model.addAttribute("userName", userServ.getCurrentUser().getUsername());
 		 return "dozent/doz_einzel";

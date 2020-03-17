@@ -8,11 +8,42 @@
 
 
 	<div class="container">
+		
+		<c:choose>
+	    	<c:when test="${dozentCreated}">
+		    	<div class="alert alert-success alert-dismissible">
+		    		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		    		<Strong>Dozent erfolgreich erstellt</Strong>
+		    	</div>
+	    	</c:when>
+	    	<c:when test="${dozentCreated eq false}">
+	    		<div class="alert alert-danger alert-dismissible">
+	    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		    		<Strong>Dozent konnte nicht erstellt werden</Strong>
+		    	</div>
+	    	</c:when>
+	    </c:choose>
+	    
+	    <c:choose>
+	    	<c:when test="${dozentUpdated}">
+		    	<div class="alert alert-success alert-dismissible">
+		    		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		    		<Strong>Dozent erfolgreich aktualisiert</Strong>
+		    	</div>
+	    	</c:when>
+	    	<c:when test="${dozentUpdated eq false}">
+	    		<div class="alert alert-danger alert-dismissible">
+	    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		    		<Strong>Dozent konnte nicht aktualisiert werden</Strong>
+		    	</div>
+	    	</c:when>
+	    </c:choose>
 	
     	<!-- Start Orentierungszeile -->
 	   	<div class="alert dozentuebersicht d-flex align-items-center" role="alert">
 			<h1 class="text-white my-1">Dozentansicht</h1>
 			<a href="/dozent/edit/${dozent.DID}" class="btn ml-auto DHBWbutton">Bearbeiten</a>
+			<button type="button" class="btn ml-2 DHBWbutton" data-toggle="modal" data-target="#deleteModal">Löschen</button>
 			<a href="/dozent" class="btn ml-2 DHBWbutton">Zurück</a>
         </div>
     	<!-- Ende Orentierungszeile -->
@@ -88,6 +119,21 @@
 		</div>
 	</div>
 	
+	<div class="modal" id="deleteModal">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-body">
+					<h1><strong>Achtung!</strong></h1>
+					<h4>Wollen Sie wirklich ${dozent.anrede } ${dozent.nachname } löschen?</h4>
+				</div>
+				
+				<div class="modal-footer">
+					<a href="/dozent/delete/${dozent.DID }" class="btn btn-danger">Unwiderruflich löschen</a>
+					<button type="button" class="btn DHBWbutton" data-dismiss="modal">Abbrechen</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<script src="${pageContext.request.contextPath}/static/js/dozent.js"></script>
 
 </template:template>

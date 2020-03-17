@@ -71,7 +71,7 @@ public class DozentService {
 			} else if (aEmail != null) {
 				return dozentRepository.findByemail(aEmail);
 			}
-			List<Dozent> list = dozentRepository.findAll();
+			List<Dozent> list = dozentRepository.findByOrderByNachnameAsc();
 			if (!list.isEmpty()) {
 				return list;
 			}

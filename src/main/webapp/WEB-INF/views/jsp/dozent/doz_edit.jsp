@@ -88,21 +88,43 @@
 	                </div>
 	            </div>
 	
-				<div class="form-group row">
-	            	<label class="col-2 col-form-label">DHBW Intern</label>
-	            	<div class="col-10">
-	            		<input checked class="js-toggle-intern" type="checkbox" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="intern" data-style="mr-1" data-onstyle="danger">
-	            	</div>
-	            </div>
-	            
-	            <div class="collapse js-collapse-intern">
-	            	<div class="form-group row">
-		                <label class="col-2 col-form-label">Unternehmen</label>
-		                <div class="col-10">
-		                	<input type="text" name="unternehmen" class="form-control js-toggle-untern" placeholder="Unternehmen eingeben" value="${dozent.unternehmen }">
-		                </div>
-		            </div>
-	            </div> 
+				<c:choose>
+					<c:when test="${dozent.intern }">
+						<div class="form-group row">
+			            	<label class="col-2 col-form-label">DHBW Intern</label>
+			            	<div class="col-10">
+			            		<input checked class="js-toggle-intern" type="checkbox" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="intern" data-style="mr-1" data-onstyle="danger">
+			            	</div>
+			            </div>
+			            
+			            <div class="collapse js-collapse-intern">
+			            	<div class="form-group row">
+				                <label class="col-2 col-form-label">Unternehmen</label>
+				                <div class="col-10">
+				                	<input type="text" name="unternehmen" class="form-control js-toggle-untern" placeholder="Unternehmen eingeben" value="${dozent.unternehmen }">
+				                </div>
+				            </div>
+			            </div>
+					</c:when>
+					<c:otherwise>
+						<div class="form-group row">
+			            	<label class="col-2 col-form-label">DHBW Intern</label>
+			            	<div class="col-10">
+			            		<input class="js-toggle-intern" type="checkbox" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="intern" data-style="mr-1" data-onstyle="danger">
+			            	</div>
+			            </div>
+			            
+			            <div class="collapse js-collapse-intern show">
+			            	<div class="form-group row">
+				                <label class="col-2 col-form-label">Unternehmen</label>
+				                <div class="col-10">
+				                	<input type="text" name="unternehmen" class="form-control js-toggle-untern" placeholder="Unternehmen eingeben" value="${dozent.unternehmen }">
+				                </div>
+				            </div>
+			            </div>
+					</c:otherwise>
+				</c:choose>
+	             
 	
 	            <div class="form-group row">
 	                <label class="col-2 col-form-label">E-Mail</label>
@@ -129,11 +151,32 @@
 	                <label for="timespaces" class="col-2 col-form-label">Zeitpräferenzen</label>
 	                <div class="col-10">
 	                	<select class="form-control" id="timespaces" name="zeitpraef">
-		                	<option disabled selected>Bitte Auswählen</option>
-		                	<option value="VORMITTAG">Vormittags</option>
-		                	<option value="NACHMITTAG">Nachmittags</option>
-		                	<option value="ABEND">Abends</option>
-		                	<option value="NONE">Keine Vorgabe</option>
+		                	<c:choose>
+	   							<c:when test="${dozent.zeitpraef eq 'VORMITTAG'}">
+				                	<option value="VORMITTAG" selected>Vormittags</option>
+				                	<option value="NACHMITTAG">Nachmittags</option>
+				                	<option value="ABEND">Abends</option>
+				                	<option value="NONE">Keine Vorgabe</option>
+	   							</c:when>
+	   							<c:when test="${dozent.zeitpraef eq 'NACHMITTAG'}">
+				                	<option value="VORMITTAG">Vormittags</option>
+				                	<option value="NACHMITTAG" selected>Nachmittags</option>
+				                	<option value="ABEND">Abends</option>
+				                	<option value="NONE">Keine Vorgabe</option>
+	   							</c:when>
+	   							<c:when test="${dozent.zeitpraef eq 'ABEND'}">
+				                	<option value="VORMITTAG">Vormittags</option>
+				                	<option value="NACHMITTAG">Nachmittags</option>
+				                	<option value="ABEND" selected>Abends</option>
+				                	<option value="NONE">Keine Vorgabe</option>
+	   							</c:when>
+	   							<c:otherwise>
+				                	<option value="VORMITTAG">Vormittags</option>
+				                	<option value="NACHMITTAG">Nachmittags</option>
+				                	<option value="ABEND">Abends</option>
+				                	<option value="NONE" selected>Keine Vorgabe</option>
+	   							</c:otherwise>
+	   						</c:choose>
 		                </select>
 	                </div>
 	            </div>
@@ -145,12 +188,12 @@
 	                </div>
 	            </div>
 	            
-	            <input class="d-none" value="${dozent.DID }" name="DID">
+	            <input class="d-none" name="DID" value="${dozent.DID }">
 	
 	            <!-- Final Buttons-->
 	            <div class="finalButtons">
-	                <button type="submit" class="btn btn-primary DHBWbutton">Speichern </button>
-	                <button type="reset" class="btn btn-primary DHBWbutton">Zurücksetzen </button>
+	                <button type="submit" class="btn btn-success">Speichern </button>
+	                <button type="reset" class="btn btn-danger">Zurücksetzen </button>
 	            </div>
 	
 	        </form>
