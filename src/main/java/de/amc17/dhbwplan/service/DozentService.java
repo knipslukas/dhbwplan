@@ -30,6 +30,8 @@ public class DozentService {
 	public boolean addDozent(Dozent aDozent) {
 		
 		try {
+			if (aDozent.getNotiz() == "") aDozent.setNotiz("Keine Daten");
+			if (aDozent.getSchwerpunkt() == "") aDozent.setSchwerpunkt("Keine Daten");
 			dozentRepository.save(aDozent);
 		} catch (Exception e) {
 			return false;
@@ -69,7 +71,7 @@ public class DozentService {
 			} else if (aEmail != null) {
 				return dozentRepository.findByemail(aEmail);
 			}
-			List<Dozent> list = dozentRepository.findAll();
+			List<Dozent> list = dozentRepository.findByOrderByNachnameAsc();
 			if (!list.isEmpty()) {
 				return list;
 			}
