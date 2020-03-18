@@ -54,6 +54,8 @@ public class Dozent implements Serializable {
 	
 	private String faecher;
 	
+	private boolean studiengangsleiter;
+	
 
 	public String getTitel() {
 		return titel;
@@ -181,6 +183,14 @@ public class Dozent implements Serializable {
 
 	public void setFaecher(String faecher) {
 		this.faecher = faecher;
+	}
+
+	public boolean isStudiengangsleiter() {
+		return studiengangsleiter;
+	}
+
+	public void setStudiengangsleiter(boolean studiengangsleiter) {
+		this.studiengangsleiter = studiengangsleiter;
 	}
 	
 }

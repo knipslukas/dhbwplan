@@ -90,6 +90,13 @@
 		                </div>
 		            </div>
 	            </div> 
+	            
+	            <div class="form-group row">
+	            	<label class="col-2 col-form-label">Studiengangsleiter</label>
+	            	<div class="col-10">
+	            		<input type="checkbox" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="studiengangsleiter" data-style="mr-1" data-onstyle="danger">
+	            	</div>
+	            </div>
 	
 	            <div class="form-group row">
 	                <label class="col-2 col-form-label">E-Mail</label>
