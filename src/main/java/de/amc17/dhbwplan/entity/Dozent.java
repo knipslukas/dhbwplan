@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 
 import de.amc17.dhbwplan.enums.Zeitpraeferenzen;
@@ -55,6 +56,9 @@ public class Dozent implements Serializable {
 	private String faecher;
 	
 	private boolean studiengangsleiter;
+	
+	@OneToOne
+	private User user;
 	
 
 	public String getTitel() {
@@ -192,5 +196,15 @@ public class Dozent implements Serializable {
 	public void setStudiengangsleiter(boolean studiengangsleiter) {
 		this.studiengangsleiter = studiengangsleiter;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
 	
 }

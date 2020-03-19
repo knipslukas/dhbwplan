@@ -18,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import de.amc17.dhbwplan.entity.Dozent;
 import de.amc17.dhbwplan.entity.Role;
 import de.amc17.dhbwplan.entity.User;
 import de.amc17.dhbwplan.enums.UserRoles;
@@ -101,13 +102,15 @@ public class UserService implements UserDetailsService {
 		else return false;
 	}
 	
-	public User createUser(String uname, String email, String pwd) throws Exception {
-		if (uname != "" && email != "" && pwd != "") {
+	public User createUser(String uname, String email, String pwd, Dozent dozent) throws Exception {
+		if (uname != "" && email != "" && pwd != "" && dozent != null) {
 			User user = new User();
 			try {
 				user.setEmail(email);
 				user.setUsername(uname);
+				user.setDisplayName(dozent.getVorname()+" "+dozent.getNachname());
 				user.setPassword(passwordEncoder.encode(pwd));
+				user.setDozent(dozent);
 				
 				createRoleIfNotFound(UserRoles.USER);
 				Role role = roleRepo.findByrole(UserRoles.USER);

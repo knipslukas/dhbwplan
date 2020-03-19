@@ -35,7 +35,7 @@ public class DozentController {
 
 	@PostMapping(path = "/add")
 	public String addDozent(@ModelAttribute Dozent doz, RedirectAttributes redirectAttributes) {
-		if (mDozentService.addDozent(doz)) {
+		if (mDozentService.addDozent(doz) != null) {
 			return "redirect:/dozent/show/"+doz.getDID();
 		}
 		else {
@@ -52,7 +52,6 @@ public class DozentController {
 		else {
 			redirectAttributes.addAttribute("dozentDeleted", false);
 		}
-		//model.addAttribute("userName", userServ.getCurrentUser().getUsername());
 		return "redirect:/dozent/getAll";
 	}
 
@@ -67,7 +66,7 @@ public class DozentController {
 		return "redirect:/dozent/show/"+aDozent.getDID();
 	}
 	 
-	 @GetMapping(path="/getAll") //TO DO other params (?) Faecher etc.
+	 @GetMapping(path="/getAll") 
 	 public String getAllDozent(Model model, @RequestParam (required = false) String nachname, 
 			 @RequestParam (required = false) String email, @RequestParam(required = false) Object dozentDeleted,
 			 @RequestParam(required = false) Object dozentCreated) {
@@ -76,7 +75,7 @@ public class DozentController {
 		 model.addAttribute("dozentDeleted", dozentDeleted);
 		 model.addAttribute("dozentCreated", dozentCreated);
 		 model.addAttribute("pageTitle", "DHBW - Übersicht Dozenten");
-		 //model.addAttribute("userName", userServ.getCurrentUser().getUsername());
+		 model.addAttribute("displayName", userServ.getCurrentUser().getDisplayName());
 		 return "dozent/doz_overview";
 	 }
 	 
@@ -85,7 +84,7 @@ public class DozentController {
 		 model.addAttribute("dozent", mDozentService.getDozentByID(aID));
 		 model.addAttribute("dozentUpdated", dozentUpdated);
 		 model.addAttribute("pageTitle", "DHBW - Dozentansicht");
-		 //model.addAttribute("userName", userServ.getCurrentUser().getUsername());
+		 model.addAttribute("displayName", userServ.getCurrentUser().getDisplayName());
 		 return "dozent/doz_einzel";
 		 
 	 }
@@ -94,46 +93,15 @@ public class DozentController {
 	 public String editDozent(Model model, @PathVariable int dID) {
 		 model.addAttribute("dozent", mDozentService.getDozentByID(dID));
 		 model.addAttribute("pageTitle", "DHBW - Dozent bearbeiten");
+		 model.addAttribute("displayName", userServ.getCurrentUser().getDisplayName());
 		 return "dozent/doz_edit";
 	 }
 	 
 	 @GetMapping(value ="/add")
 	 public String addDozentUi(Model model) {
 		 model.addAttribute("pageTitle", "DHBW - Dozent Anlegen");
-		 //model.addAttribute("userName", userServ.getCurrentUser().getUsername());
+		 model.addAttribute("displayName", userServ.getCurrentUser().getDisplayName());
 		 return "dozent/doz_add";
 	 }
-	 
-//	 @GetMapping(path="/getByID/{aID}") 
-//	 @ResponseBody
-//	 public Dozent getDozentByID(@PathVariable int aID) {
-//		 return mDozentService.getDozentByID(aID);
-//	 }
-//	 
-//
-//	 @GetMapping(path="/getByNachname/{aNachname}") 
-//	 @ResponseBody
-//	 public List<Dozent> getDozentByNachname(@PathVariable String aNachname) {
-//		 return mDozentService.getDozentByNachname(aNachname);	 
-//	 }
-//	 
-//	 @GetMapping(path="/getByEmail/{aEmail}") 
-//	 @ResponseBody
-//	 public List<Dozent> getDozentByEmail(@PathVariable String aEmail) {
-//		 return mDozentService.getDozentByEmail(aEmail);
-//		
-//	 }
-
-//	 @GetMapping(path="/Get/Dozent/MoeglicheFaecher") 
-//	 public Iterable<Modul> getDozentMoeglicheFaecherByID(@RequestParam UUID aID) {
-//		 return mDozentService.getDozentMoeglicheFaecherByID(aID);
-//		 
-//	 }
-//	 
-//	 @GetMapping(path="/Get/Dozent/GehalteneFaecher") 
-//	 public Iterable<Modul> getDozentGehalteneFaecherByID(@RequestParam UUID aID) {
-//		 return mDozentService.getDozentGehalteneFaecherByID(aID);
-//		 
-//	 }
 
 }
