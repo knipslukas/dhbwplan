@@ -49,9 +49,16 @@ body
 /* TEST sonst löschen:*/
 .headlines
 {
-	background-color: #a9a9a9;
-	background-image: linear-gradient(to bottom right, #e3e3e3, #a9a9a9);	
+	background-color: #ced2d4;
+
+
+	z-index:-1;
 	
+}
+.headlines::before
+{
+	background-image: linear-gradient(to bottom,transparent 0%,rgba(0,0,0,0.65) 100%);
+	opacity: 0.4;
 }
 .landingpagewelcome
 {
@@ -59,8 +66,16 @@ body
 	width: 100%;
 	text-align: center;
 	color: #414141;
+
 }
-.strich:after
+
+
+.strich
+{
+	opacity:1;
+	z-index:100 !important;
+}
+.strich::after
 {
 	content: '';
     display: block;
