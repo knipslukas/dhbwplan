@@ -14,5 +14,5 @@ public interface StudienrichtungRepository extends CrudRepository<Studienrichtun
 	public List<Studienrichtung> findByOrderByNameAsc();
 	
 	public List<Studienrichtung> findAll();
-	public Studienrichtung findByRiID(int id);
+	public Studienrichtung findByriID(int id);
 }
