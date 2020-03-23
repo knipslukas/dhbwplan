@@ -42,7 +42,7 @@
 	                    ${displayName}
 	                </a>
 	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-	                    <a class="dropdown-item navigationlist" href="/user/einstellungen">Einstellungen</a>
+	                    <a class="dropdown-item navigationlist" href="/user/settings">Einstellungen</a>
 	                    <a class="dropdown-item navigationlist" href="/usrlgt">Abmelden</a>
 	                </div>
 	            </li>

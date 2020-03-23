@@ -15,8 +15,8 @@
 			<a class="btn btn-success" href="/">Zur Anmeldung</a>
 		</c:if>
 		<c:if test="${!submit }">
-			<h1>Abschließen der Installierung von DHBW-Plan</h1>
-			<p class="mb-5">Geben Sie hier Ihre Daten ein - Für Sie wird automatisch ein Dozent angelegt</p>
+			<h1>Abschließen der Installation von DHBW-Plan</h1>
+			<p class="mb-5">Geben Sie hier Ihre Daten ein - Für Sie wird automatisch ein User angelegt und Sie werden als Dozent hinterlegt</p>
 			<form action="/adminInstallSubmit" method="post" role="form" class="mb-2">
 				<div class="form-group">
 	                <label for="anrede">Anrede</label>
