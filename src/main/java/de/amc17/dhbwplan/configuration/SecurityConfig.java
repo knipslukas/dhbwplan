@@ -18,27 +18,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http 
-		    .csrf().disable();
-//			.csrf().ignoringAntMatchers("**")
-//			.and()
-//			.authorizeRequests()
-//				.antMatchers("/static/**").permitAll()
-//				.antMatchers("/adminInstall").permitAll()
-//				.antMatchers("/adminInstallSubmit").permitAll()
-//				.anyRequest().authenticated()
-//				.and()
-//			.httpBasic()
-//				.and()
-//			.formLogin()
-//				.loginPage("/login")
-//				.defaultSuccessUrl("/")
-//				.usernameParameter("email")
-//				.passwordParameter("password")
-//				.permitAll()
-//				.and()
-//			.logout()
-//				.logoutUrl("/usrlgt")
-//				.permitAll();
+			.authorizeRequests()
+				.antMatchers("/static/**").permitAll()
+				.antMatchers("/setup").permitAll()
+				.anyRequest().authenticated()
+				.and()
+			.httpBasic()
+				.and()
+			.formLogin()
+				.loginPage("/login")
+				.defaultSuccessUrl("/")
+				.usernameParameter("email")
+				.passwordParameter("password")
+				.permitAll()
+				.and()
+			.logout()
+				.logoutUrl("/usrlgt")
+				.permitAll();
 	}
 	
 	@Bean

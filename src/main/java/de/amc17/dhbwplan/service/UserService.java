@@ -2,6 +2,7 @@ package de.amc17.dhbwplan.service;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
@@ -18,6 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import de.amc17.dhbwplan.entity.Dozent;
 import de.amc17.dhbwplan.entity.Role;
 import de.amc17.dhbwplan.entity.User;
 import de.amc17.dhbwplan.enums.UserRoles;
@@ -101,13 +103,56 @@ public class UserService implements UserDetailsService {
 		else return false;
 	}
 	
-	public User createUser(String uname, String email, String pwd) throws Exception {
-		if (uname != "" && email != "" && pwd != "") {
+	public long getUserCount() {
+		try {
+			return userRepo.count();
+		}
+		catch (Exception e) {
+			LOG.error("UserService - Cannot count Users");
+			return 0;
+		}
+	}
+	
+	public User getUserByID(long id) {
+		try {
+			return userRepo.findById(id).get();
+		}
+		catch (Exception e) {
+			LOG.error("UserService - User not found with ID "+id);
+			return null;
+		}
+	}
+	
+	public boolean deleteUser(long id) {
+		try {
+			userRepo.delete(this.getUserByID(id));
+			return true;
+		}
+		catch (Exception e) {
+			LOG.error(e);
+			return false;
+		}
+	}
+	
+	public List<User> getAllUsers() {
+		try {
+			return userRepo.findAll();
+		}
+		catch (Exception e) {
+			LOG.error("UserService - 'GetAllUsers' crashed, no users found or someting else");
+			return null;
+		}
+	}
+	
+	public User createUser(String uname, String email, String pwd, Dozent dozent) {
+		if (uname != "" && email != "" && pwd != "" && dozent != null) {
 			User user = new User();
 			try {
 				user.setEmail(email);
 				user.setUsername(uname);
+				user.setDisplayName(dozent.getVorname()+" "+dozent.getNachname());
 				user.setPassword(passwordEncoder.encode(pwd));
+				user.setDozent(dozent);
 				
 				createRoleIfNotFound(UserRoles.USER);
 				Role role = roleRepo.findByrole(UserRoles.USER);
@@ -125,6 +170,32 @@ public class UserService implements UserDetailsService {
 			
 		}
 		else return null;
+	}
+	
+	public User updatePwd(long id, String pwd_old, String pwd_1, String pwd_2) {
+		User user = userRepo.findById(id).get();
+		if (user != null) {
+			if (isPwdValid(user, pwd_old)) {
+				try {
+					user.setPassword(passwordEncoder.encode(pwd_1));
+					userRepo.save(user);
+					return user;
+				}
+				catch (Exception e) {
+					LOG.error("UserService - Password couldnt be changed");
+				}
+			}
+			user.setPassword(null);
+			return user;
+		}	
+		return null;
+	}
+	
+	private boolean isPwdValid(User user, String pwd_old) {
+		if (passwordEncoder.matches(pwd_old, user.getPassword())) {
+			return true;
+		}
+		else return false;
 	}
 	
 	@Transactional

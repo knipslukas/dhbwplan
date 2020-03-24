@@ -1,4 +1,4 @@
-body
+﻿body
 {
 	font-family: arial;
 	font-size: 15px;
@@ -30,8 +30,7 @@ body
 /*Formatierung der Hover Funktion der Navigationsliste oben rechts*/
 .navigationlist:hover
 {
-	color: white;
-	background-color: #4E5F67;
+	text-decoration: underline;
 }
 
 /*Default Settings f�r Hyperlinks*/

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User implements Serializable {
@@ -18,18 +19,25 @@ public class User implements Serializable {
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private long id;
 	
 	private String username;
+	
+	private String displayName;
 	
 	private String email;
 	
 	private String password;
 	
+	@OneToOne
 	private Dozent dozent;
 	
 	@ManyToMany
 	private Set<Role> roles;
+	
+	public long getId() {
+		return this.id;
+	}
 
 	public String getUsername() {
 		return username;
@@ -69,6 +77,14 @@ public class User implements Serializable {
 
 	public void setDozent(Dozent dozent) {
 		this.dozent = dozent;
+	}
+
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
 	}
 	
 }
