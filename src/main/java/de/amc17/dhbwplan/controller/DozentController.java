@@ -75,7 +75,7 @@ public class DozentController {
 		 model.addAttribute("dozentDeleted", dozentDeleted);
 		 model.addAttribute("dozentCreated", dozentCreated);
 		 model.addAttribute("pageTitle", "DHBW - Übersicht Dozenten");
-		 model.addAttribute("displayName", userServ.getCurrentUser().getDisplayName());
+		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "dozent/doz_overview";
 	 }
 	 
@@ -84,7 +84,7 @@ public class DozentController {
 		 model.addAttribute("dozent", mDozentService.getDozentByID(aID));
 		 model.addAttribute("dozentUpdated", dozentUpdated);
 		 model.addAttribute("pageTitle", "DHBW - Dozentansicht");
-		 model.addAttribute("displayName", userServ.getCurrentUser().getDisplayName());
+		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "dozent/doz_einzel";
 		 
 	 }
@@ -93,14 +93,14 @@ public class DozentController {
 	 public String editDozent(Model model, @PathVariable int dID) {
 		 model.addAttribute("dozent", mDozentService.getDozentByID(dID));
 		 model.addAttribute("pageTitle", "DHBW - Dozent bearbeiten");
-		 model.addAttribute("displayName", userServ.getCurrentUser().getDisplayName());
+		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "dozent/doz_edit";
 	 }
 	 
 	 @GetMapping(value ="/add")
 	 public String addDozentUi(Model model) {
 		 model.addAttribute("pageTitle", "DHBW - Dozent Anlegen");
-		 model.addAttribute("displayName", userServ.getCurrentUser().getDisplayName());
+		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "dozent/doz_add";
 	 }
 

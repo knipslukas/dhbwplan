@@ -19,7 +19,7 @@ public class User implements Serializable {
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private long id;
 	
 	private String username;
 	
@@ -34,6 +34,10 @@ public class User implements Serializable {
 	
 	@ManyToMany
 	private Set<Role> roles;
+	
+	public long getId() {
+		return this.id;
+	}
 
 	public String getUsername() {
 		return username;

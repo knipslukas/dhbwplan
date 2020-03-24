@@ -20,8 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http 
 			.authorizeRequests()
 				.antMatchers("/static/**").permitAll()
-				.antMatchers("/adminInstall").permitAll()
-				.antMatchers("/adminInstallSubmit").permitAll()
+				.antMatchers("/setup").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.httpBasic()

@@ -17,7 +17,7 @@
 		<c:if test="${!submit }">
 			<h1>Abschließen der Installation von DHBW-Plan</h1>
 			<p class="mb-5">Geben Sie hier Ihre Daten ein - Für Sie wird automatisch ein User angelegt und Sie werden als Dozent hinterlegt</p>
-			<form action="/adminInstallSubmit" method="post" role="form" class="mb-2">
+			<form action="/setup" method="post" role="form" class="mb-2">
 				<div class="form-group">
 	                <label for="anrede">Anrede</label>
 	                <select class="form-control" id="anrede" name="anrede">
@@ -33,9 +33,14 @@
 	         		<input type="text" name="vorname" class="form-control" placeholder="Vorname eingeben" required>
 	            </div>
 	
-	            <div class="form-group">
+	            <div class="form-group mb-5">
 	                <label>Nachname</label>
 					<input type="text" name="nachname" class="form-control" placeholder="Nachname eingeben" required>	                
+	            </div>
+	            
+	            <div class="form-group">
+	                <label>Username</label>
+	         		<input type="text" name="username" class="form-control" placeholder="Username eingeben" required>
 	            </div>
 				<div class="form-group">
 					<label for="email">E-Mail</label>
@@ -43,7 +48,11 @@
 				</div>
 				<div class="form-group">
 					<label for="pwd">Password</label>
-					<input type="password" class="form-control" name="pwd" placeholder="Passwort eingeben">
+					<input type="password" class="form-control" name="pwd_1" placeholder="Passwort eingeben">
+				</div>
+				<div class="form-group mb-5">
+					<label for="pwd">Password wiederholen</label>
+					<input type="password" class="form-control" name="pwd_2" placeholder="Passwort wiederholen">
 				</div>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				<button type="submit" class="btn btn-success">Initialize</button>

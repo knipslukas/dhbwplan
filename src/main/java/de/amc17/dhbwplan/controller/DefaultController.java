@@ -38,7 +38,7 @@ public class DefaultController {
 	@GetMapping(value = "")
 	public String landingPage(Model model) {
 		model.addAttribute("pageTitle", "DHBW Planner | Home");
-		model.addAttribute("displayName", userServ.getCurrentUser().getDisplayName());
+		model.addAttribute("currentUser", userServ.getCurrentUser());
 		return "landingpage";
 	}
 	
@@ -57,7 +57,7 @@ public class DefaultController {
 	    return "redirect:/login?logout";
 	}
 	
-	@GetMapping(value = "adminInstall")
+	@GetMapping(value = "setup")
 	public String adminInstallPage() {
 		if (!userServ.findAdmin()) {
 			return "adminInstall";
@@ -65,10 +65,10 @@ public class DefaultController {
 		else return "redirect:/login";		
 	}
 	
-	@PostMapping(value = "adminInstallSubmit")
+	@PostMapping(value = "setup")
 	public String adminInstallSubmit(@ModelAttribute StudienLeiterDto dto, Model model) {
 		if (!userServ.findAdmin()) {
-			if (dto.getEmail() != "" && dto.getPwd() != "") {
+			if (dto.getEmail() != "" && dto.getPwd_1() != "" && dto.getPwd_1().equals(dto.getPwd_2())) {
 				try {
 					Dozent dozent = new Dozent();
 					dozent.setNachname(dto.getNachname());
@@ -80,7 +80,7 @@ public class DefaultController {
 					dozent.setUnternehmen("DHBW Intern");
 					if ((dozent = dozServ.addDozent(dozent)) != null) {
 						User user;
-						if ((user=userServ.createUser("admin", dto.getEmail(), dto.getPwd(), dozent)) != null) {
+						if ((user=userServ.createUser(dto.getUsername(), dto.getEmail(), dto.getPwd_1(), dozent)) != null) {
 							dozent.setUser(user);
 							dozServ.updateDozent(dozent);
 							model.addAttribute("submit", true);

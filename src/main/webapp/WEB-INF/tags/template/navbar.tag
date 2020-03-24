@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ attribute name="login" required="false"%>
-<%@ attribute name="displayName" required="false"%>
+<%@ attribute name="user" required="false" type="de.amc17.dhbwplan.entity.User"%>
 
 <nav class="navbar navbar-expand-sm navigationline mb-5">
 	<div class="container-fluid " >
@@ -39,10 +39,13 @@
 	            <li class="dhbw_user nav-item dropdown">
 	                <a class="nav-link dropdown-toggle navigationlist" href="#" id="navbarDropdownMenuLink" role="button"
 	                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                    ${displayName}
+	                    ${user.displayName}
 	                </a>
 	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-	                    <a class="dropdown-item navigationlist" href="/user/settings">Einstellungen</a>
+	                	<a class="dropdown-item navigationlist" href="/user/show/${user.id }">Einstellungen</a>
+	                	<div class="dropdown-divider"></div>
+	                	<a class="dropdown-item navigationlist" href="/user/show">User-Verwaltung</a>
+	                	<div class="dropdown-divider"></div>
 	                    <a class="dropdown-item navigationlist" href="/usrlgt">Abmelden</a>
 	                </div>
 	            </li>

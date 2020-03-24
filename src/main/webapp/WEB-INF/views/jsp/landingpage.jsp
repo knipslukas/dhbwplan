@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <template:template pageTitle="${pageTitle}">
-	<template:navbar displayName="${displayName }" />
+	<template:navbar user="${currentUser}"/>
 	<!-- Start Orientierungszeile -->
     <div class="mx-2 mt-3">
         <div class="alert  homeleiste" role="alert">

@@ -99,6 +99,16 @@ public class DozentService {
 			return null;
 		}
 	}
+	
+	public List<Dozent> getAllDozentForUser() {
+		try {
+			return dozentRepository.allDozentOhneUser();
+		}
+		catch (Exception e) {
+			LOG.error("DozentService - No Users found or Query invalid! \n "+e);
+			return null;
+		}
+	}
 //	
 // 
 //	public List<Dozent> getDozentByNachname(String aNachname) {
