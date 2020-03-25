@@ -1,4 +1,7 @@
-﻿body
+
+@import url('https://fonts.googleapis.com/css?family=Lora&display=swap');
+
+body
 {
 	font-family: arial;
 	font-size: 15px;
@@ -32,7 +35,82 @@
 {
 	text-decoration: underline;
 }
+/*Formatierung des Headers mit Bild und Text rechts an der Seite*/
+.bildheader
+{
+	padding-left: 0;
+	padding-right: 0;
+}
 
+.padding-0
+{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+/* TEST sonst l�schen:*/
+.headlines
+{
+	background-color: #ced2d4;
+
+
+	z-index:-1;
+	
+}
+.headlines::before
+{
+	background-image: linear-gradient(to bottom,transparent 0%,rgba(0,0,0,0.65) 100%);
+	opacity: 0.4;
+}
+.landingpagewelcome
+{
+	position: relative;
+	width: 100%;
+	text-align: center;
+	color: #414141;
+
+}
+
+
+.strich
+{
+	opacity:1;
+	z-index:100 !important;
+}
+.strich::after
+{
+	content: '';
+    display: block;
+    margin: 15px 0 25px 70px;
+    width: 50px;
+    height: 2px;
+    background: #e2001a;
+}
+.infoueberschrift:after
+{
+	content: '';
+    display: block;
+    margin: 25px 0 25px 0;
+    width: 70px;
+    height: 2px;
+    background: #5c6971;
+}
+.infoueberschrift
+{
+	font-family: "Lora" ,serif;
+	color: #e2001a;
+	padding-left:110px;
+	padding-top:50px;
+}
+.infobild
+{
+	background-color: #ced2d4;
+}
+
+.infotext
+{
+	background-color:#e5e5e5;
+}
 /*Default Settings f�r Hyperlinks*/
 a:hover
 {
@@ -62,6 +140,7 @@ a:hover
 {
 	background-color: #E2001A;
 }
+
 
 /*Formatierung des Text innerhalb der Dozentuebersichtbox*/
 .dozentuebersichttext
@@ -107,16 +186,11 @@ a:hover
 	background-color: #E5E5E5;
 	border-width: 1px;
 	border-color: #4E5F67;
+	text-align: center;
 }
 
 /*Formatierung der gro�en Icons auf der Hauptpage*/
 .btnTwoIcons
-{
-	background-color: #4E5F67;
-	color: white;
-}
-
-.btnTwoIcons:hover
 {
 	background-color: white;
 	color:#4E5F67;
@@ -124,10 +198,17 @@ a:hover
 	border-width:2px;
 }
 
+.btnTwoIcons:hover
+{
+	background-color: #4E5F67;
+	color: white;
+}
+
 
 
 /*Landing Page*/
 /*Formatierung der grauen Box in der Mitte mit grauem Rahmen*/
+
 .orientierungsbox
 {
 	background-color: #E5E5E5;
