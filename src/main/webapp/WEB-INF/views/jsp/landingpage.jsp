@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <template:template pageTitle="${pageTitle}">
-	<template:navbar user="${currentUser}"/>
+	<template:navbar user="${currentUser}" landingpage="${true }"/>
 	<!-- Start Orientierungszeile -->
 	<div class="container-fluid mt-5">
 		       <div class="row">			

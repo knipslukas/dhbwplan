@@ -1,8 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ attribute name="login" required="false"%>
+<%@ attribute name="landingpage" required="false"%>
 <%@ attribute name="user" required="false" type="de.amc17.dhbwplan.entity.User"%>
 
-<nav class="navbar navbar-expand-sm navigationline mb-5">
+<nav class="navbar navbar-expand-sm navigationline <c:if test="${!landingpage }" >nav-shadow</c:if> mb-5">
 	<div class="container-fluid " >
 
     	<!-- Logo und Text-->
