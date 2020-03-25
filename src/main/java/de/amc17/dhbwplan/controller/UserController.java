@@ -35,6 +35,8 @@ public class UserController {
 			if (doz != null) {
 				User user = userServ.createUser(nUser.getUsername(), doz.getEmail(), nUser.getPwd_1(), doz);
 				if (user != null) {
+					doz.setUser(user);
+					dozServ.updateDozent(doz);
 					return "redirect:/user/show/"+user.getId();
 				}
 				rediAttr.addAttribute("addUser", 0);

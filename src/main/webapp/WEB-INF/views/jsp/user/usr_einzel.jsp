@@ -107,7 +107,7 @@
 			<div class="modal-content">
 				<div class="modal-body">
 					<h1><strong>Achtung!</strong></h1>
-					<h4>Wollen Sie wirklich den User ${user.username } löschen?</h4>
+					<h4>Wollen Sie wirklich den User <strong>${user.username }</strong> löschen?</h4>
 				</div>
 				
 				<div class="modal-footer">
@@ -122,7 +122,7 @@
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h1><strong>Passwort Ändern</strong></h1>
+					<h1><strong>Passwort ändern</strong></h1>
 				</div>
 				<div class="modal-body">
 					<form action="/user/changepwd/${user.id }" method="post" role="form" id="changepwd">

@@ -3,7 +3,9 @@ package de.amc17.dhbwplan.entity;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -29,7 +31,7 @@ public class User implements Serializable {
 	
 	private String password;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	private Dozent dozent;
 	
 	@ManyToMany
