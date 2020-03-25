@@ -16,6 +16,8 @@ import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
@@ -25,19 +27,21 @@ public class DozentService {
 
 	@Resource
 	private DozentRepository dozentRepository;
+	
+	private static final Logger LOG = LogManager.getLogger(UserService.class.getName());
 
 
-	public boolean addDozent(Dozent aDozent) {
+	public Dozent addDozent(Dozent aDozent) {
 		
 		try {
 			if (aDozent.getNotiz() == "") aDozent.setNotiz("Keine Daten");
 			if (aDozent.getSchwerpunkt() == "") aDozent.setSchwerpunkt("Keine Daten");
 			dozentRepository.save(aDozent);
 		} catch (Exception e) {
-			return false;
+			return null;
 		}
 		 
-		return true;
+		return aDozent;
 	}
 
 	public boolean deleteDozent(int aDID) {
@@ -51,13 +55,19 @@ public class DozentService {
 	
 	public boolean updateDozent(Dozent aDozent) {
 		try {
-			if (dozentRepository.findById(aDozent.getDID()).isPresent()) { 
+			Dozent oDozent;
+			if ((oDozent = dozentRepository.findByDID(aDozent.getDID())) != null) { 
+				if (oDozent.getUser().getEmail() != aDozent.getEmail()) {
+					aDozent.setUser(oDozent.getUser());
+					aDozent.getUser().setEmail(aDozent.getEmail());
+				}
 				dozentRepository.save(aDozent);
 			} else {
+				LOG.warn("Dozent not found");
 				return false;
 			}
 		} catch (Exception e) {
-			
+			LOG.error(e);
 			return false;
 		}
 		
@@ -86,6 +96,16 @@ public class DozentService {
 		try {
 			return dozentRepository.findByDID(aDID); 
 		} catch (Exception e ){
+			return null;
+		}
+	}
+	
+	public List<Dozent> getAllDozentForUser() {
+		try {
+			return dozentRepository.allDozentOhneUser();
+		}
+		catch (Exception e) {
+			LOG.error("DozentService - No Users found or Query invalid! \n "+e);
 			return null;
 		}
 	}

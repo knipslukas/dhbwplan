@@ -19,7 +19,7 @@ public class Studiengang implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="StID")
-	private int StID;
+	private int stID;
 	
 	private String name;
 	

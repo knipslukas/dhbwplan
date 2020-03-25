@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css?family=Lora&display=swap');
 
 body
@@ -32,8 +33,7 @@ body
 /*Formatierung der Hover Funktion der Navigationsliste oben rechts*/
 .navigationlist:hover
 {
-	color: white;
-	background-color: #4E5F67;
+	text-decoration: underline;
 }
 /*Formatierung des Headers mit Bild und Text rechts an der Seite*/
 .bildheader
@@ -48,7 +48,7 @@ body
 	padding-right: 0;
 }
 
-/* TEST sonst löschen:*/
+/* TEST sonst lï¿½schen:*/
 .headlines
 {
 	background-color: #ced2d4;

@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <template:template pageTitle="${pageTitle}">
-    <template:navbar />
+    <template:navbar user="${currentUser}" />
 
 
 	<div class="container">
@@ -206,7 +206,11 @@
 	                </div>
 	            </div>
 	            
+	            <!-- Das hier übermittelt dem Server die ID von Dozenten, da diese für das Update benötigt wird -->
 	            <input class="d-none" name="DID" value="${dozent.DID }">
+	            
+	            <!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
+	            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	
 	            <!-- Final Buttons-->
 	            <div class="finalButtons">

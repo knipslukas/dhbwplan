@@ -19,7 +19,7 @@ public class Modul implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="MID")
-	private int MID;
+	private int mid;
 	
 	private String bezeichnung;
 	

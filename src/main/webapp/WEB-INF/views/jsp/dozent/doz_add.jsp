@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <template:template pageTitle="${pageTitle}">
-    <template:navbar />
+    <template:navbar user="${currentUser}"/>
 
 
 	<div class="container">
@@ -138,11 +138,14 @@
 	                	<textarea class="form-control" name="notiz" placeholder="Hier können Sie Notizen ergänzen"></textarea>
 	                </div>
 	            </div>
+	            
+	            <!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
+	            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	
 	            <!-- Final Buttons-->
 	            <div class="finalButtons">
-	                <button type="submit" class="btn btn-primary DHBWbutton">Speichern </button>
-	                <button type="reset" class="btn btn-primary DHBWbutton">Zurücksetzen </button>
+	                <button type="submit" class="btn btn-success">Speichern </button>
+	                <button type="reset" class="btn btn-danger">Zurücksetzen </button>
 	            </div>
 	
 	        </form>
