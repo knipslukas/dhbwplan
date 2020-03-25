@@ -6,7 +6,7 @@
 <template:template pageTitle="${pageTitle}">
 	<template:navbar user="${currentUser}" landingpage="${true }"/>
 	<!-- Start Orientierungszeile -->
-	<div class="container-fluid mt-5">
+	<div class="container-fluid">
 		       <div class="row">			
 					<div class="col-sm-8 padding-0"> 
 						<img src="${pageContext.request.contextPath}/static/images/dhbwBannerLandingpage.jpg" class="img-fluid" alt="">

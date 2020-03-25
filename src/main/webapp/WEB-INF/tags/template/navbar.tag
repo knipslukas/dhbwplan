@@ -3,7 +3,7 @@
 <%@ attribute name="landingpage" required="false"%>
 <%@ attribute name="user" required="false" type="de.amc17.dhbwplan.entity.User"%>
 
-<nav class="navbar navbar-expand-sm navigationline <c:if test="${!landingpage }" >nav-shadow</c:if> mb-5">
+<nav class="navbar navbar-expand-sm navigationline <c:if test="${!landingpage }" >nav-shadow mb-5</c:if>">
 	<div class="container-fluid " >
 
     	<!-- Logo und Text-->
