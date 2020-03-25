@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lora&display=swap');
+
 body
 {
 	font-family: arial;
@@ -95,7 +97,7 @@ body
 }
 .infoueberschrift
 {
-	font-family: "GenerisSerifW01-Regular",serif;
+	font-family: "Lora" ,serif;
 	color: #e2001a;
 	padding-left:110px;
 	padding-top:50px;
@@ -138,6 +140,7 @@ a:hover
 {
 	background-color: #E2001A;
 }
+
 
 /*Formatierung des Text innerhalb der Dozentuebersichtbox*/
 .dozentuebersichttext
