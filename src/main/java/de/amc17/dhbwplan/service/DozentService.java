@@ -57,9 +57,11 @@ public class DozentService {
 		try {
 			Dozent oDozent;
 			if ((oDozent = dozentRepository.findByDID(aDozent.getDID())) != null) { 
-				if (oDozent.getUser().getEmail() != aDozent.getEmail()) {
-					aDozent.setUser(oDozent.getUser());
-					aDozent.getUser().setEmail(aDozent.getEmail());
+				if (oDozent.getUser() != null) {
+					if (oDozent.getUser().getEmail() != aDozent.getEmail()) {
+						aDozent.setUser(oDozent.getUser());
+						aDozent.getUser().setEmail(aDozent.getEmail());
+					}
 				}
 				dozentRepository.save(aDozent);
 			} else {

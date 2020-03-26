@@ -105,6 +105,15 @@
 				                </div>
 				            </div>
 			            </div>
+			            
+			            <div class="collapse js-collapse-stuleiter show">
+				            <div class="form-group row">
+				            	<label class="col-2 col-form-label">Studiengangsleiter</label>
+				            	<div class="col-10">
+				            		<input <c:if test="${dozent.studiengangsleiter}">checked</c:if> type="checkbox" class="js-toggle-stuleiter" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="studiengangsleiter" data-style="mr-1" data-onstyle="danger">
+				            	</div>
+				            </div>
+			           	</div>
 					</c:when>
 					<c:otherwise>
 						<div class="form-group row">
@@ -122,27 +131,17 @@
 				                </div>
 				            </div>
 			            </div>
+			            
+			            <div class="collapse js-collapse-stuleiter">
+				            <div class="form-group row">
+				            	<label class="col-2 col-form-label">Studiengangsleiter</label>
+				            	<div class="col-10">
+				            		<input type="checkbox" class="js-toggle-stuleiter" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="studiengangsleiter" data-style="mr-1" data-onstyle="danger">
+				            	</div>
+				            </div>
+			           	</div>
 					</c:otherwise>
 				</c:choose>
-	            <c:choose>
-	            	<c:when test="${dozent.studiengangsleiter}">
-	            		<div class="form-group row">
-		           		 	<label class="col-2 col-form-label">Studiengangsleiter</label>
-		           		 	<div class="col-10">
-		            			<input checked type="checkbox" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="studiengangsleiter" data-style="mr-1" data-onstyle="danger">
-		        	 	   </div>
-	            		</div>
-		            </c:when>
-		            <c:otherwise>
-		           		<div class="form-group row">
-		           		 	<label class="col-2 col-form-label">Studiengangsleiter</label>
-		           		 	<div class="col-10">
-		            			<input type="checkbox" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="studiengangsleiter" data-style="mr-1" data-onstyle="danger">
-		        	 	 	</div>
-	            		</div>
-		            
-		            </c:otherwise>
-	            </c:choose> 
 	
 	            <div class="form-group row">
 	                <label class="col-2 col-form-label">E-Mail</label>
