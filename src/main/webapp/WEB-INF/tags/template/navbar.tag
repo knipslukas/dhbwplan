@@ -33,7 +33,7 @@
 	                </a>
 	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	                    <a class="dropdown-item navigationlist" href="#">Studienrichtungen</a>
-	                    <a class="dropdown-item navigationlist" href="#">Modul�bersicht</a>
+	                    <a class="dropdown-item navigationlist" href="#">Modulübersicht</a>
 	                    <a class="dropdown-item navigationlist" href="#">Lerneinheiten</a>
 	                </div>
 	            </li>
@@ -52,6 +52,7 @@
 	            </li>
 	        </ul>
         </c:if>
-
     </div>
 </nav>
+<div <c:if test="${!landingpage }" >style="margin-bottom: 6rem"</c:if>>
+</div>

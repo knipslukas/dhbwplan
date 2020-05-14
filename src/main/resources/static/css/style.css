@@ -5,7 +5,7 @@ body
 {
 	font-family: arial;
 	font-size: 15px;
-	padding-top: 67px;
+	margin-top: 4.1875rem;
 }
 
 /*General*/
@@ -15,7 +15,6 @@ body
 {
 	background-color: white;
 	border-bottom: 1px solid #e3e3e3;
-
 }
 
 .nav-shadow {
