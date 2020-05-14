@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import de.amc17.dhbwplan.entity.Dozent;
 import de.amc17.dhbwplan.entity.Modulkatalog;
 import de.amc17.dhbwplan.service.DozentService;
+import de.amc17.dhbwplan.service.ModulkatalogService;
 import de.amc17.dhbwplan.service.UserService;
 
 public class ModulkatalogController {
