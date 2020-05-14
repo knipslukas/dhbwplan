@@ -25,6 +25,14 @@ public class Modulkatalog implements Serializable {
 	private Date gueltigVon;
 	
 	private Date gueltigBis;
+	
+	public int getMKID() {
+		return MKID;
+	}
+	
+	public void setMKID(int MKID) {
+		this.MKID = MKID;
+	}
 
 	public Date getGueltigVon() {
 		return gueltigVon;
