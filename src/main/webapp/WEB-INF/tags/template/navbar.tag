@@ -20,7 +20,7 @@
 					<a class="nav-link navigationlist" href="/">Home</a>
 	            </li>
 	            <li class="nav-item">
-	                <a class="nav-link navigationlist" href="#">Kurse</a>
+	                <a class="nav-link navigationlist" href="/kurs/getAll">Kurse</a>
 	            </li>
 	
 	            <li class="nav-item dhbw_listenpunkt" >
@@ -33,7 +33,7 @@
 	                </a>
 	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	                    <a class="dropdown-item navigationlist" href="#">Studienrichtungen</a>
-	                    <a class="dropdown-item navigationlist" href="#">Modulübersicht</a>
+	                    <a class="dropdown-item navigationlist" href="#">Modulï¿½bersicht</a>
 	                    <a class="dropdown-item navigationlist" href="#">Lerneinheiten</a>
 	                </div>
 	            </li>
