@@ -59,8 +59,8 @@
 	              <tbody>
 	                <!-- Beispieleintrag --> 
 	                <c:choose>
-	                	<c:when test="${dozentList ne null }">
-	                		<c:forEach items="${dozentList}" var="dozent">
+	                	<c:when test="${modulkatalogList ne null }">
+	                		<c:forEach items="${modulkatalogList}" var="modulkatalog">
 	                			<tr>
 <%-- 					                <td scope="row" class="align-middle">${dozent.DID }</td> --%>
 					                <td scope="row" class="align-middle">${modulkatalog.MKID}</td>
