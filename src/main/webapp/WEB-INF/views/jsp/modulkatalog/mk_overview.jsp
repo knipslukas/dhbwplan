@@ -62,7 +62,7 @@
 	                	<c:when test="${modulkatalogList ne null }">
 	                		<c:forEach items="${modulkatalogList}" var="modulkatalog">
 	                			<tr>
-<%-- 					                <td scope="row" class="align-middle">${dozent.DID }</td> --%>
+<%-- 					                <td scope="row" class="align-middle">${modulkatalog.MKID}</td> --%>
 					                <td scope="row" class="align-middle">${modulkatalog.MKID}</td>
 					                <td scope="row" class="align-middle">${modulkatalog.gueltigVon }</td>
 					                <td scope="row" class="align-middle">${modulkatalog.gueltigBis }</td>
