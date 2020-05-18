@@ -2,7 +2,9 @@ package de.amc17.dhbwplan.controller;
 
 import java.sql.Date;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +21,8 @@ import de.amc17.dhbwplan.service.DozentService;
 import de.amc17.dhbwplan.service.ModulkatalogService;
 import de.amc17.dhbwplan.service.UserService;
 
+@Controller
+@RequestMapping(path = "/modulkatalog")
 public class ModulkatalogController {
 	
 	@Autowired
@@ -26,11 +30,6 @@ public class ModulkatalogController {
 	
 	@Autowired
 	private UserService userServ;
-	
-	@GetMapping(value ="")
-	public String redirectMain() {
-		return "redirect:/modulkatalog/getAll";
-	}
 	
 	@PostMapping(path = "/add") 
 	public String addModulkatalog(@ModelAttribute Modulkatalog mk, RedirectAttributes redirectAttributes) {
@@ -76,7 +75,7 @@ public class ModulkatalogController {
 	 }
 	
 	
-	 @GetMapping(path="/getAll") 
+	 @GetMapping(value= "") 
 	 public String getAllModulkatalog(Model model, @RequestParam (required = false) Date gueltig_von, 
 			 @RequestParam (required = false) Date gueltig_bis, @RequestParam(required = false) Object modulkatalogDeleted,
 			 @RequestParam(required = false) Object modulkatalogCreated) {
