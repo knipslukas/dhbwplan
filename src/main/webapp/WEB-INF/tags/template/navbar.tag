@@ -24,7 +24,7 @@
 	            </li>
 	
 	            <li class="nav-item dhbw_listenpunkt" >
-	                <a class="nav-link navigationlist" href="/dozent/getAll">Dozenten</a>
+	                <a class="nav-link navigationlist" href="/dozent">Dozenten</a>
 	            </li>
 				<li class="nav-item dropdown dhbw_listenpunkt">
 	                <a class="nav-link dropdown-toggle navigationlist" href="#" id="navbarDropdownMenuLink" role="button"

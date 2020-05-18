@@ -27,11 +27,6 @@ public class DozentController {
 	
 	@Autowired
 	private UserService userServ;
-	
-	@GetMapping(value ="")
-	public String redirectMain() {
-		return "redirect:/dozent/getAll";
-	}
 
 	@PostMapping(path = "/add")
 	public String addDozent(@ModelAttribute Dozent doz, RedirectAttributes redirectAttributes) {
@@ -66,7 +61,7 @@ public class DozentController {
 		return "redirect:/dozent/show/"+aDozent.getDID();
 	}
 	 
-	 @GetMapping(path="/getAll") 
+	 @GetMapping(path="") 
 	 public String getAllDozent(Model model, @RequestParam (required = false) String nachname, 
 			 @RequestParam (required = false) String email, @RequestParam(required = false) Object dozentDeleted,
 			 @RequestParam(required = false) Object dozentCreated) {
