@@ -1,13 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-	<template:template pageTitle="${pageTitle}">
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="template" tagdir="/WEB-INF/tags/template"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
+<template:template pageTitle="${pageTitle}">
 	<template:navbar user="${currentUser}" />
 	
 	<!-- Start Orientierungszeile -->
@@ -17,13 +13,13 @@
 	    	<c:when test="${modulkatalogDeleted}">
 		    	<div class="alert alert-success alert-dismissible">
 			    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		    		<Strong>Modulkatalog erfolgreich gelöscht</Strong>
+		    		<Strong>Modulkatalog erfolgreich gelÃ¶scht</Strong>
 	    		</div>
 	    	</c:when>
 	    	<c:when test="${modulkatalogDeleted eq false}">
 	    		<div class="alert alert-danger alert-dismissible">
 	    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		    		<Strong>Modulkatalog konnte nicht gelöscht werden</Strong>
+		    		<Strong>Modulkatalog konnte nicht gelÃ¶scht werden</Strong>
 		    	</div>
 	    	</c:when>
 	    	
@@ -37,7 +33,7 @@
 	   	
 	   	
        	<div class="alert dozentuebersicht d-flex align-items-center" role="alert">
-			<h1 class="text-white my-1">Modulkatalogübersicht</h1>
+			<h1 class="text-white my-1">ModulkatalogÃ¼bersicht</h1>
 			<a href="/modulkatalog/add" class="btn ml-auto DHBWbutton">Modulkatalog anlegen</a>
         </div>
         
@@ -51,8 +47,8 @@
 	                <tr>
 <!-- 	                  <th scope="col"><strong>Dozenten Nummer</strong></th> -->
 	                  <th scope="col"><strong>Name</strong></th>
-	                  <th scope="col"><strong>Gültig von</strong></th>
-	                  <th scope="col"><strong>Gültig bis</strong></th>
+	                  <th scope="col"><strong>GÃ¼ltig von</strong></th>
+	                  <th scope="col"><strong>GÃ¼ltig bis</strong></th>
 	                  <th scope="col"><strong>Aktionen</strong></th>
 	                </tr>
 	              </thead>
@@ -87,5 +83,3 @@
 	    </div>
 	</div>
 </template:template>
-</body>
-</html>
