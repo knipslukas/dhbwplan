@@ -72,7 +72,6 @@
 	                			<td></td>
 	                			<td></td>
 	                			<td></td>
-	                			<td></td>
 
 	                		</tr>
 	                	</c:otherwise>
