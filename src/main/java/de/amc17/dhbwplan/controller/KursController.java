@@ -27,11 +27,6 @@ public class KursController {
 	@Autowired
 	private UserService userServ;
 
-	@GetMapping(value = "")
-	public String redirectMain() {
-		return "redirect:/kurs/getAll";
-	}
-
 	@PostMapping(path = "/add")
 	public String addKurs(@ModelAttribute Kurs kurs, RedirectAttributes redirectAttributes) {
 		if (mKursService.addKurs(kurs) != null) {
@@ -62,7 +57,7 @@ public class KursController {
 		return "redirect:/kurs/show/" + aKurs.getKID();
 	}
 
-	@GetMapping(path = "/getAll")
+	@GetMapping(path = "")
 	public String getAllKurs(Model model, @RequestParam(required = false) String name,
 			@RequestParam(required = false) Object kursDeleted, @RequestParam(required = false) Object kursCreated) {
 
@@ -75,9 +70,9 @@ public class KursController {
 	}
 
 	@GetMapping(path = "/show/{aID}")
-	public String getAllKurs(Model model, @PathVariable int aID, @RequestParam(required = false) Object dozentUpdated) {
+	public String getAllKurs(Model model, @PathVariable int aID, @RequestParam(required = false) Object kursUpdated) {
 		model.addAttribute("kurs", mKursService.getKursByID(aID));
-		model.addAttribute("kursUpdated", dozentUpdated);
+		model.addAttribute("kursUpdated", kursUpdated);
 		model.addAttribute("pageTitle", "DHBW - Kursansicht");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
 		return "kurs/kurs_einzel";
