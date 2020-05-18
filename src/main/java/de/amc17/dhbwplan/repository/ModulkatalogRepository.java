@@ -11,5 +11,5 @@ public interface ModulkatalogRepository extends CrudRepository<Modulkatalog, Int
 
 	
 	public List<Modulkatalog> findAll();
-	public Modulkatalog findByMKID(int id);
+	public Modulkatalog findByMKID(int MKID);
 }
