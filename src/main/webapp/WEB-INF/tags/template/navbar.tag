@@ -20,7 +20,7 @@
 					<a class="nav-link navigationlist" href="/">Home</a>
 	            </li>
 	            <li class="nav-item">
-	                <a class="nav-link navigationlist" href="/kurs/getAll">Kurse</a>
+	                <a class="nav-link navigationlist" href="/kurs">Kurse</a>
 	            </li>
 	
 	            <li class="nav-item dhbw_listenpunkt" >
