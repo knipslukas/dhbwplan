@@ -71,7 +71,7 @@ public class VorlesungService {
 		return true;
 	}
 
-	public List<Vorlesung> getVorlesungs(String name, int vorlesungsstunden) {		
+	public List<Vorlesung> getAllVorlesung(String name, int vorlesungsstunden) {		
 		try {
 			if (name != null) {
 				return VorlesungRepository.findAll();			
