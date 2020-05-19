@@ -3,7 +3,7 @@
 <%@ attribute name="landingpage" required="false"%>
 <%@ attribute name="user" required="false" type="de.amc17.dhbwplan.entity.User"%>
 
-<nav class="navbar navbar-expand-sm navigationline <c:if test="${!landingpage }" >nav-shadow mb-5</c:if>">
+<nav class="navbar fixed-top navbar-expand-sm navigationline <c:if test="${!landingpage }" >nav-shadow mb-5</c:if>">
 	<div class="container-fluid " >
 
     	<!-- Logo und Text-->
@@ -24,7 +24,7 @@
 	            </li>
 	
 	            <li class="nav-item dhbw_listenpunkt" >
-	                <a class="nav-link navigationlist" href="/dozent/getAll">Dozenten</a>
+	                <a class="nav-link navigationlist" href="/dozent">Dozenten</a>
 	            </li>
 				<li class="nav-item dropdown dhbw_listenpunkt">
 	                <a class="nav-link dropdown-toggle navigationlist" href="#" id="navbarDropdownMenuLink" role="button"
@@ -33,7 +33,9 @@
 	                </a>
 	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	                    <a class="dropdown-item navigationlist" href="#">Studienrichtungen</a>
-	                    <a class="dropdown-item navigationlist" href="#">Modul�bersicht</a>
+
+	                    <a class="dropdown-item navigationlist" href="#">Modulübersicht</a>
+
 	                    <a class="dropdown-item navigationlist" href="#">Lerneinheiten</a>
 	                </div>
 	            </li>
@@ -52,6 +54,7 @@
 	            </li>
 	        </ul>
         </c:if>
-
     </div>
 </nav>
+<div <c:if test="${!landingpage }" >style="margin-bottom: 6rem"</c:if>>
+</div>
