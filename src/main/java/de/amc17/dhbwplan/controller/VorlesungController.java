@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.amc17.dhbwplan.entity.Vorlesung;
 import de.amc17.dhbwplan.service.UserService;
+import de.amc17.dhbwplan.service.VorlesungService;
 
 @Controller
 @RequestMapping(path = "/vorlesung")
