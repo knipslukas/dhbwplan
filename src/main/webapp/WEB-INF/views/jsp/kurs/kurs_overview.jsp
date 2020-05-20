@@ -48,7 +48,7 @@
 						<!-- 	                  <th scope="col"><strong>Dozenten Nummer</strong></th> -->
 						<th scope="col"><strong>Name</strong></th>
 						<th scope="col"><strong>Jahrgang</strong></th>
-						<th scope="col"><strong>AnzahlStudierende</strong></th>
+						<th scope="col"><strong>Anzahl Studierende</strong></th>
 					</tr>
 				</thead>
 				<tbody>
