@@ -7,16 +7,22 @@
 	<template:navbar user="${currentUser}" landingpage="${true }"/>
 	<!-- Start Orientierungszeile -->
 	<div class="container-fluid">
-		       <div class="row">			
+		       <div class="row">		
 					<div class="col-sm-8 padding-0"> 
 						<img src="${pageContext.request.contextPath}/static/images/dhbwBannerLandingpage.jpg" class="img-fluid" alt="">
 	  				</div>
 				
 	  				<div class="col-sm-4 headlines d-flex justify-content-center ">
 	  						<div class="landingpagewelcome align-self-center"> 
-	  							<h3 class="mb-3"><strong> Herzlich Willkommen </strong></h3>
-	  							<p>Sie befinden sich auf der Startseite <br>des DHBW Planner Tools</p>
-	  							
+	  							<div class="centering">
+	  								<div class="strich">
+	  									<h3><strong> Herzlich Willkommen </strong></h3>	  	
+	  								</div>	
+	  							</div>
+	  						<div>
+	  							<p>Sie befinden sich auf der Startseite <br>des DHBW Planner Tools</p> 		
+	  						</div>
+	  									  							
 	  						</div>
 	  				</div>
 	  			</div>
