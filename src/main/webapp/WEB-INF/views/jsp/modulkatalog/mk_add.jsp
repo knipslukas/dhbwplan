@@ -62,6 +62,6 @@
 	    </div>
 	</div>
 	
-	<script src="${pageContext.request.contextPath}/static/js/modulkatalog.js"></script>
+	<script src="${pageContext.request.contextPath}/static/js/dozent.js"></script>
 
 </template:template>
