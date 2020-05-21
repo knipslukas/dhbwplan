@@ -77,7 +77,7 @@ public class VorlesungController {
 	 
 	 @GetMapping(path="/show/{aID}") 
 	 public String getAllVorlesung(Model model, @PathVariable int aID, @RequestParam(required = false) Object vorlesungUpdated) {
-		 model.addAttribute("vorlesung", mVorlesungService.getVorlesungByID(aID));
+		 model.addAttribute("vorlesung", mVorlesungService.getVorlesungByVID(aID));
 		 model.addAttribute("vorlesungUpdated", vorlesungUpdated);
 		 model.addAttribute("pageTitle", "DHBW - Vorlesungsansicht");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
@@ -87,7 +87,7 @@ public class VorlesungController {
 	 
 	 @GetMapping(value = "/edit/{dID}")
 	 public String editVorlesung(Model model, @PathVariable int vID) {
-		 model.addAttribute("vorlesung", mVorlesungService.getVorlesungByID(vID));
+		 model.addAttribute("vorlesung", mVorlesungService.getVorlesungByVID(vID));
 		 model.addAttribute("pageTitle", "DHBW - Vorlesung bearbeiten");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "vorlesung/vol_edit";
