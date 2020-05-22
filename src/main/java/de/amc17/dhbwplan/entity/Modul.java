@@ -19,7 +19,7 @@ public class Modul implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="MID")
-	private int mid;
+	private int MID;
 	
 	private String bezeichnung;
 	
@@ -121,4 +121,13 @@ public class Modul implements Serializable {
 	public void setStudienjahr(int studienjahr) {
 		this.studienjahr = studienjahr;
 	}
+	
+	public int getMID() {
+		return MID;
+	}
+	
+	public void setMID(int MID) {
+		this.MID = MID;
+	}
+
 }

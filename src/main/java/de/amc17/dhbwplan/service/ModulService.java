@@ -64,14 +64,6 @@ public class ModulService
 			Modul oModul;
 			if((oModul = modulRepository.findByMID(aModul.getMID()))!= null)
 			{
-				if(oModul.getUser() != null)
-				{
-					if (oModul.getUser().getBezeichnung() != aModul.getBezeichnung())
-					{
-						aModul.setUser(oModul.getUser());
-						aModul.getUser().setBezeichnung(aModul.getBezeichnung());
-					}
-				}
 				modulRepository.save(aModul);
 			}
 			else
@@ -85,11 +77,10 @@ public class ModulService
 			LOG.error(e);
 			return false;
 		}
-		
 		return true;
 	}
 	
-	public List<Modul> getAllModul(String aBezeichnung, String aModulart) 
+	public List<Modul> getAllModul(String aBezeichnung) 
 	{		
 		try 
 		{
@@ -97,10 +88,6 @@ public class ModulService
 			{
 				return modulRepository.findBybezeichnung(aBezeichnung);			
 			} 
-			else if (aModulart != null) 
-			{
-				return modulRepository.findBymodulart(aModulart);
-			}
 			List<Modul> list = modulRepository.findByOrderByBezeichnungAsc();
 			if (!list.isEmpty()) 
 			{

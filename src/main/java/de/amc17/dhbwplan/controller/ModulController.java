@@ -31,7 +31,7 @@ public class ModulController {
 	@PostMapping(path = "/add")
 	public String addModul(@ModelAttribute Modul mod, RedirectAttributes redirectAttributes) {
 		if (mModulService.addModul(mod) != null) {
-			return "redirect:/modul/show/"+mod.getDID();
+			return "redirect:/modul/show/"+mod.getMID();
 		}
 		else {
 			redirectAttributes.addAttribute("modulCreated", false);
@@ -58,7 +58,7 @@ public class ModulController {
 		else {
 			redirectAttributes.addAttribute("modulUpdated", false);
 		}
-		return "redirect:/modul/show/"+aModul.getDID();
+		return "redirect:/modul/show/"+aModul.getMID();
 	}
 	
 	@GetMapping(path="") 
