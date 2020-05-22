@@ -22,6 +22,14 @@ public class Studienrichtung implements Serializable {
 	private int riID;
 	
 	private String name;
+	
+	public int getriID() {
+		return riID;
+	}
+	
+	public void setriID(int riID) {
+		this.riID = riID;
+	}
 
 	public String getName() {
 		return name;
