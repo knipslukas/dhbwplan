@@ -40,7 +40,7 @@
 	    </c:choose>
 	
     	<!-- Start Orentierungszeile -->
-	   	<div class="alert moduluebersicht d-flex align-items-center" role="alert">
+	   	<div class="alert dozentuebersicht d-flex align-items-center" role="alert">
 			<h1 class="text-white my-1">Modulansicht</h1>
 			<a href="/modul/edit/${modul.m_ID}" class="btn ml-auto DHBWbutton">Bearbeiten</a>
 			<button type="button" class="btn ml-2 DHBWbutton" data-toggle="modal" data-target="#deleteModal">Löschen</button>
