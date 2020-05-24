@@ -40,9 +40,9 @@
 	    </c:choose>
 	
     	<!-- Start Orentierungszeile -->
-	   	<div class="alert dozentuebersicht d-flex align-items-center" role="alert">
+	   	<div class="alert moduluebersicht d-flex align-items-center" role="alert">
 			<h1 class="text-white my-1">Modulansicht</h1>
-			<a href="/modul/edit/${modul.MID}" class="btn ml-auto DHBWbutton">Bearbeiten</a>
+			<a href="/modul/edit/${modul.m_ID}" class="btn ml-auto DHBWbutton">Bearbeiten</a>
 			<button type="button" class="btn ml-2 DHBWbutton" data-toggle="modal" data-target="#deleteModal">Löschen</button>
 			<a href="/modul" class="btn ml-2 DHBWbutton">Zurück</a>
         </div>
@@ -52,70 +52,52 @@
 	    	<div class="card col-sm-12 col-md-11 col-lg-8 mx-auto doz-card">
 	    		<div class="card-header text-center">
 	    			<h1><i class="fas fa-chalkboard-teacher fa-4x mb-5 mt-3"></i></h1>
-	    			<h1 class="card-title"><strong>${dozent.anrede} ${dozent.titel } ${dozent.nachname }</strong></h1>
-	    			<c:if test="${dozent.studiengangsleiter}">
-	    				<h6 class="text-secondary">Studiengangsleiter</h6>
-	    			</c:if>
+	    			<h1 class="card-title"><strong>${modul.modulbezeichnung}</strong></h1>
 	    		
 	    		</div>
 	   			<div class="card-body">
 	   				<div class="row text-center border border-left-0 border-right-0 border-top-0">
-	   					<div class="col-6"><p><strong>Name</strong></p></div>
+	   					<div class="col-6"><p><strong>Semester</strong></p></div>
 	   					<div class="col-6">
-	   						<p>${dozent.vorname } ${dozent.nachname }</p>
+	   						<p>${modul.semester}. Semester </p>
+	   					</div>
+	   					<div class="col-6"><p><strong>ECTS-Punkte</strong></p></div>
+	   					<div class="col-6">
+	   						<p>${modul.ectsPunkte} Punkte </p>
 	   					</div>
 	   				</div>
 	   				<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
-	   					<div class="col-6"><p><strong>E-Mail</strong></p></div>
+	   					<div class="col-6"><p><strong>Präsenzzeit</strong></p></div>
 	   					<div class="col-6">
-	   						<p><a href="mailto:${dozent.email }">${dozent.email }</a></p>
+	   						<p>${modul.präsenzzeit} Unterrichtseinheiten</p>
 	   					</div>
-	   					<div class="col-6"><p><strong>Telefon</strong></p></div>
+	   					<div class="col-6"><p><strong>Selbststudium</strong></p></div>
 	   					<div class="col-6">
-	   						<p>${dozent.telefonnummer }</p>
+	   						<p>${modul.selbststudium} Unterrichtseinheiten</p>
 	   					</div>
-	   				</div>
-	   				<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
-	   					<div class="col-6"><p><strong>Unternehmen</strong></p></div>
+	   					<div class="col-6"><p><strong>Moduldauer</strong></p></div>
 	   					<div class="col-6">
-	   						<p>${dozent.unternehmen }</p>
-	   					</div>
-	   					<div class="col-6 doz-einzel-adresse"><p><strong>Adresse</strong></p></div>
-	   					<div class="col-6 doz-einzel-adresse">
-	   						<p>${dozent.strassehaus }</p>
-	   					</div>
-	   					<div class="col-6"></div>
-	   					<div class="col-6">
-	   						<p>${dozent.plz } ${dozent.stadt }</p>
+	   						<p>${modul.moduldauer} Unterrichtseinheiten</p>
 	   					</div>
 	   				</div>
 	   				<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
-	   					<div class="col-6"><p><strong>Schwerpunkte</strong></p></div>
+	   					<div class="col-6"><p><strong>Modulart</strong></p></div>
 	   					<div class="col-6">
-	   						<p>${dozent.schwerpunkt }</p>
+	   						<p>${modul.modulart}</p>
 	   					</div>
-	   					<div class="col-6"><p><strong>Präferenzzeitraum</strong></p></div>
+	   					<div class="col-6"><p><strong>Prüfungsleistungen</strong></p></div>
 	   					<div class="col-6">
-	   						<c:choose>
-	   							<c:when test="${dozent.zeitpraef eq 'VORMITTAG'}">
-	   								<p>Vormittags</p>
-	   							</c:when>
-	   							<c:when test="${dozent.zeitpraef eq 'NACHMITTAG'}">
-	   								<p>Nachmittags</p>
-	   							</c:when>
-	   							<c:when test="${dozent.zeitpraef eq 'ABEND'}">
-	   								<p>Abends</p>
-	   							</c:when>
-	   							<c:otherwise>
-	   								<p>Keine Vorgabe</p>
-	   							</c:otherwise>
-	   						</c:choose>
+	   						<p>${modul.prüfungsleistungen}</p>
 	   					</div>
 	   				</div>
-	   				<div class="row mt-4 text-center">
-	   					<div class="col-6"><p><strong>Notizen </strong></p></div>
+	   				<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
+	   					<div class="col-6"><p><strong>Beschreibung</strong></p></div>
 	   					<div class="col-6">
-	   						<p>${dozent.notiz }</p>
+	   						<p>${modul.beschreibung }</p>
+	   					</div>
+	   					<div class="col-6"><p><strong>Sprache</strong></p></div>
+	   					<div class="col-6">
+	   						<p>${modul.sprache}</p>
 	   					</div>
 	   				</div>
 	   			</div>
@@ -128,11 +110,11 @@
 			<div class="modal-content">
 				<div class="modal-body">
 					<h1><strong>Achtung!</strong></h1>
-					<h4>Wollen Sie wirklich ${dozent.anrede } ${dozent.nachname } löschen?</h4>
+					<h4>Wollen Sie wirklich das Modul ${modul.modulbezeichnung} löschen?</h4>
 				</div>
 				
 				<div class="modal-footer">
-					<a href="/dozent/delete/${dozent.DID }" class="btn btn-danger">Unwiderruflich löschen</a>
+					<a href="/modul/delete/${modul.m_ID}" class="btn btn-danger">Unwiderruflich löschen</a>
 					<button type="button" class="btn DHBWbutton" data-dismiss="modal">Abbrechen</button>
 				</div>
 			</div>
