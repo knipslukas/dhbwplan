@@ -59,12 +59,6 @@ public class StudiengangService {
 		try {
 			Studiengang oStudiengang;
 			if ((oStudiengang = studiengangRepository.findByStID(aStudiengang.getID())) != null) { 
-				if (oStudiengang.getUser() != null) {
-
-						oStudiengang.setUser(oStudiengang.getUser());
-						oStudiengang.setBeschreibung(oStudiengang.getBeschreibung());
-						oStudiengang.setName(oStudiengang.getName());
-				}
 				studiengangRepository.save(aStudiengang);
 			} else {
 				LOG.warn("Studiengang not found");
@@ -112,20 +106,5 @@ public class StudiengangService {
 			return null;
 		}
 	}
-//	
-// 
-//	public List<Dozent> getDozentByNachname(String aNachname) {
-//		
-//		return dozentRepository.findBynachname(aNachname);	
-//	}
-//	
-//	public List<Dozent> getDozentByEmail(String aEmail) {
-//		
-////		List<Dozent> temp = dozentRepository.findBymEmail(aEmail);
-////		return temp;
-//
-//		
-//		return result;
-//	}
 
 }

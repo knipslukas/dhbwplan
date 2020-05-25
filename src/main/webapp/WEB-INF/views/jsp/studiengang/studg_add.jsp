@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <template:template pageTitle="${pageTitle}">
-    <template:navbar user="${currentUser}"/>
+<template:navbar user="${currentUser}"/>
 
 
 	<div class="container">
