@@ -101,4 +101,5 @@ public class ModulkatalogController {
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "modulkatalog/mk_add";
 	 }
+	
 }
