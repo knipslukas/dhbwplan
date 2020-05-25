@@ -68,7 +68,7 @@ public class StudiengangController {
 		return "redirect:/studiengang/show/"+aStudiengang.getID();
 	}
 	 
-	@GetMapping(path="/getAll") 
+	@GetMapping(path="/") 
 	public String getAllDozent(Model model, @RequestParam (required = false) String name,
 			@RequestParam(required = false) Object StudiengangDeleted,
 			@RequestParam(required = false) Object StudiengangCreated) {
