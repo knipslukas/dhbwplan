@@ -29,11 +29,6 @@ public class StudiengangController {
 	
 	@Autowired
 	private UserService userServ;
-	
-	@GetMapping(value ="")
-	public String redirectMain() {
-		return "redirect:/studiengang/getAll";
-	}
 
 	@PostMapping(path = "/add")
 	public String addStudiengang(@ModelAttribute Studiengang studg, RedirectAttributes redirectAttributes) {

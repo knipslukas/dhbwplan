@@ -25,8 +25,6 @@ public class Studiengang implements Serializable {
 	
 	private String beschreibung;
 
-	private User user;
-
 	public String getName() {
 		return name;
 	}
@@ -45,13 +43,5 @@ public class Studiengang implements Serializable {
 
 	public int getID() {
 		return stID;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 }
