@@ -77,7 +77,7 @@ public class VorlesungController {
 	 
 	 @GetMapping(path="/show/{aID}") 
 	 public String getAllVorlesung(Model model, @PathVariable int aID, @RequestParam(required = false) Object vorlesungUpdated) {
-		 model.addAttribute("vorlesung", mVorlesungService.getVorlesungByID(aID));
+		 model.addAttribute("vorlesung", mVorlesungService.getVorlesungByVID(aID));
 		 model.addAttribute("vorlesungUpdated", vorlesungUpdated);
 		 model.addAttribute("pageTitle", "DHBW - Vorlesungsansicht");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
