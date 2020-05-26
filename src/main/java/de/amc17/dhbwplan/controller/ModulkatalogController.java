@@ -87,4 +87,19 @@ public class ModulkatalogController {
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "modulkatalog/mk_overview";
 	 }
+	 @GetMapping(value = "/edit/{dID}")
+	 public String editDozent(Model model, @PathVariable int dID) {
+		 model.addAttribute("modulkatalog", mModulkatalogService.getModulkatalogByID(dID));
+		 model.addAttribute("pageTitle", "DHBW - Modulkatalog bearbeiten");
+		 model.addAttribute("currentUser", userServ.getCurrentUser());
+		 return "modulkatalog/mk_edit";
+	 }
+	 
+	 @GetMapping(value ="/add")
+	 public String addModulkatalogUi(Model model) {
+		 model.addAttribute("pageTitle", "DHBW - Modulkatalog Anlegen");
+		 model.addAttribute("currentUser", userServ.getCurrentUser());
+		 return "modulkatalog/mk_add";
+	 }
+	
 }
