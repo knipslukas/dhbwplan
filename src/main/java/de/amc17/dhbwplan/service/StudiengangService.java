@@ -58,7 +58,7 @@ public class StudiengangService {
 	public boolean updateStudiengang(Studiengang aStudiengang) {
 		try {
 			Studiengang oStudiengang;
-			if ((oStudiengang = studiengangRepository.findByStID(aStudiengang.getID())) != null) { 
+			if ((oStudiengang = studiengangRepository.findByStID(aStudiengang.getSTID())) != null) { 
 				studiengangRepository.save(aStudiengang);
 			} else {
 				LOG.warn("Studiengang not found");

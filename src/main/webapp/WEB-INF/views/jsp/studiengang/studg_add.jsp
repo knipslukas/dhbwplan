@@ -10,28 +10,28 @@
 	<div class="container">
 	
     	<!-- Start Orentierungszeile -->
-	   	<div class="alert dozentuebersicht d-flex align-items-center" role="alert">
+		<div class="alert dozentuebersicht d-flex align-items-center" role="alert">
 			<h1 class="text-white my-1">Studiengang anlegen</h1>
 			<a href="/studiengang" class="btn ml-auto DHBWbutton">Zurück</a>
-        </div>
+		</div>
     	<!-- Ende Orentierungszeile -->
 	
 	    <!-- Start Content -->
-	    <div class="dhbw_content mt-5">
-	        <!-- Start Formular -->
-	        <form class="pb-3 js-form-dozanleg" method="POST" action="/studiengang/add">	      
-	        	  
-	            <div class="form-group row">
-	                <label for="anrede" class="col-2 col-form-label">Studiengang</label>
-	                <div class="col-10">
+		<div class="dhbw_content mt-5">
+			<!-- Start Formular -->
+			<form class="pb-3 js-form-dozanleg" method="POST" action="/studiengang/add">	      
+					
+				<div class="form-group row">
+					<label for="anrede" class="col-2 col-form-label">Studiengang</label>
+					<div class="col-10">
 						<input type="text" name="name" class="form-control" placeholder="Studiengangsname eingeben">
-	                </div>
-	            </div>
-	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Beschreibung</label>
-	                <div class="col-10">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-2 col-form-label">Beschreibung</label>
+					<div class="col-10">
 						<textarea class="form-control" name="beschreibung" placeholder="Hier können Sie eine Beschreibung ergänzen"></textarea>
-	            	</div>
+					</div>
 				</div>
 	            
 	            <!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->

@@ -33,7 +33,7 @@ public class StudiengangController {
 	@PostMapping(path = "/add")
 	public String addStudiengang(@ModelAttribute Studiengang studg, RedirectAttributes redirectAttributes) {
 		if (mStudiengangService.addStudiengang(studg) != null) {
-			return "redirect:/studiengang/show/"+studg.getID();
+			return "redirect:/studiengang/show/"+studg.getSTID();
 		}
 		else {
 			redirectAttributes.addAttribute("studiengangCreated", false);
@@ -60,7 +60,7 @@ public class StudiengangController {
 		else {
 			redirectAttributes.addAttribute("studiengangUpdated", false);
 		}
-		return "redirect:/studiengang/show/"+aStudiengang.getID();
+		return "redirect:/studiengang/show/"+aStudiengang.getSTID();
 	}
 	 
 	@GetMapping(path="/") 

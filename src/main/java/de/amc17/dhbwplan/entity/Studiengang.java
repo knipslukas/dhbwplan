@@ -41,7 +41,7 @@ public class Studiengang implements Serializable {
 		this.beschreibung = beschreibung;
 	}
 
-	public int getID() {
+	public int getSTID() {
 		return stID;
 	}
 }
