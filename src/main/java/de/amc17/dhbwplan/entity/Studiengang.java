@@ -42,9 +42,9 @@ public class Studiengang implements Serializable {
 	}
 
 	public int getSTID() {
-		// TODO Auto-generated method stub
 		return stID;
 	}
+
 	public void setSTID(int STID) {
 		this.stID = STID;
 	}

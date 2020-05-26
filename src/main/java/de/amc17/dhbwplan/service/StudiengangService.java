@@ -7,7 +7,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import de.amc17.dhbwplan.entity.Dozent;
 import de.amc17.dhbwplan.entity.Studiengang;
+import de.amc17.dhbwplan.repository.DozentRepository;
 import de.amc17.dhbwplan.repository.StudiengangRepository;
 
 import java.util.List;
@@ -34,7 +36,8 @@ public class StudiengangService {
 	public Studiengang addStudiengang(Studiengang aStudiengang) {
 		
 		try {
-			
+			if (aStudiengang.getBeschreibung() == "") aStudiengang.setBeschreibung("Keine Daten");
+			if (aStudiengang.getName() == "") aStudiengang.setName("Keine Daten");
 			studiengangRepository.save(aStudiengang);
 		} catch (Exception e) {
 			return null;
@@ -43,9 +46,9 @@ public class StudiengangService {
 		return aStudiengang;
 	}
 
-	public boolean deleteStudiengang(int aSTID) {
+	public boolean deleteStudiengang(int aDID) {
 		try {
-			studiengangRepository.deleteById(aSTID);
+			studiengangRepository.deleteById(aDID);
 		} catch (Exception e){
 			return false;
 		}
@@ -56,11 +59,7 @@ public class StudiengangService {
 		try {
 			Studiengang oStudiengang;
 			if ((oStudiengang = studiengangRepository.findByStID(aStudiengang.getSTID())) != null) { 
-						aStudiengang.setName(oStudiengang.getName());
-						aStudiengang.setBeschreibung(oStudiengang.getBeschreibung());
-					
-				
-						studiengangRepository.save(aStudiengang);
+				studiengangRepository.save(aStudiengang);
 			} else {
 				LOG.warn("Studiengang not found");
 				return false;
@@ -73,11 +72,11 @@ public class StudiengangService {
 		return true;
 	}
 
-	public List<Studiengang> getAllStudiengang(String aName, String aBeschreibung) {		
+	public List<Studiengang> getAllStudiengangs(String aName) {		
 		try {
 			if (aName != null) {
-				return studiengangRepository.findByName(aName);			
-			}
+				return studiengangRepository.findByName(aName);	
+			} 
 			List<Studiengang> list = studiengangRepository.findByOrderByNameAsc();
 			if (!list.isEmpty()) {
 				return list;
@@ -87,32 +86,24 @@ public class StudiengangService {
 			e.printStackTrace();
 			return null;
 		}
-	}
+	}	
 
-	public Studiengang getStudiengangByID(int aSTID) {
+	public Studiengang getDozentByID(int aSID) {
 		try {
-			return studiengangRepository.findByStID(aSTID); 
+			return studiengangRepository.findByStID(aSID); 
 		} catch (Exception e ){
 			return null;
 		}
 	}
 	
-	
-	
-//	
-// 
-//	public List<Dozent> getDozentByNachname(String aNachname) {
-//		
-//		return dozentRepository.findBynachname(aNachname);	
-//	}
-//	
-//	public List<Dozent> getDozentByEmail(String aEmail) {
-//		
-////		List<Dozent> temp = dozentRepository.findBymEmail(aEmail);
-////		return temp;
-//
-//		
-//		return result;
-//	}
+	public List<Studiengang> getAllStudiengangsForUser() {
+		try {
+			return studiengangRepository.findAll();
+		}
+		catch (Exception e) {
+			LOG.error("StudiengangService - No Users found or Query invalid! \n "+e);
+			return null;
+		}
+	}
 
 }
