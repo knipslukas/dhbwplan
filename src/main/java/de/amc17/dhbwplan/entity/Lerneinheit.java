@@ -24,6 +24,14 @@ public class Lerneinheit implements Serializable {
 	private int praesenzzeit;
 	
 	private int selbststudium;
+	
+	public int getLEID() {
+		return LEID;
+	}
+	
+	public void setLEID(int LEID) {
+		this.LEID = LEID;
+	}
 
 	public int getPraesenzzeit() {
 		return praesenzzeit;

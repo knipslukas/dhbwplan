@@ -24,7 +24,7 @@ public class Vorlesung implements Serializable {
 	private int vorlesungsstunden;
 	
 	private String name;
-
+	
 	public int getVorlesungsstunden() {
 		return vorlesungsstunden;
 	}
@@ -39,5 +39,15 @@ public class Vorlesung implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+		
+	
+
+	public int getVID() {
+		return VID;
+	}
+	
+	public void setVID(int VID) {
+		this.VID = VID;
 	}
 }
