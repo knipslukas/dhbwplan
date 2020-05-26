@@ -36,7 +36,7 @@ public class DozentController {
 		else {
 			redirectAttributes.addAttribute("dozentCreated", false);
 		}
-		return "redirect:/dozent/getAll/"
+		return "redirect:/dozent/getAll/";
 	}
 
 	@GetMapping(value = "/delete/{aID}")
