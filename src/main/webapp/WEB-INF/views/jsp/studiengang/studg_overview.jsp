@@ -34,7 +34,7 @@
 	   	
        	<div class="alert dozentuebersicht d-flex align-items-center" role="alert">
 			<h1 class="text-white my-1">Studiengangübersicht</h1>
-			<a href="/dozent/add" class="btn ml-auto DHBWbutton">Studiengang anlegen</a>
+			<a href="/studiengang/add" class="btn ml-auto DHBWbutton">Studiengang anlegen</a>
         </div>
         
 	    <!-- Ende Orentierungszeile -->

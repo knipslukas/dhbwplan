@@ -38,7 +38,7 @@ public class StudiengangController {
 		else {
 			redirectAttributes.addAttribute("studiengangCreated", false);
 		}
-		return "redirect:/studiengang/getAll/";
+		return "redirect:/studiengang/";
 	}
 
 	@GetMapping(value = "/delete/{aID}")
@@ -49,7 +49,7 @@ public class StudiengangController {
 		else {
 			redirectAttributes.addAttribute("StudiengangDeleted", false);
 		}
-		return "redirect:/studiengang/getAll";
+		return "redirect:/studiengang";
 	}
 
 	@PostMapping(path = "/update/{aID}")
@@ -63,7 +63,7 @@ public class StudiengangController {
 		return "redirect:/studiengang/show/"+aStudiengang.getSTID();
 	}
 	 
-	@GetMapping(path="/") 
+	@GetMapping(path="") 
 	public String getAllDozent(Model model, @RequestParam (required = false) String name,
 			@RequestParam(required = false) Object StudiengangDeleted,
 			@RequestParam(required = false) Object StudiengangCreated) {
@@ -73,7 +73,7 @@ public class StudiengangController {
 		 model.addAttribute("studiengangCreated", StudiengangCreated);
 		 model.addAttribute("pageTitle", "DHBW - Übersicht Dozenten");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
-		 return "dozent/doz_overview";
+		 return "studiengang/studg_overview";
 	 }
 	 
 	 @GetMapping(path="/show/{aID}") 
@@ -82,7 +82,7 @@ public class StudiengangController {
 		 model.addAttribute("dozentUpdated", dozentUpdated);
 		 model.addAttribute("pageTitle", "DHBW - Dozentansicht");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
-		 return "dozent/doz_einzel";
+		 return "studiengang/studg_einzel";
 		 
 	 }
 	 
@@ -91,14 +91,14 @@ public class StudiengangController {
 		 model.addAttribute("dozent", mStudiengangService.getDozentByID(dID));
 		 model.addAttribute("pageTitle", "DHBW - Dozent bearbeiten");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
-		 return "dozent/doz_edit";
+		 return "studiengang/studg_edit";
 	 }
 	 
 	 @GetMapping(value ="/add")
 	 public String addDozentUi(Model model) {
 		 model.addAttribute("pageTitle", "DHBW - Dozent Anlegen");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
-		 return "dozent/doz_add";
+		 return "studiengang/studg_add";
 	 }
 
 }
