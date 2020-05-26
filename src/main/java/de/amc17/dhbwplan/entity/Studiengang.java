@@ -44,4 +44,8 @@ public class Studiengang implements Serializable {
 	public int getSTID() {
 		return stID;
 	}
+
+	public void setSTID(int STID) {
+		this.stID = STID;
+	}
 }

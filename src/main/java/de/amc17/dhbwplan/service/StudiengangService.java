@@ -86,8 +86,7 @@ public class StudiengangService {
 			e.printStackTrace();
 			return null;
 		}
-	}
-	
+	}	
 
 	public Studiengang getDozentByID(int aSID) {
 		try {

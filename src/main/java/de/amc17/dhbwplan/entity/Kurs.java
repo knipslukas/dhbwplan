@@ -18,13 +18,13 @@ public class Kurs implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="KID")
+	@Column(name = "KID")
 	private int KID;
-	
+
 	private String name;
-	
+
 	private int jahrgang;
-	
+
 	private int anzahlStudierende;
 
 	public String getName() {
@@ -49,5 +49,13 @@ public class Kurs implements Serializable {
 
 	public void setAnzahlStudierende(int anzahlStudierende) {
 		this.anzahlStudierende = anzahlStudierende;
+	}
+
+	public int getKID() {
+		return KID;
+	}
+
+	public void setKID(int KID) {
+		this.KID = KID;
 	}
 }

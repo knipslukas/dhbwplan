@@ -14,5 +14,5 @@ public interface VorlesungRepository extends CrudRepository<Vorlesung, Integer> 
 	public List<Vorlesung> findByOrderByNameAsc();
 	
 	public List<Vorlesung> findAll();
-	public Vorlesung findByVID(int id);
+	public Vorlesung findByVID(int VID);
 }
