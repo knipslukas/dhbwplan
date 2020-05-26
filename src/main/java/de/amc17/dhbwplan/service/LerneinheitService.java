@@ -15,94 +15,94 @@ import org.springframework.stereotype.Service;
 @Service
 public class LerneinheitService
 {
-@Resource
-private LerneinheitRepository LerneinheitRepository;
+	@Resource
+	private LerneinheitRepository LerneinheitRepository;
 
-private static final Logger LOG = LogManager.getLogger(UserService.class.getName());
+	private static final Logger LOG = LogManager.getLogger(UserService.class.getName());
 
-public Lerneinheit addLerneinheit(Lerneinheit aLerneinheit)
-{
-try
-{
-if (String.valueOf(aLerneinheit.getPraesenzzeit()) == null) aLerneinheit.setPräsenzzeit(0);
-if (String.valueOf(aLerneinheit.getSelbststudium()) == null) aLerneinheit.setSelbststudium(0);
-if(aLerneinheit.getBezeichnung()== "") aLerneinheit.setBezeichnung("Keine Daten");
-LerneinheitRepository.save(aLerneinheit);
-}
-catch (Exception e)
-{
-return null;
-}
-return aLerneinheit;
-}
+	public Lerneinheit addLerneinheit(Lerneinheit aLerneinheit)
+	{
+		try
+		{
+			if (String.valueOf(aLerneinheit.getPraesenzzeit()) == null) aLerneinheit.setPräsenzzeit(0);
+			if (String.valueOf(aLerneinheit.getSelbststudium()) == null) aLerneinheit.setSelbststudium(0);
+			if(aLerneinheit.getBezeichnung()== "") aLerneinheit.setBezeichnung("Keine Daten");
+			LerneinheitRepository.save(aLerneinheit);
+		}
+		catch (Exception e)
+		{
+			return null;
+		}
+		return aLerneinheit;
+	}
 
-public boolean deleteLerneinheit(int aLEID)
-{
-try
-{
-LerneinheitRepository.deleteById(aLEID);
-}
-catch(Exception e)
-{
-return false;
-}
-return true;
-}
+	public boolean deleteLerneinheit(int aLEID)
+	{
+		try
+		{
+			LerneinheitRepository.deleteById(aLEID);
+		}
+		catch(Exception e)
+		{
+			return false;
+		}
+		return true;
+	}
 
-public boolean updateLerneinheit(Lerneinheit aLerneinheit)
-{
-try
-{
-Lerneinheit oLerneinheit;
-if((oLerneinheit = LerneinheitRepository.findByLEID(aLerneinheit.getLEID()))!= null)
-{
-LerneinheitRepository.save(aLerneinheit);
-}
-else
-{
-LOG.warn("Lerneinheit not found");
-return false;
-}
-}
-catch (Exception e)
-{
-LOG.error(e);
-return false;
-}
-return true;
-}
-
-public List<Lerneinheit> getAllLerneinheit(String aBezeichnung)
-{
-try
-{
-if (aBezeichnung != null)
-{
-return LerneinheitRepository.findbyBezeichnung(aBezeichnung);
-}
-List<Lerneinheit> list = LerneinheitRepository.findByOrderByBezeichnungAsc();
-if (!list.isEmpty())
-{
-return list;
-}
-else return null;
-}
-catch (Exception e)
-{
-e.printStackTrace();
-return null;
-}
-}
-
-public Lerneinheit getLerneinheitByID(int aLEID)
-{
-try
-{
-return LerneinheitRepository.findByLEID(aLEID);
-}
-catch (Exception e )
-{
-return null;
-}
-}
+	public boolean updateLerneinheit(Lerneinheit aLerneinheit)
+	{
+		try
+		{	
+			Lerneinheit oLerneinheit;
+			if((oLerneinheit = LerneinheitRepository.findByLEID(aLerneinheit.getLEID()))!= null)
+			{
+				LerneinheitRepository.save(aLerneinheit);
+			}	
+			else
+			{
+				LOG.warn("Lerneinheit not found");
+				return false;
+			}
+		}	
+		catch (Exception e)
+		{
+			LOG.error(e);
+			return false;
+		}
+		return true;
+	}	
+	
+	public List<Lerneinheit> getAllLerneinheit(String aBezeichnung)
+	{
+		try
+		{
+			if (aBezeichnung != null)
+			{	
+				return LerneinheitRepository.findAllByBezeichnung(aBezeichnung);
+			}
+			List<Lerneinheit> list = LerneinheitRepository.findByOrderByBezeichnungAsc();
+			if (!list.isEmpty())
+			{
+				return list;
+			}
+			else return null;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public Lerneinheit getLerneinheitByID(int aLEID)
+	{
+		try
+		{
+			return LerneinheitRepository.findByLEID(aLEID);
+		}
+		catch (Exception e )
+		{
+			return null;
+		}
+	}
 }
