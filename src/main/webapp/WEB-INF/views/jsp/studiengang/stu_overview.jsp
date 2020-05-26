@@ -69,8 +69,6 @@
 	                			<td>Kein Studiengang vorhanden</td>
 	                			<td></td>
 	                			<td></td>
-	                			<td></td>
-	                			<td></td>
 
 	                		</tr>
 	                	</c:otherwise>
