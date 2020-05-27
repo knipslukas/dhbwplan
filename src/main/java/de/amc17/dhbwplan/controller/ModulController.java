@@ -69,7 +69,7 @@ public class ModulController {
 		 model.addAttribute("modulList", mModulService.getAllModul(bezeichnung, modulart));
 		 model.addAttribute("modulDeleted", modulDeleted);
 		 model.addAttribute("modulCreated", modulCreated);
-		 model.addAttribute("pageTitle", "DHBW - Übersicht Module");
+		 model.addAttribute("pageTitle", "DHBW - Ãœbersicht Module");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "modul/mod_overview";
 	 }
