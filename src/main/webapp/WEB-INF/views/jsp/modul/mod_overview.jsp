@@ -45,16 +45,14 @@
 	         <table class="table table-hover">
 	              <thead class="thead-light">
 	                <tr>
-<!-- 	                  <th scope="col"><strong>Modul Nummer</strong></th> -->
+<!-- 	              			<th scope="col"><strong>Modul Nummer</strong></th> -->
 	                  <th scope="col"><strong>Bezeichnung</strong></th>
-	                  <th scope="col"><strong>Studienjahr</strong></th>
-	                  <th scope="col"><strong>Selbststudium</strong></th>
-	                  <th scope="col"><strong>Moduldauer</strong></th>
 	                  <th scope="col"><strong>Modulart</strong></th>
-	                  <th scope="col"><strong>Prüfungsleistung</strong></th>
-	                  <th scope="col"><strong>Beschreibung</strong></th>
-	                  <th scope="col"><strong>Sprache</strong></th>
+	                  <th scope="col"><strong>Moduldauer</strong></th>
+	                  <th scope="col"><strong>Studienjahr</strong></th>
 	                  <th scope="col"><strong>Präsenszeit</strong></th>
+	                  <th scope="col"><strong>Selbststudium</strong></th>
+	                  <th scope="col"><strong>Prüfungsleistung</strong></th>
 	                  <th scope="col"><strong>ECTS-Punkte</strong></th>
 	                </tr>
 	              </thead>
@@ -66,14 +64,12 @@
 	                			<tr>
 <%-- 					                <td scope="row" class="align-middle">${modul.DID}</td> --%>
 					                <td scope="row" class="align-middle">${modul.bezeichnung }</td>
-					                <td scope="row" class="align-middle">${modul.studienjahr }</td>
-					                <td scope="row" class="align-middle">${modul.selbststudium }</td>
-					                <td scope="row" class="align-middle">${modul.moduldauer }</td>
 					                <td scope="row" class="align-middle">${modul.modulart }</td>
-					                <td scope="row" class="align-middle">${modul.prüfungsleistung }</td>
-					                <td scope="row" class="align-middle">${modul.beschreibung }</td>
-					                <td scope="row" class="align-middle">${modul.sprache }</td>
+					                <td scope="row" class="align-middle">${modul.moduldauer }</td>
+					                <td scope="row" class="align-middle">${modul.studienjahr }</td>
 					                <td scope="row" class="align-middle">${modul.präsenszeit }</td>
+					                <td scope="row" class="align-middle">${modul.selbststudium }</td>
+					                <td scope="row" class="align-middle">${modul.prüfungsleistung }</td>
 					                <td scope="row" class="align-middle">${modul.ectsPunkte }</td>
 					                <td scope="row" class="align-middle"><a href="/modul/show/${modul.DID}" class="btn btn-sm btn-secondary">Anzeigen</a></td>
 				                </tr>
