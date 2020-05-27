@@ -1,15 +1,24 @@
 package de.amc17.dhbwplan.service;
 
+import java.util.Optional;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import de.amc17.dhbwplan.entity.Modul;
+import de.amc17.dhbwplan.repository.ModulRepository;
+
 import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
-
-import de.amc17.dhbwplan.entity.Modul;
-import de.amc17.dhbwplan.repository.ModulRepository;
 
 
 @Service
@@ -53,7 +62,7 @@ public class ModulService
 		try
 		{
 			Modul oModul;
-			if((oModul = modulRepository.findById(aModul.getMID()).get())!= null)
+			if((oModul = modulRepository.findByMID(aModul.getMID()))!= null)
 			{
 				modulRepository.save(aModul);
 			}
@@ -71,13 +80,13 @@ public class ModulService
 		return true;
 	}
 	
-	public List<Modul> getAllModul(String aBezeichnung, String modulart) 
+	public List<Modul> getAllModul(String aBezeichnung) 
 	{		
 		try 
 		{
 			if (aBezeichnung != null) 
 			{
-				return modulRepository.findByBezeichnung(aBezeichnung);			
+				return modulRepository.findBybezeichnung(aBezeichnung);			
 			} 
 			List<Modul> list = modulRepository.findByOrderByBezeichnungAsc();
 			if (!list.isEmpty()) 
@@ -97,7 +106,7 @@ public class ModulService
 	{
 		try 
 		{
-			return modulRepository.findById(aMID).get(); 
+			return modulRepository.findByMID(aMID); 
 		} 
 		catch (Exception e )
 		{
@@ -105,6 +114,18 @@ public class ModulService
 		}
 	}
 	
+	public List<Modul> getAllModulForUser() 
+	{
+		try 
+		{
+			return modulRepository.allModulOhneUser();
+		}
+		catch (Exception e) 
+		{
+			LOG.error("ModulService - No Users found or Query invalid! \n "+e);
+			return null;
+		}
+	}
 	
 	
 }
