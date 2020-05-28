@@ -73,14 +73,6 @@ public class Modul implements Serializable {
 		this.modulart = modulart;
 	}
 
-	public String getPrüfungsleistung() {
-		return pruefungsleistung;
-	}
-
-	public void setPrüfungsleistung(String prüfungsleistung) {
-		this.pruefungsleistung = prüfungsleistung;
-	}
-
 	public String getBeschreibung() {
 		return beschreibung;
 	}
@@ -128,6 +120,14 @@ public class Modul implements Serializable {
 	
 	public void setMID(int MID) {
 		this.MID = MID;
+	}
+
+	public String getPruefungsleistung() {
+		return pruefungsleistung;
+	}
+
+	public void setPruefungsleistung(String pruefungsleistung) {
+		this.pruefungsleistung = pruefungsleistung;
 	}
 
 }
