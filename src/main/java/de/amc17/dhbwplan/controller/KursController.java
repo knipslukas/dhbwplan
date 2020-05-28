@@ -34,7 +34,7 @@ public class KursController {
 		} else {
 			redirectAttributes.addAttribute("kursCreated", false);
 		}
-		return "redirect:/kurs/getAll/";
+		return "redirect:/kurs/";
 	}
 
 	@GetMapping(value = "/delete/{aID}")
@@ -44,7 +44,7 @@ public class KursController {
 		} else {
 			redirectAttributes.addAttribute("kursDeleted", false);
 		}
-		return "redirect:/kurs/getAll";
+		return "redirect:/kurs/";
 	}
 
 	@PostMapping(path = "/update/{aID}")
@@ -66,7 +66,7 @@ public class KursController {
 		model.addAttribute("kursCreated", kursCreated);
 		model.addAttribute("pageTitle", "DHBW - Übersicht Kurse");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
-		return "kurs/kurs_overview";
+		return "kurs/kur_overview";
 	}
 
 	@GetMapping(path = "/show/{aID}")
@@ -75,7 +75,7 @@ public class KursController {
 		model.addAttribute("kursUpdated", kursUpdated);
 		model.addAttribute("pageTitle", "DHBW - Kursansicht");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
-		return "kurs/kurs_einzel";
+		return "kurs/kur_einzel";
 
 	}
 
@@ -84,14 +84,14 @@ public class KursController {
 		model.addAttribute("kurs", mKursService.getKursByID(dID));
 		model.addAttribute("pageTitle", "DHBW - Kurs bearbeiten");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
-		return "kurs/kurs_edit";
+		return "kurs/kur_edit";
 	}
 
 	@GetMapping(value = "/add")
 	public String addKursUi(Model model) {
 		model.addAttribute("pageTitle", "DHBW - Kurs Anlegen");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
-		return "kurs/kurs_add";
+		return "kurs/kur_add";
 	}
 
 }

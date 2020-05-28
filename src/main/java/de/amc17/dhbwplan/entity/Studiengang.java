@@ -40,4 +40,12 @@ public class Studiengang implements Serializable {
 	public void setBeschreibung(String beschreibung) {
 		this.beschreibung = beschreibung;
 	}
+
+	public int getSTID() {
+		return stID;
+	}
+
+	public void setSTID(int STID) {
+		this.stID = STID;
+	}
 }

@@ -31,7 +31,15 @@ public class Praesenzzeitraum implements Serializable {
 	
 	@Temporal(TemporalType.TIME)
 	private Date bis;
-
+	
+	public int getPID() {
+		return PID;
+	}
+	
+	public void setPID(int PID) {
+		this.PID = PID;
+	}
+	
 	public int getSemester() {
 		return semester;
 	}
