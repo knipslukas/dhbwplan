@@ -64,10 +64,12 @@ public class VorlesungController {
 	 
 	 @GetMapping(value="") 
 	 public String getAllVorlesung(Model model, @RequestParam (required = false) String name, 
-			 @RequestParam (required = false) int vorlesungsstunden, @RequestParam(required = false) Object vorlesungDeleted,
+			 @RequestParam (required = false) String vorlesungsstunden, @RequestParam(required = false) Object vorlesungDeleted,
 			 @RequestParam(required = false) Object vorlesungCreated) {
-		 
-		 model.addAttribute("vorlesungList", mVorlesungService.getAllVorlesung(name, vorlesungsstunden));
+		 if (vorlesungsstunden == null) {
+			 vorlesungsstunden = "0";
+		 }
+		 model.addAttribute("vorlesungList", mVorlesungService.getAllVorlesung(name, Integer.parseInt(vorlesungsstunden)));
 		 model.addAttribute("vorlesungDeleted", vorlesungDeleted);
 		 model.addAttribute("vorlesungCreated", vorlesungCreated);
 		 model.addAttribute("pageTitle", "DHBW - Übersicht Vorlesungen");
