@@ -37,7 +37,7 @@ public class VorlesungController {
 		else {
 			redirectAttributes.addAttribute("vorlesungCreated", false);
 		}
-		return "redirect:/vorlesung/getAll/";
+		return "redirect:/vorlesung/";
 	}
 
 	@GetMapping(value = "/delete/{aID}")
@@ -48,7 +48,7 @@ public class VorlesungController {
 		else {
 			redirectAttributes.addAttribute("vorlesungDeleted", false);
 		}
-		return "redirect:/vorlesung/getAll";
+		return "redirect:/vorlesung/";
 	}
 
 	@PostMapping(path = "/update/{aID}")
@@ -59,7 +59,7 @@ public class VorlesungController {
 		else {
 			redirectAttributes.addAttribute("VorlesungUpdated", false);
 		}
-		return "redirect:/Vorlesung/show/"+aVorlesung.getVID();
+		return "redirect:/vorlesung/show/"+aVorlesung.getVID();
 	}
 	 
 	 @GetMapping(value="") 
