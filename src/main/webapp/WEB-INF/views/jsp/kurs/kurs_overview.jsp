@@ -49,7 +49,6 @@
 						<th scope="col"><strong>Name</strong></th>
 						<th scope="col"><strong>Jahrgang</strong></th>
 						<th scope="col"><strong>Anzahl Studierende</strong></th>
-						<th scope="col"><strong>Aktionen</strong></th>
 					</tr>
 				</thead>
 				<tbody>
