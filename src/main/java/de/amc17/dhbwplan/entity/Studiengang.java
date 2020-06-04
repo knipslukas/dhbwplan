@@ -1,6 +1,7 @@
 package de.amc17.dhbwplan.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +30,7 @@ public class Studiengang implements Serializable {
 	private String beschreibung;
 	
 	@OneToMany (mappedBy="studiengang")
-	 private Studienrichtung studienrichtung;
+	 private Set<Studienrichtung> studienrichtung;
 
 	public String getName() {
 		return name;

@@ -39,9 +39,11 @@
 	
 	   			<div class="form-group row">
 	                <label class="col-2 col-form-label">Studienrichtung</label>
-	                <div class="col-10">
+	                <div class="col-8">
 	                	<input type="text" name="studienrichtung" class="form-control" placeholder="Hier bitte die Studienrichtung ergänzen" value="${studiengang.studienrichtung }" required>
+	                	
 	                </div>
+	                <button type="submit" class="btn btn-success">Hinzufügen </button>
 	            </div>
 	
 		<div class="mt-5">
