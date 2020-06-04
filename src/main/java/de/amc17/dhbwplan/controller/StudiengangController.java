@@ -33,7 +33,7 @@ public class StudiengangController {
 	@PostMapping(path = "/add")
 	public String addStudiengang(@ModelAttribute Studiengang studg, RedirectAttributes redirectAttributes) {
 		if (mStudiengangService.addStudiengang(studg) != null) {
-			return "redirect:/studiengang/show/"+studg.getSTID();
+			return "redirect:/studiengang/show/"+studg.getStID();
 		}
 		else {
 			redirectAttributes.addAttribute("studiengangCreated", false);
@@ -60,7 +60,7 @@ public class StudiengangController {
 		else {
 			redirectAttributes.addAttribute("studiengangUpdated", false);
 		}
-		return "redirect:/studiengang/show/"+aStudiengang.getSTID();
+		return "redirect:/studiengang/show/"+aStudiengang.getStID();
 	}
 	 
 	@GetMapping(path="") 
@@ -71,16 +71,16 @@ public class StudiengangController {
 		 model.addAttribute("studiengangList", mStudiengangService.getAllStudiengangs(name));
 		 model.addAttribute("StudiengangDeleted", StudiengangDeleted);
 		 model.addAttribute("studiengangCreated", StudiengangCreated);
-		 model.addAttribute("pageTitle", "DHBW - Übersicht Dozenten");
+		 model.addAttribute("pageTitle", "DHBW - Übersicht Studiengänge");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "studiengang/studg_overview";
 	 }
 	 
 	 @GetMapping(path="/show/{aID}") 
 	 public String getAllDozent(Model model, @PathVariable int aID, @RequestParam(required = false) Object dozentUpdated) {
-		 model.addAttribute("dozent", mStudiengangService.getDozentByID(aID));
-		 model.addAttribute("dozentUpdated", dozentUpdated);
-		 model.addAttribute("pageTitle", "DHBW - Dozentansicht");
+		 model.addAttribute("studiengang", mStudiengangService.getStudiengangByID(aID));
+		 model.addAttribute("studiengangUpdated", dozentUpdated);
+		 model.addAttribute("pageTitle", "DHBW - Studiengangansicht");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "studiengang/studg_einzel";
 		 
@@ -88,7 +88,7 @@ public class StudiengangController {
 	 
 	 @GetMapping(value = "/edit/{dID}")
 	 public String editDozent(Model model, @PathVariable int dID) {
-		 model.addAttribute("dozent", mStudiengangService.getDozentByID(dID));
+		 model.addAttribute("dozent", mStudiengangService.getStudiengangByID(dID));
 		 model.addAttribute("pageTitle", "DHBW - Dozent bearbeiten");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "studiengang/studg_edit";
