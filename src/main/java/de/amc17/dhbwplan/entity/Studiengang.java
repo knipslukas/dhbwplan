@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Studiengang implements Serializable {
@@ -16,6 +18,7 @@ public class Studiengang implements Serializable {
 	 */
 	private static final long serialVersionUID = -3809708678940563950L;
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="StID")
@@ -24,6 +27,9 @@ public class Studiengang implements Serializable {
 	private String name;
 	
 	private String beschreibung;
+	
+	@OneToMany (mappedBy="studiengang")
+	 private Studienrichtung studienrichtung;
 
 	public String getName() {
 		return name;

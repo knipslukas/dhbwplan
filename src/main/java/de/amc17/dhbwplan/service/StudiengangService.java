@@ -88,7 +88,7 @@ public class StudiengangService {
 		}
 	}	
 
-	public Studiengang getDozentByID(int aSID) {
+	public Studiengang getStudiengangByID(int aSID) {
 		try {
 			return studiengangRepository.findByStID(aSID); 
 		} catch (Exception e ){

@@ -64,39 +64,39 @@ public class StudiengangController {
 	}
 	 
 	@GetMapping(path="") 
-	public String getAllDozent(Model model, @RequestParam (required = false) String name,
+	public String getAllStudiengang(Model model, @RequestParam (required = false) String name,
 			@RequestParam(required = false) Object StudiengangDeleted,
 			@RequestParam(required = false) Object StudiengangCreated) {
 		 
 		 model.addAttribute("studiengangList", mStudiengangService.getAllStudiengangs(name));
-		 model.addAttribute("StudiengangDeleted", StudiengangDeleted);
+		 model.addAttribute("studiengangDeleted", StudiengangDeleted);
 		 model.addAttribute("studiengangCreated", StudiengangCreated);
-		 model.addAttribute("pageTitle", "DHBW - Übersicht Dozenten");
+		 model.addAttribute("pageTitle", "DHBW - Übersicht Studiengang");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "studiengang/studg_overview";
 	 }
 	 
 	 @GetMapping(path="/show/{aID}") 
-	 public String getAllDozent(Model model, @PathVariable int aID, @RequestParam(required = false) Object dozentUpdated) {
-		 model.addAttribute("dozent", mStudiengangService.getDozentByID(aID));
-		 model.addAttribute("dozentUpdated", dozentUpdated);
-		 model.addAttribute("pageTitle", "DHBW - Dozentansicht");
+	 public String getAllStudiengang(Model model, @PathVariable int aID, @RequestParam(required = false) Object StudiengangUpdated) {
+		 model.addAttribute("studiengang", mStudiengangService.getStudiengangByID(aID));
+		 model.addAttribute("studiengangUpdated", StudiengangUpdated);
+		 model.addAttribute("pageTitle", "DHBW - Studiengangansicht");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "studiengang/studg_einzel";
 		 
 	 }
 	 
 	 @GetMapping(value = "/edit/{dID}")
-	 public String editDozent(Model model, @PathVariable int dID) {
-		 model.addAttribute("dozent", mStudiengangService.getDozentByID(dID));
-		 model.addAttribute("pageTitle", "DHBW - Dozent bearbeiten");
+	 public String editStudiengang(Model model, @PathVariable int dID) {
+		 model.addAttribute("studiengang", mStudiengangService.getStudiengangByID(dID));
+		 model.addAttribute("pageTitle", "DHBW - Studiengang bearbeiten");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "studiengang/studg_edit";
 	 }
 	 
 	 @GetMapping(value ="/add")
-	 public String addDozentUi(Model model) {
-		 model.addAttribute("pageTitle", "DHBW - Dozent Anlegen");
+	 public String addStudiengangUi(Model model) {
+		 model.addAttribute("pageTitle", "DHBW - Studiengang Anlegen");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "studiengang/studg_add";
 	 }
