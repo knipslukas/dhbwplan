@@ -53,9 +53,6 @@
 	    		<div class="card-header text-center">
 	    			<h1><i class="fas fa-chalkboard-teacher fa-4x mb-5 mt-3"></i></h1>
 					<h1 class="card-title"><strong>${studiengang.name}</strong></h1>
-	    			<c:if test="${dozent.studiengangsleiter}">
-	    				<h6 class="text-secondary">Studiengang</h6>
-	    			</c:if>
 	    		
 	    		</div>
 	   			<div class="card-body">
