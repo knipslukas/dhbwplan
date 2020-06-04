@@ -60,7 +60,7 @@
 <%-- 					                <td scope="row" class="align-middle">${studiengang.STID }</td> --%>
 					                <td scope="row" class="align-middle">${studiengang.name }</td>
 					                <td scope="row" class="align-middle">${studiengang.beschreibung }</td>
-					                <td scope="row" class="align-middle"><a href="/studiengang/show/${studiengang.STID}" class="btn btn-sm btn-secondary">Anzeigen</a></td>
+					                <td scope="row" class="align-middle"><a href="/studiengang/show/${studiengang.stID}" class="btn btn-sm btn-secondary">Anzeigen</a></td>
 				                </tr>
 	                		</c:forEach>
 	                	</c:when>

@@ -41,11 +41,11 @@ public class Studiengang implements Serializable {
 		this.beschreibung = beschreibung;
 	}
 
-	public int getSTID() {
+	public int getStID() {
 		return stID;
 	}
 
-	public void setSTID(int STID) {
-		this.stID = STID;
+	public void setStID(int stID) {
+		this.stID = stID;
 	}
 }

@@ -10,13 +10,13 @@
 	<div class="container">
 		
 		<c:choose>
-	    	<c:when test="${StudiengangCreated}">
+	    	<c:when test="${studiengangCreated}">
 		    	<div class="alert alert-success alert-dismissible">
 		    		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		    		<Strong>Studiengang erfolgreich erstellt</Strong>
 		    	</div>
 	    	</c:when>
-	    	<c:when test="${StudiengangCreated eq false}">
+	    	<c:when test="${studiengangCreated eq false}">
 	    		<div class="alert alert-danger alert-dismissible">
 	    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		    		<Strong>Studiengang konnte nicht erstellt werden</Strong>
@@ -25,13 +25,13 @@
 	    </c:choose>
 	    
 	    <c:choose>
-	    	<c:when test="${StudiengangUpdated}">
+	    	<c:when test="${studiengangUpdated}">
 		    	<div class="alert alert-success alert-dismissible">
 		    		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		    		<Strong>Studiengang erfolgreich aktualisiert</Strong>
 		    	</div>
 	    	</c:when>
-	    	<c:when test="${StudiengangUpdated eq false}">
+	    	<c:when test="${studiengangUpdated eq false}">
 	    		<div class="alert alert-danger alert-dismissible">
 	    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		    		<Strong>Studiengang konnte nicht aktualisiert werden</Strong>
@@ -42,7 +42,7 @@
     	<!-- Start Orentierungszeile -->
 	   	<div class="alert dozentuebersicht d-flex align-items-center" role="alert">
 			<h1 class="text-white my-1">Studiengangsansicht</h1>
-			<a href="/studiengang/edit/${studiengang.SID}" class="btn ml-auto DHBWbutton">Bearbeiten</a>
+			<a href="/studiengang/edit/${studiengang.stID}" class="btn ml-auto DHBWbutton">Bearbeiten</a>
 			<button type="button" class="btn ml-2 DHBWbutton" data-toggle="modal" data-target="#deleteModal">Löschen</button>
 			<a href="/studiengang" class="btn ml-2 DHBWbutton">Zurück</a>
         </div>
@@ -66,7 +66,7 @@
 	   				<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
 	   					<div class="col-6"><p><strong>Studiengangsnummer</strong></p></div>
 	   					<div class="col-6">
-							   <p>${studiengang.SID}</a></p> <!-- wird nach Fertigstellung des Controllers durch untenstehende Zeile ersetzt-->
+							   <p>${studiengang.stID}</a></p> <!-- wird nach Fertigstellung des Controllers durch untenstehende Zeile ersetzt-->
 							   <!--<p>${studiengang.beschreibung }</p>-->
 	   					</div>
 	   				</div>
@@ -85,7 +85,7 @@
 				</div>
 				
 				<div class="modal-footer">
-					<a href="/studiengang/delete/${studiengang.SID }" class="btn btn-danger">Unwiderruflich löschen</a> <!-- wird nach Fertigstellung des Controllers durch untenstehende Zeile ersetzt-->
+					<a href="/studiengang/delete/${studiengang.stID }" class="btn btn-danger">Unwiderruflich löschen</a> <!-- wird nach Fertigstellung des Controllers durch untenstehende Zeile ersetzt-->
 					<!--<a href="/studiengang/delete/${studiengang.stID }" class="btn btn-danger">Unwiderruflich löschen</a>-->
 					<button type="button" class="btn DHBWbutton" data-dismiss="modal">Abbrechen</button>
 				</div>
