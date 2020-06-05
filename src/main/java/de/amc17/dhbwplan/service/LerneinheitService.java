@@ -26,7 +26,7 @@ public class LerneinheitService
 		{
 			if (String.valueOf(aLerneinheit.getPraesenzzeit()) == null) aLerneinheit.setPräsenzzeit(0);
 			if (String.valueOf(aLerneinheit.getSelbststudium()) == null) aLerneinheit.setSelbststudium(0);
-			if(aLerneinheit.getBezeichnung()== "") aLerneinheit.setBezeichnung("Keine Daten");
+			if(aLerneinheit.getName()== "") aLerneinheit.setName("Keine Daten");
 			LerneinheitRepository.save(aLerneinheit);
 		}
 		catch (Exception e)
