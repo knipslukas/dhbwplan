@@ -110,7 +110,7 @@ public class KursController {
 		model.addAttribute("przCreated", przCreated);
 		model.addAttribute("pageTitle", "DHBW - Übersicht Präsenzzeiträume");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
-		return "prz/prz_overview";
+		return "kurs/kurs_einzel";
 	}
 	
 	@GetMapping(value = "/delete/{aID}")
@@ -120,7 +120,7 @@ public class KursController {
 		} else {
 			redirectAttributes.addAttribute("przDeleted", false);
 		}
-		return "redirect:/prz/";
+		return "redirect:/kurs/";
 	}
 	
 	@PostMapping(path = "/update/{aID}")
@@ -130,6 +130,6 @@ public class KursController {
 		} else {
 			redirectAttributes.addAttribute("przUpdated", false);
 		}
-		return "redirect:/prz/show/" + aPrz.getPID();
+		return "redirect:/kurs/show/" + aPrz.getPID();
 	}
 }
