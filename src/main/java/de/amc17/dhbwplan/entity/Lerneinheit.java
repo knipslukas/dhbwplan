@@ -21,7 +21,7 @@ public class Lerneinheit implements Serializable {
 	@Column(name="LEID")
 	private int LEID;
 	
-	private String bezeichnung;
+	private String name;
 	
 	private int praesenzzeit;
 	
@@ -51,11 +51,11 @@ public class Lerneinheit implements Serializable {
 		this.selbststudium = selbststudium;
 	}
 
-	public String getBezeichnung() {
-		return bezeichnung;
+	public String getName() {
+		return name;
 	}
 
-	public void setBezeichnung(String bezeichnung) {
-		this.bezeichnung = bezeichnung;
+	public void setName(String name) {
+		this.name = name;
 	}
 }
