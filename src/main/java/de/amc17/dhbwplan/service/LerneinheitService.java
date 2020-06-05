@@ -72,15 +72,15 @@ public class LerneinheitService
 		return true;
 	}	
 	
-	public List<Lerneinheit> getAllLerneinheit(String aBezeichnung)
+	public List<Lerneinheit> getAllLerneinheit(String aName)
 	{
 		try
 		{
-			if (aBezeichnung != null)
+			if (aName != null)
 			{	
-				return LerneinheitRepository.findAllByBezeichnung(aBezeichnung);
+				return LerneinheitRepository.findAllByName(aName);
 			}
-			List<Lerneinheit> list = LerneinheitRepository.findByOrderByBezeichnungAsc();
+			List<Lerneinheit> list = LerneinheitRepository.findByOrderByNameAsc();
 			if (!list.isEmpty())
 			{
 				return list;
