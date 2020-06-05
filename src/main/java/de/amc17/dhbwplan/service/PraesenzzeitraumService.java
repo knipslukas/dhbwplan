@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 import de.amc17.dhbwplan.entity.Praesenzzeitraum;
 import de.amc17.dhbwplan.repository.PraesenzzeitraumRepository;
 
+import de.amc17.dhbwplan.entity.Kurs;
+import de.amc17.dhbwplan.repository.KursRepository;
+
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -72,9 +75,9 @@ public class PraesenzzeitraumService {
 		return true;
 	}
 
-	public List<Praesenzzeitraum> getAllPraesenzzeitraum(int semester, Date von, Date bis) {		
+	public List<Praesenzzeitraum> getAllPraesenzzeitraum(int KID) {		
 		try {
-			if (semester != 0) {
+			if (KID != 0) {
 				return PraesenzzeitraumRepository.findAll();		
 			}
 			List<Praesenzzeitraum> list = PraesenzzeitraumRepository.findAll();

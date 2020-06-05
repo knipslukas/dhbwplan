@@ -101,11 +101,11 @@ public class KursController {
 		return "kurs/kur_add";
 	}
 	
-	@GetMapping(value = "/showAll")
-	public String getAllPrz(Model model, @RequestParam(required = false) int aID, @RequestParam(required = false) int aSemester,
-			@RequestParam(required = false) Object przDeleted, @RequestParam(required = false) Date von, @RequestParam(required = false) Date bis, @RequestParam(required = false) Object przCreated) {
+	@GetMapping(value = "/showAllPRZ")
+	public String getAllPrz(Model model, @RequestParam(required = false) int aID, 
+			@RequestParam(required = false) Object przDeleted, @RequestParam(required = false) Object przCreated) {
 
-		model.addAttribute("przList", mPrzservice.getAllPraesenzzeitraum(aSemester, von, bis));
+		model.addAttribute("przList", mPrzservice.getAllPraesenzzeitraum(aID));
 		model.addAttribute("przDeleted", przDeleted);
 		model.addAttribute("przCreated", przCreated);
 		model.addAttribute("pageTitle", "DHBW - Übersicht Präsenzzeiträume");
@@ -113,7 +113,7 @@ public class KursController {
 		return "kurs/kurs_einzel";
 	}
 	
-	@GetMapping(value = "/delete/{aID}")
+	@GetMapping(value = "/deletePRZ/{aID}")
 	public String deletePrz(RedirectAttributes redirectAttributes, @PathVariable int aID) {
 		if (mPrzservice.deletePraesenzzeitraum(aID)) {
 			redirectAttributes.addAttribute("przDeleted", true);
@@ -123,7 +123,7 @@ public class KursController {
 		return "redirect:/kurs/";
 	}
 	
-	@PostMapping(path = "/update/{aID}")
+	@PostMapping(path = "/updatePRZ/{aID}")
 	public String updatePrz(RedirectAttributes redirectAttributes, @ModelAttribute Praesenzzeitraum aPrz) {
 		if (mPrzservice.updatePraesenzzeitraum(aPrz)) {
 			redirectAttributes.addAttribute("przUpdated", true);
