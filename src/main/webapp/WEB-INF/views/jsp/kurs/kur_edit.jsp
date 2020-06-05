@@ -45,10 +45,11 @@
 	            
 	            
 	      <div class="mt-5">
+	      <label class="col-2 col-form-label">Präsenzzeiträume</label>
 			<table class="table table-hover">
 				<thead class="thead-light">
 					<tr>
-						<!-- 	                  <th scope="col"><strong>Dozenten Nummer</strong></th> -->
+							                  <th scope="col"><strong>Dozenten Nummer</strong></th>
 						<th scope="col"><strong>Semester</strong></th>
 						<th scope="col"><strong>Von</strong></th>
 						<th scope="col"><strong>Bis</strong></th>
@@ -56,7 +57,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<!-- Beispieleintrag -->
+				<!-- 	Beispieleintrag -->
 					<c:choose>
 						<c:when test="${przList ne null }">
 							<c:forEach items="${przList}" var="prz">
@@ -64,8 +65,7 @@
 									<td scope="row" class="align-middle">${praesenzzeitraum.semester }</td>
 									<td scope="row" class="align-middle">${praesenzzeitraum.von }</td>
 									<td scope="row" class="align-middle">${praesenzzeitraum.bis }</td>
-									<td scope="row" class="align-middle"><a href="/prz/show/${praesenzzeitraum.PID}"
-											class="btn btn-sm btn-secondary">Anzeigen</a></td>
+									<td scope="row" class="align-middle"><a href="/prz/delete/${praesenzzeitraum.PID}" class="btn btn-sm btn-secondary">löschen</a></td>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -81,19 +81,17 @@
 
 				</tbody>
 			</table>
+			
+			
 		</div>
-	            
-	            
-	            
-	
-	            
-	            <!-- Das hier übermittelt dem Server die ID von Dozenten, da diese für das Update benötigt wird -->
+	            	            
+				<!--Das hier übermittelt dem Server die ID von Dozenten, da diese für das Update benötigt wird -->
 	            <input class="d-none" name="KID" value="${kurs.KID }">
 	            
-	            <!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
+	            <!--Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
 	            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	
-	            <!-- Final Buttons-->
+	            Final Buttons
 	            <div class="finalButtons">
 	                <button type="submit" class="btn btn-success">Speichern </button>
 	                <button type="reset" class="btn btn-danger">Zurücksetzen </button>
@@ -102,6 +100,43 @@
 	        </form>
 	
 	        <!-- Ende Formular -->
+	        
+	        <!-- Versuch, Präsenzzeiträume hinzuügen -->
+	        
+	        <form class="pb-3 js-form-dozanleg" method="POST" action="/kurs/updatePRZ/${praesenzzeitraum.PID}">
+			
+			<div class="form-group row">
+	                <label class="col-2 col-form-label">Semester</label>
+	                <div class="col-10">
+						<input type="text" name="semesterNeu" class="form-control" placeholder="Neues Semester eingeben" value="${praesenzzeitraum.semester}" required>	                
+	                </div>
+	        </div>
+	         
+	        <div class="form-group row">
+	                <label class="col-2 col-form-label">Von</label>
+	                <div class="col-10">
+						<input type="text" name="vonNeu" class="form-control" placeholder="Neues Startdatum" value="${praesenzzeitraum.von}" required>	                
+	                </div>
+	        </div>    
+	           
+	        <div class="form-group row">
+	                <label class="col-2 col-form-label">Bis</label>
+	                <div class="col-10">
+						<input type="text" name="bisNeu" class="form-control" placeholder="Neues Enddatum" value="${praesenzzeitraum.bis}" required>	                
+	                </div>
+	         </div> 
+	         
+	         <div class="finalButtons">
+	                <button type="submit" class="btn btn-success">Hinzufügen </button>
+	          </div> 
+	          
+	          <!-- Das hier übermittelt dem Server die ID von Dozenten, da diese für das Update benötigt wird -->
+              <input class="d-none" name="PID" value="${praesenzzeitraum.PID }">
+              
+              <!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
+	          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	            
+			</form>
 	
 	        <!-- Ende Content -->
 	    </div>
