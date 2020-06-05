@@ -1,5 +1,7 @@
 package de.amc17.dhbwplan.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +16,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.amc17.dhbwplan.entity.Kurs;
 import de.amc17.dhbwplan.service.KursService;
+import de.amc17.dhbwplan.service.PraesenzzeitraumService;
 import de.amc17.dhbwplan.service.UserService;
+import de.amc17.dhbwplan.entity.Praesenzzeitraum;
 
 @Controller
 @RequestMapping(path = "/kurs")
@@ -23,6 +27,9 @@ public class KursController {
 
 	@Autowired
 	private KursService mKursService;
+	
+	@Autowired
+	private PraesenzzeitraumService mPrzservice;
 
 	@Autowired
 	private UserService userServ;
@@ -93,5 +100,36 @@ public class KursController {
 		model.addAttribute("currentUser", userServ.getCurrentUser());
 		return "kurs/kur_add";
 	}
+	
+	@GetMapping(value = "/showAll")
+	public String getAllPrz(Model model, @RequestParam(required = false) int aID, @RequestParam(required = false) int aSemester,
+			@RequestParam(required = false) Object przDeleted, @RequestParam(required = false) Date von, @RequestParam(required = false) Date bis, @RequestParam(required = false) Object przCreated) {
 
+		model.addAttribute("przList", mPrzservice.getAllPraesenzzeitraum(aSemester, von, bis));
+		model.addAttribute("przDeleted", przDeleted);
+		model.addAttribute("przCreated", przCreated);
+		model.addAttribute("pageTitle", "DHBW - Übersicht Präsenzzeiträume");
+		model.addAttribute("currentUser", userServ.getCurrentUser());
+		return "prz/prz_overview";
+	}
+	
+	@GetMapping(value = "/delete/{aID}")
+	public String deletePrz(RedirectAttributes redirectAttributes, @PathVariable int aID) {
+		if (mPrzservice.deletePraesenzzeitraum(aID)) {
+			redirectAttributes.addAttribute("przDeleted", true);
+		} else {
+			redirectAttributes.addAttribute("przDeleted", false);
+		}
+		return "redirect:/prz/";
+	}
+	
+	@PostMapping(path = "/update/{aID}")
+	public String updatePrz(RedirectAttributes redirectAttributes, @ModelAttribute Praesenzzeitraum aPrz) {
+		if (mPrzservice.updatePraesenzzeitraum(aPrz)) {
+			redirectAttributes.addAttribute("przUpdated", true);
+		} else {
+			redirectAttributes.addAttribute("przUpdated", false);
+		}
+		return "redirect:/prz/show/" + aPrz.getPID();
+	}
 }
