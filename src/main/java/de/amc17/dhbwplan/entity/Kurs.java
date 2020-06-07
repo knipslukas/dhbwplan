@@ -1,12 +1,14 @@
 package de.amc17.dhbwplan.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Kurs implements Serializable {
@@ -26,6 +28,10 @@ public class Kurs implements Serializable {
 	private int jahrgang;
 
 	private int anzahlStudierende;
+	
+
+    @OneToMany(mappedBy="kurs")
+    private Set<Praesenzzeitraum> praesenzzeitraum;
 
 	public String getName() {
 		return name;

@@ -1,7 +1,5 @@
 package de.amc17.dhbwplan.controller;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,13 +10,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import de.amc17.dhbwplan.data.PrzDto;
 import de.amc17.dhbwplan.entity.Kurs;
+import de.amc17.dhbwplan.entity.Praesenzzeitraum;
 import de.amc17.dhbwplan.service.KursService;
 import de.amc17.dhbwplan.service.PraesenzzeitraumService;
 import de.amc17.dhbwplan.service.UserService;
-import de.amc17.dhbwplan.entity.Praesenzzeitraum;
 
 @Controller
 @RequestMapping(path = "/kurs")
@@ -100,6 +100,7 @@ public class KursController {
 		model.addAttribute("currentUser", userServ.getCurrentUser());
 		return "kurs/kur_add";
 	}
+
 	
 	@GetMapping(value = "/showAllPRZ")
 	public String getAllPrz(Model model, @RequestParam(required = false) int aID, 
@@ -132,4 +133,26 @@ public class KursController {
 		}
 		return "redirect:/kurs/show/" + aPrz.getPID();
 	}
+	
+	@PostMapping(value = "/addPRZ", produces = "application/json", consumes = "application/json")
+	@ResponseBody
+	public Praesenzzeitraum addPraesenzzeitraum(@RequestBody PrzDto prz) {
+		Praesenzzeitraum praesenzzeitraum = new Praesenzzeitraum();
+		Kurs kurs = mKursService.getKursByID(prz.getKID());
+		praesenzzeitraum.setSemester(prz.getSemester());
+		praesenzzeitraum.setVon(prz.getVon());
+		praesenzzeitraum.setBis(prz.getBis());
+		praesenzzeitraum.setKurs(kurs);
+		return mPrzservice.addPraesenzzeitraum(praesenzzeitraum);
+	}
+	
+//	@PostMapping(path = "/addPRZ")
+//	@ResponseBody
+//	public String addPraesenzzeitraum(@ModelAttribute Praesenzzeitraum prz) {
+//		if (mPrzservice.addPraesenzzeitraum(prz) != null) {
+//			return "redirect:/kurs/";
+//		}
+//	return "redirect:/kurs/";
+		
+		
 }

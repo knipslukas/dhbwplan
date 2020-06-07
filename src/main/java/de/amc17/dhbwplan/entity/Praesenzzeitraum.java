@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -31,6 +33,10 @@ public class Praesenzzeitraum implements Serializable {
 	
 	@Temporal(TemporalType.TIME)
 	private Date bis;
+	
+	@ManyToOne 
+	@JoinColumn(name="kurs_ID")
+	private Kurs kurs;
 	
 	public int getPID() {
 		return PID;
@@ -63,4 +69,14 @@ public class Praesenzzeitraum implements Serializable {
 	public void setBis(Date bis) {
 		this.bis = bis;
 	}
+
+	public Kurs getKurs() {
+		return kurs;
+	}
+
+	public void setKurs(Kurs kurs) {
+		this.kurs = kurs;
+	}
+	
+	
 }

@@ -41,15 +41,31 @@
 						<input type="text" name="anzahlStudierende" class="form-control" placeholder="Anzahl der Studiernden eingeben" value="${kurs.anzahlStudierende}" required>	                
 	                </div>
 	            </div>
+	   	            	            
+<!-- 				Das hier übermittelt dem Server die ID von Dozenten, da diese für das Update benötigt wird -->
 	            
-	            
-	            
+<!-- 	            Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
+	            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	
+<!-- 	            Final Buttons -->
+	            <div class="finalButtons">
+	                <button type="submit" class="btn btn-success">Speichern </button>
+	                <button type="reset" class="btn btn-danger">Zurücksetzen </button>
+	            </div>
+	
+	        </form>
+	
+<!-- 	        Ende Formular -->
+
+
+	        
+	        <!-- Versuch, Präsenzzeiträume hinzuzufügen -->
+	        
 	      <div class="mt-5">
-	      <label class="col-2 col-form-label">Präsenzzeiträume</label>
+	      <label class="col-2 col-form-label"><strong>Präsenzzeiträume</strong></label>
 			<table class="table table-hover">
 				<thead class="thead-light">
 					<tr>
-							                  <th scope="col"><strong>Dozenten Nummer</strong></th>
 						<th scope="col"><strong>Semester</strong></th>
 						<th scope="col"><strong>Von</strong></th>
 						<th scope="col"><strong>Bis</strong></th>
@@ -74,6 +90,7 @@
 								<td>Keine Präsenzzeiträume vorhanden</td>
 								<td></td>
 								<td></td>
+								<td></td>
 
 							</tr>
 						</c:otherwise>
@@ -84,55 +101,35 @@
 			
 			
 		</div>
-	            	            
-				<!--Das hier übermittelt dem Server die ID von Dozenten, da diese für das Update benötigt wird -->
-	            <input class="d-none" name="KID" value="${kurs.KID }">
-	            
-	            <!--Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
-	            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-	
-	            Final Buttons
-	            <div class="finalButtons">
-	                <button type="submit" class="btn btn-success">Speichern </button>
-	                <button type="reset" class="btn btn-danger">Zurücksetzen </button>
-	            </div>
-	
-	        </form>
-	
-	        <!-- Ende Formular -->
 	        
-	        <!-- Versuch, Präsenzzeiträume hinzuügen -->
-	        
-	        <form class="pb-3 js-form-dozanleg" method="POST" action="/kurs/updatePRZ/${praesenzzeitraum.PID}">
-			
-			<div class="form-group row">
+<!-- 	        Präsenzzeitraum Formular -->
+	       <form class="pb-3 js-form-dozanleg">
+	        <div class="form-group row">
 	                <label class="col-2 col-form-label">Semester</label>
-	                <div class="col-10">
-						<input type="text" name="semesterNeu" class="form-control" placeholder="Neues Semester eingeben" value="${praesenzzeitraum.semester}" required>	                
+	                <div class="col-4">
+						<input type="text" name="semester" class="form-control js-form-semester" placeholder="Neues Semester eingeben" value="${praesenzzeitraum.semester}" required>	                
 	                </div>
 	        </div>
 	         
 	        <div class="form-group row">
 	                <label class="col-2 col-form-label">Von</label>
-	                <div class="col-10">
-						<input type="text" name="vonNeu" class="form-control" placeholder="Neues Startdatum" value="${praesenzzeitraum.von}" required>	                
+	                <div class="col-4">
+						<input type="date" name="von" class="form-control js-form-von" placeholder="Neues Startdatum" value="${praesenzzeitraum.von}" required>	                
 	                </div>
 	        </div>    
 	           
 	        <div class="form-group row">
 	                <label class="col-2 col-form-label">Bis</label>
-	                <div class="col-10">
-						<input type="text" name="bisNeu" class="form-control" placeholder="Neues Enddatum" value="${praesenzzeitraum.bis}" required>	                
+	                <div class="col-4">
+						<input type="date" name="bis" class="form-control js-form-bis" placeholder="Neues Enddatum" value="${praesenzzeitraum.bis}" required>	                
 	                </div>
 	         </div> 
-	         
+	         <input type ="hidden" value="${kurs.KID}" class="js-form-kurs"/>
 	         <div class="finalButtons">
-	                <button type="submit" class="btn btn-success">Hinzufügen </button>
+	                <button type="button" class="btn btn-success js-form-submit">Hinzufügen </button>
 	          </div> 
 	          
-	          <!-- Das hier übermittelt dem Server die ID von Dozenten, da diese für das Update benötigt wird -->
-              <input class="d-none" name="PID" value="${praesenzzeitraum.PID }">
-              
+             
               <!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
 	          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	            
@@ -142,6 +139,33 @@
 	    </div>
 	</div>
 	
-	<script src="${pageContext.request.contextPath}/static/js/dozent.js"></script>
+	<script>
+	$(".js-form-submit").click(function(){
+		var praesenzzeitraum = new Object();
+		praesenzzeitraum.KID = $(".js-form-kurs").val();
+		praesenzzeitraum.semester = $(".js-form-semester").val();
+		praesenzzeitraum.von = $(".js-form-von").val();
+		praesenzzeitraum.bis = $(".js-form-bis").val();
+		console.log(praesenzzeitraum);
+		$.ajax({
+			url: "/kurs/addPRZ",
+			type: "POST",
+		    contentType: "application/json",
+		    data:JSON.stringify(praesenzzeitraum),
+		    success: function(result){
+			    if(result === praesenzzeitraum){
+					alert("klappt");
+				}
+			    else{
+					alert(result);
+				}
+		    }
+		})
+	});
+	
+	$(document).ready(function(){
+		
+	});
+	</script>
 
 </template:template>
