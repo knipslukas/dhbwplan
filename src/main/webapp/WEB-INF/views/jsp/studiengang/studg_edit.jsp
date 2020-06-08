@@ -43,14 +43,14 @@
 	                	<input type="text" name="studienrichtung" class="form-control" placeholder="Hier bitte die Studienrichtung ergänzen" value="${studiengang.studienrichtung }" required>
 	                	
 	                </div>
-	                <button type="submit" class="btn btn-success">Hinzufügen </button>
+	                
 	            </div>
 	
 		<div class="mt-5">
 	         <table class="table table-hover">
 	              <thead class="thead-light">
 	                <tr>
-<!-- 	                  <th scope="col"><strong>Studienrichtung Nummer</strong></th> -->
+	                  <th scope="col"><strong>Studienrichtung Nummer</strong></th> 
 	                  <th scope="col"><strong>Studienrichtung</strong></th>
 	                </tr>
 	              </thead>
@@ -59,6 +59,7 @@
 	            
 	            <!-- Das hier übermittelt dem Server die ID von Dozenten, da diese für das Update benötigt wird -->
 	            <input class="d-none" name="STID" value="${studiengang.STID }">
+	            
 	            
 	            <!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
 	            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -70,8 +71,103 @@
 	            </div>
 	
 	        </form>
-	
+		
 	        <!-- Ende Formular -->
+	        
+	        <!-- Versuch, Studienrichtung hinzuzufügen -->
+	        
+	      <div class="mt-5">
+	    
+			<table class="table table-hover">
+				<thead class="thead-light">
+					<tr>
+						<th scope="col"><strong>Studienrichtung</strong></th>
+						<th scope="col"><strong>Studienrichtungnummer</strong></th>
+						
+					</tr>
+				</thead>
+				<tbody>
+				<!-- 	Beispieleintrag -->
+					<c:choose>
+						<c:when test="${przList ne null }">
+							<c:forEach items="${przList}" var="prz">
+								<tr>
+									<td scope="row" class="align-middle">${studienrichtung.name }</td>
+									<td scope="row" class="align-middle">${studienrichtung.riID }</td>
+									
+									
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr class="table-warning">
+								<td>Keine Studienrichtungen vorhanden</td>
+								<td></td>
+								<td></td>
+								<td></td>
+
+							</tr>
+						</c:otherwise>
+					</c:choose>
+
+				</tbody>
+			</table>
+			
+			
+		</div>
+	        
+<!-- 	       Studienrichtung Formular -->
+	       <form class="pb-3 js-form-dozanleg">
+	        <div class="form-group row">
+	                <label class="col-2 col-form-label">Studienrichtung</label>
+	                <div class="col-4">
+						<input type="text" name="semester" class="form-control js-form-semester" placeholder="Studienrichtung eingeben" value="${studienrichtung.name}" required>	                
+	                </div>
+	        </div>
+	         
+	       
+	         <input type ="hidden" value="${studiengang.STID}" class="js-form-kurs"/>
+	         <div class="finalButtons">
+	                <button type="button" class="btn btn-success js-form-submit">Hinzufügen </button>
+	          </div> 
+	          
+             
+              <!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
+	          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	            
+			</form>
+	
+	        <!-- Ende Content -->
+	    </div>
+	</div>
+	
+	<script>
+	$(".js-form-submit").click(function(){
+		var studienrichtung = new Object();
+		studienrichtung.riID = $(".js-form-kurs").val();
+		studienrichtung.name = $(".js-form-semester").val();
+		
+		console.log(praesenzzeitraum);
+		$.ajax({
+			url: "/kurs/addPRZ",
+			type: "POST",
+		    contentType: "application/json",
+		    data:JSON.stringify(praesenzzeitraum),
+		    success: function(result){
+			    if(result === praesenzzeitraum){
+					alert("klappt");
+				}
+			    else{
+					alert(result);
+				}
+		    }
+		})
+	});
+	
+	$(document).ready(function(){
+		
+	});
+	</script>
 	
 	        <!-- Ende Content -->
 	    </div>
