@@ -18,21 +18,31 @@ public class Lerneinheit implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="LEID")
+	@Column(name = "LEID")
 	private int LEID;
-	
+
+	private int MID;
+
 	private String name;
-	
+
 	private int praesenzzeit;
-	
+
 	private int selbststudium;
-	
+
 	public int getLEID() {
 		return LEID;
 	}
-	
+
 	public void setLEID(int LEID) {
 		this.LEID = LEID;
+	}
+
+	public int getMID() {
+		return MID;
+	}
+
+	public void setMID(int MID) {
+		this.MID = MID;
 	}
 
 	public int getPraesenzzeit() {
