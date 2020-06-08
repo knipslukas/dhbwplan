@@ -12,14 +12,14 @@
     	<!-- Start Orentierungszeile -->
 	   	<div class="alert dozentuebersicht d-flex align-items-center" role="alert">
 			<h1 class="text-white my-1">Studiengang bearbeiten</h1>
-			<a href="/studiengang/show/${Studiengang.STID }" class="btn ml-auto DHBWbutton">Zurück</a>
+			<a href="/studiengang/show/${studiengang.stID }" class="btn ml-auto DHBWbutton">Zurück</a>
         </div>
     	<!-- Ende Orentierungszeile -->
 	
 	    <!-- Start Content -->
 	    <div class="dhbw_content mt-5">
 	        <!-- Start Formular -->
-	        <form class="pb-3 js-form-dozanleg" method="POST" action="/studiengang/update/${Studiengang.STID }">	      
+	        <form class="pb-3 js-form-dozanleg" method="POST" action="/studiengang/update/${studiengang.stID }">	      
 	        	  
 	           
 	
@@ -37,28 +37,11 @@
 	                </div>
 	            </div>
 	
-	   			<div class="form-group row">
-	                <label class="col-2 col-form-label">Studienrichtung</label>
-	                <div class="col-8">
-	                	<input type="text" name="studienrichtung" class="form-control" placeholder="Hier bitte die Studienrichtung ergänzen" value="${studiengang.studienrichtung }" required>
-	                	
-	                </div>
-	                
-	            </div>
+	   			
 	
-		<div class="mt-5">
-	         <table class="table table-hover">
-	              <thead class="thead-light">
-	                <tr>
-	                  <th scope="col"><strong>Studienrichtung Nummer</strong></th> 
-	                  <th scope="col"><strong>Studienrichtung</strong></th>
-	                </tr>
-	              </thead>
-	           </table>
-	    </div>
-	            
+	
 	            <!-- Das hier übermittelt dem Server die ID von Dozenten, da diese für das Update benötigt wird -->
-	            <input class="d-none" name="STID" value="${studiengang.STID }">
+	            <input class="d-none" name="STID" value="${studiengang.stID }">
 	            
 	            
 	            <!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
@@ -126,7 +109,7 @@
 	        </div>
 	         
 	       
-	         <input type ="hidden" value="${studiengang.STID}" class="js-form-kurs"/>
+	         <input type ="hidden" value="${studiengang.stID}" class="js-form-kurs"/>
 	         <div class="finalButtons">
 	                <button type="button" class="btn btn-success js-form-submit">Hinzufügen </button>
 	          </div> 
@@ -147,14 +130,14 @@
 		studienrichtung.riID = $(".js-form-kurs").val();
 		studienrichtung.name = $(".js-form-semester").val();
 		
-		console.log(praesenzzeitraum);
+		console.log(studienrichtung);
 		$.ajax({
-			url: "/kurs/addPRZ",
+			url: "/studiengang/addSturi",
 			type: "POST",
 		    contentType: "application/json",
-		    data:JSON.stringify(praesenzzeitraum),
+		    data:JSON.stringify(studienrichtung),
 		    success: function(result){
-			    if(result === praesenzzeitraum){
+			    if(result === studienrichtung){
 					alert("klappt");
 				}
 			    else{

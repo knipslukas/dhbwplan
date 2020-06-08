@@ -40,7 +40,7 @@ public class StudiengangController {
 	@PostMapping(path = "/add")
 	public String addStudiengang(@ModelAttribute Studiengang studg, RedirectAttributes redirectAttributes) {
 		if (mStudiengangService.addStudiengang(studg) != null) {
-			return "redirect:/studiengang/show/"+studg.getSTID();
+			return "redirect:/studiengang/show/"+studg.getStID();
 		}
 		else {
 			redirectAttributes.addAttribute("studiengangCreated", false);
@@ -60,14 +60,15 @@ public class StudiengangController {
 	}
 
 	@PostMapping(path = "/update/{aID}")
-	public String updateStudiengang(RedirectAttributes redirectAttributes, @ModelAttribute Studiengang aStudiengang) {
+	public String updateStudiengang(RedirectAttributes redirectAttributes, @PathVariable int aID, @ModelAttribute Studiengang aStudiengang) {
+		aStudiengang.setStID(aID);
 		if (mStudiengangService.updateStudiengang(aStudiengang)) {
 			redirectAttributes.addAttribute("studiengangUpdated", true);
 		}
 		else {
 			redirectAttributes.addAttribute("studiengangUpdated", false);
 		}
-		return "redirect:/studiengang/show/"+aStudiengang.getSTID();
+		return "redirect:/studiengang/show/"+aStudiengang.getStID();
 	}
 	 
 	@GetMapping(path="") 
@@ -151,15 +152,13 @@ public class StudiengangController {
 			return mStudienrichtungService.addStudienrichtung(studienrichtung);
 		}
 		
-//		@PostMapping(path = "/addPRZ")
-//		@ResponseBody
-//		public String addPraesenzzeitraum(@ModelAttribute Praesenzzeitraum prz) {
-//			if (mPrzservice.addPraesenzzeitraum(prz) != null) {
-//				return "redirect:/kurs/";
-//			}
-//		return "redirect:/kurs/";
-
-
-	
-
+		// Test 
+		@PostMapping(path = "/addsturi")
+		@ResponseBody
+		public String addStudienrichtung(@ModelAttribute Studienrichtung sturi) {
+			if (mStudienrichtungService.addStudienrichtung(sturi) != null) {
+				return "redirect:/studiengang/";
+			}
+		return "redirect:/studiengang/";
+		}
 }
