@@ -1,7 +1,7 @@
 package de.amc17.dhbwplan.entity;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,7 +31,7 @@ public class Kurs implements Serializable {
 	
 
     @OneToMany(mappedBy="kurs")
-    private Set<Praesenzzeitraum> praesenzzeitraum;
+    private List<Praesenzzeitraum> praesenzzeitraum;
 
 	public String getName() {
 		return name;
@@ -64,4 +64,14 @@ public class Kurs implements Serializable {
 	public void setKID(int KID) {
 		this.KID = KID;
 	}
+
+	public List<Praesenzzeitraum> getPraesenzzeitraum() {
+		return praesenzzeitraum;
+	}
+
+	public void setPraesenzzeitraum(List<Praesenzzeitraum> praesenzzeitraum) {
+		this.praesenzzeitraum = praesenzzeitraum;
+	}
+	
+	
 }

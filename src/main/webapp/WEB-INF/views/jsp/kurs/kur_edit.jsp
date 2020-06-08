@@ -72,7 +72,7 @@
 						<th scope="col"><strong>Aktionen</strong></th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="js-table">
 				<!-- 	Beispieleintrag -->
 					<c:choose>
 						<c:when test="${przList ne null }">
@@ -124,7 +124,9 @@
 						<input type="date" name="bis" class="form-control js-form-bis" placeholder="Neues Enddatum" value="${praesenzzeitraum.bis}" required>	                
 	                </div>
 	         </div> 
+	         
 	         <input type ="hidden" value="${kurs.KID}" class="js-form-kurs"/>
+	         
 	         <div class="finalButtons">
 	                <button type="button" class="btn btn-success js-form-submit">Hinzufügen </button>
 	          </div> 
@@ -140,32 +142,58 @@
 	</div>
 	
 	<script>
-	$(".js-form-submit").click(function(){
-		var praesenzzeitraum = new Object();
-		praesenzzeitraum.KID = $(".js-form-kurs").val();
-		praesenzzeitraum.semester = $(".js-form-semester").val();
-		praesenzzeitraum.von = $(".js-form-von").val();
-		praesenzzeitraum.bis = $(".js-form-bis").val();
-		console.log(praesenzzeitraum);
-		$.ajax({
-			url: "/kurs/addPRZ",
-			type: "POST",
-		    contentType: "application/json",
-		    data:JSON.stringify(praesenzzeitraum),
-		    success: function(result){
-			    if(result === praesenzzeitraum){
-					alert("klappt");
-				}
-			    else{
-					alert(result);
-				}
-		    }
-		})
-	});
-	
-	$(document).ready(function(){
+		$(".js-form-submit").click(function(){
+			var praesenzzeitraum = new Object();
+			praesenzzeitraum.kursid = $(".js-form-kurs").val();
+			praesenzzeitraum.semester = $(".js-form-semester").val();
+			praesenzzeitraum.von = $(".js-form-von").val();
+			praesenzzeitraum.bis = $(".js-form-bis").val();
+			console.log(praesenzzeitraum);
+			$.ajax({
+				url: "/kurs/addPRZ",
+				type: "POST",
+			    contentType: "application/json",
+			    data:JSON.stringify(praesenzzeitraum),
+			    success: function(result){
+				    getList();
+			    },
+		    	error: function(status) {
+			    	alert(status);
+			    }
+			})
+		});
 		
-	});
+		$(document).ready(function(){
+			getList();
+		});
+	
+		function getList() {
+			$.ajax({
+				url: "/kurs/getPRZ/"+$(".js-form-kurs").val(),
+				type: "GET",
+				success: function (result) {
+					renderList(result)
+				},
+				error: function(status) {
+					alert("Liste konnte nicht geladen werden: "+status);
+				}
+			})
+		}
+
+		function renderList(entrys) {
+			$(".js-table").html(function() {
+				var list = "";
+				$.each(entrys, function(i, prz) {
+					list += "<tr>";
+					list += "<td>"+prz.semester+"</td>";
+					list += "<td>"+prz.von+"</td>";
+					list += "<td>"+prz.bis+"</td>";
+					list += '<td><button onClick="deletePRZ('+prz.pid+')"><i class="fas fa-trash-alt"></i></button></td>';
+					list += "</tr>";
+				})
+				return list;
+			})
+		}
 	</script>
 
 </template:template>

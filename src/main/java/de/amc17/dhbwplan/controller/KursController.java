@@ -1,5 +1,7 @@
 package de.amc17.dhbwplan.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -136,14 +138,23 @@ public class KursController {
 	
 	@PostMapping(value = "/addPRZ", produces = "application/json", consumes = "application/json")
 	@ResponseBody
-	public Praesenzzeitraum addPraesenzzeitraum(@RequestBody PrzDto prz) {
+	public PrzDto addPraesenzzeitraum(@RequestBody PrzDto prz) {
 		Praesenzzeitraum praesenzzeitraum = new Praesenzzeitraum();
-		Kurs kurs = mKursService.getKursByID(prz.getKID());
+		Kurs kurs = mKursService.getKursByID(prz.getKursid());
 		praesenzzeitraum.setSemester(prz.getSemester());
 		praesenzzeitraum.setVon(prz.getVon());
 		praesenzzeitraum.setBis(prz.getBis());
 		praesenzzeitraum.setKurs(kurs);
-		return mPrzservice.addPraesenzzeitraum(praesenzzeitraum);
+		if (mPrzservice.addPraesenzzeitraum(praesenzzeitraum) != null) {
+			return prz;
+		}
+		return null;
+	}
+	
+	@GetMapping(value = "/getPRZ/{kursid}", produces = "application/json")
+	@ResponseBody
+	public List<Praesenzzeitraum> getAllPraesenzzeitraum(@PathVariable int kursid) {
+		return mKursService.getAllPrz(kursid);
 	}
 	
 //	@PostMapping(path = "/addPRZ")

@@ -14,7 +14,7 @@ public class PrzDto {
 	@Temporal(TemporalType.TIME)
 	private Date bis;
 	
-	private int KID;
+	private int kursid;
 
 	public int getSemester() {
 		return semester;
@@ -40,12 +40,12 @@ public class PrzDto {
 		this.bis = bis;
 	}
 
-	public int getKID() {
-		return KID;
+	public int getKursid() {
+		return kursid;
 	}
 
-	public void setKID(int KID) {
-		this.KID = KID;
+	public void setKursid(int kursid) {
+		this.kursid = kursid;
 	}
 	
 	

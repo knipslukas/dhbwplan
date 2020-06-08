@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Praesenzzeitraum implements Serializable {
 
@@ -28,14 +30,13 @@ public class Praesenzzeitraum implements Serializable {
 	
 	private int semester;
 	
-	@Temporal(TemporalType.TIME)
 	private Date von;
 	
-	@Temporal(TemporalType.TIME)
 	private Date bis;
 	
 	@ManyToOne 
 	@JoinColumn(name="kurs_ID")
+	@JsonIgnore
 	private Kurs kurs;
 	
 	public int getPID() {

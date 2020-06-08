@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import de.amc17.dhbwplan.entity.Kurs;
+import de.amc17.dhbwplan.entity.Praesenzzeitraum;
 import de.amc17.dhbwplan.repository.KursRepository;
 
 import java.util.List;
@@ -96,6 +97,17 @@ public class KursService {
 		try {
 			return kursRepository.findByKID(aDID);
 		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public List<Praesenzzeitraum> getAllPrz(int kursid) {
+		try {
+			Kurs kurs = kursRepository.findById(kursid).get();
+			return kurs.getPraesenzzeitraum();
+		}
+		catch(Exception e) {
+			LOG.error("Couldn't load Kurslist" + e);
 			return null;
 		}
 	}
