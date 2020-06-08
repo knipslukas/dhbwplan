@@ -1,6 +1,7 @@
 package de.amc17.dhbwplan.entity;
 
 import java.io.Serializable;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -31,6 +32,7 @@ public class Praesenzzeitraum implements Serializable {
 	private int semester;
 	
 	private Date von;
+
 	
 	private Date bis;
 	
@@ -60,6 +62,7 @@ public class Praesenzzeitraum implements Serializable {
 	}
 
 	public void setVon(Date von) {
+		
 		this.von = von;
 	}
 

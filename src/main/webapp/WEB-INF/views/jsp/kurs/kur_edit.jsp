@@ -114,7 +114,7 @@
 	        <div class="form-group row">
 	                <label class="col-2 col-form-label">Von</label>
 	                <div class="col-4">
-						<input type="date" name="von" class="form-control js-form-von" placeholder="Neues Startdatum" value="${praesenzzeitraum.von}" required>	                
+						<input type="date" name="von" class="form-control js-form-von" id=test placeholder="Neues Startdatum" value="${praesenzzeitraum.von}" required>	                
 	                </div>
 	        </div>    
 	           
@@ -142,13 +142,15 @@
 	</div>
 	
 	<script>
+	
+			
 		$(".js-form-submit").click(function(){
 			var praesenzzeitraum = new Object();
 			praesenzzeitraum.kursid = $(".js-form-kurs").val();
 			praesenzzeitraum.semester = $(".js-form-semester").val();
 			praesenzzeitraum.von = $(".js-form-von").val();
 			praesenzzeitraum.bis = $(".js-form-bis").val();
-			console.log(praesenzzeitraum);
+			alert(praesenzzeitraum.von);
 			$.ajax({
 				url: "/kurs/addPRZ",
 				type: "POST",
@@ -163,6 +165,7 @@
 			})
 		});
 		
+			
 		$(document).ready(function(){
 			getList();
 		});
@@ -183,17 +186,36 @@
 		function renderList(entrys) {
 			$(".js-table").html(function() {
 				var list = "";
+				var ts = new Date();
 				$.each(entrys, function(i, prz) {
 					list += "<tr>";
 					list += "<td>"+prz.semester+"</td>";
 					list += "<td>"+prz.von+"</td>";
 					list += "<td>"+prz.bis+"</td>";
-					list += '<td><button onClick="deletePRZ('+prz.pid+')"><i class="fas fa-trash-alt"></i></button></td>';
+					list += '<td><button class="przdelete" style="cursor:pointer" onClick="deletePRZ('+prz.pid+')"><i class="fas fa-trash-alt"></i></button></td>';
 					list += "</tr>";
 				})
 				return list;
 			})
 		}
+
+		function deletePRZ(przid){
+			$.ajax({
+				url:"/kurs/deletePRZ/"+przid,
+				type:"POST",
+				contentType:"application/json",
+				success: function(result){
+					getList();
+					},
+					error: function(status){
+						alert("klappt nicht"+status);
+						}
+				})	
+		}
+		
+		
 	</script>
+	<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script> 
 
 </template:template>

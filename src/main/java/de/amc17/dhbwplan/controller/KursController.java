@@ -116,14 +116,14 @@ public class KursController {
 		return "kurs/kurs_einzel";
 	}
 	
-	@GetMapping(value = "/deletePRZ/{aID}")
-	public String deletePrz(RedirectAttributes redirectAttributes, @PathVariable int aID) {
-		if (mPrzservice.deletePraesenzzeitraum(aID)) {
-			redirectAttributes.addAttribute("przDeleted", true);
-		} else {
-			redirectAttributes.addAttribute("przDeleted", false);
+	@PostMapping(value = "/deletePRZ/{aID}", produces="application/json", consumes="application/json")
+	@ResponseBody
+	public boolean deletePrz(@PathVariable int aID) {
+		if(mPrzservice.deletePraesenzzeitraum(aID)) {
+			return true;
+		}else {
+			return false;
 		}
-		return "redirect:/kurs/";
 	}
 	
 	@PostMapping(path = "/updatePRZ/{aID}")
@@ -154,7 +154,7 @@ public class KursController {
 	@GetMapping(value = "/getPRZ/{kursid}", produces = "application/json")
 	@ResponseBody
 	public List<Praesenzzeitraum> getAllPraesenzzeitraum(@PathVariable int kursid) {
-		return mKursService.getAllPrz(kursid);
+		return mPrzservice.getAllPrz(mKursService.getKursByID(kursid));
 	}
 	
 //	@PostMapping(path = "/addPRZ")

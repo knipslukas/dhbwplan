@@ -10,6 +10,7 @@ import de.amc17.dhbwplan.entity.Kurs;
 import de.amc17.dhbwplan.entity.Praesenzzeitraum;
 import de.amc17.dhbwplan.repository.KursRepository;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -101,15 +102,6 @@ public class KursService {
 		}
 	}
 	
-	public List<Praesenzzeitraum> getAllPrz(int kursid) {
-		try {
-			Kurs kurs = kursRepository.findById(kursid).get();
-			return kurs.getPraesenzzeitraum();
-		}
-		catch(Exception e) {
-			LOG.error("Couldn't load Kurslist" + e);
-			return null;
-		}
-	}
+
 
 }

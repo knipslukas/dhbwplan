@@ -32,6 +32,8 @@ public class PraesenzzeitraumService {
 	@Resource
 	private PraesenzzeitraumRepository PraesenzzeitraumRepository;
 	
+	
+	
 	private static final Logger LOG = LogManager.getLogger(UserService.class.getName());
 
 
@@ -99,4 +101,12 @@ public class PraesenzzeitraumService {
 		}
 	}
 	
+	public List<Praesenzzeitraum> getAllPrz(Kurs kurs) {
+		try {
+			return PraesenzzeitraumRepository.findAllByKursOrderBySemesterAsc(kurs);
+		}catch(Exception e) {
+			LOG.error("Could not load PRZ"+e);
+			return null;
+		}
+	}
 }
