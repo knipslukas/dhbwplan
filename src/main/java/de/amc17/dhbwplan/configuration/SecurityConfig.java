@@ -12,39 +12,23 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	
-
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http 
-			.authorizeRequests()
-				.antMatchers("/static/**").permitAll()
-				.antMatchers("/setup").permitAll()
-				.anyRequest().authenticated()
-				.and()
-			.httpBasic()
-				.and()
-			.formLogin()
-				.loginPage("/login")
-				.defaultSuccessUrl("/")
-				.usernameParameter("email")
-				.passwordParameter("password")
-				.permitAll()
-				.and()
-			.logout()
-				.logoutUrl("/usrlgt")
-				.permitAll();
+		http.csrf().ignoringAntMatchers("/modul/addLEE").and().authorizeRequests().antMatchers("/static/**").permitAll()
+				.antMatchers("/setup").permitAll().anyRequest().authenticated().and().httpBasic().and().formLogin()
+				.loginPage("/login").defaultSuccessUrl("/").usernameParameter("email").passwordParameter("password")
+				.permitAll().and().logout().logoutUrl("/usrlgt").permitAll();
 	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-	    return new BCryptPasswordEncoder();
+		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Bean
-    public AuthenticationManager customAuthenticationManager() throws Exception {
-        return authenticationManager();
-    }
-	
+	public AuthenticationManager customAuthenticationManager() throws Exception {
+		return authenticationManager();
+	}
+
 }

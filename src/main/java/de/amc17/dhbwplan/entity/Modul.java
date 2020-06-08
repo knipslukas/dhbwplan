@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import org.apache.catalina.startup.SetAllPropertiesRule;
+
 @Entity
 public class Modul implements Serializable {
 
@@ -25,8 +27,8 @@ public class Modul implements Serializable {
 	@Column(name = "MID")
 	private int MID;
 
-	@OneToMany(mappedBy = "MID")
-	private List<Lerneinheit> lerneinheiten;
+	@OneToMany(mappedBy = "modul")
+	private Set<Lerneinheit> lerneinheiten;
 
 	private String bezeichnung;
 

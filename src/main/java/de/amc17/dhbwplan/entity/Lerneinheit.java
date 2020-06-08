@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Lerneinheit implements Serializable {
@@ -21,7 +23,9 @@ public class Lerneinheit implements Serializable {
 	@Column(name = "LEID")
 	private int LEID;
 
-	private int MID;
+	@ManyToOne
+	@JoinColumn(name = "modul_ID")
+	private Modul modul;
 
 	private String name;
 
@@ -37,12 +41,12 @@ public class Lerneinheit implements Serializable {
 		this.LEID = LEID;
 	}
 
-	public int getMID() {
-		return MID;
+	public Modul getModul() {
+		return modul;
 	}
 
-	public void setMID(int MID) {
-		this.MID = MID;
+	public void setModul(Modul modul) {
+		this.modul = modul;
 	}
 
 	public int getPraesenzzeit() {
