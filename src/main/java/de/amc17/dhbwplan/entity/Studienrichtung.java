@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Studienrichtung implements Serializable {
 
@@ -27,6 +29,7 @@ public class Studienrichtung implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="StID", nullable=false)
+	@JsonIgnore
 	private Studiengang studiengang;
 	
 	public int getriID() {
@@ -43,5 +46,13 @@ public class Studienrichtung implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public Studiengang getStudiengang() {
+		return studiengang;
+	}
+	
+	public void setStudiengang(Studiengang studiengang) {
+		this.studiengang=studiengang;
 	}
 }

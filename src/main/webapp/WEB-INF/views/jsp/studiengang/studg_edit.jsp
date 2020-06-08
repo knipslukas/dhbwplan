@@ -69,11 +69,11 @@
 						
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="js-table">
 				<!-- 	Beispieleintrag -->
 					<c:choose>
-						<c:when test="${przList ne null }">
-							<c:forEach items="${przList}" var="prz">
+						<c:when test="${sturiList ne null }">
+							<c:forEach items="${sturiList}" var="prz">
 								<tr>
 									<td scope="row" class="align-middle">${studienrichtung.name }</td>
 									<td scope="row" class="align-middle">${studienrichtung.riID }</td>
@@ -127,34 +127,56 @@
 	<script>
 	$(".js-form-submit").click(function(){
 		var studienrichtung = new Object();
-		studienrichtung.riID = $(".js-form-kurs").val();
-		studienrichtung.name = $(".js-form-semester").val();
-		
-		console.log(studienrichtung);
+		studienrichtung.name = $(".js-form-kurs").val();
+		studienrichtung.stid = $(".js-form-semester").val();
+			console.log(studienrichtung);
 		$.ajax({
 			url: "/studiengang/addSturi",
 			type: "POST",
 		    contentType: "application/json",
 		    data:JSON.stringify(studienrichtung),
 		    success: function(result){
-			    if(result === studienrichtung){
-					alert("klappt");
-				}
-			    else{
-					alert(result);
-				}
+			    getList();
+		    },
+	    	error: function(status) {
+		    	alert(status);
 		    }
 		})
 	});
 	
 	$(document).ready(function(){
-		
+		getList();
 	});
-	</script>
-	
+
+	function getList() {
+		$.ajax({
+			url: "/studiengang/getSturi/"+$(".js-form-kurs").val(),
+			type: "GET",
+			success: function (result) {
+				renderList(result)
+			},
+			error: function(status) {
+				alert("Liste konnte nicht geladen werden: "+status);
+			}
+		})
+	}
+
+	function renderList(entrys) {
+		$(".js-table").html(function() {
+			var list = "";
+			$.each(entrys, function(i, sturi) {
+				list += "<tr>";
+				list += "<td>"+sturi.name+"</td>";
+				list += '<td><button onClick="deleteSturi('+sturi.riID+')"><i class="fas fa-trash-alt"></i></button></td>';
+				list += "</tr>";
+			})
+			return list;
+		})
+	}
+</script>
+
 	        <!-- Ende Content -->
-	    </div>
-	</div>
+	    
 	
 	<script src="${pageContext.request.contextPath}/static/js/dozent.js"></script>
 

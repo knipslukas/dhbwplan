@@ -5,7 +5,7 @@ package de.amc17.dhbwplan.data;
 public class SturiDto {
 	private String name;
 	
-	private int STID;
+	private int stid;
 	
 	private int riID;
 
@@ -19,12 +19,12 @@ public class SturiDto {
 
 	
 
-	public int getSTID() {
-		return STID;
+	public int getStid() {
+		return stid;
 	}
 
-	public void setSTID(int STID) {
-		this.STID = STID;
+	public void setStid(int stid) {
+		this.stid = stid;
 	}
 	
 	public int getriID() {

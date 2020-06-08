@@ -1,5 +1,7 @@
 package de.amc17.dhbwplan.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -143,22 +145,21 @@ public class StudiengangController {
 		
 		@PostMapping(value = "/addSturi", produces = "application/json", consumes = "application/json")
 		@ResponseBody
-		public Studienrichtung addStudienrichtung(@RequestBody SturiDto sturi) {
+		public SturiDto addStudienrichtung(@RequestBody SturiDto sturi) {
 			Studienrichtung studienrichtung = new Studienrichtung();
-			Studiengang studiengang = mStudiengangService.getStudiengangByID(sturi.getSTID());
+			Studiengang studiengang = mStudiengangService.getStudiengangByID(sturi.getStid());
 			studienrichtung.setName(sturi.getName());
 			studienrichtung.setriID(sturi.getriID());
-		
-			return mStudienrichtungService.addStudienrichtung(studienrichtung);
+			studienrichtung.setStudiengang(studiengang);
+			if (mStudienrichtungService.addStudienrichtung(studienrichtung) != null) {
+				return sturi;
+			}
+			return null;
 		}
 		
-		// Test 
-		@PostMapping(path = "/addsturi")
+		@GetMapping(value = "/getSturi/{stid}", produces = "application/json")
 		@ResponseBody
-		public String addStudienrichtung(@ModelAttribute Studienrichtung sturi) {
-			if (mStudienrichtungService.addStudienrichtung(sturi) != null) {
-				return "redirect:/studiengang/";
-			}
-		return "redirect:/studiengang/";
+		public List<Studienrichtung> getAllStudienrichtung(@PathVariable int stid) {
+			return mStudiengangService.getAllSturi(stid);
 		}
 }
