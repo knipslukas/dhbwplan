@@ -2,7 +2,6 @@ package de.amc17.dhbwplan.entity;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +27,7 @@ public class Modul implements Serializable {
 	private int MID;
 
 	@OneToMany(mappedBy = "modul")
-	private Set<Lerneinheit> lerneinheiten;
+	private List<Lerneinheit> lerneinheiten;
 
 	private String bezeichnung;
 
@@ -136,6 +135,14 @@ public class Modul implements Serializable {
 
 	public void setPruefungsleistung(String pruefungsleistung) {
 		this.pruefungsleistung = pruefungsleistung;
+	}
+
+	public List<Lerneinheit> getLerneinheit() {
+		return lerneinheiten;
+	}
+
+	public void setLerneinheit(List<Lerneinheit> lerneinheiten) {
+		this.lerneinheiten = lerneinheiten;
 	}
 
 }

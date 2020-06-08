@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Lerneinheit implements Serializable {
 
@@ -25,6 +27,7 @@ public class Lerneinheit implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "modul_ID")
+	@JsonIgnore
 	private Modul modul;
 
 	private String name;

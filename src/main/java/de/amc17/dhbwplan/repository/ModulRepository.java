@@ -14,4 +14,6 @@ public interface ModulRepository extends CrudRepository<Modul, Integer> {
 
 	public List<Modul> findAll();
 
+	public Modul findByMID(int modulid);
+
 }

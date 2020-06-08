@@ -1,5 +1,7 @@
 package de.amc17.dhbwplan.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -103,33 +105,41 @@ public class ModulController {
 
 	@PostMapping(value = "/addLEE", produces = "application/json", consumes = "application/json")
 	@ResponseBody
-	public Lerneinheit addLerneinheit(@RequestBody LeeDto lee) {
+	public LeeDto addLerneinheit(@RequestBody LeeDto lee) {
 		Lerneinheit lerneinheit = new Lerneinheit();
-		Modul modul = mModulService.getModulByID(lee.getMID());
+		Modul modul = mModulService.getModulByID(lee.getModulid());
 		lerneinheit.setPräsenzzeit(lee.getPraesenzzeit());
 		lerneinheit.setSelbststudium(lee.getSelbststudium());
 		lerneinheit.setName(lee.getName());
 		lerneinheit.setModul(modul);
-		return mLerneinheitService.addLerneinheit(lerneinheit);
 
-		/**
-		 * model.addAttribute("pageTitle", "DHBW - Modul Anlegen");
-		 * model.addAttribute("currentUser", userServ.getCurrentUser()); return
-		 * "modul/mod_add";
-		 */
+		if (mLerneinheitService.addLerneinheit(lerneinheit) != null) {
+			return lee;
+		}
+		return null;
 	}
 
-	@GetMapping(value = "/showAllLEE")
-	public String getAllLee(Model model, @RequestParam(required = false) String aName,
-			@RequestParam(required = false) Object leeDeleted, @RequestParam(required = false) Object leeCreated) {
-
-		model.addAttribute("leeList", mLerneinheitService.getAllLerneinheit(aName));
-		model.addAttribute("leeDeleted", leeDeleted);
-		model.addAttribute("leeCreated", leeCreated);
-		model.addAttribute("pageTitle", "DHBW - Übersicht Lerneinheiten");
-		model.addAttribute("currentUser", userServ.getCurrentUser());
-		return "modul/mod_einzel";
+	@GetMapping(value = "/getLEE/{modulid}", produces = "application/json")
+	@ResponseBody
+	public List<Lerneinheit> getAllLerneinheiten(@PathVariable int modulid) {
+		return mModulService.getAllLee(modulid);
 	}
+
+	/**
+	 * @GetMapping(value = "/showAllLEE") public String getAllLee(Model
+	 *                   model, @RequestParam(required = false) String aName,
+	 * @RequestParam(required = false) Object leeDeleted, @RequestParam(required =
+	 *                        false) Object leeCreated) {
+	 * 
+	 *                        model.addAttribute("leeList",
+	 *                        mLerneinheitService.getAllLerneinheit(aName));
+	 *                        model.addAttribute("leeDeleted", leeDeleted);
+	 *                        model.addAttribute("leeCreated", leeCreated);
+	 *                        model.addAttribute("pageTitle", "DHBW - Übersicht
+	 *                        Lerneinheiten"); model.addAttribute("currentUser",
+	 *                        userServ.getCurrentUser()); return "modul/mod_einzel";
+	 *                        }
+	 */
 
 	@GetMapping(value = "/deleteLEE/{aID}")
 	public String deleteLee(RedirectAttributes redirectAttributes, @PathVariable int aID) {

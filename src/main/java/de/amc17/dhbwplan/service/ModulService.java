@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import de.amc17.dhbwplan.entity.Lerneinheit;
 import de.amc17.dhbwplan.entity.Modul;
 import de.amc17.dhbwplan.repository.ModulRepository;
 
@@ -43,7 +44,7 @@ public class ModulService {
 	public boolean updateModul(Modul aModul) {
 		try {
 			Modul oModul;
-			if ((oModul = modulRepository.findById(aModul.getMID()).get()) != null) {
+			if ((oModul = modulRepository.findByMID(aModul.getMID())) != null) {
 				modulRepository.save(aModul);
 			} else {
 				LOG.warn("Modul not found");
@@ -74,10 +75,19 @@ public class ModulService {
 
 	public Modul getModulByID(int aMID) {
 		try {
-			return modulRepository.findById(aMID).get();
+			return modulRepository.findByMID(aMID);
 		} catch (Exception e) {
 			return null;
 		}
 	}
 
+	public List<Lerneinheit> getAllLee(int modulid) {
+		try {
+			Modul modul = modulRepository.findByMID(modulid);
+			return modul.getLerneinheit();
+		} catch (Exception e) {
+			LOG.error("Couldn't load Kurslist" + e);
+			return null;
+		}
+	}
 }

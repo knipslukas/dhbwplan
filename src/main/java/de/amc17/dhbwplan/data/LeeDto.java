@@ -4,7 +4,7 @@ public class LeeDto {
 
 	private String name;
 
-	private int MID;
+	private int modulid;
 
 	private int praesenzzeit;
 
@@ -34,11 +34,11 @@ public class LeeDto {
 		this.name = name;
 	}
 
-	public int getMID() {
-		return MID;
+	public int getModulid() {
+		return modulid;
 	}
 
-	public void setMID(int MID) {
-		this.MID = MID;
+	public void setModulid(int modulid) {
+		this.modulid = modulid;
 	}
 }
