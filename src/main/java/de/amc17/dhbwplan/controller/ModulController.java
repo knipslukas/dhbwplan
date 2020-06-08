@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -141,13 +142,15 @@ public class ModulController {
 	 *                        }
 	 */
 
-	@GetMapping(value = "/deleteLEE/{aID}")
-	public String deleteLee(RedirectAttributes redirectAttributes, @PathVariable int aID) {
-		if (mLerneinheitService.deleteLerneinheit(aID)) {
+	@PostMapping(value = "/deleteLEE/{leeID}")
+	@ResponseBody
+	public boolean deleteLee(RedirectAttributes redirectAttributes, @PathVariable int leeID) {
+		if (mLerneinheitService.deleteLerneinheit(leeID)) {
 			redirectAttributes.addAttribute("leeDeleted", true);
+			return true;
 		} else {
 			redirectAttributes.addAttribute("leeDeleted", false);
+			return false;
 		}
-		return "redirect:/modul/";
 	}
 }

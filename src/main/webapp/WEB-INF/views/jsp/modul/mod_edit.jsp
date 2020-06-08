@@ -216,7 +216,11 @@
 				contentType: "application/json",
 				data: JSON.stringify(lerneinheit),
 				success: function (result) {
+					document.getElementById("leeName").value = ""
+					document.getElementById("leePrzzeit").value = ""
+					document.getElementById("leeSelbsstudium").value = ""
 					getList();
+					//empty up input
 				},
 				error: function (e) {
 					alert(e)
@@ -233,15 +237,16 @@
 				url: "/modul/getLEE/" + $("#leeMID").val(),
 				type: "GET",
 				success: function (result) {
-					//console.log(result)
+					// console.log(result)
 					renderList(result)
 				},
 				error: function (status) {
-					//console.log(status)
+					console.log(status)
 					alert("Liste konnte nicht geladen werden: " + status);
 				}
 			})
 		}
+
 		function renderList(entrys) {
 			$(".js-table").html(function () {
 				var list = "";
@@ -250,10 +255,27 @@
 					list += "<td>" + lee.name + "</td>";
 					list += "<td>" + lee.praesenzzeit + "</td>";
 					list += "<td>" + lee.selbststudium + "</td>";
-					list += '<td><button onClick="deleteLEE(' + lee.LEID + ')"><i class="fas fa-trash-alt"></i></button></td>';
+					list += '<td><button onClick="deleteLEE(' + lee.leid + ')"><i class="fas fa-trash-alt"></i></button></td>';
 					list += "</tr>";
 				})
 				return list;
+			})
+		}
+
+		function deleteLEE(leid) {
+
+			$.ajax({
+				url: "/modul/deleteLEE/" + leid,
+				type: "POST",
+				success: function (result) {
+					getList()
+					// console.log(result)
+					// alert("Erfolgreich entfernt!")
+				},
+				error: function (status) {
+					//console.log(status)
+					alert("Problem mit dem entfernen: " + status)
+				}
 			})
 		}
 	</script>
