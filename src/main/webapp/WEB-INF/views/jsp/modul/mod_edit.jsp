@@ -137,12 +137,11 @@
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-								<tr class="table-warning">
+								<tr>
 									<td>Keine Lerneinheiten vorhanden</td>
 									<td></td>
 									<td></td>
 									<td></td>
-
 								</tr>
 							</c:otherwise>
 						</c:choose>
@@ -240,18 +239,26 @@
 		}
 
 		function renderList(entrys) {
-			$(".js-table").html(function () {
-				var list = "";
-				$.each(entrys, function (i, lee) {
-					list += "<tr>";
-					list += "<td>" + lee.name + "</td>";
-					list += "<td>" + lee.praesenzzeit + "</td>";
-					list += "<td>" + lee.selbststudium + "</td>";
-					list += '<td><button onClick="deleteLEE(' + lee.leid + ')"><i class="fas fa-trash-alt"></i></button></td>';
-					list += "</tr>";
+			if (entrys.length > 0) {
+				$(".js-table").html(function () {
+					var list = "";
+					$.each(entrys, function (i, lee) {
+						list += "<tr>";
+						list += "<td>" + lee.name + "</td>";
+						list += "<td>" + lee.praesenzzeit + "</td>";
+						list += "<td>" + lee.selbststudium + "</td>";
+						list += '<td><button onClick="deleteLEE(' + lee.leid + ')"><i class="fas fa-trash-alt"></i></button></td>';
+						list += "</tr>";
+					})
+					return list;
 				})
-				return list;
-			})
+			} else {
+				$(".js-table").html(function () {
+					return '<td>Keine Lerneinheiten vorhanden</td>';
+				})
+			}
+
+
 		}
 
 		function deleteLEE(leid) {
