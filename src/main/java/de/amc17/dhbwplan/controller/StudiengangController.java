@@ -122,10 +122,10 @@ public class StudiengangController {
 		return "studiengang/studg_einzel";
 	}
 
-	@PostMapping(value = "/deleteSturi/{stid}")
+	@PostMapping(value = "/deleteSturi/{rID}")
 	@ResponseBody
-	public boolean deleteSturi(RedirectAttributes redirectAttributes, @PathVariable int sturi) {
-		if (mStudienrichtungService.deleteStudienrichtung(sturi)) {
+	public boolean deleteSturi(RedirectAttributes redirectAttributes, @PathVariable int rID) {
+		if (mStudienrichtungService.deleteStudienrichtung(rID)) {
 			redirectAttributes.addAttribute("sturiDeleted", true);
 			return true;
 		} else {

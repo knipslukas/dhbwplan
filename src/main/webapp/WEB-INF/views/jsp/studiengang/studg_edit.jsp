@@ -192,6 +192,7 @@
 				},
 				error: function (status) {
 					//console.log(status)
+					
 					alert("Problem mit dem entfernen: " + status)
 				}
 			})
