@@ -27,12 +27,6 @@ public class SturiDto {
 		this.stid = stid;
 	}
 	
-	public int getriID() {
-		return riID;
-	}
 
-	public void setriID(int riID) {
-		this.riID = riID;
-	}
 
 }

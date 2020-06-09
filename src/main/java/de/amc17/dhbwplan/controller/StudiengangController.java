@@ -149,7 +149,6 @@ public class StudiengangController {
 			Studienrichtung studienrichtung = new Studienrichtung();
 			Studiengang studiengang = mStudiengangService.getStudiengangByID(sturi.getStid());
 			studienrichtung.setName(sturi.getName());
-			studienrichtung.setriID(sturi.getriID());
 			studienrichtung.setStudiengang(studiengang);
 			if (mStudienrichtungService.addStudienrichtung(studienrichtung) != null) {
 				return sturi;
