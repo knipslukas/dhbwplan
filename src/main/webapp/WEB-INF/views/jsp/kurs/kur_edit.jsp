@@ -62,8 +62,8 @@
 	        <!-- Versuch, Präsenzzeiträume hinzuzufügen -->
 	        
 	      <div class="mt-5">
-	      <label class="col-2 col-form-label"><strong>Präsenzzeiträume</strong></label>
-			<table class="table table-hover">
+	      <label class="col-2 col-form-label"><font size="5">Präsenzzeiträume</font></label>
+			<table class="table table-hover" STYLE="margin-bottom: 30px;">
 				<thead class="thead-light">
 					<tr>
 						<th scope="col"><strong>Semester</strong></th>
@@ -100,27 +100,28 @@
 			</table>
 			
 			
+			
 		</div>
 	        
 <!-- 	        Präsenzzeitraum Formular -->
 	       <form class="pb-3 js-form-dozanleg">
 	        <div class="form-group row">
 	                <label class="col-2 col-form-label">Semester</label>
-	                <div class="col-4">
+	                <div class="col-3">
 						<input type="text" name="semester" class="form-control js-form-semester" placeholder="Neues Semester eingeben" value="${praesenzzeitraum.semester}" required>	                
 	                </div>
 	        </div>
 	         
 	        <div class="form-group row">
 	                <label class="col-2 col-form-label">Von</label>
-	                <div class="col-4">
+	                <div class="col-3">
 						<input type="date" name="von" class="form-control js-form-von" id=test placeholder="Neues Startdatum" value="${praesenzzeitraum.von}" required>	                
 	                </div>
 	        </div>    
 	           
 	        <div class="form-group row">
 	                <label class="col-2 col-form-label">Bis</label>
-	                <div class="col-4">
+	                <div class="col-3">
 						<input type="date" name="bis" class="form-control js-form-bis" placeholder="Neues Enddatum" value="${praesenzzeitraum.bis}" required>	                
 	                </div>
 	         </div> 
@@ -150,7 +151,6 @@
 			praesenzzeitraum.semester = $(".js-form-semester").val();
 			praesenzzeitraum.von = $(".js-form-von").val();
 			praesenzzeitraum.bis = $(".js-form-bis").val();
-			alert(praesenzzeitraum.von);
 			$.ajax({
 				url: "/kurs/addPRZ",
 				type: "POST",
@@ -163,11 +163,15 @@
 			    	alert(status);
 			    }
 			})
+			$(".js-form-semester").val("");
+			$(".js-form-von").val("");
+			$(".js-form-bis").val("");			
 		});
 		
 			
 		$(document).ready(function(){
 			getList();
+			
 		});
 	
 		function getList() {
