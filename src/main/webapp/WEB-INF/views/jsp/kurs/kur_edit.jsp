@@ -146,6 +146,7 @@
 	
 			
 		$(".js-form-submit").click(function(){
+			if($(".js-form-von").val()!=""&&$(".js-form-semester").val()!=""&&$(".js-form-bis").val()!=""){
 			var praesenzzeitraum = new Object();
 			praesenzzeitraum.kursid = $(".js-form-kurs").val();
 			praesenzzeitraum.semester = $(".js-form-semester").val();
@@ -157,6 +158,7 @@
 			    contentType: "application/json",
 			    data:JSON.stringify(praesenzzeitraum),
 			    success: function(result){
+				    
 				    getList();
 			    },
 		    	error: function(status) {
@@ -165,13 +167,15 @@
 			})
 			$(".js-form-semester").val("");
 			$(".js-form-von").val("");
-			$(".js-form-bis").val("");			
+			$(".js-form-bis").val("");
+			}else{
+				alert("Bitte tragen Sie alle Felder ein!");}
+			
 		});
 		
 			
 		$(document).ready(function(){
 			getList();
-			
 		});
 	
 		function getList() {
@@ -179,7 +183,7 @@
 				url: "/kurs/getPRZ/"+$(".js-form-kurs").val(),
 				type: "GET",
 				success: function (result) {
-					renderList(result)
+					renderList(result);
 				},
 				error: function(status) {
 					alert("Liste konnte nicht geladen werden: "+status);
@@ -190,16 +194,20 @@
 		function renderList(entrys) {
 			$(".js-table").html(function() {
 				var list = "";
-				var ts = new Date();
 				$.each(entrys, function(i, prz) {
 					list += "<tr>";
 					list += "<td>"+prz.semester+"</td>";
-					list += "<td>"+prz.von+"</td>";
-					list += "<td>"+prz.bis+"</td>";
+					var temp = DateFormat.format.date(prz.von, "dd.MM.yyyy");
+					list += "<td>"+temp+"</td>";
+					var temp2 = DateFormat.format.date(prz.bis, "dd.MM.yyyy");
+					list += "<td>"+temp2+"</td>";
 					list += '<td><button class="przdelete" style="cursor:pointer" onClick="deletePRZ('+prz.pid+')"><i class="fas fa-trash-alt"></i></button></td>';
 					list += "</tr>";
 				})
+				
 				return list;
+				
+				
 			})
 		}
 
@@ -210,6 +218,7 @@
 				contentType:"application/json",
 				success: function(result){
 					getList();
+					
 					},
 					error: function(status){
 						alert("klappt nicht"+status);
@@ -219,7 +228,6 @@
 		
 		
 	</script>
-	<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script> 
+	<script src="${pageContext.request.contextPath}/static/dateformat/dateFormat.js"></script>
 
 </template:template>
