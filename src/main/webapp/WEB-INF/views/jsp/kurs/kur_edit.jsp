@@ -182,8 +182,9 @@
 			$.ajax({
 				url: "/kurs/getPRZ/"+$(".js-form-kurs").val(),
 				type: "GET",
-				success: function (result) {
-					renderList(result);
+				success: function (result) {						
+						renderList(result);
+
 				},
 				error: function(status) {
 					alert("Liste konnte nicht geladen werden: "+status);
@@ -194,6 +195,7 @@
 		function renderList(entrys) {
 			$(".js-table").html(function() {
 				var list = "";
+				
 				$.each(entrys, function(i, prz) {
 					list += "<tr>";
 					list += "<td>"+prz.semester+"</td>";
@@ -204,11 +206,19 @@
 					list += '<td><button class="przdelete" style="cursor:pointer" onClick="deletePRZ('+prz.pid+')"><i class="fas fa-trash-alt"></i></button></td>';
 					list += "</tr>";
 				})
-				
-				return list;
-				
-				
+				if (list!=""){
+					return list;
+				}else{
+					list += "<tr class='table-warning'>";
+					list += "<td>Keine Präsenzzeiträume vorhanden</td>";
+					list += "<td></td>";
+					list += "<td></td>";
+					list += "<td></td>";
+					list += "</tr>";
+					return list;
+				}
 			})
+		
 		}
 
 		function deletePRZ(przid){
