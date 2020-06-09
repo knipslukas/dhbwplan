@@ -107,7 +107,7 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Studienrichtung</label>
 					<div class="col-4">
-						<input type="text" name="name" id="STURNAME" placeholder="Studienrichtung eingeben"
+						<input type="text" name="name" class="form-control js-form-semester" id="STURNAME" placeholder="Studienrichtung eingeben"
 							value="${studienrichtung.name}" required>
 					</div>
 				</div>
@@ -133,8 +133,8 @@
 			var studienrichtung = new Object();
 			studienrichtung.name = $("#STURNAME").val();
 			studienrichtung.stid = $("#STURSTID").val();
-			console.log(studienrichtung);
-			alert(studienrichtung.name);
+			//console.log(studienrichtung);
+			//alert(studienrichtung.name);
 			$.ajax({
 				url: "/studiengang/addSturi",
 				type: "POST",
@@ -173,7 +173,7 @@
 				$.each(entrys, function (i, sturi) {
 					list += "<tr>";
 					list += "<td>" + sturi.name + "</td>";
-					list += '<td><button onClick="deleteSturi(' + sturi.RID + ')"><i class="fas fa-trash-alt"></i></button></td>';
+					list += '<td><button onClick="deleteSturi(' + sturi.riID + ')"><i class="fas fa-trash-alt"></i></button></td>';
 					list += "</tr>";
 				})
 				return list;
