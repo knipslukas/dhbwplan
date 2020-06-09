@@ -155,26 +155,20 @@
 
 
 			<!-- Lerneinheit Formular -->
-			<form class="pb-3 js-form-dozanleg">
+			<form class="pb-3 js-form-dozanleg" id="newLEE">
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Name</label>
+					<label class="col-4 col-form-label">Name</label>
+					<label class="col-4 col-form-label">Präsenzzeit</label>
+					<label class="col-4 col-form-label">Selbsstudium</label>
 					<div class="col-4">
 						<input type="text" name="name" class="form-control js-form-semester" id="leeName"
 							placeholder="Neuer Name eingeben" value="${lerneinheit.name}" required>
 					</div>
-				</div>
-
-				<div class="form-group row">
-					<label class="col-2 col-form-label">Präsenzzeit</label>
 					<div class="col-4">
 						<input type="text" name="von" class="form-control js-form-von" id="leePrzzeit"
 							placeholder="Neues Präsenzzeit" value="${lerneinheit.praesenzzeit}" required>
 					</div>
-				</div>
-
-				<div class="form-group row">
-					<label class="col-2 col-form-label">Selbsstudium</label>
 					<div class="col-4">
 						<input type="text" name="bis" class="form-control js-form-bis" id="leeSelbsstudium"
 							placeholder="Neues Selbsstudium" value="${lerneinheit.selbststudium}" required>
@@ -186,19 +180,19 @@
 					<button type="button" class="btn btn-success js-form-submit">Hinzufügen </button>
 				</div>
 
+			</form>
+
+			<!-- Das hier übermittelt dem Server die ID von Modul, da diese für das Update benötigt wird -->
+			<input class="d-none" name="MID" value="${modul.MID}" id="leeMID">
+
+			<!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
 
-				<!-- Das hier übermittelt dem Server die ID von Modul, da diese für das Update benötigt wird -->
-				<input class="d-none" name="MID" value="${modul.MID}" id="leeMID">
 
-				<!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<!-- Ende Formular -->
 
-
-
-				<!-- Ende Formular -->
-
-				<!-- Ende Content -->
+			<!-- Ende Content -->
 		</div>
 	</div>
 
@@ -216,9 +210,7 @@
 				contentType: "application/json",
 				data: JSON.stringify(lerneinheit),
 				success: function (result) {
-					document.getElementById("leeName").value = ""
-					document.getElementById("leePrzzeit").value = ""
-					document.getElementById("leeSelbsstudium").value = ""
+					document.getElementById("newLEE").reset();
 					getList();
 					//empty up input
 				},
