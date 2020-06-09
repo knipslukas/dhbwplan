@@ -28,23 +28,21 @@ import de.amc17.dhbwplan.service.UserService;
 @RequestMapping(path = "/studiengang")
 
 public class StudiengangController {
-	
 
 	@Autowired
 	private StudiengangService mStudiengangService;
-	
+
 	@Autowired
 	private StudienrichtungService mStudienrichtungService;
-	
+
 	@Autowired
 	private UserService userServ;
 
 	@PostMapping(path = "/add")
 	public String addStudiengang(@ModelAttribute Studiengang studg, RedirectAttributes redirectAttributes) {
 		if (mStudiengangService.addStudiengang(studg) != null) {
-			return "redirect:/studiengang/show/"+studg.getStID();
-		}
-		else {
+			return "redirect:/studiengang/show/" + studg.getStID();
+		} else {
 			redirectAttributes.addAttribute("studiengangCreated", false);
 		}
 		return "redirect:/studiengang/";
@@ -54,111 +52,111 @@ public class StudiengangController {
 	public String deleteStudiengang(RedirectAttributes redirectAttributes, @PathVariable int aID) {
 		if (mStudiengangService.deleteStudiengang(aID)) {
 			redirectAttributes.addAttribute("StudiengangDeleted", true);
-		}
-		else {
+		} else {
 			redirectAttributes.addAttribute("StudiengangDeleted", false);
 		}
 		return "redirect:/studiengang";
 	}
 
 	@PostMapping(path = "/update/{aID}")
-	public String updateStudiengang(RedirectAttributes redirectAttributes, @PathVariable int aID, @ModelAttribute Studiengang aStudiengang) {
+	public String updateStudiengang(RedirectAttributes redirectAttributes, @PathVariable int aID,
+			@ModelAttribute Studiengang aStudiengang) {
 		aStudiengang.setStID(aID);
 		if (mStudiengangService.updateStudiengang(aStudiengang)) {
 			redirectAttributes.addAttribute("studiengangUpdated", true);
-		}
-		else {
+		} else {
 			redirectAttributes.addAttribute("studiengangUpdated", false);
 		}
-		return "redirect:/studiengang/show/"+aStudiengang.getStID();
+		return "redirect:/studiengang/show/" + aStudiengang.getStID();
 	}
-	 
-	@GetMapping(path="") 
-	public String getAllStudiengang(Model model, @RequestParam (required = false) String name,
+
+	@GetMapping(path = "")
+	public String getAllStudiengang(Model model, @RequestParam(required = false) String name,
 			@RequestParam(required = false) Object StudiengangDeleted,
 			@RequestParam(required = false) Object StudiengangCreated) {
-		 
-		 model.addAttribute("studiengangList", mStudiengangService.getAllStudiengangs(name));
-		 model.addAttribute("studiengangDeleted", StudiengangDeleted);
-		 model.addAttribute("studiengangCreated", StudiengangCreated);
-		 model.addAttribute("pageTitle", "DHBW - Übersicht Studiengang");
-		 model.addAttribute("currentUser", userServ.getCurrentUser());
-		 return "studiengang/studg_overview";
-	 }
-	 
-	 @GetMapping(path="/show/{aID}") 
-	 public String getAllStudiengang(Model model, @PathVariable int aID, @RequestParam(required = false) Object StudiengangUpdated) {
-		 model.addAttribute("studiengang", mStudiengangService.getStudiengangByID(aID));
-		 model.addAttribute("studiengangUpdated", StudiengangUpdated);
-		 model.addAttribute("pageTitle", "DHBW - Studiengangansicht");
-		 model.addAttribute("currentUser", userServ.getCurrentUser());
-		 return "studiengang/studg_einzel";
-		 
-	 }
-	 
-	 @GetMapping(value = "/edit/{dID}")
-	 public String editStudiengang(Model model, @PathVariable int dID) {
-		 model.addAttribute("studiengang", mStudiengangService.getStudiengangByID(dID));
-		 model.addAttribute("pageTitle", "DHBW - Studiengang bearbeiten");
-		 model.addAttribute("currentUser", userServ.getCurrentUser());
-		 return "studiengang/studg_edit";
-	 }
-	 
-	 @GetMapping(value ="/add")
-	 public String addStudiengangUi(Model model) {
-		 model.addAttribute("pageTitle", "DHBW - Studiengang Anlegen");
-		 model.addAttribute("currentUser", userServ.getCurrentUser());
-		 return "studiengang/studg_add";
-	 }
-	 
-	 @GetMapping(value = "/showAllSturi")
-		public String getAllSturi(Model model, @RequestParam(required = false) String name, 
-				@RequestParam(required = false) Object sturiDeleted, @RequestParam(required = false) Object sturiCreated) {
 
-			model.addAttribute("sturiList", mStudienrichtungService.getAllStudienrichtung(name));
-			model.addAttribute("sturiDeleted", sturiDeleted);
-			model.addAttribute("sturiCreated", sturiCreated);
-			model.addAttribute("pageTitle", "DHBW - Übersicht Studienrichtung");
-			model.addAttribute("currentUser", userServ.getCurrentUser());
-			return "studiengang/studg_einzel";
+		model.addAttribute("studiengangList", mStudiengangService.getAllStudiengangs(name));
+		model.addAttribute("studiengangDeleted", StudiengangDeleted);
+		model.addAttribute("studiengangCreated", StudiengangCreated);
+		model.addAttribute("pageTitle", "DHBW - Übersicht Studiengang");
+		model.addAttribute("currentUser", userServ.getCurrentUser());
+		return "studiengang/studg_overview";
+	}
+
+	@GetMapping(path = "/show/{aID}")
+	public String getAllStudiengang(Model model, @PathVariable int aID,
+			@RequestParam(required = false) Object StudiengangUpdated) {
+		model.addAttribute("studiengang", mStudiengangService.getStudiengangByID(aID));
+		model.addAttribute("studiengangUpdated", StudiengangUpdated);
+		model.addAttribute("pageTitle", "DHBW - Studiengangansicht");
+		model.addAttribute("currentUser", userServ.getCurrentUser());
+		return "studiengang/studg_einzel";
+
+	}
+
+	@GetMapping(value = "/edit/{dID}")
+	public String editStudiengang(Model model, @PathVariable int dID) {
+		model.addAttribute("studiengang", mStudiengangService.getStudiengangByID(dID));
+		model.addAttribute("pageTitle", "DHBW - Studiengang bearbeiten");
+		model.addAttribute("currentUser", userServ.getCurrentUser());
+		return "studiengang/studg_edit";
+	}
+
+	@GetMapping(value = "/add")
+	public String addStudiengangUi(Model model) {
+		model.addAttribute("pageTitle", "DHBW - Studiengang Anlegen");
+		model.addAttribute("currentUser", userServ.getCurrentUser());
+		return "studiengang/studg_add";
+	}
+
+	@GetMapping(value = "/showAllSturi")
+	public String getAllSturi(Model model, @RequestParam(required = false) String name,
+			@RequestParam(required = false) Object sturiDeleted, @RequestParam(required = false) Object sturiCreated) {
+
+		model.addAttribute("sturiList", mStudienrichtungService.getAllStudienrichtung(name));
+		model.addAttribute("sturiDeleted", sturiDeleted);
+		model.addAttribute("sturiCreated", sturiCreated);
+		model.addAttribute("pageTitle", "DHBW - Übersicht Studienrichtung");
+		model.addAttribute("currentUser", userServ.getCurrentUser());
+		return "studiengang/studg_einzel";
+	}
+
+	@GetMapping(value = "/deleteSturi/{aID}")
+	public String deleteSturi(RedirectAttributes redirectAttributes, @PathVariable int aID) {
+		if (mStudienrichtungService.deleteStudienrichtung(aID)) {
+			redirectAttributes.addAttribute("sturiDeleted", true);
+		} else {
+			redirectAttributes.addAttribute("sturiDeleted", false);
 		}
-		
-		@GetMapping(value = "/deleteSturi/{aID}")
-		public String deleteSturi(RedirectAttributes redirectAttributes, @PathVariable int aID) {
-			if (mStudienrichtungService.deleteStudienrichtung(aID)) {
-				redirectAttributes.addAttribute("sturiDeleted", true);
-			} else {
-				redirectAttributes.addAttribute("sturiDeleted", false);
-			}
-			return "redirect:/studiengang/";
+		return "redirect:/studiengang/";
+	}
+
+	@PostMapping(path = "/updateSturi/{aID}")
+	public String updateSturi(RedirectAttributes redirectAttributes, @ModelAttribute Studienrichtung aSturi) {
+		if (mStudienrichtungService.updateStudienrichtung(aSturi)) {
+			redirectAttributes.addAttribute("SturiUpdated", true);
+		} else {
+			redirectAttributes.addAttribute("SturiUpdated", false);
 		}
-		
-		@PostMapping(path = "/updateSturi/{aID}")
-		public String updateSturi(RedirectAttributes redirectAttributes, @ModelAttribute Studienrichtung aSturi) {
-			if (mStudienrichtungService.updateStudienrichtung(aSturi)) {
-				redirectAttributes.addAttribute("SturiUpdated", true);
-			} else {
-				redirectAttributes.addAttribute("SturiUpdated", false);
-			}
-			return "redirect:/studiengang/show/" + aSturi.getriID();
+		return "redirect:/studiengang/show/" + aSturi.getriID();
+	}
+
+	@PostMapping(value = "/addSturi", produces = "application/json", consumes = "application/json")
+	@ResponseBody
+	public SturiDto addStudienrichtung(@RequestBody SturiDto sturi) {
+		Studienrichtung studienrichtung = new Studienrichtung();
+		Studiengang studiengang = mStudiengangService.getStudiengangByID(sturi.getStid());
+		studienrichtung.setName(sturi.getName());
+		studienrichtung.setStudiengang(studiengang);
+		if (mStudienrichtungService.addStudienrichtung(studienrichtung) != null) {
+			return sturi;
 		}
-		
-		@PostMapping(value = "/addSturi", produces = "application/json", consumes = "application/json")
-		@ResponseBody
-		public SturiDto addStudienrichtung(@RequestBody SturiDto sturi) {
-			Studienrichtung studienrichtung = new Studienrichtung();
-			Studiengang studiengang = mStudiengangService.getStudiengangByID(sturi.getStid());
-			studienrichtung.setName(sturi.getName());
-			studienrichtung.setStudiengang(studiengang);
-			if (mStudienrichtungService.addStudienrichtung(studienrichtung) != null) {
-				return sturi;
-			}
-			return null;
-		}
-		
-		@GetMapping(value = "/getSturi/{stid}", produces = "application/json")
-		@ResponseBody
-		public List<Studienrichtung> getAllStudienrichtung(@PathVariable int stid) {
-			return mStudiengangService.getAllSturi(stid);
-		}
+		return null;
+	}
+
+	@GetMapping(value = "/getSturi/{stid}", produces = "application/json")
+	@ResponseBody
+	public List<Studienrichtung> getAllStudienrichtung(@PathVariable int stid) {
+		return mStudiengangService.getAllSturi(stid);
+	}
 }
