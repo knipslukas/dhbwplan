@@ -181,7 +181,6 @@
 		}
 
 		function deleteSturi(RID) {
-
 			$.ajax({
 				url: "/studiengang/deleteSturi/" + RID,
 				type: "POST",
@@ -191,8 +190,8 @@
 					// alert("Erfolgreich entfernt!")
 				},
 				error: function (status) {
-					//console.log(status)
-					
+					console.log(status)
+
 					alert("Problem mit dem entfernen: " + status)
 				}
 			})
