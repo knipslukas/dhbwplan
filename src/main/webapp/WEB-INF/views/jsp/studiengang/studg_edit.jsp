@@ -68,7 +68,7 @@
 					<thead class="thead-light">
 						<tr>
 							<th scope="col"><strong>Studienrichtung</strong></th>
-							<th scope="col"><strong>Studienrichtungnummer</strong></th>
+							<th scope="col"><strong>Löschen</strong></th>
 
 						</tr>
 					</thead>
@@ -173,12 +173,29 @@
 				$.each(entrys, function (i, sturi) {
 					list += "<tr>";
 					list += "<td>" + sturi.name + "</td>";
-					list += '<td><button onClick="deleteSturi(' + sturi.riID + ')"><i class="fas fa-trash-alt"></i></button></td>';
+					list += '<td><button onClick="deleteSturi(' + sturi.RID + ')"><i class="fas fa-trash-alt"></i></button></td>';
 					list += "</tr>";
 				})
 				return list;
 			})
 		}
+
+		function deleteSturi(RID) {
+
+			$.ajax({
+				url: "/studiengang/deleteSturi/" + RID,
+				type: "POST",
+				success: function (result) {
+					getList()
+					// console.log(result)
+					// alert("Erfolgreich entfernt!")
+				},
+				error: function (status) {
+					//console.log(status)
+					alert("Problem mit dem entfernen: " + status)
+				}
+			})
+		} 
 	</script>
 
 	<!-- Ende Content -->
