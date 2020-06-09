@@ -73,7 +73,7 @@
 				<!-- 	Beispieleintrag -->
 					<c:choose>
 						<c:when test="${sturiList ne null }">
-							<c:forEach items="${sturiList}" var="prz">
+							<c:forEach items="${sturiList}" var="sturi">
 								<tr>
 									<td scope="row" class="align-middle">${studienrichtung.name }</td>
 									<td scope="row" class="align-middle">${studienrichtung.riID }</td>
@@ -104,12 +104,12 @@
 	        <div class="form-group row">
 	                <label class="col-2 col-form-label">Studienrichtung</label>
 	                <div class="col-4">
-						<input type="text" name="semester" class="form-control js-form-semester" placeholder="Studienrichtung eingeben" value="${studienrichtung.name}" required>	                
+						<input type="text" name="name" class="form-control js-form-name" placeholder="Studienrichtung eingeben" value="${studienrichtung.name}" required>	                
 	                </div>
 	        </div>
 	         
 	       
-	         <input type ="hidden" value="${studiengang.stID}" class="js-form-kurs"/>
+	         <input type ="hidden" value="${studiengang.stID}" class="js-form-stid"/>
 	         <div class="finalButtons">
 	                <button type="button" class="btn btn-success js-form-submit">Hinzufügen </button>
 	          </div> 
@@ -127,9 +127,10 @@
 	<script>
 	$(".js-form-submit").click(function(){
 		var studienrichtung = new Object();
-		studienrichtung.name = $(".js-form-kurs").val();
-		studienrichtung.stid = $(".js-form-semester").val();
+		studienrichtung.name = $(".js-form-name").val();
+		studienrichtung.stid = $(".js-form-stid").val();
 			console.log(studienrichtung);
+			alert(studienrichtung.name);
 		$.ajax({
 			url: "/studiengang/addSturi",
 			type: "POST",
@@ -150,7 +151,7 @@
 
 	function getList() {
 		$.ajax({
-			url: "/studiengang/getSturi/"+$(".js-form-kurs").val(),
+			url: "/studiengang/getSturi/"+$(".js-form-stid").val(),
 			type: "GET",
 			success: function (result) {
 				renderList(result)
