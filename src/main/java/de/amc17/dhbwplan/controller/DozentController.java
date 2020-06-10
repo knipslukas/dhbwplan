@@ -99,6 +99,4 @@ public class DozentController {
 		 return "dozent/doz_add";
 	 }
 
-	
-
 }

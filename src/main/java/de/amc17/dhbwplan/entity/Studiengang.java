@@ -1,16 +1,12 @@
 package de.amc17.dhbwplan.entity;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Studiengang implements Serializable {
@@ -20,7 +16,6 @@ public class Studiengang implements Serializable {
 	 */
 	private static final long serialVersionUID = -3809708678940563950L;
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="StID")
@@ -29,11 +24,6 @@ public class Studiengang implements Serializable {
 	private String name;
 	
 	private String beschreibung;
-	
-	@OneToMany (mappedBy="studiengang")
-	 private List<Studienrichtung> studienrichtung;
-	
-
 
 	public String getName() {
 		return name;
@@ -55,16 +45,7 @@ public class Studiengang implements Serializable {
 		return stID;
 	}
 
-
-	public void setStID(int STID) {
-		this.stID = STID;
-	}
-	
-	public List<Studienrichtung> getStudienrichtung() {
-		return studienrichtung;
-	}
-
-	public void setStudienrichtung(List<Studienrichtung> studienrichtung) {
-		this.studienrichtung = studienrichtung;
+	public void setStID(int stID) {
+		this.stID = stID;
 	}
 }
