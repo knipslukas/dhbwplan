@@ -154,7 +154,7 @@
 
 
 			<!-- Lerneinheit Formular -->
-			<form class="pb-3 js-form-dozanleg" id="newLEE">
+			<form class="pb-3 js-form-lee">
 
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Name</label>
@@ -163,15 +163,15 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Präsenzzeit</label>
+					<label class="col-2 col-form-label">Präsenzzeit (h)</label>
 					<div class="col-3">
-						<input type="text" name="praesenzzeit" class="form-control js-form-praesenzzeit" id="leePrzzeit" placeholder="Neues Präsenzzeit" value="${lerneinheit.praesenzzeit}" required>
+						<input type="text" name="praesenzzeit" class="form-control js-form-praesenzzeit" placeholder="Neues Präsenzzeit" value="${lerneinheit.praesenzzeit}" required>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Selbsstudium</label>
+					<label class="col-2 col-form-label">Selbsstudium (h)</label>
 					<div class="col-3">
-						<input type="text" name="selbststudium" class="form-control js-form-selbsttudium" id="leeSelbsstudium" placeholder="Neues Selbsstudium" value="${lerneinheit.selbststudium}" required>
+						<input type="text" name="selbststudium" class="form-control js-form-selbsttudium" placeholder="Neues Selbsstudium" value="${lerneinheit.selbststudium}" required>
 					</div>
 				</div>
 
@@ -183,7 +183,7 @@
 			</form>
 
 			<!-- Das hier übermittelt dem Server die ID von Modul, da diese für das Update benötigt wird -->
-			<input class="d-none" name="MID" value="${modul.MID}" id="leeMID">
+			<input type="hidden" class="js-form-mid" value="${modul.MID}">
 
 			<!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -199,20 +199,18 @@
 	<script>
 		$(".js-form-submit").click(function () {
 			var lerneinheit = new Object();
-			lerneinheit.modulid = $("#leeMID").val();
-			lerneinheit.name = $("#leeName").val();
-			lerneinheit.praesenzzeit = $("#leePrzzeit").val();
-			lerneinheit.selbststudium = $("#leeSelbsstudium").val();
-			//console.log(lerneinheit);
+			lerneinheit.modulid = $(".js-form-mid").val();
+			lerneinheit.name = $(".js-form-name").val();
+			lerneinheit.praesenzzeit = $(".js-form-praesenzzeit").val();
+			lerneinheit.selbststudium = $(".js-form-selbsttudium").val();
 			$.ajax({
 				url: "/modul/addLEE",
 				type: "POST",
 				contentType: "application/json",
 				data: JSON.stringify(lerneinheit),
 				success: function (result) {
-					document.getElementById("newLEE").reset();
+					$(".js-form-lee").trigger("reset");
 					getList();
-					//empty up input
 				},
 				error: function (e) {
 					alert(e)
@@ -226,10 +224,9 @@
 
 		function getList() {
 			$.ajax({
-				url: "/modul/getLEE/" + $("#leeMID").val(),
+				url: "/modul/getLEE/" + $(".js-form-mid").val(),
 				type: "GET",
 				success: function (result) {
-					// console.log(result)
 					renderList(result)
 				},
 				error: function (status) {
@@ -276,11 +273,8 @@
 				type: "POST",
 				success: function (result) {
 					getList()
-					// console.log(result)
-					// alert("Erfolgreich entfernt!")
 				},
 				error: function (status) {
-					//console.log(status)
 					alert("Problem mit dem entfernen: " + status)
 				}
 			})
