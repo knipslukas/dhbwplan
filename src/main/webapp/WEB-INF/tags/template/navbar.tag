@@ -32,11 +32,9 @@
 	                       Veranstaltungen
 	                </a>
 	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-	                    <a class="dropdown-item navigationlist" href="#">Studienrichtungen</a>
+	                    <a class="dropdown-item navigationlist" href="/studiengang">Studiengänge</a>
 
-	                    <a class="dropdown-item navigationlist" href="/modul">ModulÃ¼bersicht</a>
-
-	                    <a class="dropdown-item navigationlist" href="#">Lerneinheiten</a>
+	                    <a class="dropdown-item navigationlist" href="/modul">Modulübersicht</a>
 	                </div>
 	            </li>
 	            <li class="dhbw_user nav-item dropdown">
