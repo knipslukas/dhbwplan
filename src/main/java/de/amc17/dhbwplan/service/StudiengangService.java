@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import de.amc17.dhbwplan.entity.Dozent;
 import de.amc17.dhbwplan.entity.Studiengang;
-import de.amc17.dhbwplan.entity.Studienrichtung;
 import de.amc17.dhbwplan.repository.DozentRepository;
 import de.amc17.dhbwplan.repository.StudiengangRepository;
 
@@ -97,16 +96,14 @@ public class StudiengangService {
 		}
 	}
 	
-	
-
-	public List<Studienrichtung> getAllSturi(int stid) {
+	public List<Studiengang> getAllStudiengangsForUser() {
 		try {
-			Studiengang studiengang = studiengangRepository.findById(stid).get();
-			return studiengang.getStudienrichtung();
+			return studiengangRepository.findAll();
 		}
-		catch(Exception e) {
-			LOG.error("Couldn't load Kurslist" + e);
+		catch (Exception e) {
+			LOG.error("StudiengangService - No Users found or Query invalid! \n "+e);
 			return null;
 		}
 	}
+
 }
