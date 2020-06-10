@@ -17,7 +17,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http 
+		http
+			.csrf()
+				.ignoringAntMatchers("/kurs/addPRZ")
+				.ignoringAntMatchers("/kurs/deletePRZ/**")
+				.and()
 			.authorizeRequests()
 				.antMatchers("/static/**").permitAll()
 				.antMatchers("/setup").permitAll()
