@@ -126,6 +126,7 @@
 		</div>
 	</div>
 
+
 	<script>
 		$(".js-form-submit").click(function () {
 			var studienrichtung = new Object();
