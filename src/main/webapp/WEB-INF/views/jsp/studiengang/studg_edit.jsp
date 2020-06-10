@@ -105,13 +105,13 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Studienrichtung</label>
 					<div class="col-4">
-						<input type="text" name="name" class="form-control js-form-semester" id="STURNAME" placeholder="Studienrichtung eingeben"
+						<input type="text" name="name" class="form-control js-form-name" placeholder="Studienrichtung eingeben"
 							value="${studienrichtung.name}" required>
 					</div>
 				</div>
 
 
-				<input type="hidden" value="${studiengang.stID}" id="STURSTID" />
+				<input type="hidden" value="${studiengang.stID}" class="js-form-stid" />
 				<div class="finalButtons">
 					<button type="button" class="btn btn-success js-form-submit">Hinzufügen </button>
 				</div>
@@ -130,8 +130,8 @@
 	<script>
 		$(".js-form-submit").click(function () {
 			var studienrichtung = new Object();
-			studienrichtung.name = $("#STURNAME").val();
-			studienrichtung.stid = $("#STURSTID").val();
+			studienrichtung.name = $(".js-form-name").val();
+			studienrichtung.stid = $(".js-form-stid").val();
 			//console.log(studienrichtung);
 			//alert(studienrichtung.name);
 			$.ajax({
@@ -155,7 +155,7 @@
 
 		function getList() {
 			$.ajax({
-				url: "/studiengang/getSturi/" + $("#STURSTID").val(),
+				url: "/studiengang/getSturi/" + $(".js-form-stid").val(),
 				type: "GET",
 				success: function (result) {
 					renderList(result)
