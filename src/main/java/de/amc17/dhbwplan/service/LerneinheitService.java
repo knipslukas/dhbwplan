@@ -23,12 +23,9 @@ public class LerneinheitService {
 
 	public Lerneinheit addLerneinheit(Lerneinheit aLerneinheit) {
 		try {
-			if (String.valueOf(aLerneinheit.getPraesenzzeit()) == null)
-				aLerneinheit.setPräsenzzeit(0);
-			if (String.valueOf(aLerneinheit.getSelbststudium()) == null)
-				aLerneinheit.setSelbststudium(0);
-			if (aLerneinheit.getName() == "")
-				aLerneinheit.setName("Keine Daten");
+			if (String.valueOf(aLerneinheit.getPraesenzzeit()) == null) aLerneinheit.setPräsenzzeit(0);
+			if (String.valueOf(aLerneinheit.getSelbststudium()) == null) aLerneinheit.setSelbststudium(0);
+			if (aLerneinheit.getName() == "") aLerneinheit.setName("Keine Daten");
 			LerneinheitRepository.save(aLerneinheit);
 		} catch (Exception e) {
 			return null;

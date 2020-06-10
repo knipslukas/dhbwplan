@@ -126,22 +126,6 @@ public class ModulController {
 		return mModulService.getAllLee(modulid);
 	}
 
-	/**
-	 * @GetMapping(value = "/showAllLEE") public String getAllLee(Model
-	 *                   model, @RequestParam(required = false) String aName,
-	 * @RequestParam(required = false) Object leeDeleted, @RequestParam(required =
-	 *                        false) Object leeCreated) {
-	 * 
-	 *                        model.addAttribute("leeList",
-	 *                        mLerneinheitService.getAllLerneinheit(aName));
-	 *                        model.addAttribute("leeDeleted", leeDeleted);
-	 *                        model.addAttribute("leeCreated", leeCreated);
-	 *                        model.addAttribute("pageTitle", "DHBW - Übersicht
-	 *                        Lerneinheiten"); model.addAttribute("currentUser",
-	 *                        userServ.getCurrentUser()); return "modul/mod_einzel";
-	 *                        }
-	 */
-
 	@PostMapping(value = "/deleteLEE/{leeID}")
 	@ResponseBody
 	public boolean deleteLee(RedirectAttributes redirectAttributes, @PathVariable int leeID) {

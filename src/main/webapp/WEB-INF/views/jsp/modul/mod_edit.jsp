@@ -165,11 +165,11 @@
 							placeholder="Neuer Name eingeben" value="${lerneinheit.name}" required>
 					</div>
 					<div class="col-4">
-						<input type="text" name="von" class="form-control js-form-von" id="leePrzzeit"
+						<input type="text" name="praesenzzeit" class="form-control js-form-von" id="leePrzzeit"
 							placeholder="Neues Präsenzzeit" value="${lerneinheit.praesenzzeit}" required>
 					</div>
 					<div class="col-4">
-						<input type="text" name="bis" class="form-control js-form-bis" id="leeSelbsstudium"
+						<input type="text" name="selbststudium" class="form-control js-form-bis" id="leeSelbsstudium"
 							placeholder="Neues Selbsstudium" value="${lerneinheit.selbststudium}" required>
 					</div>
 				</div>
@@ -254,7 +254,14 @@
 				})
 			} else {
 				$(".js-table").html(function () {
-					return '<td>Keine Lerneinheiten vorhanden</td>';
+					var list = "";
+					list += "<tr class='table-warning'>";
+					list += '<td>Keine Lerneinheiten vorhanden</td>'
+					list += "<td></td>"
+					list += "<td></td>"
+					list += "<td></td>"
+					list += "</tr>";
+					return list;
 				})
 			}
 

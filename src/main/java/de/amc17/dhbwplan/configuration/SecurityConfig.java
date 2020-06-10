@@ -15,11 +15,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().ignoringAntMatchers("/modul/addLEE").ignoringAntMatchers("/modul/deleteLEE/**").and()
-				.authorizeRequests().antMatchers("/static/**").permitAll().antMatchers("/setup").permitAll()
-				.anyRequest().authenticated().and().httpBasic().and().formLogin().loginPage("/login")
-				.defaultSuccessUrl("/").usernameParameter("email").passwordParameter("password").permitAll().and()
-				.logout().logoutUrl("/usrlgt").permitAll();
+		http.csrf()
+				.ignoringAntMatchers("/modul/addLEE")
+				.ignoringAntMatchers("/modul/deleteLEE/**")
+				.and()
+			.authorizeRequests()
+				.antMatchers("/static/**").permitAll()
+				.antMatchers("/setup").permitAll()
+				.anyRequest().authenticated()
+				.and()
+			.httpBasic()
+				.and()
+			.formLogin()
+				.loginPage("/login")
+				.defaultSuccessUrl("/")
+				.usernameParameter("email")
+				.passwordParameter("password")
+				.permitAll()
+				.and()
+			.logout()
+				.logoutUrl("/usrlgt")
+				.permitAll();
 	}
 
 	@Bean
