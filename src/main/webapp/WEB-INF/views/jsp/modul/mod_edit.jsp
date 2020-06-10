@@ -111,7 +111,7 @@
 
 
 			<!-- Lerneinheit Liste -->
-			<div class="mt-5">
+			<div class="mt-5 mb-3">
 				<label class="col-2 col-form-label"><strong>Lerneinheiten</strong></label>
 				<table class="table table-hover">
 					<thead class="thead-light">
@@ -157,20 +157,21 @@
 			<form class="pb-3 js-form-dozanleg" id="newLEE">
 
 				<div class="form-group row">
-					<label class="col-4 col-form-label">Name</label>
-					<label class="col-4 col-form-label">Präsenzzeit</label>
-					<label class="col-4 col-form-label">Selbsstudium</label>
-					<div class="col-4">
-						<input type="text" name="name" class="form-control js-form-semester" id="leeName"
-							placeholder="Neuer Name eingeben" value="${lerneinheit.name}" required>
+					<label class="col-2 col-form-label">Name</label>
+					<div class="col-3">
+						<input type="text" name="name" class="form-control js-form-name" placeholder="Neuer Name eingeben" value="${lerneinheit.name}" required>
 					</div>
-					<div class="col-4">
-						<input type="text" name="praesenzzeit" class="form-control js-form-von" id="leePrzzeit"
-							placeholder="Neues Präsenzzeit" value="${lerneinheit.praesenzzeit}" required>
+				</div>
+				<div class="form-group row">
+					<label class="col-2 col-form-label">Präsenzzeit</label>
+					<div class="col-3">
+						<input type="text" name="praesenzzeit" class="form-control js-form-praesenzzeit" id="leePrzzeit" placeholder="Neues Präsenzzeit" value="${lerneinheit.praesenzzeit}" required>
 					</div>
-					<div class="col-4">
-						<input type="text" name="selbststudium" class="form-control js-form-bis" id="leeSelbsstudium"
-							placeholder="Neues Selbsstudium" value="${lerneinheit.selbststudium}" required>
+				</div>
+				<div class="form-group row">
+					<label class="col-2 col-form-label">Selbsstudium</label>
+					<div class="col-3">
+						<input type="text" name="selbststudium" class="form-control js-form-selbsttudium" id="leeSelbsstudium" placeholder="Neues Selbsstudium" value="${lerneinheit.selbststudium}" required>
 					</div>
 				</div>
 
