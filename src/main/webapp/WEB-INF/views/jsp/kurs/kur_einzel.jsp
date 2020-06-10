@@ -76,6 +76,7 @@
 	   						<p>${kurs.anzahlStudierende}</p>
 	   					</div>
 	   				</div>
+	   				
 	   			</div>
 	    	</div>
 		</div>

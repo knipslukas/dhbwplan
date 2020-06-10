@@ -7,8 +7,10 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import de.amc17.dhbwplan.entity.Kurs;
+import de.amc17.dhbwplan.entity.Praesenzzeitraum;
 import de.amc17.dhbwplan.repository.KursRepository;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -99,5 +101,7 @@ public class KursService {
 			return null;
 		}
 	}
+	
+
 
 }
