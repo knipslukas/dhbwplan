@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Lerneinheit implements Serializable {
@@ -18,21 +22,34 @@ public class Lerneinheit implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="LEID")
+	@Column(name = "LEID")
 	private int LEID;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "modul_ID")
+	@JsonIgnore
+	private Modul modul;
+
 	private String name;
-	
+
 	private int praesenzzeit;
-	
+
 	private int selbststudium;
-	
+
 	public int getLEID() {
 		return LEID;
 	}
-	
+
 	public void setLEID(int LEID) {
 		this.LEID = LEID;
+	}
+
+	public Modul getModul() {
+		return modul;
+	}
+
+	public void setModul(Modul modul) {
+		this.modul = modul;
 	}
 
 	public int getPraesenzzeit() {

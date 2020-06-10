@@ -1,12 +1,17 @@
 package de.amc17.dhbwplan.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+import org.apache.catalina.startup.SetAllPropertiesRule;
 
 @Entity
 public class Modul implements Serializable {
@@ -18,27 +23,30 @@ public class Modul implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="MID")
+	@Column(name = "MID")
 	private int MID;
-	
+
+	@OneToMany(mappedBy = "modul")
+	private List<Lerneinheit> lerneinheiten;
+
 	private String bezeichnung;
-	
+
 	private int studienjahr;
-	
+
 	private int selbststudium;
-	
+
 	private int moduldauer;
-	
+
 	private String modulart;
-	
+
 	private String pruefungsleistung;
-	
+
 	private String beschreibung;
-	
+
 	private String sprache;
-	
+
 	private int praesenzzeit;
-	
+
 	private int ectsPunkte;
 
 	public String getBezeichnung() {
@@ -89,7 +97,6 @@ public class Modul implements Serializable {
 		this.sprache = sprache;
 	}
 
-
 	public int getEctsPunkte() {
 		return ectsPunkte;
 	}
@@ -113,11 +120,11 @@ public class Modul implements Serializable {
 	public void setStudienjahr(int studienjahr) {
 		this.studienjahr = studienjahr;
 	}
-	
+
 	public int getMID() {
 		return MID;
 	}
-	
+
 	public void setMID(int MID) {
 		this.MID = MID;
 	}
@@ -128,6 +135,14 @@ public class Modul implements Serializable {
 
 	public void setPruefungsleistung(String pruefungsleistung) {
 		this.pruefungsleistung = pruefungsleistung;
+	}
+
+	public List<Lerneinheit> getLerneinheit() {
+		return lerneinheiten;
+	}
+
+	public void setLerneinheit(List<Lerneinheit> lerneinheiten) {
+		this.lerneinheiten = lerneinheiten;
 	}
 
 }

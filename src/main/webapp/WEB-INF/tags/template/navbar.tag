@@ -34,7 +34,7 @@
 	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	                    <a class="dropdown-item navigationlist" href="#">Studienrichtungen</a>
 
-	                    <a class="dropdown-item navigationlist" href="#">Modulübersicht</a>
+	                    <a class="dropdown-item navigationlist" href="/modul">Modulübersicht</a>
 
 	                    <a class="dropdown-item navigationlist" href="#">Lerneinheiten</a>
 	                </div>
