@@ -75,7 +75,6 @@ public class StudiengangController {
 	public String getAllStudiengang(Model model, @RequestParam(required = false) String name,
 			@RequestParam(required = false) Object StudiengangDeleted,
 			@RequestParam(required = false) Object StudiengangCreated) {
-
 		model.addAttribute("studiengangList", mStudiengangService.getAllStudiengangs(name));
 		model.addAttribute("studiengangDeleted", StudiengangDeleted);
 		model.addAttribute("studiengangCreated", StudiengangCreated);

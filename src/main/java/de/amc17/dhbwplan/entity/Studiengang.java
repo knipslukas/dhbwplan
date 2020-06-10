@@ -55,6 +55,7 @@ public class Studiengang implements Serializable {
 		return stID;
 	}
 
+
 	public void setStID(int STID) {
 		this.stID = STID;
 	}
