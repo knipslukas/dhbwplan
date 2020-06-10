@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Studienrichtung implements Serializable {
@@ -15,13 +19,18 @@ public class Studienrichtung implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -8704198075041666111L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="RiID")
 	private int riID;
 	
 	private String name;
+	
+	@ManyToOne
+	@JoinColumn(name="StID", nullable=false)
+	@JsonIgnore
+	private Studiengang studiengang;
 	
 	public int getriID() {
 		return riID;
@@ -37,5 +46,13 @@ public class Studienrichtung implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public Studiengang getStudiengang() {
+		return studiengang;
+	}
+	
+	public void setStudiengang(Studiengang studiengang) {
+		this.studiengang=studiengang;
 	}
 }

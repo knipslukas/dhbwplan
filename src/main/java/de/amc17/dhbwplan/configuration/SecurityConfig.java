@@ -19,6 +19,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.csrf()
 				.ignoringAntMatchers("/modul/addLEE")
 				.ignoringAntMatchers("/modul/deleteLEE/**")
+				.ignoringAntMatchers("/studiengang/addSturi")
+				.ignoringAntMatchers("/studiengang/deleteSturi/**")
 				.ignoringAntMatchers("/kurs/addPRZ")
 				.ignoringAntMatchers("/kurs/deletePRZ/**")
 				.and()

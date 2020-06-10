@@ -110,7 +110,6 @@
 					</div>
 				</div>
 
-
 				<input type="hidden" value="${studiengang.stID}" class="js-form-stid" />
 				<div class="finalButtons">
 					<button type="button" class="btn btn-success js-form-submit">Hinzufügen </button>
@@ -125,7 +124,6 @@
 			<!-- Ende Content -->
 		</div>
 	</div>
-
 
 	<script>
 		$(".js-form-submit").click(function () {
