@@ -89,8 +89,6 @@
 								<tr class="table-warning">
 									<td>Keine Studienrichtungen vorhanden</td>
 									<td></td>
-									<td></td>
-									<td></td>
 
 								</tr>
 							</c:otherwise>
@@ -176,7 +174,15 @@
 					list += '<td><button onClick="deleteSturi(' + sturi.riID + ')"><i class="fas fa-trash-alt"></i></button></td>';
 					list += "</tr>";
 				})
-				return list;
+				if (list!=""){
+					return list;
+				}else{
+					list += "<tr class='table-warning'>";
+					list += "<td>Keine Studienrichtungen vorhanden</td>";
+					list += "<td></td>";
+					list += "</tr>";
+					return list;
+				}
 			})
 		}
 
