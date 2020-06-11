@@ -33,7 +33,7 @@
 	                </a>
 	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	                    <a class="dropdown-item navigationlist" href="/studiengang">Studiengänge</a>
-
+						<a class="dropdown-item navigationlist" href="/modulkatalog">Modulkataloge</a>
 	                    <a class="dropdown-item navigationlist" href="/modul">Modulübersicht</a>
 	                </div>
 	            </li>
