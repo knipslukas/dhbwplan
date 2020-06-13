@@ -19,6 +19,7 @@ import de.amc17.dhbwplan.entity.Dozent;
 import de.amc17.dhbwplan.entity.Modulkatalog;
 import de.amc17.dhbwplan.service.DozentService;
 import de.amc17.dhbwplan.service.ModulkatalogService;
+import de.amc17.dhbwplan.service.StudienrichtungService;
 import de.amc17.dhbwplan.service.UserService;
 
 @Controller
@@ -30,6 +31,9 @@ public class ModulkatalogController {
 	
 	@Autowired
 	private UserService userServ;
+	
+	@Autowired
+	private StudienrichtungService mStudiengangrichtungService;
 	
 	@PostMapping(path = "/add") 
 	public String addModulkatalog(@ModelAttribute Modulkatalog mk, RedirectAttributes redirectAttributes) {

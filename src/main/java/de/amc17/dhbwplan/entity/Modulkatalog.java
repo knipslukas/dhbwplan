@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Modulkatalog implements Serializable {
@@ -25,6 +26,9 @@ public class Modulkatalog implements Serializable {
 	private Date gueltigVon;
 	
 	private Date gueltigBis;
+	
+	@OneToOne
+	private Studienrichtung studienrichtung;
 	
 	public int getMKID() {
 		return MKID;
@@ -50,6 +54,12 @@ public class Modulkatalog implements Serializable {
 		this.gueltigBis = gueltigBis;
 	}
 	
-	
+	public Studienrichtung getStudienrichtung() {
+		return studienrichtung;
+	}
+
+	public void setStudienrichtung(Studienrichtung studienrichtung) {
+		this.studienrichtung = studienrichtung;
+	}
 	
 }

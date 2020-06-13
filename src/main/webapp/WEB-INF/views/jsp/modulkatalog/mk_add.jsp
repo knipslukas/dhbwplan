@@ -44,6 +44,18 @@
 	                </div>
 	            </div>
 	            
+	            <div class="form-group row mb-5">
+	                <label class="col-2 col-form-label">Studienrichtung</label>
+	                <div class="col-10">
+	                	<select class="form-control" id="dozent" name="dozID">
+		                	<option disabled selected>Studienrichtung auswählen</option>
+		                	<c:forEach items="${dozentList}" var="dozent">
+		                		<option value="${dozent.DID }">${dozent.vorname } ${dozent.nachname }</option>
+		                	</c:forEach>
+		                </select>
+	                </div>
+	            </div>
+	            
 	    	            
 	            <!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
 	            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
