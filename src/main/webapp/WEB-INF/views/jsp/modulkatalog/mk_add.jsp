@@ -33,14 +33,14 @@
 	            <div class="form-group row">
 	                <label class="col-2 col-form-label">Gültig von</label>
 	                <div class="col-10">
-	                	<input type="text" name="gueltigVon" class="form-control" placeholder="Gueltig ab" required>
+	                	<input type="date" name="gueltigVon" class="form-control" placeholder="Gueltig ab" required>
 	                </div>
 	            </div>
 	
 	            <div class="form-group row">
 	                <label class="col-2 col-form-label">Gültig bis</label>
 	                <div class="col-10">
-	                	<input type="text" name="gueltigBis" class="form-control" placeholder="Gueltig bis" required>
+	                	<input type="date" name="gueltigBis" class="form-control" placeholder="Gueltig bis" required>
 	                </div>
 	            </div>
 	            

@@ -1,40 +1,19 @@
-package de.amc17.dhbwplan.entity;
+package de.amc17.dhbwplan.data;
 
-import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.apache.catalina.startup.SetAllPropertiesRule;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Entity
-public class Modul implements Serializable {
+import de.amc17.dhbwplan.entity.Lerneinheit;
+import de.amc17.dhbwplan.entity.Modulkatalog;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7908887684543303784L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "MID")
+public class ModulDto {
 	private int MID;
-
-	@OneToMany(mappedBy = "modul")
-	private List<Lerneinheit> lerneinheiten;
 	
-	@ManyToOne 
-	@JoinColumn(name="MKID")
-	@JsonIgnore
 	private Modulkatalog modulkatalog;
 
 	private String bezeichnung;
@@ -56,7 +35,9 @@ public class Modul implements Serializable {
 	private int praesenzzeit;
 
 	private int ectsPunkte;
-
+	
+	
+	
 	public String getBezeichnung() {
 		return bezeichnung;
 	}
@@ -113,13 +94,6 @@ public class Modul implements Serializable {
 		this.ectsPunkte = ectsPunkte;
 	}
 
-	public int getPraesenzzeit() {
-		return praesenzzeit;
-	}
-
-	public void setPraesenzzeit(int praesenzzeit) {
-		this.praesenzzeit = praesenzzeit;
-	}
 
 	public int getStudienjahr() {
 		return studienjahr;
@@ -145,12 +119,5 @@ public class Modul implements Serializable {
 		this.pruefungsleistung = pruefungsleistung;
 	}
 
-	public List<Lerneinheit> getLerneinheit() {
-		return lerneinheiten;
-	}
-
-	public void setLerneinheit(List<Lerneinheit> lerneinheiten) {
-		this.lerneinheiten = lerneinheiten;
-	}
 
 }

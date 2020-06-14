@@ -71,11 +71,8 @@ public class ModulkatalogService {
 		return true;
 	}
 
-	public List<Modulkatalog> getAllModulkatalog(Date GültigVon, Date GültigBis) {		
+	public List<Modulkatalog> getAllModulkatalog() {		
 		try {
-			if (GültigVon != null) {
-				return ModulkatalogRepository.findAll();		
-			}
 			List<Modulkatalog> list = ModulkatalogRepository.findAll();
 			if (!list.isEmpty()) {
 				return list;

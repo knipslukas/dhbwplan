@@ -21,6 +21,7 @@ import de.amc17.dhbwplan.entity.Lerneinheit;
 import de.amc17.dhbwplan.entity.Modul;
 import de.amc17.dhbwplan.service.LerneinheitService;
 import de.amc17.dhbwplan.service.ModulService;
+import de.amc17.dhbwplan.service.ModulkatalogService;
 import de.amc17.dhbwplan.service.UserService;
 
 @Controller
@@ -30,6 +31,10 @@ public class ModulController {
 
 	@Autowired
 	private ModulService mModulService;
+	
+
+	@Autowired
+	private ModulkatalogService mModulkatalogService;
 
 	@Autowired
 	private LerneinheitService mLerneinheitService;
@@ -101,6 +106,7 @@ public class ModulController {
 	public String addModulUi(Model model) {
 		model.addAttribute("pageTitle", "DHBW - Modul Anlegen");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
+		model.addAttribute("modulkatalogList", mModulkatalogService.getAllModulkatalog());
 		return "modul/mod_add";
 	}
 

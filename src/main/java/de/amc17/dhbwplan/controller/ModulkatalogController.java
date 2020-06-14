@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import de.amc17.dhbwplan.data.ModulkatalogDto;
 import de.amc17.dhbwplan.entity.Dozent;
 import de.amc17.dhbwplan.entity.Modulkatalog;
 import de.amc17.dhbwplan.service.DozentService;
@@ -32,9 +33,14 @@ public class ModulkatalogController {
 	private UserService userServ;
 	
 	@PostMapping(path = "/add") 
-	public String addModulkatalog(@ModelAttribute Modulkatalog mk, RedirectAttributes redirectAttributes) {
-		if (mModulkatalogService.addModulkatalog(mk) != null) {
-			return "redirect:/modulkatalog/show/"+mk.getMKID();
+	public String addModulkatalog(@ModelAttribute ModulkatalogDto mk, RedirectAttributes redirectAttributes) {
+		Modulkatalog modulkatalog = new Modulkatalog();
+		modulkatalog.setname(mk.getname());
+		modulkatalog.setGueltigVon(mk.getGueltigVon());
+		modulkatalog.setGueltigBis(mk.getGueltigBis());
+		Modulkatalog mdk;
+		if ((mdk = mModulkatalogService.addModulkatalog(modulkatalog)) != null) {
+			return "redirect:/modulkatalog/show/"+mdk.getMKID();
 		}
 		else {
 			redirectAttributes.addAttribute("modulkatalogCreated", false);
@@ -80,7 +86,7 @@ public class ModulkatalogController {
 			 @RequestParam (required = false) Date gueltig_bis, @RequestParam(required = false) Object modulkatalogDeleted,
 			 @RequestParam(required = false) Object modulkatalogCreated) {
 		 
-		 model.addAttribute("modulkatalogList", mModulkatalogService.getAllModulkatalog(gueltig_von, gueltig_bis));
+		 model.addAttribute("modulkatalogList", mModulkatalogService.getAllModulkatalog());
 		 model.addAttribute("modulkatalogDeleted", modulkatalogDeleted);
 		 model.addAttribute("modulkatalogCreated", modulkatalogCreated);
 		 model.addAttribute("pageTitle", "DHBW - Übersicht Modulkatalog");
