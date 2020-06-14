@@ -35,6 +35,18 @@
 							required>
 					</div>
 				</div>
+				
+				<div class="form-group row mb-5">
+	                <label class="col-2 col-form-label">Verknüpfter Studiengangsleiter</label>
+	                <div class="col-10">
+	                	<select class="form-control" id="dozent" name="dozID">
+		                	<option disabled selected>Studiengangsleiter auswählen</option>
+		                	<c:forEach items="${dozentList}" var="dozent">
+		                		<option value="${dozent.DID }">${dozent.vorname } ${dozent.nachname }</option>
+		                	</c:forEach>
+		                </select>
+	                </div>
+	            </div>
 
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Anzahl Studierende</label>

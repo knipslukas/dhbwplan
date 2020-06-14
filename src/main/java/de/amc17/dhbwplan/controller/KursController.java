@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import de.amc17.dhbwplan.data.PrzDto;
 import de.amc17.dhbwplan.entity.Kurs;
 import de.amc17.dhbwplan.entity.Praesenzzeitraum;
+import de.amc17.dhbwplan.service.DozentService;
 import de.amc17.dhbwplan.service.KursService;
 import de.amc17.dhbwplan.service.PraesenzzeitraumService;
 import de.amc17.dhbwplan.service.UserService;
@@ -35,6 +36,9 @@ public class KursController {
 
 	@Autowired
 	private UserService userServ;
+	
+	@Autowired
+	DozentService dozServ;
 
 	@PostMapping(path = "/add")
 	public String addKurs(@ModelAttribute Kurs kurs, RedirectAttributes redirectAttributes) {
@@ -100,6 +104,7 @@ public class KursController {
 	public String addKursUi(Model model) {
 		model.addAttribute("pageTitle", "DHBW - Kurs Anlegen");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
+		model.addAttribute("dozentList", dozServ.getAllStudiengangsleiter());
 		return "kurs/kur_add";
 	}
 
