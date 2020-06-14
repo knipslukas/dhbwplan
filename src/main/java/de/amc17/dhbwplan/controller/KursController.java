@@ -38,7 +38,7 @@ public class KursController {
 	private UserService userServ;
 	
 	@Autowired
-	DozentService dozServ;
+	private DozentService dozServ;
 
 	@PostMapping(path = "/add")
 	public String addKurs(@ModelAttribute Kurs kurs, RedirectAttributes redirectAttributes) {

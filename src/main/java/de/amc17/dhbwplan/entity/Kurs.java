@@ -67,6 +67,14 @@ public class Kurs implements Serializable {
 	public void setKID(int KID) {
 		this.KID = KID;
 	}
+	
+	public Dozent getDozent() {
+		return dozent;
+	}
+
+	public void setDozent(Dozent dozent) {
+		this.dozent = dozent;
+	}
 
 	public List<Praesenzzeitraum> getPraesenzzeitraum() {
 		return praesenzzeitraum;
