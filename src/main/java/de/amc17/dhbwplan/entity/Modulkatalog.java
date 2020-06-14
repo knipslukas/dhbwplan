@@ -8,6 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Modulkatalog implements Serializable {
@@ -26,6 +30,19 @@ public class Modulkatalog implements Serializable {
 	
 	private Date gueltigBis;
 	
+	@ManyToOne 
+	@JoinColumn(name="riID")
+	@JsonIgnore
+	private Studienrichtung studienrichtung;
+	
+	public Studienrichtung getStudienrichtung() {
+		return studienrichtung;
+	}
+
+	public void setStudienrichtung(Studienrichtung studienrichtung) {
+		this.studienrichtung = studienrichtung;
+	}
+
 	public int getMKID() {
 		return MKID;
 	}
