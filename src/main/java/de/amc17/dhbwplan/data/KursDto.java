@@ -1,13 +1,5 @@
 package de.amc17.dhbwplan.data;
 
-import java.util.List;
-
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
-import de.amc17.dhbwplan.entity.Dozent;
-import de.amc17.dhbwplan.entity.Praesenzzeitraum;
-
 public class KursDto {
 
 	
@@ -19,11 +11,7 @@ public class KursDto {
 
 	private int anzahlStudierende;
 	
-	@OneToOne
-	private Dozent dozent;	
-
-	@OneToMany(mappedBy="kurs")
-    private List<Praesenzzeitraum> praesenzzeitraum;
+	private int  DID;	
 
 	public int getKID() {
 		return KID;
@@ -57,19 +45,12 @@ public class KursDto {
 		this.anzahlStudierende = anzahlStudierende;
 	}
 	
-	public Dozent getDozent() {
-		return dozent;
+	public int getDID() {
+		return DID;
 	}
 
-	public void setDozent(Dozent dozent) {
-		this.dozent = dozent;
-	}
-	
-	public List<Praesenzzeitraum> getPraesenzzeitraum() {
-		return praesenzzeitraum;
+	public void setDID(int DID) {
+		this.DID = DID;
 	}
 
-	public void setPraesenzzeitraum(List<Praesenzzeitraum> praesenzzeitraum) {
-		this.praesenzzeitraum = praesenzzeitraum;
-	}
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import de.amc17.dhbwplan.data.KursDto;
 import de.amc17.dhbwplan.data.PrzDto;
 import de.amc17.dhbwplan.entity.Kurs;
 import de.amc17.dhbwplan.entity.Praesenzzeitraum;
@@ -41,8 +42,14 @@ public class KursController {
 	private DozentService dozServ;
 
 	@PostMapping(path = "/add")
-	public String addKurs(@ModelAttribute Kurs kurs, RedirectAttributes redirectAttributes) {
-		if (mKursService.addKurs(kurs) != null) {
+	public String addKurs(@ModelAttribute KursDto kursDto, RedirectAttributes redirectAttributes) {
+		Kurs kurs = new Kurs();
+		kurs.setName(kursDto.getName());
+		kurs.setAnzahlStudierende(kursDto.getAnzahlStudierende());
+		kurs.setJahrgang(kursDto.getJahrgang());
+		kurs.setDozent(dozServ.getDozentByID(kursDto.getDID()));
+		kurs = mKursService.addKurs(kurs);
+		if (kurs != null) {
 			return "redirect:/kurs/show/" + kurs.getKID();
 		} else {
 			redirectAttributes.addAttribute("kursCreated", false);
