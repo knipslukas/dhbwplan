@@ -60,6 +60,7 @@ public class Dozent implements Serializable {
 	@OneToOne
 	private User user;
 	
+	// Hier einfügen
 
 	public String getTitel() {
 		return titel;
