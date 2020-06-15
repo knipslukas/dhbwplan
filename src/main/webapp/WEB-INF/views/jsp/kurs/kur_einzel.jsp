@@ -76,7 +76,45 @@
 	   						<p>${kurs.anzahlStudierende}</p>
 	   					</div>
 	   				</div>
-	   				
+	   				<!-- Test -->
+	<div class="mt-5">
+	         <table class="table table-hover">
+	              <thead class="thead-light">
+	                <tr>
+	                  <th scope="col"><strong>Semester</strong></th>
+	                  <th scope="col"><strong>Date von</strong></th>
+	                  <th scope="col"><strong>Date bis</strong></th>
+	                </tr>
+	              </thead>
+	              <tbody>
+	                <!-- Beispieleintrag --> 
+	                <c:choose>
+	                	<c:when test="${przList ne null }">
+	                		<c:forEach items="${przList}" var="praesenzzeitraum">
+	                			<tr>
+	                		<%-- <td scope="row" class="align-middle">${kurs.KID}</td> --%>
+					                <td scope="row" class="align-middle">${praesenzzeitraum.semester }</td>
+					                <td scope="row" class="align-middle">${praesenzzeitraum.Date von }</td>
+					                <td scope="row" class="align-middle">${praesenzzeitraum.Date bis }</td>
+				                </tr>
+	                		</c:forEach>
+	                	</c:when>
+	                	<c:otherwise>
+	                		<tr class="table-warning">
+	                			<td>Kein Praesenzzeitraum vorhanden</td>
+	                			<td></td>
+	                			<td></td>
+	                			<td></td>
+	                			<td></td>
+
+	                		</tr>
+	                	</c:otherwise>
+	                </c:choose>
+	
+	              </tbody>
+	         </table>
+	    </div>
+	  <!-- Test abgeschlossen -->
 	   			</div>
 	    	</div>
 		</div>
