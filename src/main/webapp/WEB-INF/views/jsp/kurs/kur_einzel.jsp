@@ -76,31 +76,29 @@
 	   						<p>${kurs.anzahlStudierende}</p>
 	   					</div>
 	   				</div>
-	   				<!-- Test -->
-	        
+	         
 	        <!-- Versuch, Präsenzzeiträume hinzuzufügen -->
-	        
+	<!--        <div>
+	       <label class="col-2 col-form-label">Präsenzzeiträume</label>
+	       </div> -->
 	      <div class="mt-5">
-	      <label class="col-2 col-form-label"><font size="5">Präsenzzeiträume</font></label>
 			<table class="table table-hover" STYLE="margin-bottom: 50px;">
 				<thead class="thead-light">
 					<tr>
 						<th scope="col"><strong>Semester</strong></th>
 						<th scope="col"><strong>Von</strong></th>
 						<th scope="col"><strong>Bis</strong></th>
-						<th scope="col"><strong>Aktionen</strong></th>
 					</tr>
 				</thead>
 				<tbody class="js-table">
 				<!-- 	Beispieleintrag -->
 					<c:choose>
-						<c:when test="${przList ne null }">
-							<c:forEach items="${przList}" var="prz">
+						<c:when test="${przListe ne null }">
+							<c:forEach items="${przListe}" var="przListe">
 								<tr>
-									<td scope="row" class="align-middle">${praesenzzeitraum.semester }</td>
-									<td scope="row" class="align-middle">${praesenzzeitraum.von }</td>
-									<td scope="row" class="align-middle">${praesenzzeitraum.bis }</td>
-									<td scope="row" class="align-middle"><a href="/prz/delete/${praesenzzeitraum.PID}" class="btn btn-sm btn-secondary">löschen</a></td>
+									<td scope="row" class="align-middle">${przListe.semester }</td>
+									<td scope="row" class="align-middle">${przListe.von }</td>
+									<td scope="row" class="align-middle">${przListe.bis }</td>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -121,7 +119,6 @@
 			
 			
 		</div>
-	  <!-- Test abgeschlossen -->
 	   			</div>
 	    	</div>
 		</div>
