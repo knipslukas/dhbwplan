@@ -1,5 +1,6 @@
 package de.amc17.dhbwplan.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -167,9 +168,19 @@ public class StudiengangController {
 	
 	@GetMapping(value = "/getAllSTG", produces = "application/json")
 	@ResponseBody
-	public List<Studiengang> getAllStudiengang() {
-		
-		return mStudiengangService.getAllStuga();
+	public List<SturiDto> getAllStudiengang() {
+		List<SturiDto> list = new ArrayList<SturiDto>();
+		for(Studiengang stuga : mStudiengangService.getAllStuga()) {
+			for(Studienrichtung sturi : stuga.getStudienrichtung()) {
+				SturiDto temp = new SturiDto();
+				temp.setName(sturi.getName());
+				temp.setStudiengang(stuga.getName());
+				temp.setRiID(sturi.getriID());
+				temp.setStid(stuga.getStID());
+				list.add(temp);
+			}
+		}
+		return list;
 	}
 	
 	

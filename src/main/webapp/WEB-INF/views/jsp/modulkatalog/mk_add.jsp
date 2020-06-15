@@ -101,8 +101,9 @@
 					type: "GET",
 					contentType: "application/json",
 					success: function(result){
-			    		addToDropDown(result);
+
 			    		console.log(result);
+			    		addToDropDown(result);
 			  		},
 			  		error: function(status){
 			  			console.log(status);
@@ -119,7 +120,7 @@
 				
 				$.each(entries, function(i, stg){
 					
-					list += "<option value=" + stg.stID + ">" + stg.name + "</option>";
+					list += "<option value=" + stg.riID + ">" + stg.studiengang + " - " + stg.name + "</option>";
 				})
 				
 				return list;

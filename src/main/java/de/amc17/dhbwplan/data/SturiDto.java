@@ -6,18 +6,18 @@ public class SturiDto {
 	private String name;
 	
 	private String studiengang;
-	
-	public String getStudiengang() {
-		return studiengang;
-	}
-
-	public void setStudiengang(String studiengang) {
-		this.studiengang = studiengang;
-	}
 
 	private int stid;
 	
 	private int riID;
+
+	public int getRiID() {
+		return riID;
+	}
+
+	public void setRiID(int riID) {
+		this.riID = riID;
+	}
 
 	public String getName() {
 		return name;
@@ -27,7 +27,13 @@ public class SturiDto {
 		this.name = name;
 	}
 
-	
+	public String getStudiengang() {
+		return studiengang;
+	}
+
+	public void setStudiengang(String studiengang) {
+		this.studiengang = studiengang;
+	}
 
 	public int getStid() {
 		return stid;
