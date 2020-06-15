@@ -9,6 +9,7 @@ import java.util.Date;
 import org.springframework.stereotype.Service;
 
 import de.amc17.dhbwplan.entity.Modulkatalog;
+import de.amc17.dhbwplan.entity.Studienrichtung;
 import de.amc17.dhbwplan.repository.ModulkatalogRepository;
 
 import java.util.List;
@@ -91,6 +92,15 @@ public class ModulkatalogService {
 		try {
 			return ModulkatalogRepository.findByMKID(MKID); 
 		} catch (Exception e ){
+			return null;
+		}
+	}
+	
+	public List<Modulkatalog> getAllMOK(Studienrichtung studienrichtung) {
+		try {
+			return ModulkatalogRepository.findAllByStudienrichtung(studienrichtung);
+		}catch(Exception e) {
+			LOG.error("Could not load MOK"+e);
 			return null;
 		}
 	}
