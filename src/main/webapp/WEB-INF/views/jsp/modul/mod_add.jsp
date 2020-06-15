@@ -31,7 +31,7 @@
 	            <div class="form-group row">
 	                <label class="col-2 col-form-label">Studienjahr</label>
 	                <div class="col-10">
-	                	<select class="form-control">
+	                	<select class="form-control" name="studienjahr">
 	                		<option disabled selected>Bitte Auswählen</option>
 		                	<option value="Studienjahr 1">Studienjahr 1</option>
 		                	<option value="Studienjahr 2">Studienjahr 2</option>
@@ -39,18 +39,11 @@
 	                	</select>
 	            	</div>
 	            </div>
-	
-	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Selbststudium</label>
-	                <div class="col-10">
-	                	<input type="number" name="selbststudium" class="form-control" placeholder="Selbststudium eingeben" required>
-	                </div>
-	            </div>
-	
+	        
 	            <div class="form-group row">
 	                <label class="col-2 col-form-label">Moduldauer</label>
 	                <div class="col-10">
-						<select class="form-control">
+						<select class="form-control" name="moduldauer">
 	                		<option disabled selected>Bitte Auswählen</option>
 		                	<option value="1 Semester">1 Semester</option>
 		                	<option value="2 Semester">2 Semester</option>
@@ -61,7 +54,7 @@
 	            <div class="form-group row">
 	                <label class="col-2 col-form-label">Modulart</label>
 	                <div class="col-10">
-	                	<select class="form-control">
+	                	<select class="form-control" name="modulart">
 	                		<option disabled selected>Bitte Auswählen</option>
 		                	<option value="Pflichtmodul">Pflichtmodul</option>
 		                	<option value="Kernmodul">Kernmodul</option>
@@ -70,9 +63,9 @@
 	            </div>
 	
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Prüfungsleistung</label>
+	                <label class="col-2 col-form-label">Pruefungsleistung</label>
 	                <div class="col-10">
-	                	<select class="form-control">
+	                	<select class="form-control" name="pruefungsleistung">
 	                		<option disabled selected>Bitte Auswählen</option>
 		                	<option value="Klausur">Klausur</option>
 		                	<option value="Seminararbeit">Seminararbeit</option>
@@ -90,7 +83,7 @@
 				<div class="form-group row">
 	            	<label class="col-2 col-form-label">Sprache</label>
 	            	<div class="col-10">
-	            		<select class="form-control">
+	            		<select class="form-control" name="sprache">
 	                		<option disabled selected>Bitte Auswählen</option>
 		                	<option value="Deutsch">Deutsch</option>
 		                	<option value="Englisch">Englisch</option>
@@ -98,19 +91,12 @@
 	            	</div>
 	            </div>
 	            
-	            <div class="form-group row">
-		               <label class="col-2 col-form-label">Präsenzzeit</label>
-		               <div class="col-10">
-		                <input type="number" name="präsenzzeit" class="form-control" placeholder="Präsenzzeit eingeben" required>
-		                </div>
-		         </div>
-	            
-		          <div class="form-group row">
+		        <div class="form-group row">
 		            	<label class="col-2 col-form-label">ECTS-Punkte</label>
 		            	<div class="col-10">
-		            		<input type="number" name="ects-punkte" class="form-control" placeholder="ECTS-Punkte eingeben" required>
+		            		<input type="number" name="ectsPunkte" class="form-control" placeholder="ECTS-Punkte eingeben" required>
 		            	</div>
-		          </div>
+		        </div>
 	            
 	            <!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
 	            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -118,7 +104,7 @@
 	            <!-- Final Buttons-->
 	            <div class="finalButtons">
 	                <button type="submit" class="btn btn-success">Speichern </button>
-	                <button type="reset" class="btn btn-danger">Zurücksetzen </button>
+	                <button type="reset" class="btn btn-danger">Zuruecksetzen </button>
 	            </div>
 	
 	        </form>
