@@ -97,7 +97,7 @@
 		
 		function getList() {
 			$.ajax({
-					url: "/studiengang/getSTG", 
+					url: "/studiengang/getAllSTG", 
 					type: "GET",
 					contentType: "application/json",
 					success: function(result){
@@ -111,13 +111,15 @@
 				});
 		}
 		
+		
 		function addToDropDown(entries){
 			
 			$("select").html(function() {
 				var list = "<option disabled selected>Bitte Auswählen</option>";
 				
 				$.each(entries, function(i, stg){
-					list += "<option>" + stg.name + "</option>";
+					
+					list += "<option value=" + stg.stID + ">" + stg.name + "</option>";
 				})
 				
 				return list;

@@ -157,6 +157,7 @@ public class StudiengangController {
 		}
 		return null;
 	}
+	
 
 	@GetMapping(value = "/getSturi/{stid}", produces = "application/json")
 	@ResponseBody
@@ -164,9 +165,12 @@ public class StudiengangController {
 		return mStudiengangService.getAllSturi(stid);
 	}
 	
-	@GetMapping(value = "/getSTG", produces = "application/json")
+	@GetMapping(value = "/getAllSTG", produces = "application/json")
 	@ResponseBody
 	public List<Studiengang> getAllStudiengang() {
-		return mStudiengangService.getAllStudiengangs("WWI-Test");
+		
+		return mStudiengangService.getAllStuga();
 	}
+	
+	
 }
