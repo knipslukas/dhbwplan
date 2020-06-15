@@ -73,28 +73,7 @@
 	   			</div>
 	    	</div>
 		</div>
-	</div>
-	
-	<div class="modal" id="deleteModal">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-body">
-					<h1><strong>Achtung!</strong></h1>
-					<h4>Wollen Sie wirklich ${studiengang.name } löschen?</h4> <!-- wird nach Fertigstellung des Controllers durch untenstehende Zeile ersetzt-->
-					<!--<h4>Wollen Sie wirklich ${studiengang.name} löschen?</h4>-->
-				</div>
-				
-				<div class="modal-footer">
-					<a href="/studiengang/delete/${studiengang.stID }" class="btn btn-danger">Unwiderruflich löschen</a> <!-- wird nach Fertigstellung des Controllers durch untenstehende Zeile ersetzt-->
-					<!--<a href="/studiengang/delete/${studiengang.stID }" class="btn btn-danger">Unwiderruflich löschen</a>-->
-					<button type="button" class="btn DHBWbutton" data-dismiss="modal">Abbrechen</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script src="${pageContext.request.contextPath}/static/js/dozent.js"></script>
-
-<!-- Start Content -->
+		<!-- Start Content -->
 	    <div class="mt-5">
 	         <table class="table table-hover">
 	              <thead class="thead-light">
@@ -127,5 +106,27 @@
 	         </table>
 	    </div>
 	
+	</div>
+	
+	<div class="modal" id="deleteModal">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-body">
+					<h1><strong>Achtung!</strong></h1>
+					<h4>Wollen Sie wirklich ${studiengang.name } löschen?</h4> <!-- wird nach Fertigstellung des Controllers durch untenstehende Zeile ersetzt-->
+					<!--<h4>Wollen Sie wirklich ${studiengang.name} löschen?</h4>-->
+				</div>
+				
+				<div class="modal-footer">
+					<a href="/studiengang/delete/${studiengang.stID }" class="btn btn-danger">Unwiderruflich löschen</a> <!-- wird nach Fertigstellung des Controllers durch untenstehende Zeile ersetzt-->
+					<!--<a href="/studiengang/delete/${studiengang.stID }" class="btn btn-danger">Unwiderruflich löschen</a>-->
+					<button type="button" class="btn DHBWbutton" data-dismiss="modal">Abbrechen</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="${pageContext.request.contextPath}/static/js/dozent.js"></script>
+
+
 
 </template:template>
