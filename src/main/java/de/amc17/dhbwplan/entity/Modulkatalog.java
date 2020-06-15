@@ -26,6 +26,9 @@ public class Modulkatalog implements Serializable {
 	@Column(name="MKID")
 	private int MKID;
 	
+	private String name;
+	
+
 	private Date gueltigVon;
 	
 	private Date gueltigBis;
@@ -51,6 +54,14 @@ public class Modulkatalog implements Serializable {
 		this.MKID = MKID;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public Date getGueltigVon() {
 		return gueltigVon;
 	}
