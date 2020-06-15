@@ -94,4 +94,38 @@
 	</div>
 	<script src="${pageContext.request.contextPath}/static/js/dozent.js"></script>
 
+<!-- Start Content -->
+	    <div class="mt-5">
+	         <table class="table table-hover">
+	              <thead class="thead-light">
+	                <tr>
+	                  <th scope="col"><strong>Name</strong></th>
+	                
+	                </tr>
+	              </thead>
+	              <tbody>
+	                <!-- Beispieleintrag --> 
+	                <c:choose>
+	                	<c:when test="${sturiList ne null }">
+	                		<c:forEach items="${sturiList}" var="studienrichtung">
+	                			<tr>
+					                <td scope="row" class="align-middle">${studienrichtung.name }</td>
+				                </tr>
+	                		</c:forEach>
+	                	</c:when>
+	                	<c:otherwise>
+	                		<tr class="table-warning">
+	                			<td>Keine Studienrichtung vorhanden</td>
+	                			<td></td>
+	                			<td></td>
+
+	                		</tr>
+	                	</c:otherwise>
+	                </c:choose>
+	
+	              </tbody>
+	         </table>
+	    </div>
+	
+
 </template:template>
