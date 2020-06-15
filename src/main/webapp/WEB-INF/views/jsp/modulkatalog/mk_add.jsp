@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+
+
 <template:template pageTitle="${pageTitle}">
 	<template:navbar user="${currentUser}" />
 
@@ -86,29 +88,45 @@
 			<!-- Ende Content -->
 		</div>
 	</div>
-
+	
 	<script>
 	
 		$(document).ready(function() {
-			alert("1");
 			getList();
 		});
 		
 		function getList() {
-			alert("3");
 			$.ajax({
-				url: "/studiengang/showAllSturi/"
-				type: "GET",
-				success: function (result) {						
-						alert("Hier sollte ihre Liste stehen");
-				},
-				error: function(status) {
-					alert("Liste konnte nicht geladen werden: "+status);
-				}
+					url: "/studiengang/getSTG", 
+					type: "GET",
+					contentType: "application/json",
+					success: function(result){
+			    		addToDropDown(result);
+			    		console.log(result);
+			  		},
+			  		error: function(status){
+			  			console.log(status);
+			  			alert("error");
+			  		}
+				});
+		}
+		
+		function addToDropDown(entries){
+			
+			$("select").html(function() {
+				var list = "<option disabled selected>Bitte Auswählen</option>";
+				
+				$.each(entries, function(i, stg){
+					list += "<option>" + stg.name + "</option>";
+				})
+				
+				return list;
 			})
 		}
 		
 	</script>
+
+	
 
 	<script src="${pageContext.request.contextPath}/static/js/dozent.js"></script>
 

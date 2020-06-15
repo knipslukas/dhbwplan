@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.amc17.dhbwplan.data.SturiDto;
 import de.amc17.dhbwplan.entity.Dozent;
+import de.amc17.dhbwplan.entity.Praesenzzeitraum;
 import de.amc17.dhbwplan.entity.Studiengang;
 import de.amc17.dhbwplan.entity.Studienrichtung;
 import de.amc17.dhbwplan.service.DozentService;
@@ -161,5 +162,11 @@ public class StudiengangController {
 	@ResponseBody
 	public List<Studienrichtung> getAllStudienrichtung(@PathVariable int stid) {
 		return mStudiengangService.getAllSturi(stid);
+	}
+	
+	@GetMapping(value = "/getSTG", produces = "application/json")
+	@ResponseBody
+	public List<Studiengang> getAllStudiengang() {
+		return mStudiengangService.getAllStudiengangs("WWI-Test");
 	}
 }
