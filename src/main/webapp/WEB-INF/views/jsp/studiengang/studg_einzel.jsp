@@ -106,10 +106,10 @@
 	              <tbody>
 	                <!-- Beispieleintrag --> 
 	                <c:choose>
-	                	<c:when test="${sturiList ne null }">
-	                		<c:forEach items="${sturiList}" var="studienrichtung">
+	                	<c:when test="${sturiListe ne null }">
+	                		<c:forEach items="${sturiListe}" var="sturiListe">
 	                			<tr>
-					                <td scope="row" class="align-middle">${studienrichtung.name }</td>
+					                <td scope="row" class="align-middle">${sturiListe.name }</td>
 				                </tr>
 	                		</c:forEach>
 	                	</c:when>
