@@ -77,43 +77,50 @@
 	   					</div>
 	   				</div>
 	   				<!-- Test -->
-	<div class="mt-5">
-	         <table class="table table-hover">
-	              <thead class="thead-light">
-	                <tr>
-	                  <th scope="col"><strong>Semester</strong></th>
-	                  <th scope="col"><strong>Date von</strong></th>
-	                  <th scope="col"><strong>Date bis</strong></th>
-	                </tr>
-	              </thead>
-	              <tbody>
-	                <!-- Beispieleintrag --> 
-	                <c:choose>
-	                	<c:when test="${przList ne null }">
-	                		<c:forEach items="${przList}" var="praesenzzeitraum">
-	                			<tr>
-	                		<%-- <td scope="row" class="align-middle">${kurs.KID}</td> --%>
-					                <td scope="row" class="align-middle">${praesenzzeitraum.semester }</td>
-					                <td scope="row" class="align-middle">${praesenzzeitraum.Date von }</td>
-					                <td scope="row" class="align-middle">${praesenzzeitraum.Date bis }</td>
-				                </tr>
-	                		</c:forEach>
-	                	</c:when>
-	                	<c:otherwise>
-	                		<tr class="table-warning">
-	                			<td>Kein Praesenzzeitraum vorhanden</td>
-	                			<td></td>
-	                			<td></td>
-	                			<td></td>
-	                			<td></td>
+	        
+	        <!-- Versuch, Präsenzzeiträume hinzuzufügen -->
+	        
+	      <div class="mt-5">
+	      <label class="col-2 col-form-label"><font size="5">Präsenzzeiträume</font></label>
+			<table class="table table-hover" STYLE="margin-bottom: 50px;">
+				<thead class="thead-light">
+					<tr>
+						<th scope="col"><strong>Semester</strong></th>
+						<th scope="col"><strong>Von</strong></th>
+						<th scope="col"><strong>Bis</strong></th>
+						<th scope="col"><strong>Aktionen</strong></th>
+					</tr>
+				</thead>
+				<tbody class="js-table">
+				<!-- 	Beispieleintrag -->
+					<c:choose>
+						<c:when test="${przList ne null }">
+							<c:forEach items="${przList}" var="prz">
+								<tr>
+									<td scope="row" class="align-middle">${praesenzzeitraum.semester }</td>
+									<td scope="row" class="align-middle">${praesenzzeitraum.von }</td>
+									<td scope="row" class="align-middle">${praesenzzeitraum.bis }</td>
+									<td scope="row" class="align-middle"><a href="/prz/delete/${praesenzzeitraum.PID}" class="btn btn-sm btn-secondary">löschen</a></td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr class="table-warning">
+								<td>Keine Präsenzzeiträume vorhanden</td>
+								<td></td>
+								<td></td>
+								<td></td>
 
-	                		</tr>
-	                	</c:otherwise>
-	                </c:choose>
-	
-	              </tbody>
-	         </table>
-	    </div>
+							</tr>
+						</c:otherwise>
+					</c:choose>
+
+				</tbody>
+			</table>
+			
+			
+			
+		</div>
 	  <!-- Test abgeschlossen -->
 	   			</div>
 	    	</div>

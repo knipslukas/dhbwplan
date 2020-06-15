@@ -84,7 +84,7 @@ public class KursController {
 		model.addAttribute("kursUpdated", kursUpdated);
 		model.addAttribute("pageTitle", "DHBW - Kursansicht");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
-		model.addAttribute("praesenzzeitraum", mPrzservice.getAllPrz(mKursService.getKursByID(kursid)));
+		model.addAttribute("praesenzzeitraum", mPrzservice.getAllPrz(mKursService.getKursByID(aID)));
 		return "kurs/kur_einzel";
 
 	}
