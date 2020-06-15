@@ -80,6 +80,14 @@ public class Modul implements Serializable {
 	public void setModuldauer(int moduldauer) {
 		this.moduldauer = moduldauer;
 	}
+	
+	public Modulkatalog getModulkatalog() {
+		return modulkatalog;
+	}
+
+	public void setModulkatalog(Modulkatalog modulkatalog) {
+		this.modulkatalog = modulkatalog;
+	}
 
 	public String getModulart() {
 		return modulart;
@@ -152,5 +160,6 @@ public class Modul implements Serializable {
 	public void setLerneinheit(List<Lerneinheit> lerneinheiten) {
 		this.lerneinheiten = lerneinheiten;
 	}
+
 
 }

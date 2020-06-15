@@ -65,6 +65,14 @@ public class Modulkatalog implements Serializable {
 		this.gueltigBis = gueltigBis;
 	}
 	
+	public List<Modul> getModul() {
+		return modul;
+	}
+
+	public void setModul(List<Modul> modul) {
+		this.modul = modul;
+	}
+	
 	
 	
 }

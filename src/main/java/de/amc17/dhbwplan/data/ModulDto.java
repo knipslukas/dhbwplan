@@ -119,5 +119,13 @@ public class ModulDto {
 		this.pruefungsleistung = pruefungsleistung;
 	}
 
+	public Modulkatalog getModulkatalog() {
+		return modulkatalog;
+	}
+
+	public void setModulkatalog(Modulkatalog modulkatalog) {
+		this.modulkatalog = modulkatalog;
+	}
+
 
 }
