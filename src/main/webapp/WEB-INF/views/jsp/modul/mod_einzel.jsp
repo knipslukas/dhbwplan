@@ -100,7 +100,42 @@
 	   					<div class="col-6">
 	   						<p>${modul.ectsPunkte}</p>
 	   					</div>
-	   				</div>
+					</div>
+					<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
+						<div class="col-6"><p><strong>Lerneinheiten</strong></p></div>
+						<table class="table table-hover">
+							<thead class="thead-light">
+								<tr>
+									<th scope="col"><strong>Name</strong></th>
+									<th scope="col"><strong>Präsenzzeit</strong></th>
+									<th scope="col"><strong>Selbsstudium</strong></th>
+									<th scope="col"><strong>Aktionen</strong></th>
+								</tr>
+							</thead>
+							<tbody class="js-table">
+								<c:choose>
+									<c:when test="${leeList ne null }">
+										<c:forEach items="${leeList}" var="lee">
+											<tr>
+												<td scope="row" class="align-middle">${lerneinheit.name }</td>
+												<td scope="row" class="align-middle">${lerneinheit.praesenzzeit}</td>
+												<td scope="row" class="align-middle">${lerneinheit.selbststudium}</td>
+												<td scope="row" class="align-middle"><a href="/lee/delete/${lerneinheit.LEID}" class="btn btn-sm btn-secondary">löschen</a></td>
+											</tr>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<td>Keine Lerneinheiten vorhanden</td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+									</c:otherwise>
+								</c:choose>			
+							</tbody>
+						</table>
+					</div>
 	   			</div>
 	    	</div>
 		</div>
@@ -122,5 +157,6 @@
 		</div>
 	</div>
 	<script src="${pageContext.request.contextPath}/static/js/modul.js"></script>
+	
 
 </template:template>
