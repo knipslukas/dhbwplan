@@ -37,17 +37,22 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Studienrichtung</label>
 					<div class="col-10">
-						<select class="form-control">
+						<select class="form-control" name="studienrichtung_riid" required>
 							<option disabled selected>Bitte Auswählen</option>
 							<c:choose>
-								<c:when test="${StrList ne null }">
-									<c:forEach items="${StrList}" var="str">
-										<option>${studienrichtung.name }</option>
+								<c:when test="${studiengangList ne null && studienrichtungList ne null}">
+									<c:forEach items="${studiengangList}" var="stg">
+										<c:forEach items="${studienrichtungList}" var="str">
+											<c:choose>
+												<c:when test="${stg.stID eq str.studiengang.stID}">
+													<option value="${str.riID}">${stg.name} - ${str.name}</option>
+												</c:when> 
+											</c:choose>
+										</c:forEach>
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
 									<option disabled>Keine Richtungen vorhanden</option>
-									<option>${studienrichtungList}</option>
 								</c:otherwise>
 							</c:choose>
 						</select>
@@ -58,7 +63,7 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Gültig von</label>
 					<div class="col-10">
-						<input type="text" name="gueltigVon" class="form-control"
+						<input type="date" name="gueltigVon" class="form-control"
 							placeholder="Gueltig ab" required>
 					</div>
 				</div>
@@ -66,7 +71,7 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Gültig bis</label>
 					<div class="col-10">
-						<input type="text" name="gueltigBis" class="form-control"
+						<input type="date" name="gueltigBis" class="form-control"
 							placeholder="Gueltig bis" required>
 					</div>
 				</div>

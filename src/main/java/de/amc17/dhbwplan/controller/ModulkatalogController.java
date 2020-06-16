@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import de.amc17.dhbwplan.data.ModulkatalogDto;
 import de.amc17.dhbwplan.entity.Dozent;
 import de.amc17.dhbwplan.entity.Modulkatalog;
 import de.amc17.dhbwplan.service.DozentService;
 import de.amc17.dhbwplan.service.ModulkatalogService;
+import de.amc17.dhbwplan.service.StudiengangService;
 import de.amc17.dhbwplan.service.StudienrichtungService;
 import de.amc17.dhbwplan.service.UserService;
 
@@ -33,12 +35,21 @@ public class ModulkatalogController {
 	private UserService userServ;
 	
 	@Autowired
+	private StudiengangService mStudiengangService;
+	
+	@Autowired
 	private StudienrichtungService mStudiengangrichtungService;
 	
 	@PostMapping(path = "/add") 
-	public String addModulkatalog(@ModelAttribute Modulkatalog mk, RedirectAttributes redirectAttributes) {
-		if (mModulkatalogService.addModulkatalog(mk) != null) {
-			return "redirect:/modulkatalog/show/"+mk.getMKID();
+	public String addModulkatalog(@ModelAttribute ModulkatalogDto mk, RedirectAttributes redirectAttributes) {
+		Modulkatalog modulkatalog = new Modulkatalog();
+		modulkatalog.setName(mk.getname());
+		modulkatalog.setStudienrichtung(mStudiengangrichtungService.getStudienrichtungByID(mk.getStudienrichtung_riid()));
+		modulkatalog.setGueltigVon(mk.getGueltigVon());
+		modulkatalog.setGueltigBis(mk.getGueltigBis());
+		Modulkatalog mdk;
+		if ((mdk = mModulkatalogService.addModulkatalog(modulkatalog)) != null) {
+			return "redirect:/modulkatalog/show/"+mdk.getMKID();
 		}
 		else {
 			redirectAttributes.addAttribute("modulkatalogCreated", false);
@@ -96,6 +107,8 @@ public class ModulkatalogController {
 		 model.addAttribute("modulkatalog", mModulkatalogService.getModulkatalogByID(dID));
 		 model.addAttribute("pageTitle", "DHBW - Modulkatalog bearbeiten");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
+		 model.addAttribute("studiengangList", mStudiengangService.getAllStuga());
+		 model.addAttribute("studienrichtungList", mStudiengangrichtungService.getAllStudienrichtung(""));
 		 return "modulkatalog/mk_edit";
 	 }
 	 
@@ -103,7 +116,8 @@ public class ModulkatalogController {
 	 public String addModulkatalogUi(Model model) {
 		 model.addAttribute("pageTitle", "DHBW - Modulkatalog Anlegen");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
-		 model.addAttribute("studienrichtungList", "ABC");
+		 model.addAttribute("studiengangList", mStudiengangService.getAllStuga());
+		 model.addAttribute("studienrichtungList", mStudiengangrichtungService.getAllStudienrichtung(""));
 		 return "modulkatalog/mk_add";
 	 }
 	
