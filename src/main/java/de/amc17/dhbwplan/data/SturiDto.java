@@ -5,7 +5,6 @@ package de.amc17.dhbwplan.data;
 public class SturiDto {
 	private String name;
 	
-	private String studiengang;
 
 	private int stid;
 	
@@ -25,14 +24,6 @@ public class SturiDto {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getStudiengang() {
-		return studiengang;
-	}
-
-	public void setStudiengang(String studiengang) {
-		this.studiengang = studiengang;
 	}
 
 	public int getStid() {

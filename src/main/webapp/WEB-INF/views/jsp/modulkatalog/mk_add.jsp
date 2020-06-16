@@ -47,6 +47,7 @@
 								</c:when>
 								<c:otherwise>
 									<option disabled>Keine Richtungen vorhanden</option>
+									<option>${studienrichtungList}</option>
 								</c:otherwise>
 							</c:choose>
 						</select>
@@ -91,43 +92,7 @@
 	
 	<script>
 	
-		$(document).ready(function() {
-			getList();
-		});
 		
-		function getList() {
-			$.ajax({
-					url: "/studiengang/getAllSTG", 
-					type: "GET",
-					contentType: "application/json",
-					success: function(result){
-
-			    		console.log(result);
-			    		addToDropDown(result);
-			  		},
-			  		error: function(status){
-			  			console.log(status);
-			  			alert("error");
-			  		}
-				});
-		}
-		
-		
-		function addToDropDown(entries){
-			
-			$("select").html(function() {
-				var list = "<option disabled selected>Bitte Auswählen</option>";
-				
-				$.each(entries, function(i, stg){
-					
-					list += "<option value=" + stg.riID + ">" + stg.studiengang + " - " + stg.name + "</option>";
-				})
-				
-				return list;
-			})
-		}
-		
-	</script>
 
 	
 

@@ -166,22 +166,6 @@ public class StudiengangController {
 		return mStudiengangService.getAllSturi(stid);
 	}
 	
-	@GetMapping(value = "/getAllSTG", produces = "application/json")
-	@ResponseBody
-	public List<SturiDto> getAllStudiengang() {
-		List<SturiDto> list = new ArrayList<SturiDto>();
-		for(Studiengang stuga : mStudiengangService.getAllStuga()) {
-			for(Studienrichtung sturi : stuga.getStudienrichtung()) {
-				SturiDto temp = new SturiDto();
-				temp.setName(sturi.getName());
-				temp.setStudiengang(stuga.getName());
-				temp.setRiID(sturi.getriID());
-				temp.setStid(stuga.getStID());
-				list.add(temp);
-			}
-		}
-		return list;
-	}
 	
 	
 }

@@ -103,6 +103,7 @@ public class ModulkatalogController {
 	 public String addModulkatalogUi(Model model) {
 		 model.addAttribute("pageTitle", "DHBW - Modulkatalog Anlegen");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
+		 model.addAttribute("studienrichtungList", "ABC");
 		 return "modulkatalog/mk_add";
 	 }
 	
