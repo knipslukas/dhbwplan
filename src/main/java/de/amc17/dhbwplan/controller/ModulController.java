@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.amc17.dhbwplan.data.LeeDto;
+import de.amc17.dhbwplan.data.ModulDto;
+import de.amc17.dhbwplan.data.ModulkatalogDto;
 import de.amc17.dhbwplan.entity.Lerneinheit;
 import de.amc17.dhbwplan.entity.Modul;
 import de.amc17.dhbwplan.service.LerneinheitService;
@@ -43,8 +45,13 @@ public class ModulController {
 	private UserService userServ;
 
 	@PostMapping(path = "/add")
-	public String addModul(@ModelAttribute Modul mod, RedirectAttributes redirectAttributes) {
-		if (mModulService.addModul(mod) != null) {
+	public String addModul(@ModelAttribute ModulDto mk, RedirectAttributes redirectAttributes) {
+		Modul m = new Modul();
+		m.setBezeichnung(mk.getBezeichnung());
+		m.setBeschreibung(mk.getBeschreibung());
+		m.setModulkatalog(mModulkatalogService.getModulkatalogByID(mk.getModulkatalogID()));
+		Modul mod;
+		if ((mod = mModulService.addModul(m)) != null) { 
 			return "redirect:/modul/show/" + mod.getMID();
 		} else {
 			redirectAttributes.addAttribute("modulCreated", false);
@@ -88,6 +95,7 @@ public class ModulController {
 	@GetMapping(path = "/show/{aID}")
 	public String getAllModul(Model model, @PathVariable int aID, @RequestParam(required = false) Object modulUpdated) {
 		model.addAttribute("modul", mModulService.getModulByID(aID));
+		model.addAttribute("modulkatalog", mModulService.getModulByID(aID).getModulkatalog());
 		model.addAttribute("modulUpdated", modulUpdated);
 		model.addAttribute("pageTitle", "DHBW - Modulansicht");
 		model.addAttribute("currentUser", userServ.getCurrentUser());

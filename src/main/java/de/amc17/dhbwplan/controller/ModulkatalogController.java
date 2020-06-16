@@ -1,7 +1,7 @@
 package de.amc17.dhbwplan.controller;
 
 import java.sql.Date;
-
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.amc17.dhbwplan.data.ModulkatalogDto;
 import de.amc17.dhbwplan.entity.Dozent;
+import de.amc17.dhbwplan.entity.Modul;
 import de.amc17.dhbwplan.entity.Modulkatalog;
+import de.amc17.dhbwplan.entity.Studienrichtung;
 import de.amc17.dhbwplan.service.DozentService;
 import de.amc17.dhbwplan.service.ModulkatalogService;
 import de.amc17.dhbwplan.service.UserService;
@@ -74,6 +77,7 @@ public class ModulkatalogController {
 	 public String getAllModulkatalog(Model model, @PathVariable int aID, @RequestParam(required = false) Object modulkatalogUpdated) {
 		 model.addAttribute("modulkatalog", mModulkatalogService.getModulkatalogByID(aID));
 		 model.addAttribute("modulkatalogUpdated", modulkatalogUpdated);
+		 model.addAttribute("modulListe",  mModulkatalogService.getModulkatalogByID(aID).getModul());
 		 model.addAttribute("pageTitle", "DHBW - Modulkatalogansicht");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "modulkatalog/mk_einzel";
@@ -107,5 +111,12 @@ public class ModulkatalogController {
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "modulkatalog/mk_add";
 	 }
-	
+	 
+		@GetMapping(value = "/getModul/{modid}", produces = "application/json")
+		@ResponseBody
+		public List<Modul> getAllModule(@PathVariable int modid) {
+			return mModulkatalogService.getAllModul(modid);
+		}
+	 
+
 }

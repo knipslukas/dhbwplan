@@ -14,7 +14,7 @@ import de.amc17.dhbwplan.entity.Modulkatalog;
 public class ModulDto {
 	private int MID;
 	
-	private Modulkatalog modulkatalog;
+	private int modulkatalogID;
 
 	private String bezeichnung;
 
@@ -119,13 +119,14 @@ public class ModulDto {
 		this.pruefungsleistung = pruefungsleistung;
 	}
 
-	public Modulkatalog getModulkatalog() {
-		return modulkatalog;
+	public int getModulkatalogID() {
+		return modulkatalogID;
 	}
 
-	public void setModulkatalog(Modulkatalog modulkatalog) {
-		this.modulkatalog = modulkatalog;
+	public void setModulkatalogID(int modulkatalogID) {
+		this.modulkatalogID = modulkatalogID;
 	}
+
 
 
 }

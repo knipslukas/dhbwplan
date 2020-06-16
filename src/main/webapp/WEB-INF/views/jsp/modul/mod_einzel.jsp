@@ -70,6 +70,10 @@
 	   					<div class="col-6">
 	   						<p>${modul.moduldauer}</p>
 	   					</div>
+	   					<div class="col-6"><p><strong>Modulkatalog</strong></p></div>
+	   					<div class="col-6">
+	   						<p>${modulkatalog.name}</p>
+	   					</div>
 	   				</div>
 	   				<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
 	   					<div class="col-6"><p><strong>Modulart</strong></p></div>
@@ -79,10 +83,6 @@
 	   					<div class="col-6"><p><strong>Prüfungsleistung</strong></p></div>
 	   					<div class="col-6">
 	   						<p>${modul.pruefungsleistung}</p>
-	   					</div>
-	   					<div class="col-6"><p><strong>Modulkatalog</strong></p></div>
-	   					<div class="col-6">
-	   						<p>${modul.modulkatalog}</p>
 	   					</div>
 	   				</div>
 	   				<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
