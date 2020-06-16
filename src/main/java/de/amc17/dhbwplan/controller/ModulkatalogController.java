@@ -75,9 +75,10 @@ public class ModulkatalogController {
 	
 	 @GetMapping(path="/show/{aID}") 
 	 public String getAllModulkatalog(Model model, @PathVariable int aID, @RequestParam(required = false) Object modulkatalogUpdated) {
-		 model.addAttribute("modulkatalog", mModulkatalogService.getModulkatalogByID(aID));
+		 Modulkatalog temp = mModulkatalogService.getModulkatalogByID(aID);
+		 model.addAttribute("modulkatalog", temp);
 		 model.addAttribute("modulkatalogUpdated", modulkatalogUpdated);
-		 model.addAttribute("modulListe",  mModulkatalogService.getModulkatalogByID(aID).getModul());
+		 model.addAttribute("modulListe",  temp.getModul());
 		 model.addAttribute("pageTitle", "DHBW - Modulkatalogansicht");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "modulkatalog/mk_einzel";
