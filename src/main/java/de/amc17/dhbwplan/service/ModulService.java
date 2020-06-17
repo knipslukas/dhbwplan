@@ -89,7 +89,7 @@ public class ModulService {
 	public List<Lerneinheit> getAllLee(int modulid) {
 		try {
 			Modul modul = modulRepository.findByMID(modulid);
-			return modul.getLerneinheit();
+			return modul.getLerneinheiten();
 		} catch (Exception e) {
 			LOG.error("Couldn't load Kurslist" + e);
 			return null;

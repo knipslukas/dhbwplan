@@ -12,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.apache.catalina.startup.SetAllPropertiesRule;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -28,14 +26,6 @@ public class Modul implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "MID")
 	private int MID;
-
-	@OneToMany(mappedBy = "modul")
-	private List<Lerneinheit> lerneinheiten;
-	
-	@ManyToOne 
-	@JoinColumn(name="MKID")
-	@JsonIgnore
-	private Modulkatalog modulkatalog;
 
 	private String bezeichnung;
 
@@ -56,6 +46,22 @@ public class Modul implements Serializable {
 	private int praesenzzeit;
 
 	private int ectsPunkte;
+	
+	@ManyToOne 
+	@JoinColumn(name="MKID")
+	@JsonIgnore
+	private Modulkatalog modulkatalog;
+	
+	@OneToMany(mappedBy = "modul")
+	private List<Lerneinheit> lerneinheiten;
+
+	public int getMID() {
+		return MID;
+	}
+
+	public void setMID(int mID) {
+		MID = mID;
+	}
 
 	public String getBezeichnung() {
 		return bezeichnung;
@@ -63,6 +69,14 @@ public class Modul implements Serializable {
 
 	public void setBezeichnung(String bezeichnung) {
 		this.bezeichnung = bezeichnung;
+	}
+
+	public int getStudienjahr() {
+		return studienjahr;
+	}
+
+	public void setStudienjahr(int studienjahr) {
+		this.studienjahr = studienjahr;
 	}
 
 	public int getSelbststudium() {
@@ -80,14 +94,6 @@ public class Modul implements Serializable {
 	public void setModuldauer(int moduldauer) {
 		this.moduldauer = moduldauer;
 	}
-	
-	public Modulkatalog getModulkatalog() {
-		return modulkatalog;
-	}
-
-	public void setModulkatalog(Modulkatalog modulkatalog) {
-		this.modulkatalog = modulkatalog;
-	}
 
 	public String getModulart() {
 		return modulart;
@@ -95,6 +101,14 @@ public class Modul implements Serializable {
 
 	public void setModulart(String modulart) {
 		this.modulart = modulart;
+	}
+
+	public String getPruefungsleistung() {
+		return pruefungsleistung;
+	}
+
+	public void setPruefungsleistung(String pruefungsleistung) {
+		this.pruefungsleistung = pruefungsleistung;
 	}
 
 	public String getBeschreibung() {
@@ -113,14 +127,6 @@ public class Modul implements Serializable {
 		this.sprache = sprache;
 	}
 
-	public int getEctsPunkte() {
-		return ectsPunkte;
-	}
-
-	public void setEctsPunkte(int ectsPunkte) {
-		this.ectsPunkte = ectsPunkte;
-	}
-
 	public int getPraesenzzeit() {
 		return praesenzzeit;
 	}
@@ -129,37 +135,31 @@ public class Modul implements Serializable {
 		this.praesenzzeit = praesenzzeit;
 	}
 
-	public int getStudienjahr() {
-		return studienjahr;
+	public int getEctsPunkte() {
+		return ectsPunkte;
 	}
 
-	public void setStudienjahr(int studienjahr) {
-		this.studienjahr = studienjahr;
+	public void setEctsPunkte(int ectsPunkte) {
+		this.ectsPunkte = ectsPunkte;
 	}
 
-	public int getMID() {
-		return MID;
+	public Modulkatalog getModulkatalog() {
+		return modulkatalog;
 	}
 
-	public void setMID(int MID) {
-		this.MID = MID;
+	public void setModulkatalog(Modulkatalog modulkatalog) {
+		this.modulkatalog = modulkatalog;
 	}
 
-	public String getPruefungsleistung() {
-		return pruefungsleistung;
-	}
-
-	public void setPruefungsleistung(String pruefungsleistung) {
-		this.pruefungsleistung = pruefungsleistung;
-	}
-
-	public List<Lerneinheit> getLerneinheit() {
+	public List<Lerneinheit> getLerneinheiten() {
 		return lerneinheiten;
 	}
 
-	public void setLerneinheit(List<Lerneinheit> lerneinheiten) {
+	public void setLerneinheiten(List<Lerneinheit> lerneinheiten) {
 		this.lerneinheiten = lerneinheiten;
 	}
+
+	
 
 
 }
