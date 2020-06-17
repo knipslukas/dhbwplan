@@ -63,8 +63,9 @@
 			<!-- Versuch, Studienrichtung hinzuzufügen -->
 
 			<div class="mt-5">
-
-				<table class="table table-hover">
+				
+	      <label class="col-2 col-form-label"><font size="5">Anpassen</font></label>
+				<table class="table table-hover" STYLE="margin-bottom: 50px;">
 					<thead class="thead-light">
 						<tr>
 							<th scope="col"><strong>Studienrichtung</strong></th>
