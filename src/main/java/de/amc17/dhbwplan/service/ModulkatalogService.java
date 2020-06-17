@@ -57,9 +57,11 @@ public class ModulkatalogService {
 		try {
 			Modulkatalog oModulkatalog;
 			if ((oModulkatalog = ModulkatalogRepository.findByMKID(aModulkatalog.getMKID())) != null) { 
-						aModulkatalog.setGueltigVon(oModulkatalog.getGueltigVon());
-						aModulkatalog.setGueltigBis(oModulkatalog.getGueltigBis());
-				ModulkatalogRepository.save(aModulkatalog);
+						oModulkatalog.setGueltigVon(aModulkatalog.getGueltigVon());
+						oModulkatalog.setGueltigBis(aModulkatalog.getGueltigBis());
+						oModulkatalog.setStudienrichtung(aModulkatalog.getStudienrichtung());
+						oModulkatalog.setName(aModulkatalog.getName());
+				ModulkatalogRepository.save(oModulkatalog);
 			} else {
 				LOG.warn("Modulkatalog not found");
 				return false;

@@ -93,7 +93,7 @@
 				</div>
 				
 				<div class="modal-footer">
-					<a href="/modul/delete/${modulkatalog.MKID}" class="btn btn-danger">Unwiderruflich löschen</a>
+					<a href="/modulkatalog/delete/${modulkatalog.MKID}" class="btn btn-danger">Unwiderruflich löschen</a>
 					<button type="button" class="btn DHBWbutton" data-dismiss="modal">Abbrechen</button>
 				</div>
 			</div>

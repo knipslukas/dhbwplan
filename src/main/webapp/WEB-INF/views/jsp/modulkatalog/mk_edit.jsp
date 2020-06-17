@@ -19,12 +19,12 @@
 		<!-- Start Content -->
 		<div class="dhbw_content mt-5">
 			<!-- Start Formular -->
-			<form class="pb-3 js-form-dozanleg" method="POST" action="/modul/update/${modulmodulkatalog.MKID }">
+			<form class="pb-3 js-form-dozanleg" method="POST" action="/modulkatalog/update/${modulkatalog.MKID}">
 
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Name</label>
 					<div class="col-10">
-						<input type="text" name="titel" class="form-control" placeholder="Bezeichnung eingeben"
+						<input type="text" name="name" class="form-control" placeholder="Bezeichnung eingeben"
 							value="${modulkatalog.name}">
 					</div>
 				</div>
@@ -32,7 +32,7 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Studienrichtung</label>
 					<div class="col-10">
-						<select class="form-control" name="studienrichtung_riid" required>
+						<select class="form-control" name="studienrichtung_riid" required name="studienrichtung" class="form-control">
 							<option disabled selected>Bitte Auswählen</option>
 							<c:choose>
 								<c:when test="${studiengangList ne null && studienrichtungList ne null}">
@@ -60,18 +60,20 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Gültig von</label>
 					<div class="col-10">
-						<input type="text" name="titel" class="form-control" placeholder="Selbsstudium eingeben"
-							value="${modulkatalog.gueltigVon}">
+						<input type="date" name="gueltigVon" class="form-control"
+							placeholder="Gueltig ab" required>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Gültig bis</label>
 					<div class="col-10">
-						<input type="text" name="titel" class="form-control" placeholder="Moduldauer eingeben"
-							value="${modulkatalog.gueltigBis}">
+						<input type="date" name="gueltigBis" class="form-control"
+							placeholder="Gueltig bis" required>
 					</div>
 				</div>
+				
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
 
 				<!-- Final Buttons-->
@@ -85,7 +87,7 @@
 
 
 			<!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			
 
 
 
