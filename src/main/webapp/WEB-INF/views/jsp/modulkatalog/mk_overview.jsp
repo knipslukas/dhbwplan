@@ -47,6 +47,7 @@
 	                <tr>
 <!-- 	                  <th scope="col"><strong>Dozenten Nummer</strong></th> -->
 	                  <th scope="col"><strong>Name</strong></th>
+	                  <th scope="col"><strong>Studienrichtung</strong></th>
 	                  <th scope="col"><strong>Gültig von</strong></th>
 	                  <th scope="col"><strong>Gültig bis</strong></th>
 	                  <th scope="col"><strong>Aktionen</strong></th>
@@ -60,6 +61,7 @@
 	                			<tr>
 <%-- 					                <td scope="row" class="align-middle">${modulkatalog.MKID}</td> --%>
 					                <td scope="row" class="align-middle">${modulkatalog.name}</td>
+					                <td scope="row" class="align-middle">${modulkatalog.studienrichtung.name}</td>
 					                <td scope="row" class="align-middle">${modulkatalog.gueltigVon }</td>
 					                <td scope="row" class="align-middle">${modulkatalog.gueltigBis }</td>
 					                <td scope="row" class="align-middle"><a href="/modulkatalog/show/${modulkatalog.MKID}" class="btn btn-sm btn-secondary">Anzeigen</a></td>
