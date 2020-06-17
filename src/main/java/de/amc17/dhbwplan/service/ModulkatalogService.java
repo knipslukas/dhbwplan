@@ -8,6 +8,7 @@ import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
+import de.amc17.dhbwplan.entity.Modul;
 import de.amc17.dhbwplan.entity.Modulkatalog;
 import de.amc17.dhbwplan.repository.ModulkatalogRepository;
 
@@ -71,11 +72,8 @@ public class ModulkatalogService {
 		return true;
 	}
 
-	public List<Modulkatalog> getAllModulkatalog(Date GültigVon, Date GültigBis) {		
+	public List<Modulkatalog> getAllModulkatalog() {		
 		try {
-			if (GültigVon != null) {
-				return ModulkatalogRepository.findAll();		
-			}
 			List<Modulkatalog> list = ModulkatalogRepository.findAll();
 			if (!list.isEmpty()) {
 				return list;
@@ -91,6 +89,17 @@ public class ModulkatalogService {
 		try {
 			return ModulkatalogRepository.findByMKID(MKID); 
 		} catch (Exception e ){
+			return null;
+		}
+	}
+	
+	public List<Modul> getAllModul(int modulID) {
+		try {
+			Modulkatalog modulk = ModulkatalogRepository.findById(modulID).get();
+			return modulk.getModul();
+		}
+		catch(Exception e) {
+			LOG.error("Couldn't load Kurslist" + e);
 			return null;
 		}
 	}
