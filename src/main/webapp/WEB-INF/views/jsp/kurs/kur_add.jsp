@@ -66,7 +66,7 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Studiengangsleiter</label>
 					<div class="col-10">
-						<select class="form-control" name="did" required>
+						<select class="form-control" name="dozent_DID" required>
 							<option disabled selected>Bitte Auswählen</option>
 							<c:choose>
 								<c:when test="${dozentenList ne null}">

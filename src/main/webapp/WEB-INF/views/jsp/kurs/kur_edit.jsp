@@ -67,12 +67,19 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Studiengangsleiter</label>
 					<div class="col-10">
-						<select class="form-control" name="dozent_did" required>
-							<option disabled selected>Bitte Auswählen</option>
+						<select class="form-control" name="dozent" required>
 							<c:choose>
 								<c:when test="${dozentenList ne null}">
-									<c:forEach items="${dozentenList}" var="doz">																			
-										<option value="${doz.DID}">${doz.anrede} ${doz.vorname} ${doz.nachname} </option>									 
+									<c:forEach items="${dozentenList}" var="doz">
+										<c:choose>
+											<c:when test="${kurs.dozent.DID eq doz.DID }">
+												<option selected value="${doz.DID}">${doz.anrede} ${doz.vorname} ${doz.nachname} </option>
+											</c:when>
+											<c:otherwise>
+												<option value="${doz.DID}">${doz.anrede} ${doz.vorname} ${doz.nachname} </option>
+											</c:otherwise>
+										</c:choose>																			
+																			 
 									</c:forEach>
 								</c:when>
 								<c:otherwise>

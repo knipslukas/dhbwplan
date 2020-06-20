@@ -21,6 +21,16 @@ public class KursDto {
 	private int anzahlStudierende;
 
 	public int studienrichtung_riid;
+	
+	public int dozent_DID;
+
+	public int getDozent_DID() {
+		return dozent_DID;
+	}
+
+	public void setDozent_DID(int dozent_DID) {
+		this.dozent_DID = dozent_DID;
+	}
 
 	public int getStudienrichtung_riid() {
 		return studienrichtung_riid;
@@ -28,16 +38,6 @@ public class KursDto {
 
 	public void setStudienrichtung_riid(int studienrichtung_riid) {
 		this.studienrichtung_riid = studienrichtung_riid;
-	}
-	
-	public int did;
-
-	public int getDozent_did() {
-		return did;
-	}
-
-	public void setDozent_did(int dozent_did) {
-		this.did = did;
 	}
 		
 	public void setname(String name) {

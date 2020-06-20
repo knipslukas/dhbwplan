@@ -82,7 +82,7 @@
 					<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
 	   					<div class="col-6"><p><strong>Studiengangsleiter</strong></p></div>
 	   					<div class="col-6">
-	   						<p>${kurs.dozent}</p>
+	   						<p>${kurs.dozent.anrede} ${kurs.dozent.vorname} ${kurs.dozent.nachname}</p>
 	   					</div>
 	   				</div>
 	

@@ -58,8 +58,7 @@ public class KursController {
 		kurs.setStudienrichtung(mStudiengangrichtungService.getStudienrichtungByID(ku.getStudienrichtung_riid()));
 		kurs.setJahrgang(ku.getJahrgang());
 		kurs.setAnzahlStudierende(ku.getAnzahlStudierende());
-		System.out.println(ku.getDozent_did());
-		kurs.setDozent(mDozentService.getDozentByID(ku.getDozent_did()));
+		kurs.setDozent(mDozentService.getDozentByID(ku.getDozent_DID()));
 		if (mKursService.addKurs(kurs) != null) {
 			return "redirect:/kurs/show/" + kurs.getKID();
 		} else {
