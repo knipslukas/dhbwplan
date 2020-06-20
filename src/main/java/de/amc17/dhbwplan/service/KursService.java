@@ -52,9 +52,17 @@ public class KursService {
 
 	public boolean updateKurs(Kurs aKurs) {
 		try {
-			// TO-DO: Testen
-			kursRepository.save(aKurs);
-
+			Kurs oKurs;
+			if ((oKurs = kursRepository.findByKID(aKurs.getKID()))!= null) { 
+				oKurs.setName(aKurs.getName());
+				oKurs.setJahrgang(aKurs.getJahrgang());
+				oKurs.setStudienrichtung(aKurs.getStudienrichtung());
+				oKurs.setDozent(aKurs.getDozent());
+				kursRepository.save(oKurs);
+			} else {
+				LOG.warn("Kurs not found");
+				return false;
+			}
 		} catch (Exception e) {
 			LOG.error(e);
 			return false;

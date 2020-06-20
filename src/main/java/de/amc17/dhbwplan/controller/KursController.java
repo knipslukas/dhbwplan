@@ -15,11 +15,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import de.amc17.dhbwplan.data.KursDto;
 import de.amc17.dhbwplan.data.PrzDto;
 import de.amc17.dhbwplan.entity.Kurs;
+import de.amc17.dhbwplan.entity.Modulkatalog;
 import de.amc17.dhbwplan.entity.Praesenzzeitraum;
+import de.amc17.dhbwplan.service.DozentService;
 import de.amc17.dhbwplan.service.KursService;
 import de.amc17.dhbwplan.service.PraesenzzeitraumService;
+import de.amc17.dhbwplan.service.StudiengangService;
+import de.amc17.dhbwplan.service.StudienrichtungService;
 import de.amc17.dhbwplan.service.UserService;
 
 @Controller
@@ -35,9 +40,26 @@ public class KursController {
 
 	@Autowired
 	private UserService userServ;
+	
+	
+	@Autowired
+	private StudiengangService mStudiengangService;
+	
+	@Autowired
+	private DozentService mDozentService;
+	
+	@Autowired
+	private StudienrichtungService mStudiengangrichtungService;
 
 	@PostMapping(path = "/add")
-	public String addKurs(@ModelAttribute Kurs kurs, RedirectAttributes redirectAttributes) {
+	public String addKurs(@ModelAttribute KursDto ku, RedirectAttributes redirectAttributes) {
+		Kurs kurs = new Kurs();
+		kurs.setName(ku.getname());
+		kurs.setStudienrichtung(mStudiengangrichtungService.getStudienrichtungByID(ku.getStudienrichtung_riid()));
+		kurs.setJahrgang(ku.getJahrgang());
+		kurs.setAnzahlStudierende(ku.getAnzahlStudierende());
+		System.out.println(ku.getDozent_did());
+		kurs.setDozent(mDozentService.getDozentByID(ku.getDozent_did()));
 		if (mKursService.addKurs(kurs) != null) {
 			return "redirect:/kurs/show/" + kurs.getKID();
 		} else {
@@ -57,7 +79,8 @@ public class KursController {
 	}
 
 	@PostMapping(path = "/update/{aID}")
-	public String updateKurs(RedirectAttributes redirectAttributes, @ModelAttribute Kurs aKurs) {
+	public String updateKurs(RedirectAttributes redirectAttributes, @PathVariable int aID, @ModelAttribute Kurs aKurs) {
+		aKurs.setKID(aID);
 		if (mKursService.updateKurs(aKurs)) {
 			redirectAttributes.addAttribute("kursUpdated", true);
 		} else {
@@ -69,7 +92,6 @@ public class KursController {
 	@GetMapping(path = "")
 	public String getAllKurs(Model model, @RequestParam(required = false) String name,
 			@RequestParam(required = false) Object kursDeleted, @RequestParam(required = false) Object kursCreated) {
-
 		model.addAttribute("kursList", mKursService.getAllKurs());
 		model.addAttribute("kursDeleted", kursDeleted);
 		model.addAttribute("kursCreated", kursCreated);
@@ -84,6 +106,9 @@ public class KursController {
 		model.addAttribute("kursUpdated", kursUpdated);
 		model.addAttribute("pageTitle", "DHBW - Kursansicht");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
+		model.addAttribute("studiengangList", mStudiengangService.getAllStuga());
+		model.addAttribute("studienrichtungList", mStudiengangrichtungService.getAllStudienrichtung(""));
+		 model.addAttribute("dozentenList", mDozentService.getAllDozent(null, null));
 		return "kurs/kur_einzel";
 
 	}
@@ -93,6 +118,9 @@ public class KursController {
 		model.addAttribute("kurs", mKursService.getKursByID(dID));
 		model.addAttribute("pageTitle", "DHBW - Kurs bearbeiten");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
+	    model.addAttribute("studiengangList", mStudiengangService.getAllStuga());
+	    model.addAttribute("studienrichtungList", mStudiengangrichtungService.getAllStudienrichtung(""));
+	    model.addAttribute("dozentenList", mDozentService.getAllDozent(null, null));
 		return "kurs/kur_edit";
 	}
 
@@ -100,6 +128,9 @@ public class KursController {
 	public String addKursUi(Model model) {
 		model.addAttribute("pageTitle", "DHBW - Kurs Anlegen");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
+		model.addAttribute("studiengangList", mStudiengangService.getAllStuga());
+	    model.addAttribute("studienrichtungList", mStudiengangrichtungService.getAllStudienrichtung(""));
+	    model.addAttribute("dozentenList", mDozentService.getAllDozent(null, null));
 		return "kurs/kur_add";
 	}
 
