@@ -64,7 +64,7 @@
 
 			<div class="mt-5">
 				
-	      <label class="col-2 col-form-label"><font size="5">Anpassen</font></label>
+	      <label class="col-2 col-form-label"><font size="5">Studienrichtungen</font></label>
 				<table class="table table-hover" STYLE="margin-bottom: 50px;">
 					<thead class="thead-light">
 						<tr>
