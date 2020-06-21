@@ -36,22 +36,60 @@
 					</div>
 				</div>
 				
-				<div class="form-group row mb-5">
-	                <label class="col-2 col-form-label">Verknüpfter Studiengangsleiter</label>
-	                <div class="col-10">
-	                	<select class="form-control" id="dozent" name="DID">
-		                	<option disabled selected>Studiengangsleiter auswählen</option>
-		                	<c:forEach items="${dozentList}" var="dozent">
-		                		<option value="${dozent.DID}">${dozent.vorname} ${dozent.nachname}</option>
-		                	</c:forEach>
-		                </select>
-	                </div>
-	            </div>
+				
+				<div class="form-group row">
+					<label class="col-2 col-form-label">Studienrichtung</label>
+					<div class="col-10">
+						<select class="form-control" name="studienrichtung_riid" required>
+							<option disabled selected>Bitte Auswählen</option>
+							<c:choose>
+								<c:when test="${studiengangList ne null && studienrichtungList ne null}">
+									<c:forEach items="${studiengangList}" var="stg">
+										<c:forEach items="${studienrichtungList}" var="str">
+											<c:choose>
+												<c:when test="${stg.stID eq str.studiengang.stID}">
+													<option value="${str.riID}">${stg.name} - ${str.name}</option>
+												</c:when> 
+											</c:choose>
+										</c:forEach>
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<option disabled>Keine Richtungen vorhanden</option>
+								</c:otherwise>
+							</c:choose>
+						</select>
+					</div>
+				</div>
+				
+				
+				<div class="form-group row">
+					<label class="col-2 col-form-label">Studiengangsleiter</label>
+					<div class="col-10">
+						<select class="form-control" name="dozent_DID" required>
+							<option disabled selected>Bitte Auswählen</option>
+							<c:choose>
+								<c:when test="${dozentenList ne null}">
+									<c:forEach items="${dozentenList}" var="doz">																			
+										<option value="${doz.DID}">${doz.anrede} ${doz.vorname} ${doz.nachname} </option>									 
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<option disabled>Kein Dozent vorhanden</option>
+								</c:otherwise>
+							</c:choose>
+						</select>
+					</div>
+				</div>
+				
 
+				
+				
+				
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Anzahl Studierende</label>
 					<div class="col-10">
-						<input type="text" name="anzahlStudierende" class="form-control"
+						<input type="number" name="anzahlStudierende" class="form-control"
 							placeholder="Anzahl Studierende eingeben" required>
 					</div>
 				</div>

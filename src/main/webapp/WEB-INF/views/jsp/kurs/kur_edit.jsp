@@ -35,6 +35,63 @@
 	                </div>
 	            </div>
 	            
+	            				
+				<div class="form-group row">
+					<label class="col-2 col-form-label">Studienrichtung</label>
+					<div class="col-10">
+						<select class="form-control" name="studienrichtung" required>
+							<c:choose>
+								<c:when test="${studiengangList ne null && studienrichtungList ne null}">
+									<c:forEach items="${studiengangList}" var="stg">
+										<c:forEach items="${studienrichtungList}" var="str">
+											<c:choose>
+												<c:when test="${stg.stID eq str.studiengang.stID}">
+													<option value="${str.riID}">${stg.name} - ${str.name}</option>
+												</c:when> 
+												<c:when test="${stg.stID eq str.studiengang.stID && str.riID eq kurs.studienrichtung.riID}">
+													<option value="${str.riID}" selected>${stg.name} - ${str.name}</option>
+												</c:when> 
+											</c:choose>
+										</c:forEach>
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<option disabled>Keine Richtungen vorhanden</option>
+								</c:otherwise>
+							</c:choose>
+						</select>
+					</div>
+				</div>
+				
+				
+				<div class="form-group row">
+					<label class="col-2 col-form-label">Studiengangsleiter</label>
+					<div class="col-10">
+						<select class="form-control" name="dozent" required>
+							<c:choose>
+								<c:when test="${dozentenList ne null}">
+									<c:forEach items="${dozentenList}" var="doz">
+										<c:choose>
+											<c:when test="${kurs.dozent.DID eq doz.DID }">
+												<option selected value="${doz.DID}">${doz.anrede} ${doz.vorname} ${doz.nachname} </option>
+											</c:when>
+											<c:otherwise>
+												<option value="${doz.DID}">${doz.anrede} ${doz.vorname} ${doz.nachname} </option>
+											</c:otherwise>
+										</c:choose>																			
+																			 
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<option disabled>Kein Dozent vorhanden</option>
+								</c:otherwise>
+							</c:choose>
+						</select>
+					</div>
+				</div>
+				
+				
+	            
 	            <div class="form-group row">
 	                <label class="col-2 col-form-label">Anzahl der Studierenden</label>
 	                <div class="col-10">
