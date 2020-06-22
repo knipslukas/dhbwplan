@@ -82,7 +82,8 @@
 	       <label class="col-2 col-form-label">Präsenzzeiträume</label>
 	       </div> -->
 	      <div class="mt-5">
-			<table class="table table-hover" STYLE="margin-bottom: 50px;">
+			<table class="table table-hover" STYLE="margin-bottom: 50px; width:430px; text-align:left; margin-left: auto; margin-right: auto;">
+				<caption>Kurse:</caption>
 				<thead class="thead-light">
 					<tr>
 						<th scope="col"><strong>Semester</strong></th>
