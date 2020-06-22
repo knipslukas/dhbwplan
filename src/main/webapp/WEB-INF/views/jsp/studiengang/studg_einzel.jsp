@@ -75,14 +75,15 @@
 		</div>
 		<!-- Start Content -->
 	    <div class="mt-5">
-	         <table class="table table-hover">
+	         <table class="table table-hover" STYLE="margin-bottom: 50px; width:430px; text-align:left; margin-left: auto; margin-right: auto;">
+	              <caption>Studiengangsrichtungen:</caption>
 	              <thead class="thead-light">
 	                <tr>
 	                  <th scope="col"><strong>Name</strong></th>
 	                
 	                </tr>
 	              </thead>
-	              <tbody>
+	              <tbody class="js-table">
 	                <!-- Beispieleintrag --> 
 	                <c:choose>
 	                	<c:when test="${sturiListe ne null }">
@@ -94,7 +95,7 @@
 	                	</c:when>
 	                	<c:otherwise>
 	                		<tr class="table-warning">
-	                			<td>Keine Studienrichtung vorhanden</td>
+	                			<td>Keine Studienrichtungen vorhanden</td>
 	                			<td></td>
 	                			<td></td>
 
