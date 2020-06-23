@@ -48,7 +48,7 @@ public class ModulkatalogController {
 		else {
 			redirectAttributes.addAttribute("modulkatalogCreated", false);
 		}
-		return "redirect:/modulkatalog/getAll/";
+		return "redirect:/modulkatalog/";
 	}
 	
 	@GetMapping(value = "/delete/{aID}")
@@ -59,7 +59,7 @@ public class ModulkatalogController {
 		else {
 			redirectAttributes.addAttribute("modulkatalogDeleted", false);
 		}
-		return "redirect:/modulkatalog/getAll";
+		return "redirect:/modulkatalog/";
 	}
 	
 	@PostMapping(path = "/update/{aID}")
