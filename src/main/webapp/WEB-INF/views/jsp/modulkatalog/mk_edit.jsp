@@ -35,19 +35,17 @@
 						<select class="form-control" name="studienrichtung_riid" required name="studienrichtung" class="form-control">
 							<option disabled selected>Bitte Auswählen</option>
 							<c:choose>
-								<c:when test="${studiengangList ne null && studienrichtungList ne null}">
-									<c:forEach items="${studiengangList}" var="stg">
+								<c:when test="${studienrichtungList ne null}">
 										<c:forEach items="${studienrichtungList}" var="str">
 											<c:choose>
-												<c:when test="${stg.stID eq str.studiengang.stID && !(str.riID eq modulkatalog.studienrichtung.riID)}">
-													<option value="${str.riID}">${stg.name} - ${str.name}</option>
+												<c:when test="${!(str.riID eq modulkatalog.studienrichtung.riID)}">
+													<option value="${str.riID}">${str.studiengang.name} - ${str.name}</option>
 												</c:when> 
-												<c:when test="${stg.stID eq str.studiengang.stID && str.riID eq modulkatalog.studienrichtung.riID}">
-													<option value="${str.riID}" selected>${stg.name} - ${str.name}</option>
+												<c:when test="${str.riID eq modulkatalog.studienrichtung.riID}">
+													<option value="${str.riID}" selected>${str.studiengang.name} - ${str.name}</option>
 												</c:when>
 											</c:choose>
 										</c:forEach>
-									</c:forEach>
 								</c:when>
 								<c:otherwise>
 									<option disabled>Keine Richtungen vorhanden</option>
@@ -60,8 +58,7 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Gültig von</label>
 					<div class="col-10">
-						<input type="date" name="gueltigVon" class="form-control"
-							placeholder="Gueltig ab" required>
+						<input type="date" name="gueltigVon" class="form-control" value="${modulkatalog.gueltigVon}" required>
 					</div>
 				</div>
 
@@ -69,7 +66,7 @@
 					<label class="col-2 col-form-label">Gültig bis</label>
 					<div class="col-10">
 						<input type="date" name="gueltigBis" class="form-control"
-							placeholder="Gueltig bis" required>
+							value="${modulkatalog.gueltigBis}" required>
 					</div>
 				</div>
 				

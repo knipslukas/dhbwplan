@@ -61,7 +61,7 @@
 	    		<div class="row text-center border border-left-0 border-right-0 border-top-0">
 	   					<div class="col-6"><p><strong>Studienrichtung:</strong></p></div>
 	   					<div class="col-6">
-	   						<p>${modulkatalog.studienrichtung.name}</p>
+	   						<p>${modulkatalog.studienrichtung.studiengang.name} - ${modulkatalog.studienrichtung.name}</p>
 	   					</div>
 	   				</div>
 	    	

@@ -112,7 +112,6 @@ public class ModulkatalogController {
 		 model.addAttribute("modulkatalog", mModulkatalogService.getModulkatalogByID(dID));
 		 model.addAttribute("pageTitle", "DHBW - Modulkatalog bearbeiten");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
-		 model.addAttribute("studiengangList", mStudiengangService.getAllStuga());
 		 model.addAttribute("studienrichtungList", mStudiengangrichtungService.getAllStudienrichtung(""));
 		 return "modulkatalog/mk_edit";
 	 }
@@ -121,7 +120,6 @@ public class ModulkatalogController {
 	 public String addModulkatalogUi(Model model) {
 		 model.addAttribute("pageTitle", "DHBW - Modulkatalog Anlegen");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
-		 model.addAttribute("studiengangList", mStudiengangService.getAllStuga());
 		 model.addAttribute("studienrichtungList", mStudiengangrichtungService.getAllStudienrichtung(""));
 		 return "modulkatalog/mk_add";
 	 }
