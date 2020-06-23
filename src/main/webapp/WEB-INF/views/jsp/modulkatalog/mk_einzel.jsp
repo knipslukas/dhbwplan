@@ -43,7 +43,7 @@
     	<!-- Start Orentierungszeile -->
 	   	<div class="alert dozentuebersicht d-flex align-items-center" role="alert">
 			<h1 class="text-white my-1">Modulkatalogansicht</h1>
-			<a href="/modul/edit/${modulkatalog.MKID}" class="btn ml-auto DHBWbutton">Bearbeiten</a>
+			<a href="/modulkatalog/edit/${modulkatalog.MKID}" class="btn ml-auto DHBWbutton">Bearbeiten</a>
 			<button type="button" class="btn ml-2 DHBWbutton" data-toggle="modal" data-target="#deleteModal">Löschen</button>
 			<a href="/modulkatalog" class="btn ml-2 DHBWbutton">Zurück</a>
         </div>
