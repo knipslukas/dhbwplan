@@ -33,9 +33,9 @@
 	                <div class="col-10">
 	                	<select class="form-control" name="studienjahr">
 	                		<option disabled selected>Bitte Auswählen</option>
-		                	<option value="Studienjahr 1">Studienjahr 1</option>
-		                	<option value="Studienjahr 2">Studienjahr 2</option>
-		                	<option value="Studienjahr 3">Studienjahr 3</option>
+		                	<option value="1">Studienjahr 1</option>
+		                	<option value="2">Studienjahr 2</option>
+		                	<option value="3">Studienjahr 3</option>
 	                	</select>
 	            	</div>
 	            </div>
@@ -45,8 +45,8 @@
 	                <div class="col-10">
 						<select class="form-control" name="moduldauer">
 	                		<option disabled selected>Bitte Auswählen</option>
-		                	<option value="1 Semester">1 Semester</option>
-		                	<option value="2 Semester">2 Semester</option>
+		                	<option value="1">1 Semester</option>
+		                	<option value="2">2 Semester</option>
 	                	</select>	                
 	                </div>
 	            </div>
