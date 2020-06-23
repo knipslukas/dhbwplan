@@ -130,7 +130,7 @@
 			<div class="modal-content">
 				<div class="modal-body">
 					<h1><strong>Achtung!</strong></h1>
-					<h4>Wollen Sie wirklich ${kurs.name}  löschen?</h4>
+					<h4>Wollen Sie wirklich den Kurs ${kurs.name}  löschen?</h4>
 				</div>
 				
 				<div class="modal-footer">
