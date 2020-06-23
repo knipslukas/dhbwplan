@@ -52,13 +52,13 @@ public class KursController {
 	private StudienrichtungService mStudiengangrichtungService;
 
 	@PostMapping(path = "/add")
-	public String addKurs(@ModelAttribute KursDto ku, RedirectAttributes redirectAttributes) {
+	public String addKurs(@ModelAttribute KursDto kursDto, RedirectAttributes redirectAttributes) {
 		Kurs kurs = new Kurs();
-		kurs.setName(ku.getname());
-		kurs.setStudienrichtung(mStudiengangrichtungService.getStudienrichtungByID(ku.getStudienrichtung_riid()));
-		kurs.setJahrgang(ku.getJahrgang());
-		kurs.setAnzahlStudierende(ku.getAnzahlStudierende());
-		kurs.setDozent(mDozentService.getDozentByID(ku.getDozent_DID()));
+		kurs.setName(kursDto.getname());
+		kurs.setStudienrichtung(mStudiengangrichtungService.getStudienrichtungByID(kursDto.getStudienrichtung_riid()));
+		kurs.setJahrgang(kursDto.getJahrgang());
+		kurs.setAnzahlStudierende(kursDto.getAnzahlStudierende());
+		kurs.setDozent(mDozentService.getDozentByID(kursDto.getDozent_DID()));
 		if (mKursService.addKurs(kurs) != null) {
 			return "redirect:/kurs/show/" + kurs.getKID();
 		} else {
@@ -105,7 +105,6 @@ public class KursController {
 		model.addAttribute("kursUpdated", kursUpdated);
 		model.addAttribute("pageTitle", "DHBW - Kursansicht");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
-		model.addAttribute("studiengangList", mStudiengangService.getAllStuga());
 		model.addAttribute("studienrichtungList", mStudiengangrichtungService.getAllStudienrichtung(""));
 		 model.addAttribute("dozentenList", mDozentService.getAllDozent(null, null));
 		return "kurs/kur_einzel";
@@ -117,7 +116,6 @@ public class KursController {
 		model.addAttribute("kurs", mKursService.getKursByID(dID));
 		model.addAttribute("pageTitle", "DHBW - Kurs bearbeiten");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
-	    model.addAttribute("studiengangList", mStudiengangService.getAllStuga());
 	    model.addAttribute("studienrichtungList", mStudiengangrichtungService.getAllStudienrichtung(""));
 	    model.addAttribute("dozentenList", mDozentService.getAllDozent(null, null));
 		return "kurs/kur_edit";
@@ -127,7 +125,6 @@ public class KursController {
 	public String addKursUi(Model model) {
 		model.addAttribute("pageTitle", "DHBW - Kurs Anlegen");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
-		model.addAttribute("studiengangList", mStudiengangService.getAllStuga());
 	    model.addAttribute("studienrichtungList", mStudiengangrichtungService.getAllStudienrichtung(""));
 	    model.addAttribute("dozentenList", mDozentService.getAllDozent(null, null));
 		return "kurs/kur_add";

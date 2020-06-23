@@ -63,7 +63,7 @@
 									<td scope="row" class="align-middle">${kurs.name }</td>
 									<td scope="row" class="align-middle">${kurs.studienrichtung.name}</td>
 									<td scope="row" class="align-middle">${kurs.jahrgang}</td>	
-									<td scope="row" class="align-middle">${kurs.dozent.vorname}</td>							
+									<td scope="row" class="align-middle">${kurs.dozent.anrede} ${kurs.dozent.vorname} ${kurs.dozent.nachname} </td>							
 									<td scope="row" class="align-middle">${kurs.anzahlStudierende}</td>
 									<td scope="row" class="align-middle"><a href="/kurs/show/${kurs.KID}"
 											class="btn btn-sm btn-secondary">Anzeigen</a></td>
