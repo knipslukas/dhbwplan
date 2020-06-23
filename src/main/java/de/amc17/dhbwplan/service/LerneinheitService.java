@@ -1,18 +1,16 @@
 package de.amc17.dhbwplan.service;
 
-import java.util.Optional;
-import javax.annotation.Resource;
-import org.springframework.stereotype.Service;
-import de.amc17.dhbwplan.entity.Lerneinheit;
-import de.amc17.dhbwplan.repository.LerneinheitRepository;
 import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
+
 import javax.annotation.Resource;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
+
+import de.amc17.dhbwplan.entity.Lerneinheit;
+import de.amc17.dhbwplan.entity.Modul;
+import de.amc17.dhbwplan.repository.LerneinheitRepository;
 
 @Service
 public class LerneinheitService {
@@ -78,6 +76,15 @@ public class LerneinheitService {
 		try {
 			return LerneinheitRepository.findByLEID(aLEID);
 		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public List<Lerneinheit> getAllLee(Modul modul) {
+		try {
+			return LerneinheitRepository.findAllByModulOrderByNameAsc(modul);
+		}catch(Exception e) {
+			LOG.error("Could not load LEE"+e);
 			return null;
 		}
 	}

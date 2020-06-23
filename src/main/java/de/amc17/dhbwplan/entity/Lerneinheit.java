@@ -1,6 +1,7 @@
 package de.amc17.dhbwplan.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -35,6 +37,9 @@ public class Lerneinheit implements Serializable {
 	private int praesenzzeit;
 
 	private int selbststudium;
+	
+	@ManyToMany(mappedBy = "kannhalten")
+	private List<Dozent> haelt;
 
 	public int getLEID() {
 		return LEID;

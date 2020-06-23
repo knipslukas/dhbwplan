@@ -220,12 +220,207 @@
 	        </form>
 	
 	        <!-- Ende Formular -->
-	
+			<!-- Beginn Doz-7-1 -->
+	        
+	        <!-- Versuch, Präsenzzeiträume hinzuzufügen -->
+	        
+	      <div class="mt-5">
+	      <label class="col col-form-label"><font size="5">Mögliche Fächer</font></label>
+			<table class="table table-hover" STYLE="margin-bottom: 50px;">
+				<thead class="thead-light">
+					<tr>
+						<th scope="col"><strong>Modul</strong></th>
+						<th scope="col"><strong>Lerneinheit</strong></th>
+						<th scope="col"><strong>Aktionen</strong></th>
+					</tr>
+				</thead>
+				<tbody class="js-table">
+				<!-- 	Beispieleintrag -->
+					<c:choose>
+						<c:when test="${przList ne null }">
+							<c:forEach items="${przList}" var="prz">
+								<tr>
+									<td scope="row" class="align-middle">${praesenzzeitraum.semester }</td>
+									<td scope="row" class="align-middle">${praesenzzeitraum.von }</td>
+									<td scope="row" class="align-middle"><a href="/prz/delete/${praesenzzeitraum.PID}" class="btn btn-sm btn-secondary">löschen</a></td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr class="table-warning">
+								<td>Keine Module/ Lerneinheiten enthalten</td>
+								<td></td>
+								<td></td>
+
+							</tr>
+						</c:otherwise>
+					</c:choose>
+
+				</tbody>
+			</table>
+			
+		</div>
+		
+		<!-- Lerneinheiten hinzufügen -->
+		  <form class="pb-3 js-form-dozanleg">
+	        <div class="form-group row">
+	         <label for="anrede" class="col-2 col-form-label">Modul</label>
+	                <div class="col-10">
+		                <select class="form-control js-mod-input">
+		                	<option disabled selected value="0">Modul Auswählen</option>
+		                	<c:forEach items="${modulListe}" var="modul">
+		                		<option value="${modul.MID}">${modul.bezeichnung}</option>
+		                	</c:forEach>
+		                </select>
+	                </div>
+	               
+	        </div>
+	         
+	        <div class="form-group row d-none js-lee-form">
+	         <label for="anrede" class="col-2 col-form-label">Lerneinheit</label>
+	                <div class="col-10">
+		                <select class="form-control js-lee-input" >
+		                	<option disabled selected value="0">Lerneinheit Auswählen</option>
+		                
+		                </select>
+	                </div>
+	               
+	        </div>    
+	           
+	 
+	          
+             
+              <!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
+	         <!-- Muss das dazu??? <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> -->
+	            
+			</form>
+			
+			
+	               <!-- Final Buttons-->
+	            <div class="finalButtons" STYLE="margin-bottom: 50px;">
+	                <button type="button" class="btn btn-success d-none">Speichern </button>
+	               
+	            </div>
+	        <!-- Ende Doz-7-1 -->
 	        <!-- Ende Content -->
-	        <!-- ab Hier kommt mein Code -->
 	    </div>
 	</div>
 	
 	<script src="${pageContext.request.contextPath}/static/js/dozent.js"></script>
+	
+	<script>
+
+		$(".js-mod-input").change(function () {
+			if ($(".js-mod-input").val() == 0) {
+				alert("Bitte ein Modul auswählen");
+			}
+			else {
+				$.ajax({
+					url: "/dozent/getLee/"+$(".js-mod-input").val(),
+					type: "GET",
+					success: function(result) {
+						console.table(result);
+					},
+					error: function(status) {
+						alert("Fehler ist aufgetreten");
+						console.log(status);
+					}
+				})
+			}
+		});
+		
+		$(".js-form-submit").click(function(){
+			if($(".js-form-von").val()!=""&&$(".js-form-semester").val()!=""&&$(".js-form-bis").val()!=""){
+				var praesenzzeitraum = new Object();
+				praesenzzeitraum.kursid = $(".js-form-kurs").val();
+				praesenzzeitraum.semester = $(".js-form-semester").val();
+				praesenzzeitraum.von = $(".js-form-von").val();
+				praesenzzeitraum.bis = $(".js-form-bis").val();
+				$.ajax({
+					url: "/kurs/addPRZ",
+					type: "POST",
+				    contentType: "application/json",
+				    data:JSON.stringify(praesenzzeitraum),
+				    success: function(result){
+					    
+					    getList();
+				    },
+			    	error: function(status) {
+				    	alert(status);
+				    }
+				})
+				$(".js-form-semester").val("");
+				$(".js-form-von").val("");
+				$(".js-form-bis").val("");
+			}else{
+				alert("Bitte tragen Sie alle Felder ein!");}
+			
+		});
+		
+			
+		$(document).ready(function(){
+			//getList();
+		});
+	
+		function getList() {
+			$.ajax({
+				url: "/kurs/getPRZ/"+$(".js-form-kurs").val(),
+				type: "GET",
+				success: function (result) {						
+						renderList(result);
+	
+				},
+				error: function(status) {
+					alert("Liste konnte nicht geladen werden: "+status);
+				}
+			})
+		}
+	
+		function renderList(entrys) {
+			$(".js-table").html(function() {
+				var list = "";
+				
+				$.each(entrys, function(i, prz) {
+					list += "<tr>";
+					list += "<td>"+prz.semester+"</td>";
+					var temp = DateFormat.format.date(prz.von, "dd.MM.yyyy");
+					list += "<td>"+temp+"</td>";
+					var temp2 = DateFormat.format.date(prz.bis, "dd.MM.yyyy");
+					list += "<td>"+temp2+"</td>";
+					list += '<td><button class="przdelete" style="cursor:pointer" onClick="deletePRZ('+prz.pid+')"><i class="fas fa-trash-alt"></i></button></td>';
+					list += "</tr>";
+				})
+				if (list!=""){
+					return list;
+				}else{
+					list += "<tr class='table-warning'>";
+					list += "<td>Keine Präsenzzeiträume vorhanden</td>";
+					list += "<td></td>";
+					list += "<td></td>";
+					list += "<td></td>";
+					list += "</tr>";
+					return list;
+				}
+			})
+		
+		}
+	
+		function deletePRZ(przid){
+			$.ajax({
+				url:"/kurs/deletePRZ/"+przid,
+				type:"POST",
+				contentType:"application/json",
+				success: function(result){
+					getList();
+					
+					},
+					error: function(status){
+						alert("klappt nicht"+status);
+						}
+				})	
+		}
+		
+		
+	</script>
 
 </template:template>
