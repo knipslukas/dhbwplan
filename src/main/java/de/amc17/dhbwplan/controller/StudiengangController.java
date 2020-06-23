@@ -87,6 +87,8 @@ public class StudiengangController {
 	public String getAllStudiengang(Model model, @PathVariable int aID,
 			@RequestParam(required = false) Object StudiengangUpdated) {
 		model.addAttribute("studiengang", mStudiengangService.getStudiengangByID(aID));
+		model.addAttribute("studienrichtung", mStudiengangService.getStudiengangByID(aID).getStudienrichtung());
+		model.addAttribute("sturiListe", mStudiengangService.getAllSturi(aID));
 		model.addAttribute("studiengangUpdated", StudiengangUpdated);
 		model.addAttribute("pageTitle", "DHBW - Studiengangansicht");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
