@@ -36,7 +36,7 @@ public class DozentController {
 		else {
 			redirectAttributes.addAttribute("dozentCreated", false);
 		}
-		return "redirect:/dozent/getAll/";
+		return "redirect:/dozent/";
 	}
 
 	@GetMapping(value = "/delete/{aID}")
@@ -47,7 +47,7 @@ public class DozentController {
 		else {
 			redirectAttributes.addAttribute("dozentDeleted", false);
 		}
-		return "redirect:/dozent/getAll";
+		return "redirect:/dozent/";
 	}
 
 	@PostMapping(path = "/update/{aID}")

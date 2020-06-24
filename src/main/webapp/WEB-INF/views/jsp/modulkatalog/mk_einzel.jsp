@@ -79,17 +79,57 @@
          					value = "${modulkatalog.gueltigBis}" /></p>
 	   				</div>
 
-	   			</div>
-	    	</div>
+          </div>
+	   			
+	    	</div>   			
+	   			<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">     
+	
+			      	<div class="col-12">
+					<table class="table table-hover" STYLE="margin-bottom: 50px; 
+							width:430px; text-align:left; margin-left: auto; margin-right: auto;">
+						<caption>Module:</caption>
+						<thead class="thead-light">
+							<tr>
+								<th scope="col"><strong>Name</strong></th>
+								<th scope="col"><strong>Beschreibung</strong></th>
+							</tr>
+						</thead>
+						<tbody class="js-table">
+						<!-- 	Beispieleintrag -->
+							<c:choose>
+								<c:when test="${modulListe ne null }">
+									<c:forEach items="${modulListe}" var="modul">
+										<tr>
+											<td scope="row" class="align-middle"><a href="/modul/show/${modul.MID}"> 
+																				 ${modul.bezeichnung } </a></td>
+											<td scope="row" class="align-middle">${modul.beschreibung}</td>
+										</tr>
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<tr class="table-warning">
+										<td>Keine Module vorhanden</td>
+										<td></td>
+										<td></td>
+										<td></td>
 		
-	</div>
+									</tr>
+								</c:otherwise>
+							</c:choose>
+		
+						</tbody>
+					</table>
+					</div>
+	   			</div>
+			</div>
+		</div>
 	</div>
 	<div class="modal" id="deleteModal">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-body">
 					<h1><strong>Achtung!</strong></h1>
-					<h4>Wollen Sie wirklich das Modul ${modulkatalog.name} löschen?</h4>
+					<h4>Wollen Sie wirklich den Modulkatalog ${modulkatalog.name} löschen?</h4>
 				</div>
 				
 				<div class="modal-footer">

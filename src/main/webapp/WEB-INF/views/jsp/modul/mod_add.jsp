@@ -39,6 +39,18 @@
 	                	</select>
 	            	</div>
 	            </div>
+	            
+	              <div class="form-group row">
+	                <label class="col-2 col-form-label">Modulkatalog</label>
+	                <div class="col-10">
+	                	<select class="form-control" id="modulkatalog" name="modulkatalogID">
+		                	<option disabled selected>Modulkatalog auswählen</option>
+		                	<c:forEach items="${modulkatalogList}" var="modulkatalog">
+		                		<option value="${modulkatalog.MKID}">${modulkatalog.name} ${modulkatalog.gueltigVon} ${modulkatalog.gueltigVon}</option>
+		                	</c:forEach>
+		                </select>
+	                </div>
+	            </div>
 	
 	            <div class="form-group row">
 	                <label class="col-2 col-form-label">Selbststudium</label>

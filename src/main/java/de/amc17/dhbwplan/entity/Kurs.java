@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Kurs implements Serializable {
@@ -29,6 +30,8 @@ public class Kurs implements Serializable {
 
 	private int anzahlStudierende;
 	
+	@OneToOne
+	private Dozent dozent;	
 
     @OneToMany(mappedBy="kurs")
     private List<Praesenzzeitraum> praesenzzeitraum;
@@ -63,6 +66,14 @@ public class Kurs implements Serializable {
 
 	public void setKID(int KID) {
 		this.KID = KID;
+	}
+	
+	public Dozent getDozent() {
+		return dozent;
+	}
+
+	public void setDozent(Dozent dozent) {
+		this.dozent = dozent;
 	}
 
 	public List<Praesenzzeitraum> getPraesenzzeitraum() {

@@ -284,3 +284,8 @@ a:hover
 .doz-einzel-adresse p {
 	margin-bottom: 0;
 }
+caption {
+	font-weight: bold;
+	caption-side: top; 
+	color: black;
+}

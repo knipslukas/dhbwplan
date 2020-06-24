@@ -2,6 +2,7 @@
 <%@ taglib prefix="template" tagdir="/WEB-INF/tags/template"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <template:template pageTitle="${pageTitle}">
 	<template:navbar user="${currentUser}" />
@@ -61,9 +62,10 @@
 	                			<tr>
 <%-- 					                <td scope="row" class="align-middle">${modulkatalog.MKID}</td> --%>
 					                <td scope="row" class="align-middle">${modulkatalog.name}</td>
-					                <td scope="row" class="align-middle">${modulkatalog.studienrichtung.studiengang.name} - ${modulkatalog.studienrichtung.name}</td>
-					                <td scope="row" class="align-middle">${modulkatalog.gueltigVon }</td>
-					                <td scope="row" class="align-middle">${modulkatalog.gueltigBis }</td>
+					                <td scope="row" class="align-middle"><fmt:formatDate type = "date" 
+         											value = "${modulkatalog.gueltigVon}" /></td>
+					                <td scope="row" class="align-middle"><fmt:formatDate type = "date" 
+         											value = "${modulkatalog.gueltigBis}" /></td>
 					                <td scope="row" class="align-middle"><a href="/modulkatalog/show/${modulkatalog.MKID}" class="btn btn-sm btn-secondary">Anzeigen</a></td>
 				                </tr>
 	                		</c:forEach>

@@ -56,9 +56,9 @@ public class VorlesungService {
 		try {
 			Vorlesung oVorlesung;
 			if ((oVorlesung = VorlesungRepository.findByVID(aVorlesung.getVID())) != null) { 
-					aVorlesung.setName(oVorlesung.getName());
-					aVorlesung.setVorlesungsstunden(oVorlesung.getVorlesungsstunden());
-				VorlesungRepository.save(aVorlesung);
+					oVorlesung.setName(aVorlesung.getName());
+					oVorlesung.setVorlesungsstunden(aVorlesung.getVorlesungsstunden());
+				VorlesungRepository.save(oVorlesung);
 			} else {
 				LOG.warn("Vorlesung not found");
 				return false;

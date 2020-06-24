@@ -1,6 +1,8 @@
 package de.amc17.dhbwplan.controller;
 
 import java.sql.Date;
+import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,10 +13,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.amc17.dhbwplan.data.ModulkatalogDto;
 import de.amc17.dhbwplan.entity.Modulkatalog;
+import de.amc17.dhbwplan.entity.Dozent;
+import de.amc17.dhbwplan.entity.Modul;
+import de.amc17.dhbwplan.entity.Modulkatalog;
+import de.amc17.dhbwplan.entity.Studienrichtung;
+import de.amc17.dhbwplan.service.DozentService;
 import de.amc17.dhbwplan.service.ModulkatalogService;
 import de.amc17.dhbwplan.service.StudiengangService;
 import de.amc17.dhbwplan.service.StudienrichtungService;
@@ -50,7 +58,7 @@ public class ModulkatalogController {
 		else {
 			redirectAttributes.addAttribute("modulkatalogCreated", false);
 		}
-		return "redirect:/modulkatalog/getAll/";
+		return "redirect:/modulkatalog/";
 	}
 	
 	@PostMapping(path = "/update/{aID}")
@@ -86,8 +94,10 @@ public class ModulkatalogController {
 	
 	 @GetMapping(path="/show/{aID}") 
 	 public String getAllModulkatalog(Model model, @PathVariable int aID, @RequestParam(required = false) Object modulkatalogUpdated) {
-		 model.addAttribute("modulkatalog", mModulkatalogService.getModulkatalogByID(aID));
+		 Modulkatalog temp = mModulkatalogService.getModulkatalogByID(aID);
+		 model.addAttribute("modulkatalog", temp);
 		 model.addAttribute("modulkatalogUpdated", modulkatalogUpdated);
+		 model.addAttribute("modulListe",  temp.getModul());
 		 model.addAttribute("pageTitle", "DHBW - Modulkatalogansicht");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "modulkatalog/mk_einzel";
@@ -100,7 +110,7 @@ public class ModulkatalogController {
 			 @RequestParam (required = false) Date gueltig_bis, @RequestParam(required = false) Object modulkatalogDeleted,
 			 @RequestParam(required = false) Object modulkatalogCreated) {
 		 
-		 model.addAttribute("modulkatalogList", mModulkatalogService.getAllModulkatalog(gueltig_von, gueltig_bis));
+		 model.addAttribute("modulkatalogList", mModulkatalogService.getAllModulkatalog());
 		 model.addAttribute("modulkatalogDeleted", modulkatalogDeleted);
 		 model.addAttribute("modulkatalogCreated", modulkatalogCreated);
 		 model.addAttribute("pageTitle", "DHBW - Übersicht Modulkatalog");
@@ -123,5 +133,12 @@ public class ModulkatalogController {
 		 model.addAttribute("studienrichtungList", mStudiengangrichtungService.getAllStudienrichtung(""));
 		 return "modulkatalog/mk_add";
 	 }
-	
+	 
+		@GetMapping(value = "/getModul/{modid}", produces = "application/json")
+		@ResponseBody
+		public List<Modul> getAllModule(@PathVariable int modid) {
+			return mModulkatalogService.getAllModul(modid);
+		}
+	 
+
 }

@@ -1,11 +1,9 @@
-
 package de.amc17.dhbwplan.data;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
 import de.amc17.dhbwplan.entity.Studienrichtung;
 
 

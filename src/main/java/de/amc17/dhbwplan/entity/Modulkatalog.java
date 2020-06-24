@@ -2,6 +2,7 @@ package de.amc17.dhbwplan.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Modulkatalog implements Serializable {
@@ -28,7 +30,11 @@ public class Modulkatalog implements Serializable {
 	
 	private String name;
 	
-
+	@OneToMany(mappedBy="modulkatalog")
+	private List<Modul> modul;
+	
+	private String name; 
+	
 	private Date gueltigVon;
 	
 	private Date gueltigBis;
@@ -65,6 +71,14 @@ public class Modulkatalog implements Serializable {
 	public Date getGueltigVon() {
 		return gueltigVon;
 	}
+	
+	public void setname(String name) {
+		this.name = name;
+	}
+
+	public String getname() {
+		return name;
+	}
 
 	public void setGueltigVon(Date gueltigVon) {
 		this.gueltigVon = gueltigVon;
@@ -76,6 +90,14 @@ public class Modulkatalog implements Serializable {
 
 	public void setGueltigBis(Date gueltigBis) {
 		this.gueltigBis = gueltigBis;
+	}
+	
+	public List<Modul> getModul() {
+		return modul;
+	}
+
+	public void setModul(List<Modul> modul) {
+		this.modul = modul;
 	}
 	
 	
