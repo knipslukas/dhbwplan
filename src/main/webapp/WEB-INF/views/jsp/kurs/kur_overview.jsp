@@ -47,7 +47,9 @@
 					<tr>
 						<!-- 	                  <th scope="col"><strong>Dozenten Nummer</strong></th> -->
 						<th scope="col"><strong>Name</strong></th>
-						<th scope="col"><strong>Jahrgang</strong></th>
+						<th scope="col"><strong>Studienrichtung</strong></th>
+						<th scope="col"><strong>Jahrgang</strong></th>	
+						<th scope="col"><strong>Studiengangsleiter</strong></th>						
 						<th scope="col"><strong>Anzahl Studierende</strong></th>
 						<th scope="col"><strong>Aktionen</strong></th>
 					</tr>
@@ -56,14 +58,16 @@
 					<!-- Beispieleintrag -->
 					<c:choose>
 						<c:when test="${kursList ne null }">
-							<c:forEach items="${kursList}" var="kurs">
+							<c:forEach items="${kursList}" var="kurs">						
 								<tr>
 									<td scope="row" class="align-middle">${kurs.name }</td>
-									<td scope="row" class="align-middle">${kurs.jahrgang }</td>
-									<td scope="row" class="align-middle">${kurs.anzahlStudierende }</td>
+									<td scope="row" class="align-middle">${kurs.studienrichtung.studiengang.name} - ${kurs.studienrichtung.name}</td>
+									<td scope="row" class="align-middle">${kurs.jahrgang}</td>	
+									<td scope="row" class="align-middle">${kurs.dozent.anrede} ${kurs.dozent.vorname} ${kurs.dozent.nachname} </td>							
+									<td scope="row" class="align-middle">${kurs.anzahlStudierende}</td>
 									<td scope="row" class="align-middle"><a href="/kurs/show/${kurs.KID}"
 											class="btn btn-sm btn-secondary">Anzeigen</a></td>
-								</tr>
+								</tr>								
 							</c:forEach>
 						</c:when>
 						<c:otherwise>

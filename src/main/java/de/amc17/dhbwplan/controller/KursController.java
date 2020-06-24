@@ -22,6 +22,7 @@ import de.amc17.dhbwplan.entity.Praesenzzeitraum;
 import de.amc17.dhbwplan.service.DozentService;
 import de.amc17.dhbwplan.service.KursService;
 import de.amc17.dhbwplan.service.PraesenzzeitraumService;
+import de.amc17.dhbwplan.service.StudienrichtungService;
 import de.amc17.dhbwplan.service.UserService;
 
 @Controller
@@ -39,17 +40,20 @@ public class KursController {
 	private UserService userServ;
 	
 	@Autowired
-	private DozentService dozServ;
+	private DozentService mDozentService;
+	
+	@Autowired
+	private StudienrichtungService mStudiengangrichtungService;
 
 	@PostMapping(path = "/add")
 	public String addKurs(@ModelAttribute KursDto kursDto, RedirectAttributes redirectAttributes) {
 		Kurs kurs = new Kurs();
 		kurs.setName(kursDto.getName());
-		kurs.setAnzahlStudierende(kursDto.getAnzahlStudierende());
+		kurs.setStudienrichtung(mStudiengangrichtungService.getStudienrichtungByID(kursDto.getStudienrichtung_riid()));
 		kurs.setJahrgang(kursDto.getJahrgang());
-		kurs.setDozent(dozServ.getDozentByID(kursDto.getDID()));
-		kurs = mKursService.addKurs(kurs);
-		if (kurs != null) {
+		kurs.setAnzahlStudierende(kursDto.getAnzahlStudierende());
+		kurs.setDozent(mDozentService.getDozentByID(kursDto.getDozent_DID()));
+		if (mKursService.addKurs(kurs) != null) {
 			return "redirect:/kurs/show/" + kurs.getKID();
 		} else {
 			redirectAttributes.addAttribute("kursCreated", false);
@@ -68,7 +72,8 @@ public class KursController {
 	}
 
 	@PostMapping(path = "/update/{aID}")
-	public String updateKurs(RedirectAttributes redirectAttributes, @ModelAttribute Kurs aKurs) {
+	public String updateKurs(RedirectAttributes redirectAttributes, @PathVariable int aID, @ModelAttribute Kurs aKurs) {
+		aKurs.setKID(aID);
 		if (mKursService.updateKurs(aKurs)) {
 			redirectAttributes.addAttribute("kursUpdated", true);
 		} else {
@@ -80,7 +85,6 @@ public class KursController {
 	@GetMapping(path = "")
 	public String getAllKurs(Model model, @RequestParam(required = false) String name,
 			@RequestParam(required = false) Object kursDeleted, @RequestParam(required = false) Object kursCreated) {
-
 		model.addAttribute("kursList", mKursService.getAllKurs());
 		model.addAttribute("kursDeleted", kursDeleted);
 		model.addAttribute("kursCreated", kursCreated);
@@ -105,6 +109,8 @@ public class KursController {
 		model.addAttribute("kurs", mKursService.getKursByID(dID));
 		model.addAttribute("pageTitle", "DHBW - Kurs bearbeiten");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
+	    model.addAttribute("studienrichtungList", mStudiengangrichtungService.getAllStudienrichtung(""));
+	    model.addAttribute("dozentenList", mDozentService.getAllDozent(null, null));
 		return "kurs/kur_edit";
 	}
 
@@ -112,7 +118,8 @@ public class KursController {
 	public String addKursUi(Model model) {
 		model.addAttribute("pageTitle", "DHBW - Kurs Anlegen");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
-		model.addAttribute("dozentList", dozServ.getAllStudiengangsleiter());
+	    model.addAttribute("studienrichtungList", mStudiengangrichtungService.getAllStudienrichtung(""));
+	    model.addAttribute("dozentenList", mDozentService.getAllDozent(null, null));
 		return "kurs/kur_add";
 	}
 
@@ -169,14 +176,5 @@ public class KursController {
 	public List<Praesenzzeitraum> getAllPraesenzzeitraum(@PathVariable int kursid) {
 		return mPrzservice.getAllPrz(mKursService.getKursByID(kursid));
 	}
-	
-//	@PostMapping(path = "/addPRZ")
-//	@ResponseBody
-//	public String addPraesenzzeitraum(@ModelAttribute Praesenzzeitraum prz) {
-//		if (mPrzservice.addPraesenzzeitraum(prz) != null) {
-//			return "redirect:/kurs/";
-//		}
-//	return "redirect:/kurs/";
-		
 		
 }

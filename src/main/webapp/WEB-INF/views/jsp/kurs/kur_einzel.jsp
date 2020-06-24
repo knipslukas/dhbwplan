@@ -63,12 +63,29 @@
 	   						<p>${kurs.name}</p>
 	   					</div>
 	   				</div>
+	   				
+	   				   				
+	   				<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
+	   					<div class="col-6"><p><strong>Studienrichtung:</strong></p></div>
+	   					<div class="col-6">
+	   						<p>${kurs.studienrichtung.studiengang.name} - ${kurs.studienrichtung.name}</p>
+	   					</div>
+	   				</div>
+	   				
 	   				<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
 	   					<div class="col-6"><p><strong>Jahrgang</strong></p></div>
 	   					<div class="col-6">
 	   						<p>${kurs.jahrgang}</p>
 	   					</div>
 	   				</div>
+	
+					<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
+	   					<div class="col-6"><p><strong>Studiengangsleiter</strong></p></div>
+	   					<div class="col-6">
+	   						<p>${kurs.dozent.anrede} ${kurs.dozent.vorname} ${kurs.dozent.nachname}</p>
+	   					</div>
+	   				</div>
+	
 	   				
 	   				<div class="row mt-4 text-center">
 	   					<div class="col-6"><p><strong>Anzahl Studierende </strong></p></div>

@@ -1,3 +1,4 @@
+
 package de.amc17.dhbwplan.service;
 
 
@@ -109,6 +110,7 @@ public class StudiengangService {
 			return null;
 		}
 	}
+
 	
 	public List<Studiengang> getAllStuga(){
 		return studiengangRepository.findAll();
