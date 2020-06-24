@@ -44,7 +44,7 @@ public class ModulController {
 		} else {
 			redirectAttributes.addAttribute("modulCreated", false);
 		}
-		return "redirect:/modul/getAll/";
+		return "redirect:/modul/";
 	}
 
 	@GetMapping(value = "/delete/{aID}")
