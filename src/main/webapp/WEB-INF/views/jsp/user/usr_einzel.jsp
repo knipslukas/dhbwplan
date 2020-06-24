@@ -53,8 +53,15 @@
 	   	<div class="alert dozentuebersicht d-flex align-items-center" role="alert">
 			<h1 class="text-white my-1">User Einstellungen</h1>
 			<c:if test="${!error }">
-				<button type="button" class="btn ml-auto DHBWbutton" data-toggle="modal" data-target="#deleteModal">Löschen</button>
-				<a href="/user/show" class="btn ml-2 DHBWbutton">Zurück</a>
+				<c:choose>
+					<c:when test="${!ownUser }">
+			   			<button type="button" class="btn ml-auto DHBWbutton" data-toggle="modal" data-target="#deleteModal">Löschen</button>
+			   			<a href="/user/show" class="btn ml-2 DHBWbutton">Zurück</a>
+			   		</c:when>
+			   		<c:otherwise>
+			   			<a href="/user/show" class="btn ml-auto DHBWbutton">Zurück</a>
+			   		</c:otherwise>
+			   	</c:choose>
 			</c:if>
         </div>
     	<!-- Ende Orentierungszeile -->
