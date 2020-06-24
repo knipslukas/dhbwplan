@@ -38,8 +38,8 @@
     </div>
 	    <div class="container my-5">
 			<div class="row pt-3" >
-				<a ID="Hover_box" href="\studiengang" style="display:block" class="col-2 p-3 infobild justify-content-center d-flex">					
-					<h4><i ID="Hover_Icon" class="fas fa-university fa-5x"  ></i></h4>					
+				<a href="\studiengang" style="display:block" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
+					<h4><i class="fas fa-university fa-5x Hover_Icon"  ></i></h4>					
 				</a>
 				
 				<div class="col p-3 mr-3 infotext">
@@ -57,8 +57,8 @@
 	    			</ul>
 				</div>
 				
-				<a ID="Hover_box" href="\modulkatalog" style="display:block" class="col-2 p-3 infobild justify-content-center d-flex">					
-					<h4><i ID="Hover_Icon" class="fas fa-book fa-5x"  ></i></h4>					
+				<a href="\modulkatalog" style="display:block" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
+					<h4><i class="fas fa-book fa-5x Hover_Icon"  ></i></h4>					
 				</a>
 				
 				<div class="col p-3 infotext">
@@ -75,8 +75,8 @@
 			</div> <%-- Ende Reihe 2 --%>
 			
 			<div class="row pt-3" >
-				<a ID="Hover_box" href="\modul" style="display:block" class="col-2 p-3 infobild justify-content-center d-flex">					
-					<h4><i ID="Hover_Icon" class="fas fa-graduation-cap fa-5x"  ></i></h4>					
+				<a href="\modul" style="display:block" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
+					<h4><i class="fas fa-graduation-cap fa-5x Hover_Icon"  ></i></h4>					
 				</a>
 				
 				<div class="col p-3 mr-3 infotext">
@@ -94,8 +94,8 @@
 	    			</ul>
 				</div>
 				
-				<a ID="Hover_box" href="\kurs" style="display:block" class="col-2 p-3 infobild justify-content-center d-flex">					
-					<h4><i ID="Hover_Icon" class="fas fa-user-graduate fa-5x"  ></i></h4>					
+				<a href="\kurs" style="display:block" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
+					<h4><i class="fas fa-user-graduate fa-5x Hover_Icon"  ></i></h4>					
 				</a>
 
 				<div class="col p-3 infotext">
@@ -115,8 +115,8 @@
 			</div> <%-- Ende Reihe 2 --%>
 			
 			<div class="row pt-3" >
-				<a ID="Hover_box" href="\dozent" style="display:block" class="col-2 p-3 infobild justify-content-center d-flex">					
-					<h4><i ID="Hover_Icon" class="fas fa-chalkboard-teacher fa-5x"  ></i></h4>					
+				<a href="\dozent" style="display:block" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
+					<h4><i class="fas fa-chalkboard-teacher fa-5x Hover_Icon"  ></i></h4>					
 				</a>
 
 				<div class="col p-3 mr-3 infotext">
@@ -134,8 +134,8 @@
 		   			</ul>
 				</div>
 				
-				<a ID="Hover_box" href="\vorlesung" style="display:block" class="col-2 p-3 infobild justify-content-center d-flex">					
-					<h4><i ID="Hover_Icon" class="far fa-calendar-alt fa-5x"  ></i></h4>					
+				<a href="\vorlesung" style="display:block" class="col-2 p-3 Hover_box infobild justify-content-center d-flex">					
+					<h4><i class="far fa-calendar-alt fa-5x Hover_Icon"  ></i></h4>					
 				</a>
 
 				<div class="col p-3 infotext">

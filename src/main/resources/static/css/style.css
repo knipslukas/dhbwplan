@@ -130,18 +130,18 @@ infobild:hover
 	transition: background-color 0.4s; /* Animierte Änderung der Eigenschaft background-color */
 }
 
-#Hover_Icon
+.Hover_Icon
 {
 	color:black;
 	transition: background-color 0.4s; /* Animierte Änderung der Eigenschaft background-color */
 }
 
-#Hover_box:hover
+.Hover_box:hover
 {
 	background-color:#E2001A;
 }
 
-#Hover_box:hover #Hover_Icon
+.Hover_box:hover .Hover_Icon
 {
 	color:white;
 }
