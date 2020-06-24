@@ -1,5 +1,6 @@
 package de.amc17.dhbwplan.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.amc17.dhbwplan.data.SturiDto;
 import de.amc17.dhbwplan.entity.Dozent;
+import de.amc17.dhbwplan.entity.Praesenzzeitraum;
 import de.amc17.dhbwplan.entity.Studiengang;
 import de.amc17.dhbwplan.entity.Studienrichtung;
 import de.amc17.dhbwplan.service.DozentService;
@@ -158,10 +160,14 @@ public class StudiengangController {
 		}
 		return null;
 	}
+	
 
 	@GetMapping(value = "/getSturi/{stid}", produces = "application/json")
 	@ResponseBody
 	public List<Studienrichtung> getAllStudienrichtung(@PathVariable int stid) {
 		return mStudiengangService.getAllSturi(stid);
 	}
+	
+	
+	
 }

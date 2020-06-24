@@ -4,11 +4,23 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import de.amc17.dhbwplan.entity.Studienrichtung;
+
 
 public class ModulkatalogDto {
 	
 	private String name; 
-	
+
+	public int studienrichtung_riid;
+
+	public int getStudienrichtung_riid() {
+		return studienrichtung_riid;
+	}
+
+	public void setStudienrichtung_riid(int studienrichtung_riid) {
+		this.studienrichtung_riid = studienrichtung_riid;
+	}
+
 	private Date gueltigVon;
 	
 	private Date gueltigBis;

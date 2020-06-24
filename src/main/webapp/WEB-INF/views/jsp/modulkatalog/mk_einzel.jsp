@@ -57,6 +57,14 @@
 	   			</div>
 	    	
 	    	<div class="card-body">
+	    	
+	    		<div class="row text-center border border-left-0 border-right-0 border-top-0">
+	   					<div class="col-6"><p><strong>Studienrichtung:</strong></p></div>
+	   					<div class="col-6">
+	   						<p>${modulkatalog.studienrichtung.studiengang.name} - ${modulkatalog.studienrichtung.name}</p>
+	   					</div>
+	   				</div>
+	    	
 	   			<div class="row text-center border border-left-0 border-right-0 border-top-0">
 	   				<div class="col-6"><p><strong>Gültig von:</strong></p></div>
 	   				<div class="col-6">
@@ -71,8 +79,7 @@
          					value = "${modulkatalog.gueltigBis}" /></p>
 	   				</div>
 
-	   			</div>
-	   			
+          </div>
 	   			
 	    	</div>   			
 	   			<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">     

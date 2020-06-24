@@ -4,11 +4,13 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -32,6 +34,9 @@ public class Studienrichtung implements Serializable {
 	@JsonIgnore
 	private Studiengang studiengang;
 	
+	@OneToOne(fetch = FetchType.LAZY)
+	private Modulkatalog modulkatalog;
+	
 	public int getriID() {
 		return riID;
 	}
@@ -54,5 +59,13 @@ public class Studienrichtung implements Serializable {
 	
 	public void setStudiengang(Studiengang studiengang) {
 		this.studiengang=studiengang;
+	}
+	
+	public Modulkatalog getModulkatalog() {
+		return modulkatalog;
+	}
+
+	public void setModulkatalog(Modulkatalog modulkatalog) {
+		this.modulkatalog = modulkatalog;
 	}
 }

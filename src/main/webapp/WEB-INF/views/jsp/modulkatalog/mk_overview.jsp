@@ -48,6 +48,7 @@
 	                <tr>
 <!-- 	                  <th scope="col"><strong>Dozenten Nummer</strong></th> -->
 	                  <th scope="col"><strong>Name</strong></th>
+	                  <th scope="col"><strong>Studienrichtung</strong></th>
 	                  <th scope="col"><strong>Gültig von</strong></th>
 	                  <th scope="col"><strong>Gültig bis</strong></th>
 	                  <th scope="col"><strong>Aktionen</strong></th>
