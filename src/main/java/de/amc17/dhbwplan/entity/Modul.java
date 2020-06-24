@@ -31,8 +31,6 @@ public class Modul implements Serializable {
 
 	private int studienjahr;
 
-	private int selbststudium;
-
 	private int moduldauer;
 
 	private String modulart;
@@ -42,8 +40,6 @@ public class Modul implements Serializable {
 	private String beschreibung;
 
 	private String sprache;
-
-	private int praesenzzeit;
 
 	private int ectsPunkte;
 	
@@ -69,22 +65,6 @@ public class Modul implements Serializable {
 
 	public void setBezeichnung(String bezeichnung) {
 		this.bezeichnung = bezeichnung;
-	}
-
-	public int getStudienjahr() {
-		return studienjahr;
-	}
-
-	public void setStudienjahr(int studienjahr) {
-		this.studienjahr = studienjahr;
-	}
-
-	public int getSelbststudium() {
-		return selbststudium;
-	}
-
-	public void setSelbststudium(int selbststudium) {
-		this.selbststudium = selbststudium;
 	}
 
 	public int getModuldauer() {
@@ -127,14 +107,6 @@ public class Modul implements Serializable {
 		this.sprache = sprache;
 	}
 
-	public int getPraesenzzeit() {
-		return praesenzzeit;
-	}
-
-	public void setPraesenzzeit(int praesenzzeit) {
-		this.praesenzzeit = praesenzzeit;
-	}
-
 	public int getEctsPunkte() {
 		return ectsPunkte;
 	}
@@ -143,6 +115,18 @@ public class Modul implements Serializable {
 		this.ectsPunkte = ectsPunkte;
 	}
 
+	public int getStudienjahr() {
+		return studienjahr;
+	}
+
+	public void setStudienjahr(int studienjahr) {
+		this.studienjahr = studienjahr;
+	}
+
+	public int getMID() {
+		return MID;
+  }
+  
 	public Modulkatalog getModulkatalog() {
 		return modulkatalog;
 	}
