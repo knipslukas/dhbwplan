@@ -31,7 +31,7 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Jahrgang</label>
 					<div class="col-10">
-						<input type="text" name="jahrgang" class="form-control" placeholder="Jahrgang eingeben"
+						<input type="number" name="jahrgang" class="form-control" placeholder="Jahrgang eingeben"
 							required>
 					</div>
 				</div>

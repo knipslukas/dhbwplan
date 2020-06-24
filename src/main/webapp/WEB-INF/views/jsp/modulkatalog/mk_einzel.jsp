@@ -122,11 +122,11 @@
 			<div class="modal-content">
 				<div class="modal-body">
 					<h1><strong>Achtung!</strong></h1>
-					<h4>Wollen Sie wirklich das Modul ${modulkatalog.name} löschen?</h4>
+					<h4>Wollen Sie wirklich den Modulkatalog ${modulkatalog.name} löschen?</h4>
 				</div>
 				
 				<div class="modal-footer">
-					<a href="/modul/delete/${modulkatalog.MKID}" class="btn btn-danger">Unwiderruflich löschen</a>
+					<a href="/modulkatalog/delete/${modulkatalog.MKID}" class="btn btn-danger">Unwiderruflich löschen</a>
 					<button type="button" class="btn DHBWbutton" data-dismiss="modal">Abbrechen</button>
 				</div>
 			</div>
