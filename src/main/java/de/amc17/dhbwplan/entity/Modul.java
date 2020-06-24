@@ -122,10 +122,6 @@ public class Modul implements Serializable {
 	public void setStudienjahr(int studienjahr) {
 		this.studienjahr = studienjahr;
 	}
-
-	public int getMID() {
-		return MID;
-  }
   
 	public Modulkatalog getModulkatalog() {
 		return modulkatalog;
