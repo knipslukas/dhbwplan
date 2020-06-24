@@ -61,7 +61,7 @@
 							<c:forEach items="${kursList}" var="kurs">						
 								<tr>
 									<td scope="row" class="align-middle">${kurs.name }</td>
-									<td scope="row" class="align-middle">${kurs.studienrichtung.name}</td>
+									<td scope="row" class="align-middle">${kurs.studienrichtung.studiengang.name} - ${kurs.studienrichtung.name}</td>
 									<td scope="row" class="align-middle">${kurs.jahrgang}</td>	
 									<td scope="row" class="align-middle">${kurs.dozent.anrede} ${kurs.dozent.vorname} ${kurs.dozent.nachname} </td>							
 									<td scope="row" class="align-middle">${kurs.anzahlStudierende}</td>

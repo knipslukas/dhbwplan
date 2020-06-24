@@ -38,8 +38,7 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Studienrichtung</label>
 					<div class="col-10">
-						<select class="form-control" name="studienrichtung_riid" required name="studienrichtung" class="form-control">
-							<option disabled selected>Bitte Auswählen</option>
+						<select class="form-control" required name="studienrichtung" class="form-control">
 							<c:choose>
 								<c:when test="${studienrichtungList ne null}">
 										<c:forEach items="${studienrichtungList}" var="str">
