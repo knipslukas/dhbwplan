@@ -56,7 +56,7 @@ public class ModulController {
 		} else {
 			redirectAttributes.addAttribute("modulCreated", false);
 		}
-		return "redirect:/modul/getAll/";
+		return "redirect:/modul/";
 	}
 
 	@GetMapping(value = "/delete/{aID}")
@@ -66,7 +66,7 @@ public class ModulController {
 		} else {
 			redirectAttributes.addAttribute("modulDeleted", false);
 		}
-		return "redirect:/modul/getAll";
+		return "redirect:/modul/";
 	}
 
 	@PostMapping(path = "/update/{aID}")

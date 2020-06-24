@@ -99,8 +99,7 @@ public class KursController {
 		model.addAttribute("kursUpdated", kursUpdated);
 		model.addAttribute("pageTitle", "DHBW - Kursansicht");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
-		model.addAttribute("studienrichtungList", mStudiengangrichtungService.getAllStudienrichtung(""));
-		 model.addAttribute("dozentenList", mDozentService.getAllDozent(null, null));
+		model.addAttribute("przListe", mPrzservice.getAllPrz(mKursService.getKursByID(aID)));
 		return "kurs/kur_einzel";
 
 	}
@@ -177,14 +176,5 @@ public class KursController {
 	public List<Praesenzzeitraum> getAllPraesenzzeitraum(@PathVariable int kursid) {
 		return mPrzservice.getAllPrz(mKursService.getKursByID(kursid));
 	}
-	
-//	@PostMapping(path = "/addPRZ")
-//	@ResponseBody
-//	public String addPraesenzzeitraum(@ModelAttribute Praesenzzeitraum prz) {
-//		if (mPrzservice.addPraesenzzeitraum(prz) != null) {
-//			return "redirect:/kurs/";
-//		}
-//	return "redirect:/kurs/";
-		
 		
 }

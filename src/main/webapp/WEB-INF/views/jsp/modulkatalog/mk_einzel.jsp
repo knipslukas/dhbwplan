@@ -43,7 +43,7 @@
     	<!-- Start Orentierungszeile -->
 	   	<div class="alert dozentuebersicht d-flex align-items-center" role="alert">
 			<h1 class="text-white my-1">Modulkatalogansicht</h1>
-			<a href="/modul/edit/${modulkatalog.MKID}" class="btn ml-auto DHBWbutton">Bearbeiten</a>
+			<a href="/modulkatalog/edit/${modulkatalog.MKID}" class="btn ml-auto DHBWbutton">Bearbeiten</a>
 			<button type="button" class="btn ml-2 DHBWbutton" data-toggle="modal" data-target="#deleteModal">Löschen</button>
 			<a href="/modulkatalog" class="btn ml-2 DHBWbutton">Zurück</a>
         </div>
@@ -57,6 +57,14 @@
 	   			</div>
 	    	
 	    	<div class="card-body">
+	    	
+	    		<div class="row text-center border border-left-0 border-right-0 border-top-0">
+	   					<div class="col-6"><p><strong>Studienrichtung:</strong></p></div>
+	   					<div class="col-6">
+	   						<p>${modulkatalog.studienrichtung.studiengang.name} - ${modulkatalog.studienrichtung.name}</p>
+	   					</div>
+	   				</div>
+	    	
 	   			<div class="row text-center border border-left-0 border-right-0 border-top-0">
 	   				<div class="col-6"><p><strong>Gültig von:</strong></p></div>
 	   				<div class="col-6">
@@ -71,8 +79,7 @@
          					value = "${modulkatalog.gueltigBis}" /></p>
 	   				</div>
 
-	   			</div>
-	   			
+          </div>
 	   			
 	    	</div>   			
 	   			<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">     
@@ -122,11 +129,11 @@
 			<div class="modal-content">
 				<div class="modal-body">
 					<h1><strong>Achtung!</strong></h1>
-					<h4>Wollen Sie wirklich das Modul ${modulkatalog.name} löschen?</h4>
+					<h4>Wollen Sie wirklich den Modulkatalog ${modulkatalog.name} löschen?</h4>
 				</div>
 				
 				<div class="modal-footer">
-					<a href="/modul/delete/${modulkatalog.MKID}" class="btn btn-danger">Unwiderruflich löschen</a>
+					<a href="/modulkatalog/delete/${modulkatalog.MKID}" class="btn btn-danger">Unwiderruflich löschen</a>
 					<button type="button" class="btn DHBWbutton" data-dismiss="modal">Abbrechen</button>
 				</div>
 			</div>

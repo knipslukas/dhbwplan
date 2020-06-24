@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -28,6 +29,8 @@ public class Modulkatalog implements Serializable {
 	@Column(name="MKID")
 	private int MKID;
 	
+	private String name;
+	
 	@OneToMany(mappedBy="modulkatalog")
 	private List<Modul> modul;
 	
@@ -42,6 +45,19 @@ public class Modulkatalog implements Serializable {
 	
 	private Date gueltigBis;
 	
+	@ManyToOne 
+	@JoinColumn(name="riID")
+	@JsonIgnore
+	private Studienrichtung studienrichtung;
+	
+	public Studienrichtung getStudienrichtung() {
+		return studienrichtung;
+	}
+
+	public void setStudienrichtung(Studienrichtung studienrichtung) {
+		this.studienrichtung = studienrichtung;
+	}
+
 	public int getMKID() {
 		return MKID;
 	}
@@ -50,6 +66,14 @@ public class Modulkatalog implements Serializable {
 		this.MKID = MKID;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public Date getGueltigVon() {
 		return gueltigVon;
 	}

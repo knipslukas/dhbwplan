@@ -60,8 +60,7 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Gültig von</label>
 					<div class="col-10">
-						<input type="date" name="gueltigVon" class="form-control"
-							placeholder="Gueltig ab" required>
+						<input type="date" name="gueltigVon" class="form-control" value="${modulkatalog.gueltigVon}" required>
 					</div>
 				</div>
 
@@ -69,7 +68,7 @@
 					<label class="col-2 col-form-label">Gültig bis</label>
 					<div class="col-10">
 						<input type="date" name="gueltigBis" class="form-control"
-							placeholder="Gueltig bis" required>
+							value="${modulkatalog.gueltigBis}" required>
 					</div>
 				</div>
 				

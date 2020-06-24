@@ -93,7 +93,50 @@
 	   						<p>${kurs.anzahlStudierende}</p>
 	   					</div>
 	   				</div>
-	   				
+	         
+	        <!-- Versuch, Präsenzzeiträume hinzuzufügen -->
+	<!--        <div>
+	       <label class="col-2 col-form-label">Präsenzzeiträume</label>
+	       </div> -->
+	      <div class="mt-5">
+			<table class="table table-hover" STYLE="margin-bottom: 50px; width:430px; text-align:left; margin-left: auto; margin-right: auto;">
+				<caption>Kurse:</caption>
+				<thead class="thead-light">
+					<tr>
+						<th scope="col"><strong>Semester</strong></th>
+						<th scope="col"><strong>Von</strong></th>
+						<th scope="col"><strong>Bis</strong></th>
+					</tr>
+				</thead>
+				<tbody class="js-table">
+				<!-- 	Beispieleintrag -->
+					<c:choose>
+						<c:when test="${przListe ne null }">
+							<c:forEach items="${przListe}" var="przListe">
+								<tr>
+									<td scope="row" class="align-middle">${przListe.semester }</td>
+									<td scope="row" class="align-middle">${przListe.von }</td>
+									<td scope="row" class="align-middle">${przListe.bis }</td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr class="table-warning">
+								<td>Keine Präsenzzeiträume vorhanden</td>
+								<td></td>
+								<td></td>
+								<td></td>
+
+							</tr>
+						</c:otherwise>
+					</c:choose>
+
+				</tbody>
+			</table>
+			
+			
+			
+		</div>
 	   			</div>
 	    	</div>
 		</div>
@@ -104,7 +147,7 @@
 			<div class="modal-content">
 				<div class="modal-body">
 					<h1><strong>Achtung!</strong></h1>
-					<h4>Wollen Sie wirklich ${kurs.name}  löschen?</h4>
+					<h4>Wollen Sie wirklich den Kurs ${kurs.name}  löschen?</h4>
 				</div>
 				
 				<div class="modal-footer">

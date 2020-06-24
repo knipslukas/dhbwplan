@@ -96,10 +96,6 @@
 	   					</div>
 	   				</div>
 	   				<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
-	   					<div class="col-6"><p><strong>Präsenzzeit</strong></p></div>
-	   					<div class="col-6">
-	   						<p>${modul.praesenzzeit}</p>
-	   					</div>
 	   					<div class="col-6"><p><strong>ECTS Punkte</strong></p></div>
 	   					<div class="col-6">
 	   						<p>${modul.ectsPunkte}</p>
@@ -115,7 +111,7 @@
 			<div class="modal-content">
 				<div class="modal-body">
 					<h1><strong>Achtung!</strong></h1>
-					<h4>Wollen Sie wirklich ${modul.bezeichnung} löschen?</h4>
+					<h4>Wollen Sie wirklich das Modul ${modul.bezeichnung} löschen?</h4>
 				</div>
 				
 				<div class="modal-footer">

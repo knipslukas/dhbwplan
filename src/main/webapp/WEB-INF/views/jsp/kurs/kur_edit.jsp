@@ -31,7 +31,7 @@
 	            <div class="form-group row">
 	                <label class="col-2 col-form-label">Jahrgang</label>
 	                <div class="col-10">
-						<input type="text" name="jahrgang" class="form-control" placeholder="Kursjahrgang eingeben" value="${kurs.jahrgang}" required>	                
+						<input type="number" name="jahrgang" class="form-control" placeholder="Kursjahrgang eingeben" value="${kurs.jahrgang}" required>	                
 	                </div>
 	            </div>
 	            
@@ -160,7 +160,7 @@
 <!-- 	        Präsenzzeitraum Formular -->
 	       <form class="pb-3 js-form-dozanleg">
 	        <div class="form-group row">
-	                <label class="col-2 col-form-label">Semester</label>
+	                <label class="col-2 col-form-label">Semester (Nr.)</label>
 	                <div class="col-3">
 						<input type="text" name="semester" class="form-control js-form-semester" placeholder="Neues Semester eingeben" value="${praesenzzeitraum.semester}" required>	                
 	                </div>
