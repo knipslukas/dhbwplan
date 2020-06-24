@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> dd2fd4851affc0d3a4b024d64f8d565fba9bdd87
 package de.amc17.dhbwplan.data;
 
 import java.text.ParseException;
@@ -6,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+<<<<<<< HEAD
 import de.amc17.dhbwplan.entity.Studienrichtung;
 
 
@@ -23,6 +27,12 @@ public class ModulkatalogDto {
 		this.studienrichtung_riid = studienrichtung_riid;
 	}
 
+=======
+public class ModulkatalogDto {
+	
+	private String name; 
+	
+>>>>>>> dd2fd4851affc0d3a4b024d64f8d565fba9bdd87
 	private Date gueltigVon;
 	
 	private Date gueltigBis;

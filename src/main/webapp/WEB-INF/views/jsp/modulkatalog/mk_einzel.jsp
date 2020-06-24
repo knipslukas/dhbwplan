@@ -43,7 +43,7 @@
     	<!-- Start Orentierungszeile -->
 	   	<div class="alert dozentuebersicht d-flex align-items-center" role="alert">
 			<h1 class="text-white my-1">Modulkatalogansicht</h1>
-			<a href="/modulkatalog/edit/${modulkatalog.MKID}" class="btn ml-auto DHBWbutton">Bearbeiten</a>
+			<a href="/modul/edit/${modulkatalog.MKID}" class="btn ml-auto DHBWbutton">Bearbeiten</a>
 			<button type="button" class="btn ml-2 DHBWbutton" data-toggle="modal" data-target="#deleteModal">Löschen</button>
 			<a href="/modulkatalog" class="btn ml-2 DHBWbutton">Zurück</a>
         </div>
@@ -57,14 +57,6 @@
 	   			</div>
 	    	
 	    	<div class="card-body">
-	    	
-	    		<div class="row text-center border border-left-0 border-right-0 border-top-0">
-	   					<div class="col-6"><p><strong>Studienrichtung:</strong></p></div>
-	   					<div class="col-6">
-	   						<p>${modulkatalog.studienrichtung.name}</p>
-	   					</div>
-	   				</div>
-	    	
 	   			<div class="row text-center border border-left-0 border-right-0 border-top-0">
 	   				<div class="col-6"><p><strong>Gültig von:</strong></p></div>
 	   				<div class="col-6">
@@ -80,9 +72,50 @@
 	   				</div>
 
 	   			</div>
-	    	</div>
+	   			
+	   			
+	    	</div>   			
+	   			<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">     
+	
+			      	<div class="col-12">
+					<table class="table table-hover" STYLE="margin-bottom: 50px; 
+							width:430px; text-align:left; margin-left: auto; margin-right: auto;">
+						<caption>Module:</caption>
+						<thead class="thead-light">
+							<tr>
+								<th scope="col"><strong>Name</strong></th>
+								<th scope="col"><strong>Beschreibung</strong></th>
+							</tr>
+						</thead>
+						<tbody class="js-table">
+						<!-- 	Beispieleintrag -->
+							<c:choose>
+								<c:when test="${modulListe ne null }">
+									<c:forEach items="${modulListe}" var="modul">
+										<tr>
+											<td scope="row" class="align-middle"><a href="/modul/show/${modul.MID}"> 
+																				 ${modul.bezeichnung } </a></td>
+											<td scope="row" class="align-middle">${modul.beschreibung}</td>
+										</tr>
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<tr class="table-warning">
+										<td>Keine Module vorhanden</td>
+										<td></td>
+										<td></td>
+										<td></td>
 		
-	</div>
+									</tr>
+								</c:otherwise>
+							</c:choose>
+		
+						</tbody>
+					</table>
+					</div>
+	   			</div>
+			</div>
+		</div>
 	</div>
 	<div class="modal" id="deleteModal">
 		<div class="modal-dialog modal-dialog-centered">
@@ -93,7 +126,7 @@
 				</div>
 				
 				<div class="modal-footer">
-					<a href="/modulkatalog/delete/${modulkatalog.MKID}" class="btn btn-danger">Unwiderruflich löschen</a>
+					<a href="/modul/delete/${modulkatalog.MKID}" class="btn btn-danger">Unwiderruflich löschen</a>
 					<button type="button" class="btn DHBWbutton" data-dismiss="modal">Abbrechen</button>
 				</div>
 			</div>

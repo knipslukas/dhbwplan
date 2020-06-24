@@ -36,23 +36,22 @@
 					</div>
 				</div>
 				
+
 				
+
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Studienrichtung</label>
 					<div class="col-10">
 						<select class="form-control" name="studienrichtung_riid" required>
 							<option disabled selected>Bitte Auswählen</option>
 							<c:choose>
-								<c:when test="${studiengangList ne null && studienrichtungList ne null}">
-									<c:forEach items="${studiengangList}" var="stg">
+								<c:when test="${studienrichtungList ne null}">
 										<c:forEach items="${studienrichtungList}" var="str">
 											<c:choose>
-												<c:when test="${stg.stID eq str.studiengang.stID}">
-													<option value="${str.riID}">${stg.name} - ${str.name}</option>
-												</c:when> 
+												<c:when test="${str.studiengang ne null}">
+													<option value="${str.riID}">${str.studiengang.name} - ${str.name}</option>												</c:when>
 											</c:choose>
 										</c:forEach>
-									</c:forEach>
 								</c:when>
 								<c:otherwise>
 									<option disabled>Keine Richtungen vorhanden</option>
