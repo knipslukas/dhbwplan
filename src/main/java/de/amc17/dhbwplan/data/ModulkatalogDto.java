@@ -12,20 +12,10 @@ import de.amc17.dhbwplan.entity.Studienrichtung;
 
 
 public class ModulkatalogDto {
-
-	public int studienrichtung_riid;
 	
 	private String name; 
 
 	public int studienrichtung_riid;
-
-	public int getStudienrichtung_riid() {
-		return studienrichtung_riid;
-	}
-
-	public void setStudienrichtung_riid(int studienrichtung_riid) {
-		this.studienrichtung_riid = studienrichtung_riid;
-	}
 
 	private Date gueltigVon;
 	

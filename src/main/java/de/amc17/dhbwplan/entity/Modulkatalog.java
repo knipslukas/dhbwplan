@@ -39,16 +39,9 @@ public class Modulkatalog implements Serializable {
 	@JsonIgnore
 	private Studienrichtung studienrichtung;
 	
-	private String name; 
-	
 	private Date gueltigVon;
 	
 	private Date gueltigBis;
-	
-	@ManyToOne 
-	@JoinColumn(name="riID")
-	@JsonIgnore
-	private Studienrichtung studienrichtung;
 	
 	public Studienrichtung getStudienrichtung() {
 		return studienrichtung;
