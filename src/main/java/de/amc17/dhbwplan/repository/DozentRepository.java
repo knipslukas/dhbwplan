@@ -19,6 +19,9 @@ public interface DozentRepository extends CrudRepository<Dozent, Integer> {
 	@Query("SELECT dozent FROM Dozent dozent WHERE dozent.studiengangsleiter=true AND dozent.user=null")
 	public List<Dozent> allDozentOhneUser();
 	
+	@Query("SELECT dozent FROM Dozent dozent WHERE dozent.studiengangsleiter=true")
+	public List<Dozent> allStudiengangsleiter();
+	
 	public List<Dozent> findAll();
 	public Dozent findByDID(int id);
 

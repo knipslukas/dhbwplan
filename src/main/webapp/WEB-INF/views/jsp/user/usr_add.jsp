@@ -53,7 +53,7 @@
 	                <label class="col-2 col-form-label">Verknüpfter Dozent</label>
 	                <div class="col-10">
 	                	<select class="form-control" id="dozent" name="dozID">
-		                	<option disabled selected>Dozent Auswählen</option>
+		                	<option disabled selected>Dozent auswählen</option>
 		                	<c:forEach items="${dozentList}" var="dozent">
 		                		<option value="${dozent.DID }">${dozent.vorname } ${dozent.nachname }</option>
 		                	</c:forEach>
