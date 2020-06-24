@@ -33,8 +33,6 @@ public class Modulkatalog implements Serializable {
 	@OneToMany(mappedBy="modulkatalog")
 	private List<Modul> modul;
 	
-	private String name; 
-	
 	private Date gueltigVon;
 	
 	private Date gueltigBis;
