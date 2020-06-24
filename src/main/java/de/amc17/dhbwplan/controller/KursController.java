@@ -18,12 +18,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import de.amc17.dhbwplan.data.KursDto;
 import de.amc17.dhbwplan.data.PrzDto;
 import de.amc17.dhbwplan.entity.Kurs;
-import de.amc17.dhbwplan.entity.Modulkatalog;
 import de.amc17.dhbwplan.entity.Praesenzzeitraum;
 import de.amc17.dhbwplan.service.DozentService;
 import de.amc17.dhbwplan.service.KursService;
 import de.amc17.dhbwplan.service.PraesenzzeitraumService;
-import de.amc17.dhbwplan.service.StudiengangService;
 import de.amc17.dhbwplan.service.StudienrichtungService;
 import de.amc17.dhbwplan.service.UserService;
 
@@ -40,11 +38,7 @@ public class KursController {
 
 	@Autowired
 	private UserService userServ;
-	
-	
-	@Autowired
-	private StudiengangService mStudiengangService;
-	
+
 	@Autowired
 	private DozentService mDozentService;
 	
@@ -54,7 +48,7 @@ public class KursController {
 	@PostMapping(path = "/add")
 	public String addKurs(@ModelAttribute KursDto kursDto, RedirectAttributes redirectAttributes) {
 		Kurs kurs = new Kurs();
-		kurs.setName(kursDto.getname());
+		kurs.setName(kursDto.getName());
 		kurs.setStudienrichtung(mStudiengangrichtungService.getStudienrichtungByID(kursDto.getStudienrichtung_riid()));
 		kurs.setJahrgang(kursDto.getJahrgang());
 		kurs.setAnzahlStudierende(kursDto.getAnzahlStudierende());
