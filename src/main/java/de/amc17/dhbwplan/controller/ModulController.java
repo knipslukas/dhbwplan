@@ -49,6 +49,12 @@ public class ModulController {
 		Modul m = new Modul();
 		m.setBezeichnung(mk.getBezeichnung());
 		m.setBeschreibung(mk.getBeschreibung());
+		m.setEctsPunkte(mk.getEctsPunkte());
+		m.setModulart(mk.getModulart());
+		m.setModuldauer(mk.getModuldauer());
+		m.setPruefungsleistung(mk.getPruefungsleistung());
+		m.setSprache(mk.getSprache());
+		m.setStudienjahr(mk.getStudienjahr());
 		m.setModulkatalog(mModulkatalogService.getModulkatalogByID(mk.getModulkatalogID()));
 		Modul mod;
 		if ((mod = mModulService.addModul(m)) != null) { 
