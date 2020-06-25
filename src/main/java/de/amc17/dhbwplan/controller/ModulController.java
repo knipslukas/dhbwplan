@@ -130,7 +130,7 @@ public class ModulController {
 	public LeeDto addLerneinheit(@RequestBody LeeDto lee) {
 		Lerneinheit lerneinheit = new Lerneinheit();
 		Modul modul = mModulService.getModulByID(lee.getModulid());
-		lerneinheit.setPräsenzzeit(lee.getPraesenzzeit());
+		lerneinheit.setPraesenzzeit(lee.getPraesenzzeit());
 		lerneinheit.setSelbststudium(lee.getSelbststudium());
 		lerneinheit.setName(lee.getName());
 		lerneinheit.setModul(modul);

@@ -39,6 +39,7 @@ public class Lerneinheit implements Serializable {
 	private int selbststudium;
 	
 	@ManyToMany(mappedBy = "kannhalten")
+	@JsonIgnore
 	private List<Dozent> haelt;
 
 	public int getLEID() {
@@ -61,10 +62,6 @@ public class Lerneinheit implements Serializable {
 		return praesenzzeit;
 	}
 
-	public void setPräsenzzeit(int praesenzzeit) {
-		this.praesenzzeit = praesenzzeit;
-	}
-
 	public int getSelbststudium() {
 		return selbststudium;
 	}
@@ -80,4 +77,18 @@ public class Lerneinheit implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public List<Dozent> getHaelt() {
+		return haelt;
+	}
+
+	public void setHaelt(List<Dozent> haelt) {
+		this.haelt = haelt;
+	}
+
+	public void setPraesenzzeit(int praesenzzeit) {
+		this.praesenzzeit = praesenzzeit;
+	}
+	
+	
 }

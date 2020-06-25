@@ -1,5 +1,6 @@
 package de.amc17.dhbwplan.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import de.amc17.dhbwplan.data.DozentLeeDto;
 import de.amc17.dhbwplan.entity.Dozent;
 import de.amc17.dhbwplan.entity.Lerneinheit;
 import de.amc17.dhbwplan.service.DozentService;
@@ -112,12 +115,53 @@ public class DozentController {
 		 return "dozent/doz_add";
 	 }
 	 
+	 
+	 @GetMapping(value = "/getAllLee/{dozid}", produces = "application/json")
+	 @ResponseBody
+	 public List<DozentLeeDto> getAllLerneinheits(@PathVariable int dozid) {
+		 List<Lerneinheit> lees = mDozentService.getAllLerneinheitenForDozetn(dozid);
+		 List<DozentLeeDto> dtos = new ArrayList<DozentLeeDto>();
+		 for(Lerneinheit lee : lees) {
+			 DozentLeeDto dto = new DozentLeeDto();
+			 dto.setName(lee.getName());
+			 dto.setModulName(lee.getModul().getBezeichnung());
+			 dto.setLeid(lee.getLEID());
+			 dtos.add(dto);
+		 }
+		 return dtos;
+	 }
+	 
 	 @GetMapping(value = "/getLee/{modId}", produces = "application/json")
-		@ResponseBody
-		public List<Lerneinheit> getAllLerneinheiten(@PathVariable int modId) {
-			return mLernServ.getAllLee(mModulService.getModulByID(modId));
+	 @ResponseBody
+	 public List<Lerneinheit> getAllLerneinheiten(@PathVariable int modId) {
+		 return mLernServ.getAllLee(mModulService.getModulByID(modId));
+	 }
+	 
+	 @PostMapping(value = "/addLEE", produces = "application/json", consumes = "application/json")
+	 @ResponseBody
+	 public DozentLeeDto addLerneinheit(@RequestBody DozentLeeDto lee) {
+		 Lerneinheit lerneinheit = mLernServ.getLerneinheitByID(lee.getLeid());
+		 Dozent dozent = mDozentService.getDozentByID(lee.getDozid());
+		 
+		 dozent.getKannhalten().add(lerneinheit);
+		 lerneinheit.getHaelt().add(dozent);
+		 dozent = mDozentService.updateLeeDozent(dozent);
+		 lerneinheit = mLernServ.updateLerneinheit(lerneinheit);
+		 
+		 if (dozent != null) {
+			 return lee;
+		 }
+		 return null;
+	 }
+	 
+	@PostMapping(value = "/deleteLee/{aID}", produces="application/json", consumes="application/json")
+	@ResponseBody
+	public boolean deleteLee(@PathVariable int aID) {
+		if(mPrzservice.deletePraesenzzeitraum(aID)) {
+			return true;
+		}else {
+			return false;
 		}
-
-	
+	}
 
 }

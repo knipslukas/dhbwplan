@@ -236,25 +236,7 @@
 				</thead>
 				<tbody class="js-table">
 				<!-- 	Beispieleintrag -->
-					<c:choose>
-						<c:when test="${przList ne null }">
-							<c:forEach items="${przList}" var="prz">
-								<tr>
-									<td scope="row" class="align-middle">${praesenzzeitraum.semester }</td>
-									<td scope="row" class="align-middle">${praesenzzeitraum.von }</td>
-									<td scope="row" class="align-middle"><a href="/prz/delete/${praesenzzeitraum.PID}" class="btn btn-sm btn-secondary">löschen</a></td>
-								</tr>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<tr class="table-warning">
-								<td>Keine Module/ Lerneinheiten enthalten</td>
-								<td></td>
-								<td></td>
-
-							</tr>
-						</c:otherwise>
-					</c:choose>
+					
 
 				</tbody>
 			</table>
@@ -288,7 +270,7 @@
 	        </div>    
 	           
 	 
-	          
+	          <input type="hidden" value="${dozent.DID }" class="js-dozid">
              
               <!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
 	         <!-- Muss das dazu??? <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> -->
@@ -298,7 +280,7 @@
 			
 	               <!-- Final Buttons-->
 	            <div class="finalButtons" STYLE="margin-bottom: 50px;">
-	                <button type="button" class="btn btn-success d-none">Speichern </button>
+	                <button type="button" class="btn btn-success d-none js-submit-lee">Speichern </button>
 	               
 	            </div>
 	        <!-- Ende Doz-7-1 -->
@@ -319,59 +301,71 @@
 					url: "/dozent/getLee/"+$(".js-mod-input").val(),
 					type: "GET",
 					success: function(result) {
-						console.table(result);
+						renderLeeInput(result);
 					},
 					error: function(status) {
-						alert("Fehler ist aufgetreten");
-						console.log(status);
+						alert("Eingabe nicht möglich! HTTP Fehler: "+status.status);
 					}
 				})
 			}
 		});
-		
-		$(".js-form-submit").click(function(){
-			if($(".js-form-von").val()!=""&&$(".js-form-semester").val()!=""&&$(".js-form-bis").val()!=""){
-				var praesenzzeitraum = new Object();
-				praesenzzeitraum.kursid = $(".js-form-kurs").val();
-				praesenzzeitraum.semester = $(".js-form-semester").val();
-				praesenzzeitraum.von = $(".js-form-von").val();
-				praesenzzeitraum.bis = $(".js-form-bis").val();
-				$.ajax({
-					url: "/kurs/addPRZ",
-					type: "POST",
-				    contentType: "application/json",
-				    data:JSON.stringify(praesenzzeitraum),
-				    success: function(result){
-					    
-					    getList();
-				    },
-			    	error: function(status) {
-				    	alert(status);
-				    }
+
+		function renderLeeInput(lees) {
+			$(".js-lee-input").html(function() {
+				var list = "";
+				
+				$.each(lees, function(i, lee) {
+					list += '<option value="'+lee.leid+'">'+lee.name+'</option>';
 				})
-				$(".js-form-semester").val("");
-				$(".js-form-von").val("");
-				$(".js-form-bis").val("");
-			}else{
-				alert("Bitte tragen Sie alle Felder ein!");}
-			
+				if (list!=""){
+					$(".js-submit-lee").removeClass("d-none");
+					return list;
+				}else{
+					list += "<option disabled selected>Keine Lerneinheiten vorhanden</option>";
+					$(".js-submit-lee").addClass("d-none");
+					return list;
+				}
+			})
+			$(".js-lee-form").removeClass("d-none");
+		}
+		
+		$(".js-submit-lee").click(function(){
+			var lee = new Object();
+			lee.leid = $(".js-lee-input").val();
+			lee.dozid = $(".js-dozid").val();
+			$.ajax({
+				url: "/dozent/addLEE",
+				type: "POST",
+			    contentType: "application/json",
+			    data:JSON.stringify(lee),
+			    success: function(result){
+				    
+				    getList();
+			    },
+		    	error: function(status) {
+			    	alert("Eingabe nicht möglich! HTTP Fehler: "+status.status);
+			    }
+			})
+			$(".js-form-semester").val("");
+			$(".js-form-von").val("");
+			$(".js-form-bis").val("");
 		});
 		
 			
 		$(document).ready(function(){
-			//getList();
+			getList();
 		});
 	
 		function getList() {
 			$.ajax({
-				url: "/kurs/getPRZ/"+$(".js-form-kurs").val(),
+				url: "/dozent/getAllLee/"+$(".js-dozid").val(),
 				type: "GET",
 				success: function (result) {						
 						renderList(result);
 	
 				},
 				error: function(status) {
-					alert("Liste konnte nicht geladen werden: "+status);
+					alert("Eingabe nicht möglich! HTTP Fehler: "+status.status);
 				}
 			})
 		}
@@ -379,23 +373,18 @@
 		function renderList(entrys) {
 			$(".js-table").html(function() {
 				var list = "";
-				
-				$.each(entrys, function(i, prz) {
+				$.each(entrys, function(i, lee) {
 					list += "<tr>";
-					list += "<td>"+prz.semester+"</td>";
-					var temp = DateFormat.format.date(prz.von, "dd.MM.yyyy");
-					list += "<td>"+temp+"</td>";
-					var temp2 = DateFormat.format.date(prz.bis, "dd.MM.yyyy");
-					list += "<td>"+temp2+"</td>";
-					list += '<td><button class="przdelete" style="cursor:pointer" onClick="deletePRZ('+prz.pid+')"><i class="fas fa-trash-alt"></i></button></td>';
+					list += "<td>"+lee.modulName+"</td>";
+					list += "<td>"+lee.name+"</td>";
+					list += '<td><button class="przdelete" style="cursor:pointer" onClick="deletePRZ('+lee.leid+')"><i class="fas fa-trash-alt"></i></button></td>';
 					list += "</tr>";
 				})
 				if (list!=""){
 					return list;
 				}else{
 					list += "<tr class='table-warning'>";
-					list += "<td>Keine Präsenzzeiträume vorhanden</td>";
-					list += "<td></td>";
+					list += "<td>Keine Module/Lerneinheiten vorhanden</td>";
 					list += "<td></td>";
 					list += "<td></td>";
 					list += "</tr>";
@@ -405,9 +394,9 @@
 		
 		}
 	
-		function deletePRZ(przid){
+		function deleteLEE(leid){
 			$.ajax({
-				url:"/kurs/deletePRZ/"+przid,
+				url:"/dozent/deleteLee/"+leid,
 				type:"POST",
 				contentType:"application/json",
 				success: function(result){
@@ -415,7 +404,7 @@
 					
 					},
 					error: function(status){
-						alert("klappt nicht"+status);
+						alert("Eingabe nicht möglich! HTTP Fehler: "+status.status);
 						}
 				})	
 		}
