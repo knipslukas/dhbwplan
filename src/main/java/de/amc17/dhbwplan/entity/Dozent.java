@@ -8,8 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrePersist;
 
 import de.amc17.dhbwplan.enums.Zeitpraeferenzen;
 
@@ -60,6 +62,12 @@ public class Dozent implements Serializable {
 	@OneToOne
 	private User user;
 	
+	@ManyToMany
+	@JoinTable(
+			name="moeglicheFaecherDozent",
+			joinColumns = @JoinColumn(name = "DID"),
+			inverseJoinColumns = @JoinColumn(name = "LEID"))
+	private List<Lerneinheit> kannhalten;
 
 	public String getTitel() {
 		return titel;
