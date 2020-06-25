@@ -53,12 +53,6 @@
 	            </div>
 	
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Selbststudium</label>
-	                <div class="col-10">
-	                	<input type="number" name="selbststudium" class="form-control" placeholder="Selbststudium eingeben" required>
-	                </div>
-	            </div>
-	            <div class="form-group row">
 	                <label class="col-2 col-form-label">Moduldauer</label>
 	                <div class="col-10">
 						<select class="form-control" name="moduldauer">
