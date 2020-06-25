@@ -116,7 +116,8 @@ body
 .infobild
 {
 	background-color: #ced2d4;
-	 transition: background-color 0.4s; /* Animierte Änderung der Eigenschaft background-color */
+	display:block;
+	transition: background-color 0.4s; /* Animierte Änderung der Eigenschaft background-color */
 }
 infobild:hover
 {

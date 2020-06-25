@@ -38,7 +38,7 @@
     </div>
 	    <div class="container my-5">
 			<div class="row pt-3" >
-				<a href="\studiengang" style="display:block" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
+				<a href="\studiengang" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
 					<h4><i class="fas fa-university fa-5x Hover_Icon"  ></i></h4>					
 				</a>
 				
@@ -57,7 +57,7 @@
 	    			</ul>
 				</div>
 				
-				<a href="\modulkatalog" style="display:block" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
+				<a href="\modulkatalog" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
 					<h4><i class="fas fa-book fa-5x Hover_Icon"  ></i></h4>					
 				</a>
 				
@@ -75,7 +75,7 @@
 			</div> <%-- Ende Reihe 2 --%>
 			
 			<div class="row pt-3" >
-				<a href="\modul" style="display:block" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
+				<a href="\modul" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
 					<h4><i class="fas fa-graduation-cap fa-5x Hover_Icon"  ></i></h4>					
 				</a>
 				
@@ -94,7 +94,7 @@
 	    			</ul>
 				</div>
 				
-				<a href="\kurs" style="display:block" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
+				<a href="\kurs" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
 					<h4><i class="fas fa-user-graduate fa-5x Hover_Icon"  ></i></h4>					
 				</a>
 
@@ -115,7 +115,7 @@
 			</div> <%-- Ende Reihe 2 --%>
 			
 			<div class="row pt-3" >
-				<a href="\dozent" style="display:block" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
+				<a href="\dozent" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
 					<h4><i class="fas fa-chalkboard-teacher fa-5x Hover_Icon"  ></i></h4>					
 				</a>
 
@@ -134,7 +134,7 @@
 		   			</ul>
 				</div>
 				
-				<a href="\vorlesung" style="display:block" class="col-2 p-3 Hover_box infobild justify-content-center d-flex">					
+				<a href="\vorlesung" class="col-2 p-3 Hover_box infobild justify-content-center d-flex">					
 					<h4><i class="far fa-calendar-alt fa-5x Hover_Icon"  ></i></h4>					
 				</a>
 
