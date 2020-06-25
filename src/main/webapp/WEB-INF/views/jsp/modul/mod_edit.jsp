@@ -37,13 +37,6 @@
 					</div>
 				</div>
 
-				<div class="form-group row">
-					<label class="col-2 col-form-label">Selbststudium</label>
-					<div class="col-10">
-						<input type="text" name="titel" class="form-control" placeholder="Selbsstudium eingeben"
-							value="${modul.selbststudium}">
-					</div>
-				</div>
 
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Moduldauer</label>
@@ -82,14 +75,6 @@
 					<div class="col-10">
 						<input type="text" name="titel" class="form-control" placeholder="Sprache eingeben"
 							value="${modul.sprache}">
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<label class="col-2 col-form-label">Präsenzeit</label>
-					<div class="col-10">
-						<input type="text" name="titel" class="form-control" placeholder="Präsenzeit eingeben"
-							value="${modul.praesenzzeit}">
 					</div>
 				</div>
 
