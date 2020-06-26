@@ -109,7 +109,6 @@
 									<th scope="col"><strong>Name</strong></th>
 									<th scope="col"><strong>Präsenzzeit</strong></th>
 									<th scope="col"><strong>Selbsstudium</strong></th>
-									<th scope="col"><strong>Aktionen</strong></th>
 								</tr>
 							</thead>
 							<tbody class="js-table">
@@ -117,17 +116,15 @@
 									<c:when test="${leeList ne null }">
 										<c:forEach items="${leeList}" var="lee">
 											<tr>
-												<td scope="row" class="align-middle">${lerneinheit.name }</td>
-												<td scope="row" class="align-middle">${lerneinheit.praesenzzeit}</td>
-												<td scope="row" class="align-middle">${lerneinheit.selbststudium}</td>
-												<td scope="row" class="align-middle"><a href="/lee/delete/${lerneinheit.LEID}" class="btn btn-sm btn-secondary">löschen</a></td>
+												<td scope="row" class="align-middle">${lee.name }</td>
+												<td scope="row" class="align-middle">${lee.praesenzzeit}</td>
+												<td scope="row" class="align-middle">${lee.selbststudium}</td>
 											</tr>
 										</c:forEach>
 									</c:when>
 									<c:otherwise>
-										<tr>
+										<tr class="table-warning">
 											<td>Keine Lerneinheiten vorhanden</td>
-											<td></td>
 											<td></td>
 											<td></td>
 										</tr>

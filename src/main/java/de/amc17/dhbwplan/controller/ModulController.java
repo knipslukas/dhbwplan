@@ -83,7 +83,7 @@ public class ModulController {
 	@GetMapping(path = "/show/{aID}")
 	public String getAllModul(Model model, @PathVariable int aID, @RequestParam(required = false) Object modulUpdated) {
 		model.addAttribute("modul", mModulService.getModulByID(aID));
-		model.addAttribute("lerneinheiten", mModulService.getAllLee(aID));
+		model.addAttribute("leeList", mModulService.getAllLee(aID));
 		model.addAttribute("modulUpdated", modulUpdated);
 		model.addAttribute("pageTitle", "DHBW - Modulansicht");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
