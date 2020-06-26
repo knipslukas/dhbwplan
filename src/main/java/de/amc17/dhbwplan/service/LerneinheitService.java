@@ -21,7 +21,7 @@ public class LerneinheitService {
 
 	public Lerneinheit addLerneinheit(Lerneinheit aLerneinheit) {
 		try {
-			if (String.valueOf(aLerneinheit.getPraesenzzeit()) == null) aLerneinheit.setPräsenzzeit(0);
+			if (String.valueOf(aLerneinheit.getPraesenzzeit()) == null) aLerneinheit.setPraesenzzeit(0);
 			if (String.valueOf(aLerneinheit.getSelbststudium()) == null) aLerneinheit.setSelbststudium(0);
 			if (aLerneinheit.getName() == "") aLerneinheit.setName("Keine Daten");
 			LerneinheitRepository.save(aLerneinheit);
@@ -40,20 +40,20 @@ public class LerneinheitService {
 		return true;
 	}
 
-	public boolean updateLerneinheit(Lerneinheit aLerneinheit) {
+	public Lerneinheit updateLerneinheit(Lerneinheit aLerneinheit) {
 		try {
 			Lerneinheit oLerneinheit;
 			if ((oLerneinheit = LerneinheitRepository.findByLEID(aLerneinheit.getLEID())) != null) {
 				LerneinheitRepository.save(aLerneinheit);
 			} else {
 				LOG.warn("Lerneinheit not found");
-				return false;
+				return null;
 			}
 		} catch (Exception e) {
 			LOG.error(e);
-			return false;
+			return null;
 		}
-		return true;
+		return aLerneinheit;
 	}
 
 	public List<Lerneinheit> getAllLerneinheit(String aName) {

@@ -55,8 +55,6 @@ public class Dozent implements Serializable {
 	
 	private String notiz;
 	
-	private String faecher;
-	
 	private boolean studiengangsleiter;
 	
 	@OneToOne
@@ -189,14 +187,6 @@ public class Dozent implements Serializable {
 		this.anrede = anrede;
 	}
 
-	public String getFaecher() {
-		return faecher;
-	}
-
-	public void setFaecher(String faecher) {
-		this.faecher = faecher;
-	}
-
 	public boolean isStudiengangsleiter() {
 		return studiengangsleiter;
 	}
@@ -212,6 +202,15 @@ public class Dozent implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public List<Lerneinheit> getKannhalten() {
+		return kannhalten;
+	}
+
+	public void setKannhalten(List<Lerneinheit> kannhalten) {
+		this.kannhalten = kannhalten;
+	}
+	
 	
 	
 	

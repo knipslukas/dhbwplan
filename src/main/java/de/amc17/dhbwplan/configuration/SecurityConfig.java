@@ -23,6 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.ignoringAntMatchers("/studiengang/deleteSturi/**")
 				.ignoringAntMatchers("/kurs/addPRZ")
 				.ignoringAntMatchers("/kurs/deletePRZ/**")
+				.ignoringAntMatchers("/dozent/addLEE")
+				.ignoringAntMatchers("/dozent/deleteLee")
 				.and()
 			.authorizeRequests()
 				.antMatchers("/static/**").permitAll()
