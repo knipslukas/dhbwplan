@@ -89,8 +89,8 @@ public class ModulService {
 	public List<Lerneinheit> getAllLee(int modulid) {
 		try {
 			Modul modul = modulRepository.findByMID(modulid);
-			if (!modul.getLerneinheit().isEmpty()){
-				return modul.getLerneinheit();
+			if (!modul.getLerneinheiten().isEmpty()){
+				return modul.getLerneinheiten();
 			}
 			return null;
 		} catch (Exception e) {
