@@ -31,9 +31,63 @@
 	            <div class="form-group row">
 	                <label class="col-2 col-form-label">Jahrgang</label>
 	                <div class="col-10">
-						<input type="text" name="jahrgang" class="form-control" placeholder="Kursjahrgang eingeben" value="${kurs.jahrgang}" required>	                
+						<input type="number" name="jahrgang" class="form-control" placeholder="Kursjahrgang eingeben" value="${kurs.jahrgang}" required>	                
 	                </div>
 	            </div>
+	            
+				<div class="form-group row">
+					<label class="col-2 col-form-label">Studienrichtung</label>
+					<div class="col-10">
+						<select class="form-control" required name="studienrichtung" class="form-control">
+							<c:choose>
+								<c:when test="${studienrichtungList ne null}">
+										<c:forEach items="${studienrichtungList}" var="str">
+											<c:choose>
+												<c:when test="${!(str.riID eq kurs.studienrichtung.riID)}">
+													<option value="${str.riID}">${str.studiengang.name} - ${str.name}</option>
+												</c:when> 
+												<c:when test="${str.riID eq kurs.studienrichtung.riID}">
+													<option value="${str.riID}" selected>${str.studiengang.name} - ${str.name}</option>
+												</c:when>
+											</c:choose>
+										</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<option disabled>Keine Richtungen vorhanden</option>
+								</c:otherwise>
+							</c:choose>
+						</select>
+					</div>
+				</div>
+				
+				
+				<div class="form-group row">
+					<label class="col-2 col-form-label">Studiengangsleiter</label>
+					<div class="col-10">
+						<select class="form-control" name="dozent" required>
+							<c:choose>
+								<c:when test="${dozentenList ne null}">
+									<c:forEach items="${dozentenList}" var="doz">
+										<c:choose>
+											<c:when test="${kurs.dozent.DID eq doz.DID }">
+												<option selected value="${doz.DID}">${doz.anrede} ${doz.vorname} ${doz.nachname} </option>
+											</c:when>
+											<c:otherwise>
+												<option value="${doz.DID}">${doz.anrede} ${doz.vorname} ${doz.nachname} </option>
+											</c:otherwise>
+										</c:choose>																			
+																			 
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<option disabled>Kein Dozent vorhanden</option>
+								</c:otherwise>
+							</c:choose>
+						</select>
+					</div>
+				</div>
+				
+				
 	            
 	            <div class="form-group row">
 	                <label class="col-2 col-form-label">Anzahl der Studierenden</label>
@@ -106,7 +160,7 @@
 <!-- 	        Präsenzzeitraum Formular -->
 	       <form class="pb-3 js-form-dozanleg">
 	        <div class="form-group row">
-	                <label class="col-2 col-form-label">Semester</label>
+	                <label class="col-2 col-form-label">Semester (Nr.)</label>
 	                <div class="col-3">
 						<input type="text" name="semester" class="form-control js-form-semester" placeholder="Neues Semester eingeben" value="${praesenzzeitraum.semester}" required>	                
 	                </div>

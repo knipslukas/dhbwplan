@@ -7,7 +7,7 @@
     <template:navbar user="${currentUser}" />
 
 
-	<div class="container">
+<div class="container">
 		
 		<c:choose>
 	    	<c:when test="${studiengangCreated}">
@@ -48,7 +48,7 @@
         </div>
     	<!-- Ende Orentierungszeile -->
     	
-    	<div class="row">
+    	<div class="row"> 
 	    	<div class="card col-sm-12 col-md-11 col-lg-8 mx-auto doz-card">
 	    		<div class="card-header text-center">
 	    			<h1><i class="fas fa-chalkboard-teacher fa-4x mb-5 mt-3"></i></h1>
@@ -71,9 +71,47 @@
 	   					</div>
 	   				</div>
 	   			</div>
-	    	</div>
-		</div>
+	    	 
+	    	
+	    		    	<!-- Start Content -->
+	 <!--    <div class="mt-5"> -->
+	<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0"> 
+	    <div class="col-12">
+	         <table class="table table-hover" STYLE="margin-bottom: 50px; width:430px; text-align:left; margin-left: auto; margin-right: auto;">
+	              <caption>Studiengangsrichtungen:</caption>
+	              <thead class="thead-light">
+	                <tr>
+	                  <th scope="col"><strong>Name</strong></th>
+	                
+	                </tr>
+	              </thead>
+	              <tbody class="js-table">
+	                <!-- Beispieleintrag --> 
+	                <c:choose>
+	                	<c:when test="${sturiListe ne null }">
+	                		<c:forEach items="${sturiListe}" var="sturiListe">
+	                			<tr>
+					                <td scope="row" class="align-middle">${sturiListe.name }</td>
+				                </tr>
+	                		</c:forEach>
+	                	</c:when>
+	                	<c:otherwise>
+	                		<tr class="table-warning">
+	                			<td>Keine Studienrichtungen vorhanden</td>
+	                			<td></td>
+	                			<td></td>
+
+	                		</tr>
+	                	</c:otherwise>
+	                </c:choose>
+	
+	              </tbody>
+	         </table>
+	    		</div>	
+	   		</div>	    	  	
+		</div>	
 	</div>
+</div>
 	
 	<div class="modal" id="deleteModal">
 		<div class="modal-dialog modal-dialog-centered">
@@ -93,5 +131,7 @@
 		</div>
 	</div>
 	<script src="${pageContext.request.contextPath}/static/js/dozent.js"></script>
+
+
 
 </template:template>

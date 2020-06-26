@@ -10,12 +10,17 @@ import org.springframework.stereotype.Service;
 
 import de.amc17.dhbwplan.entity.Lerneinheit;
 import de.amc17.dhbwplan.entity.Modul;
+import de.amc17.dhbwplan.entity.Modulkatalog;
+import de.amc17.dhbwplan.entity.Studiengang;
+import de.amc17.dhbwplan.entity.Studienrichtung;
 import de.amc17.dhbwplan.repository.ModulRepository;
+import de.amc17.dhbwplan.repository.StudiengangRepository;
 
 @Service
 public class ModulService {
 	@Resource
 	private ModulRepository modulRepository;
+	
 
 	private static final Logger LOG = LogManager.getLogger(UserService.class.getName());
 
@@ -93,4 +98,6 @@ public class ModulService {
 			return null;
 		}
 	}
+	
+
 }

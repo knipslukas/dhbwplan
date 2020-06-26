@@ -37,96 +37,122 @@
     	<h2> Wo finde ich was?</h2>
     </div>
 	    <div class="container my-5">
-			<div class="row" >
-				<div class="col-2 p-3 infobild justify-content-center d-flex">
-					<img src="${pageContext.request.contextPath}/static/images/dozent.png" width="115" class="align-self-center" alt="">
-				</div>
+			<div class="row pt-3" >
+				<a href="\studiengang" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
+					<h4><i class="fas fa-university fa-5x Hover_Icon"  ></i></h4>					
+				</a>
 				
 				<div class="col p-3 mr-3 infotext">
-					<h4><strong>Dozent</strong></h4>
-		    			<ul>
-		    				<li>
-		    					Dozent anlegen
-		    				</li>
-		    				<li>
-		    					Dozentenübersicht
-		    				</li>
-		    				<li>
-		    					Studiengangsleiter festlegen
-		    				</li>
-		    			</ul>
-				
-					Link zum Dozent 
+					<h4><strong>Studiengang</strong></h4>
+		    		<ul>
+		    			<li>
+		    				Studiengangübersicht
+		   				</li>
+		   				<li>
+		   					Studiengang anlegen
+		   				</li>
+	    				<li>
+	    					Studienrichtung anlegen
+	       				</li>
+	    			</ul>
 				</div>
 				
-				<div class="col-2 p-3 infobild justify-content-center d-flex">
-					<img src="${pageContext.request.contextPath}/static/images/dhbw_logo.PNG" width="115" class="d-inline-block align-top rounded-corners img-responsive" alt="">
-				</div>
+				<a href="\modulkatalog" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
+					<h4><i class="fas fa-book fa-5x Hover_Icon"  ></i></h4>					
+				</a>
 				
 				<div class="col p-3 infotext">
 					<h4><strong>Modulkatalog</strong></h4>
-		    			<ul>
-		    				<li>
-		    					text1
-		    				</li>
-		    				<li>
-		    					text1
-		    				</li>
-		    				<li>
-		    					text1
-		    				</li>
-		    			</ul>
-				
-					Text hier 1 				
-				</div>
-	
-			</div>
+		    		<ul>
+		    			<li>
+		    				Modulkatalogübersicht
+		    			</li>
+		    			<li>
+		    				Modulkatalog anlegen
+		    			</li>
+		    		</ul>			
+				</div> <%-- Ende des Block 2 --%>
+			</div> <%-- Ende Reihe 2 --%>
 			
 			<div class="row pt-3" >
-				<div class="col-2 p-3 infobild justify-content-center d-flex">
-					<img src="${pageContext.request.contextPath}/static/images/dhbw_logo.PNG" width="115" class="d-inline-block align-top rounded-corners img-responsive" alt="">
-				</div>
+				<a href="\modul" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
+					<h4><i class="fas fa-graduation-cap fa-5x Hover_Icon"  ></i></h4>					
+				</a>
 				
 				<div class="col p-3 mr-3 infotext">
-					<h4><strong>Verwaltung</strong></h4>
-		    			<ul>
-		    				<li>
-		    					text1
-		    				</li>
-		    				<li>
-		    					text1
-		    				</li>
-		    				<li>
-		    					text1
-		    				</li>
-		    			</ul>
-				
-					Text hier 1 
+					<h4><strong>Modul</strong></h4>
+		    		<ul>
+		    			<li>
+		    				Modulübersicht
+		   				</li>
+		   				<li>
+		   					Module anlegen
+		   				</li>
+	    				<li>
+	    					Lerneinheiten anlegen
+	       				</li>
+	    			</ul>
 				</div>
 				
-				<div class="col-2 p-3 infobild justify-content-center d-flex">
-					<img src="${pageContext.request.contextPath}/static/images/dhbw_logo.PNG" width="115" class="d-inline-block align-top rounded-corners img-responsive" alt="">
-				</div>
-				
+				<a href="\kurs" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
+					<h4><i class="fas fa-user-graduate fa-5x Hover_Icon"  ></i></h4>					
+				</a>
+
 				<div class="col p-3 infotext">
 					<h4><strong>Kurse</strong></h4>
-		    			<ul>
-		    				<li>
-		    					text1
-		    				</li>
-		    				<li>
-		    					text1
-		    				</li>
-		    				<li>
-		    					text1
-		    				</li>
-		    			</ul>
-				
-					Text hier 1 				
-				</div>
-	
-			</div>
+		    		<ul>
+		    			<li>
+		    				Kursübersicht
+		    			</li>
+		    			<li>
+		    				Kurs anlegen
+		    			</li>
+		    			<li>
+		    				Präsenzzeitraum zuweisen
+		    			</li>
+		    		</ul>			
+				</div> <%-- Ende des Block 2 --%>
+			</div> <%-- Ende Reihe 2 --%>
 			
+			<div class="row pt-3" >
+				<a href="\dozent" class="col-2 p-3 infobild justify-content-center d-flex Hover_box">					
+					<h4><i class="fas fa-chalkboard-teacher fa-5x Hover_Icon"  ></i></h4>					
+				</a>
+
+				<div class="col p-3 mr-3 infotext">
+					<h4><strong>Dozent</strong></h4>
+		    		<ul>
+		    			<li>
+		    				Dozentübersicht
+		    			</li>
+		    			<li>
+		    				Dozent anlegen
+		    			</li>
+		    			<li>
+		    				Studiengangsleiter zuweisen
+		   				</li>
+		   			</ul>
+				</div>
+				
+				<a href="\vorlesung" class="col-2 p-3 Hover_box infobild justify-content-center d-flex">					
+					<h4><i class="far fa-calendar-alt fa-5x Hover_Icon"  ></i></h4>					
+				</a>
+
+				<div class="col p-3 infotext">
+					<h4><strong>Vorlesungsplaner</strong></h4>
+		    		<ul>
+		    			<li>
+		    				Vorlesung anlegen
+		    			</li>
+		   				<li>
+		   					Dozenten zuweisen
+		   				</li>
+		   				<li>
+		   					Kurse zuweisen
+		   				</li>
+		   			</ul>			
+				</div> <%-- Ende des Block 2 --%>
+			</div> <%-- Ende Reihe 3 --%>	
 	 </div>
     
     

@@ -37,13 +37,6 @@
 					</div>
 				</div>
 
-				<div class="form-group row">
-					<label class="col-2 col-form-label">Selbststudium</label>
-					<div class="col-10">
-						<input type="text" name="titel" class="form-control" placeholder="Selbsstudium eingeben"
-							value="${modul.selbststudium}">
-					</div>
-				</div>
 
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Moduldauer</label>
@@ -86,14 +79,6 @@
 				</div>
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Präsenzeit</label>
-					<div class="col-10">
-						<input type="text" name="titel" class="form-control" placeholder="Präsenzeit eingeben"
-							value="${modul.praesenzzeit}">
-					</div>
-				</div>
-
-				<div class="form-group row">
 					<label class="col-2 col-form-label">ECTS Punkte</label>
 					<div class="col-10">
 						<input type="text" name="titel" class="form-control" placeholder="ECTS Punkte eingeben"
@@ -111,9 +96,9 @@
 
 
 			<!-- Lerneinheit Liste -->
-			<div class="mt-5 mb-3">
-				<label class="col-2 col-form-label"><strong>Lerneinheiten</strong></label>
-				<table class="table table-hover">
+			<div class="mt-5">
+				<label class="col-2 col-form-label"><font size="5">Lerneinheiten</font></label>
+				<table class="table table-hover" STYLE="margin-bottom: 50px;">
 					<thead class="thead-light">
 						<tr>
 							<th scope="col"><strong>Name</strong></th>
@@ -137,7 +122,7 @@
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-								<tr>
+								<tr class="table-warning">
 									<td>Keine Lerneinheiten vorhanden</td>
 									<td></td>
 									<td></td>
@@ -150,12 +135,11 @@
 				</table>
 
 
-			</div>
 
+			</div>
 
 			<!-- Lerneinheit Formular -->
 			<form class="pb-3 js-form-lee">
-
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Name</label>
 					<div class="col-3">

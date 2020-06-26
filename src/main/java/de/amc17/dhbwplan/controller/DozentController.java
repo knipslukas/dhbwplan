@@ -1,5 +1,7 @@
 package de.amc17.dhbwplan.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,13 +9,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.amc17.dhbwplan.entity.Dozent;
+import de.amc17.dhbwplan.entity.Lerneinheit;
 import de.amc17.dhbwplan.service.DozentService;
+import de.amc17.dhbwplan.service.LerneinheitService;
+import de.amc17.dhbwplan.service.ModulService;
 import de.amc17.dhbwplan.service.UserService;
 
 @Controller
@@ -26,7 +31,14 @@ public class DozentController {
 	private DozentService mDozentService;
 	
 	@Autowired
+	private ModulService mModulService;
+	
+	@Autowired
 	private UserService userServ;
+	
+	@Autowired
+	private LerneinheitService mLernServ;
+	
 
 	@PostMapping(path = "/add")
 	public String addDozent(@ModelAttribute Dozent doz, RedirectAttributes redirectAttributes) {
@@ -36,7 +48,7 @@ public class DozentController {
 		else {
 			redirectAttributes.addAttribute("dozentCreated", false);
 		}
-		return "redirect:/dozent/getAll/";
+		return "redirect:/dozent/";
 	}
 
 	@GetMapping(value = "/delete/{aID}")
@@ -47,7 +59,7 @@ public class DozentController {
 		else {
 			redirectAttributes.addAttribute("dozentDeleted", false);
 		}
-		return "redirect:/dozent/getAll";
+		return "redirect:/dozent/";
 	}
 
 	@PostMapping(path = "/update/{aID}")
@@ -89,6 +101,7 @@ public class DozentController {
 		 model.addAttribute("dozent", mDozentService.getDozentByID(dID));
 		 model.addAttribute("pageTitle", "DHBW - Dozent bearbeiten");
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
+		 model.addAttribute("modulListe", mModulService.getAllModul(null, null));
 		 return "dozent/doz_edit";
 	 }
 	 
@@ -98,6 +111,12 @@ public class DozentController {
 		 model.addAttribute("currentUser", userServ.getCurrentUser());
 		 return "dozent/doz_add";
 	 }
+	 
+	 @GetMapping(value = "/getLee/{modId}", produces = "application/json")
+		@ResponseBody
+		public List<Lerneinheit> getAllLerneinheiten(@PathVariable int modId) {
+			return mLernServ.getAllLee(mModulService.getModulByID(modId));
+		}
 
 	
 
