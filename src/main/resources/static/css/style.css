@@ -35,6 +35,7 @@ body
 .navigationlist
 {
 	color: #4E5F67;	
+	margin-right:6px;
 }
 /*Formatierung der Hover Funktion der Navigationsliste oben rechts*/
 .navigationlist:hover
@@ -115,12 +116,37 @@ body
 .infobild
 {
 	background-color: #ced2d4;
+	display:block;
+	transition: background-color 0.4s; /* Animierte Änderung der Eigenschaft background-color */
+}
+infobild:hover
+{
+	background-color: #e2001a
 }
 
 .infotext
 {
 	background-color:#e5e5e5;
+	vertical-align:middle;
+	transition: background-color 0.4s; /* Animierte Änderung der Eigenschaft background-color */
 }
+
+.Hover_Icon
+{
+	color:black;
+	transition: background-color 0.4s; /* Animierte Änderung der Eigenschaft background-color */
+}
+
+.Hover_box:hover
+{
+	background-color:#E2001A;
+}
+
+.Hover_box:hover .Hover_Icon
+{
+	color:white;
+}
+
 /*Default Settings fï¿½r Hyperlinks*/
 a:hover
 {
