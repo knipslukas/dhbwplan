@@ -377,7 +377,7 @@
 					list += "<tr>";
 					list += "<td>"+lee.modulName+"</td>";
 					list += "<td>"+lee.name+"</td>";
-					list += '<td><button class="przdelete" style="cursor:pointer" onClick="deletePRZ('+lee.leid+')"><i class="fas fa-trash-alt"></i></button></td>';
+					list += '<td class="js-lee-delete'+lee.leid+'"><button style="cursor:pointer" onClick="deleteLEE('+lee.leid+')"><i class="fas fa-trash-alt"></i></button></td>';
 					list += "</tr>";
 				})
 				if (list!=""){
@@ -395,18 +395,27 @@
 		}
 	
 		function deleteLEE(leid){
+			$(".js-lee-delete"+leid).html(function () {
+				return '<i class="fas fa-spinner fa-pulse"></i>';
+			})
+			var dto = new Object();
+			dto.dozid = $(".js-dozid").val();
+			dto.leid = leid;
+			console.table(dto)
 			$.ajax({
-				url:"/dozent/deleteLee/"+leid,
+				url:"/dozent/deleteLee",
 				type:"POST",
 				contentType:"application/json",
+				data:JSON.stringify(dto),
 				success: function(result){
 					getList();
 					
 					},
-					error: function(status){
-						alert("Eingabe nicht möglich! HTTP Fehler: "+status.status);
-						}
-				})	
+				error: function(status){
+					alert("Eingabe nicht möglich! HTTP Fehler: "+status.status);
+					console.table(status);
+					}
+			})	
 		}
 		
 		

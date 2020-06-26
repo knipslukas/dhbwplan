@@ -154,14 +154,18 @@ public class DozentController {
 		 return null;
 	 }
 	 
-	@PostMapping(value = "/deleteLee/{aID}", produces="application/json", consumes="application/json")
+	@PostMapping(value = "/deleteLee", produces="application/json", consumes="application/json")
 	@ResponseBody
-	public boolean deleteLee(@PathVariable int aID) {
-		if(mPrzservice.deletePraesenzzeitraum(aID)) {
-			return true;
-		}else {
-			return false;
+	public boolean deleteLee(@RequestBody DozentLeeDto dto) {
+		Dozent dozent = mDozentService.getDozentByID(dto.getDozid());
+		Lerneinheit lee = mLernServ.getLerneinheitByID(dto.getLeid());
+		dozent.getKannhalten().remove(lee);
+		lee.getHaelt().remove(dozent);
+		
+		if (mDozentService.updateDozent(dozent) && mLernServ.updateLerneinheit(lee) != null) {
+				return true;
 		}
+		return false;
 	}
 
 }
