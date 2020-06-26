@@ -100,6 +100,7 @@ public class ModulController {
 
 	@GetMapping(path = "/show/{aID}")
 	public String getAllModul(Model model, @PathVariable int aID, @RequestParam(required = false) Object modulUpdated) {
+		model.addAttribute("leeList", mModulService.getAllLee(aID));
 		Modul temp =  mModulService.getModulByID(aID);
 		model.addAttribute("modul", temp);
 		model.addAttribute("modulkatalog", temp.getModulkatalog());
