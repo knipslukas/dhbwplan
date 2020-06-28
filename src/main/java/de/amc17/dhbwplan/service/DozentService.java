@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import de.amc17.dhbwplan.entity.Dozent;
+import de.amc17.dhbwplan.entity.Lerneinheit;
 import de.amc17.dhbwplan.repository.DozentRepository;
 
 import java.util.List;
@@ -42,6 +43,17 @@ public class DozentService {
 		}
 		 
 		return aDozent;
+	}
+	
+	public Dozent updateLeeDozent(Dozent dozent) {
+		try {
+			dozentRepository.save(dozent);
+			return dozent;
+		}
+		catch (Exception e) {
+			LOG.error("Dozent couldn't be updated!  " + e);
+			return null;
+		}
 	}
 
 	public boolean deleteDozent(int aDID) {
@@ -111,20 +123,25 @@ public class DozentService {
 			return null;
 		}
 	}
-//	
-// 
-//	public List<Dozent> getDozentByNachname(String aNachname) {
-//		
-//		return dozentRepository.findBynachname(aNachname);	
-//	}
-//	
-//	public List<Dozent> getDozentByEmail(String aEmail) {
-//		
-////		List<Dozent> temp = dozentRepository.findBymEmail(aEmail);
-////		return temp;
-//
-//		
-//		return result;
-//	}
+	
+	public List<Dozent> getAllStudiengangsleiter() {
+		try {
+			return dozentRepository.allStudiengangsleiter();
+		}
+		catch (Exception e) {
+			LOG.error("DozentService - No Users found or Query invalid! \n "+e);
+			return null;
+		}
+	}
+	
+	public List<Lerneinheit> getAllLerneinheitenForDozetn(int dozid) {
+		try {
+			return dozentRepository.findByDID(dozid).getKannhalten();
+		}
+		catch (Exception e) {
+			LOG.error("Couldn't load Dozents: "+e);
+			return null;
+		}
+	}
 
 }

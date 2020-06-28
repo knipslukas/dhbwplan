@@ -91,7 +91,7 @@
 				<c:choose>
 					<c:when test="${dozent.intern }">
 						<div class="form-group row">
-			            	<label class="col-2 col-form-label">DHBW Intern</label>
+			            	<label class="col-2 col-form-label">DHBW-intern</label>
 			            	<div class="col-10">
 			            		<input checked class="js-toggle-intern" type="checkbox" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="intern" data-style="mr-1" data-onstyle="danger">
 			            	</div>
@@ -117,7 +117,7 @@
 					</c:when>
 					<c:otherwise>
 						<div class="form-group row">
-			            	<label class="col-2 col-form-label">DHBW Intern</label>
+			            	<label class="col-2 col-form-label">DHBW-intern</label>
 			            	<div class="col-10">
 			            		<input class="js-toggle-intern" type="checkbox" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="intern" data-style="mr-1" data-onstyle="danger">
 			            	</div>
@@ -216,15 +216,209 @@
 	                <button type="submit" class="btn btn-success">Speichern </button>
 	                <button type="reset" class="btn btn-danger">Zurücksetzen </button>
 	            </div>
-	
+				
 	        </form>
 	
 	        <!-- Ende Formular -->
-	
+			<!-- Beginn Doz-7-1 -->
+	        
+	        <!-- Versuch, Präsenzzeiträume hinzuzufügen -->
+	        
+	      <div class="mt-5">
+	      <label class="col col-form-label"><font size="5">Mögliche Fächer</font></label>
+			<table class="table table-hover" STYLE="margin-bottom: 50px;">
+				<thead class="thead-light">
+					<tr>
+						<th scope="col"><strong>Modul</strong></th>
+						<th scope="col"><strong>Lerneinheit</strong></th>
+						<th scope="col"><strong>Aktionen</strong></th>
+					</tr>
+				</thead>
+				<tbody class="js-table">
+				<!-- 	Beispieleintrag -->
+					
+
+				</tbody>
+			</table>
+			
+		</div>
+		
+		<!-- Lerneinheiten hinzufügen -->
+		  <form class="pb-3 js-form-dozanleg">
+	        <div class="form-group row">
+	         <label for="anrede" class="col-2 col-form-label">Modul</label>
+	                <div class="col-10">
+		                <select class="form-control js-mod-input">
+		                	<option disabled selected value="0">Modul Auswählen</option>
+		                	<c:forEach items="${modulListe}" var="modul">
+		                		<option value="${modul.MID}">${modul.bezeichnung}</option>
+		                	</c:forEach>
+		                </select>
+	                </div>
+	               
+	        </div>
+	         
+	        <div class="form-group row d-none js-lee-form">
+	         <label for="anrede" class="col-2 col-form-label">Lerneinheit</label>
+	                <div class="col-10">
+		                <select class="form-control js-lee-input" >
+		                	<option disabled selected value="0">Lerneinheit Auswählen</option>
+		                
+		                </select>
+	                </div>
+	               
+	        </div>    
+	           
+	 
+	          <input type="hidden" value="${dozent.DID }" class="js-dozid">
+             
+              <!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
+	         <!-- Muss das dazu??? <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> -->
+	            
+			</form>
+			
+			
+	               <!-- Final Buttons-->
+	            <div class="finalButtons" STYLE="margin-bottom: 50px;">
+	                <button type="button" class="btn btn-success d-none js-submit-lee">Speichern </button>
+	               
+	            </div>
+	        <!-- Ende Doz-7-1 -->
 	        <!-- Ende Content -->
 	    </div>
 	</div>
 	
 	<script src="${pageContext.request.contextPath}/static/js/dozent.js"></script>
+	
+	<script>
+
+		$(".js-mod-input").change(function () {
+			if ($(".js-mod-input").val() == 0) {
+				alert("Bitte ein Modul auswählen");
+			}
+			else {
+				$.ajax({
+					url: "/dozent/getLee/"+$(".js-mod-input").val(),
+					type: "GET",
+					success: function(result) {
+						renderLeeInput(result);
+					},
+					error: function(status) {
+						alert("Eingabe nicht möglich! HTTP Fehler: "+status.status);
+					}
+				})
+			}
+		});
+
+		function renderLeeInput(lees) {
+			$(".js-lee-input").html(function() {
+				var list = "";
+				
+				$.each(lees, function(i, lee) {
+					list += '<option value="'+lee.leid+'">'+lee.name+'</option>';
+				})
+				if (list!=""){
+					$(".js-submit-lee").removeClass("d-none");
+					return list;
+				}else{
+					list += "<option disabled selected>Keine Lerneinheiten vorhanden</option>";
+					$(".js-submit-lee").addClass("d-none");
+					return list;
+				}
+			})
+			$(".js-lee-form").removeClass("d-none");
+		}
+		
+		$(".js-submit-lee").click(function(){
+			var lee = new Object();
+			lee.leid = $(".js-lee-input").val();
+			lee.dozid = $(".js-dozid").val();
+			$.ajax({
+				url: "/dozent/addLEE",
+				type: "POST",
+			    contentType: "application/json",
+			    data:JSON.stringify(lee),
+			    success: function(result){
+				    
+				    getList();
+			    },
+		    	error: function(status) {
+			    	alert("Eingabe nicht möglich! HTTP Fehler: "+status.status);
+			    }
+			})
+			$(".js-form-semester").val("");
+			$(".js-form-von").val("");
+			$(".js-form-bis").val("");
+		});
+		
+			
+		$(document).ready(function(){
+			getList();
+		});
+	
+		function getList() {
+			$.ajax({
+				url: "/dozent/getAllLee/"+$(".js-dozid").val(),
+				type: "GET",
+				success: function (result) {						
+						renderList(result);
+	
+				},
+				error: function(status) {
+					alert("Eingabe nicht möglich! HTTP Fehler: "+status.status);
+				}
+			})
+		}
+	
+		function renderList(entrys) {
+			$(".js-table").html(function() {
+				var list = "";
+				$.each(entrys, function(i, lee) {
+					list += "<tr>";
+					list += "<td>"+lee.modulName+"</td>";
+					list += "<td>"+lee.name+"</td>";
+					list += '<td class="js-lee-delete'+lee.leid+'"><button style="cursor:pointer" onClick="deleteLEE('+lee.leid+')"><i class="fas fa-trash-alt"></i></button></td>';
+					list += "</tr>";
+				})
+				if (list!=""){
+					return list;
+				}else{
+					list += "<tr class='table-warning'>";
+					list += "<td>Keine Module/Lerneinheiten vorhanden</td>";
+					list += "<td></td>";
+					list += "<td></td>";
+					list += "</tr>";
+					return list;
+				}
+			})
+		
+		}
+	
+		function deleteLEE(leid){
+			$(".js-lee-delete"+leid).html(function () {
+				return '<i class="fas fa-spinner fa-pulse"></i>';
+			})
+			var dto = new Object();
+			dto.dozid = $(".js-dozid").val();
+			dto.leid = leid;
+			console.table(dto)
+			$.ajax({
+				url:"/dozent/deleteLee",
+				type:"POST",
+				contentType:"application/json",
+				data:JSON.stringify(dto),
+				success: function(result){
+					getList();
+					
+					},
+				error: function(status){
+					alert("Eingabe nicht möglich! HTTP Fehler: "+status.status);
+					console.table(status);
+					}
+			})	
+		}
+		
+		
+	</script>
 
 </template:template>

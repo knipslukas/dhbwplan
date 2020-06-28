@@ -8,7 +8,9 @@ import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
+import de.amc17.dhbwplan.entity.Modul;
 import de.amc17.dhbwplan.entity.Modulkatalog;
+import de.amc17.dhbwplan.entity.Studienrichtung;
 import de.amc17.dhbwplan.repository.ModulkatalogRepository;
 
 import java.util.List;
@@ -56,9 +58,11 @@ public class ModulkatalogService {
 		try {
 			Modulkatalog oModulkatalog;
 			if ((oModulkatalog = ModulkatalogRepository.findByMKID(aModulkatalog.getMKID())) != null) { 
-						aModulkatalog.setGueltigVon(oModulkatalog.getGueltigVon());
-						aModulkatalog.setGueltigBis(oModulkatalog.getGueltigBis());
-				ModulkatalogRepository.save(aModulkatalog);
+						oModulkatalog.setGueltigVon(aModulkatalog.getGueltigVon());
+						oModulkatalog.setGueltigBis(aModulkatalog.getGueltigBis());
+						oModulkatalog.setStudienrichtung(aModulkatalog.getStudienrichtung());
+						oModulkatalog.setName(aModulkatalog.getName());
+				ModulkatalogRepository.save(oModulkatalog);
 			} else {
 				LOG.warn("Modulkatalog not found");
 				return false;
@@ -71,11 +75,8 @@ public class ModulkatalogService {
 		return true;
 	}
 
-	public List<Modulkatalog> getAllModulkatalog(Date GültigVon, Date GültigBis) {		
+	public List<Modulkatalog> getAllModulkatalog() {		
 		try {
-			if (GültigVon != null) {
-				return ModulkatalogRepository.findAll();		
-			}
 			List<Modulkatalog> list = ModulkatalogRepository.findAll();
 			if (!list.isEmpty()) {
 				return list;
@@ -91,6 +92,25 @@ public class ModulkatalogService {
 		try {
 			return ModulkatalogRepository.findByMKID(MKID); 
 		} catch (Exception e ){
+			return null;
+		}
+	}
+	
+	public List<Modulkatalog> getAllMOK(Studienrichtung studienrichtung) {
+		try {
+			return ModulkatalogRepository.findAllByStudienrichtung(studienrichtung);
+		}catch(Exception e) {
+			LOG.error("Could not load MOK"+e);
+      return null;
+    }
+}
+	public List<Modul> getAllModul(int modulID) {
+		try {
+			Modulkatalog modulk = ModulkatalogRepository.findById(modulID).get();
+			return modulk.getModul();
+		}
+		catch(Exception e) {
+			LOG.error("Couldn't load Kurslist" + e);
 			return null;
 		}
 	}

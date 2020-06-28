@@ -1,35 +1,26 @@
-package de.amc17.dhbwplan.entity;
+package de.amc17.dhbwplan.data;
 
-import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Entity
-public class Modul implements Serializable {
+import de.amc17.dhbwplan.entity.Lerneinheit;
+import de.amc17.dhbwplan.entity.Modulkatalog;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7908887684543303784L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "MID")
+public class ModulDto {
 	private int MID;
+	
+	private int modulkatalogID;
 
 	private String bezeichnung;
 
 	private int studienjahr;
+
+	private int selbststudium;
 
 	private int moduldauer;
 
@@ -41,30 +32,26 @@ public class Modul implements Serializable {
 
 	private String sprache;
 
+	private int praesenzzeit;
+
 	private int ectsPunkte;
 	
-	@ManyToOne 
-	@JoinColumn(name="MKID")
-	@JsonIgnore
-	private Modulkatalog modulkatalog;
 	
-	@OneToMany(mappedBy = "modul")
-	private List<Lerneinheit> lerneinheiten;
-
-	public int getMID() {
-		return MID;
-	}
-
-	public void setMID(int mID) {
-		MID = mID;
-	}
-
+	
 	public String getBezeichnung() {
 		return bezeichnung;
 	}
 
 	public void setBezeichnung(String bezeichnung) {
 		this.bezeichnung = bezeichnung;
+	}
+
+	public int getSelbststudium() {
+		return selbststudium;
+	}
+
+	public void setSelbststudium(int selbststudium) {
+		this.selbststudium = selbststudium;
 	}
 
 	public int getModuldauer() {
@@ -81,14 +68,6 @@ public class Modul implements Serializable {
 
 	public void setModulart(String modulart) {
 		this.modulart = modulart;
-	}
-
-	public String getPruefungsleistung() {
-		return pruefungsleistung;
-	}
-
-	public void setPruefungsleistung(String pruefungsleistung) {
-		this.pruefungsleistung = pruefungsleistung;
 	}
 
 	public String getBeschreibung() {
@@ -115,6 +94,7 @@ public class Modul implements Serializable {
 		this.ectsPunkte = ectsPunkte;
 	}
 
+
 	public int getStudienjahr() {
 		return studienjahr;
 	}
@@ -122,24 +102,31 @@ public class Modul implements Serializable {
 	public void setStudienjahr(int studienjahr) {
 		this.studienjahr = studienjahr;
 	}
-  
-	public Modulkatalog getModulkatalog() {
-		return modulkatalog;
+
+	public int getMID() {
+		return MID;
 	}
 
-	public void setModulkatalog(Modulkatalog modulkatalog) {
-		this.modulkatalog = modulkatalog;
+	public void setMID(int MID) {
+		this.MID = MID;
 	}
 
-	public List<Lerneinheit> getLerneinheiten() {
-		return lerneinheiten;
+	public String getPruefungsleistung() {
+		return pruefungsleistung;
 	}
 
-	public void setLerneinheiten(List<Lerneinheit> lerneinheiten) {
-		this.lerneinheiten = lerneinheiten;
+	public void setPruefungsleistung(String pruefungsleistung) {
+		this.pruefungsleistung = pruefungsleistung;
 	}
 
-	
+	public int getModulkatalogID() {
+		return modulkatalogID;
+	}
+
+	public void setModulkatalogID(int modulkatalogID) {
+		this.modulkatalogID = modulkatalogID;
+	}
+
 
 
 }

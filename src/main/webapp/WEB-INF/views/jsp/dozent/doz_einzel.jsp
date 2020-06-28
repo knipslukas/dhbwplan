@@ -43,7 +43,9 @@
 	   	<div class="alert dozentuebersicht d-flex align-items-center" role="alert">
 			<h1 class="text-white my-1">Dozentansicht</h1>
 			<a href="/dozent/edit/${dozent.DID}" class="btn ml-auto DHBWbutton">Bearbeiten</a>
-			<button type="button" class="btn ml-2 DHBWbutton" data-toggle="modal" data-target="#deleteModal">Löschen</button>
+			<c:if test="${!dozent.studiengangsleiter}">
+				<button type="button" class="btn ml-2 DHBWbutton" data-toggle="modal" data-target="#deleteModal">Löschen</button>
+			</c:if>
 			<a href="/dozent" class="btn ml-2 DHBWbutton">Zurück</a>
         </div>
     	<!-- Ende Orentierungszeile -->
@@ -128,7 +130,7 @@
 			<div class="modal-content">
 				<div class="modal-body">
 					<h1><strong>Achtung!</strong></h1>
-					<h4>Wollen Sie wirklich ${dozent.anrede } ${dozent.nachname } löschen?</h4>
+					<h4>Wollen Sie wirklich ${dozent.anrede } ${dozent.nachname } aus dem System entfernen?</h4>
 				</div>
 				
 				<div class="modal-footer">

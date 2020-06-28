@@ -1,6 +1,7 @@
 package de.amc17.dhbwplan.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -32,6 +34,9 @@ public class Studienrichtung implements Serializable {
 	@JsonIgnore
 	private Studiengang studiengang;
 	
+	@OneToMany(mappedBy = "studienrichtung")
+	private List<Modulkatalog> modulkatalog;
+	
 	public int getriID() {
 		return riID;
 	}
@@ -54,5 +59,13 @@ public class Studienrichtung implements Serializable {
 	
 	public void setStudiengang(Studiengang studiengang) {
 		this.studiengang=studiengang;
+	}
+	
+	public List<Modulkatalog> getModulkatalog() {
+		return modulkatalog;
+	}
+
+	public void setModulkatalog(List<Modulkatalog> modulkatalog) {
+		this.modulkatalog = modulkatalog;
 	}
 }

@@ -8,8 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrePersist;
 
 import de.amc17.dhbwplan.enums.Zeitpraeferenzen;
 
@@ -53,13 +55,17 @@ public class Dozent implements Serializable {
 	
 	private String notiz;
 	
-	private String faecher;
-	
 	private boolean studiengangsleiter;
 	
 	@OneToOne
 	private User user;
 	
+	@ManyToMany
+	@JoinTable(
+			name="moeglicheFaecherDozent",
+			joinColumns = @JoinColumn(name = "DID"),
+			inverseJoinColumns = @JoinColumn(name = "LEID"))
+	private List<Lerneinheit> kannhalten;
 
 	public String getTitel() {
 		return titel;
@@ -181,14 +187,6 @@ public class Dozent implements Serializable {
 		this.anrede = anrede;
 	}
 
-	public String getFaecher() {
-		return faecher;
-	}
-
-	public void setFaecher(String faecher) {
-		this.faecher = faecher;
-	}
-
 	public boolean isStudiengangsleiter() {
 		return studiengangsleiter;
 	}
@@ -204,6 +202,15 @@ public class Dozent implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public List<Lerneinheit> getKannhalten() {
+		return kannhalten;
+	}
+
+	public void setKannhalten(List<Lerneinheit> kannhalten) {
+		this.kannhalten = kannhalten;
+	}
+	
 	
 	
 	

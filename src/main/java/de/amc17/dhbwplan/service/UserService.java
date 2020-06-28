@@ -97,7 +97,7 @@ public class UserService implements UserDetailsService {
 	}
 	
 	public boolean findAdmin() {
-		if (userRepo.findByusername("admin") != null) {
+		if (userRepo.count() != 0) {
 			return true;
 		}
 		else return false;
