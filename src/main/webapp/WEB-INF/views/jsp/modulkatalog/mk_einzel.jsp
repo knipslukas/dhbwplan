@@ -65,21 +65,18 @@
 	   					</div>
 	   				</div>
 	    	
-	   			<div class="row text-center border border-left-0 border-right-0 border-top-0">
+	   			<div class="row text-center border border-left-0 border-right-0 border-top-0 pt-3">
 	   				<div class="col-6"><p><strong>Gültig von:</strong></p></div>
 	   				<div class="col-6">
 	   					<p><fmt:formatDate type = "date" 
          					value = "${modulkatalog.gueltigVon}" /></p>
 	   				</div>
-	   			</div>
-	   			<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
 	   				<div class="col-6"><p><strong>Gültig bis:</strong></p></div>
 	   				<div class="col-6">
 	   					<p><fmt:formatDate type = "date" 
          					value = "${modulkatalog.gueltigBis}" /></p>
 	   				</div>
-
-          </div>
+	   			</div>
 	   			
 	    	</div>   			
 	   			<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">     

@@ -41,12 +41,13 @@
 							<option disabled selected>Bitte Auswählen</option>
 							<c:choose>
 								<c:when test="${studienrichtungList ne null}">
-										<c:forEach items="${studienrichtungList}" var="str">
-											<c:choose>
-												<c:when test="${str.studiengang ne null}">
-													<option value="${str.riID}">${str.studiengang.name} - ${str.name}</option>												</c:when>
-											</c:choose>
-										</c:forEach>
+									<c:forEach items="${studienrichtungList}" var="str">
+										<c:choose>
+											<c:when test="${str.studiengang ne null}">
+												<option value="${str.riID}">${str.studiengang.name} - ${str.name}</option>
+											</c:when>
+										</c:choose>
+									</c:forEach>
 								</c:when>
 								<c:otherwise>
 									<option disabled>Keine Richtungen vorhanden</option>

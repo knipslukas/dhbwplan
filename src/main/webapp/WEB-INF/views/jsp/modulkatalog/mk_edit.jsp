@@ -2,6 +2,7 @@
 <%@ taglib prefix="template" tagdir="/WEB-INF/tags/template"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <template:template pageTitle="${pageTitle}">
 	<template:navbar user="${currentUser}" />
@@ -35,18 +36,13 @@
 						<select class="form-control" name="studienrichtung_riid" required name="studienrichtung" class="form-control">
 							<option disabled selected>Bitte Auswählen</option>
 							<c:choose>
-								<c:when test="${studiengangList ne null && studienrichtungList ne null}">
-									<c:forEach items="${studiengangList}" var="stg">
-										<c:forEach items="${studienrichtungList}" var="str">
-											<c:choose>
-												<c:when test="${stg.stID eq str.studiengang.stID && !(str.riID eq modulkatalog.studienrichtung.riID)}">
-													<option value="${str.riID}">${stg.name} - ${str.name}</option>
-												</c:when> 
-												<c:when test="${stg.stID eq str.studiengang.stID && str.riID eq modulkatalog.studienrichtung.riID}">
-													<option value="${str.riID}" selected>${stg.name} - ${str.name}</option>
-												</c:when>
-											</c:choose>
-										</c:forEach>
+								<c:when test="${studienrichtungList ne null}">
+									<c:forEach items="${studienrichtungList}" var="str">
+										<c:choose>
+											<c:when test="${str.studiengang ne null}">
+												<option <c:if test="${str.riID eq modulkatalog.studienrichtung.riID }">selected</c:if> value="${str.riID}">${str.studiengang.name} - ${str.name}</option>										
+											</c:when>
+										</c:choose>
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
@@ -60,15 +56,14 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Gültig von</label>
 					<div class="col-10">
-						<input type="date" name="gueltigVon" class="form-control" value="${modulkatalog.gueltigVon}" required>
+						<input type="date" name="gueltigVon" class="form-control" value="<fmt:formatDate type = "date" value = "${modulkatalog.gueltigVon}" pattern="YYYY-MM-dd" />" required>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Gültig bis</label>
 					<div class="col-10">
-						<input type="date" name="gueltigBis" class="form-control"
-							value="${modulkatalog.gueltigBis}" required>
+						<input type="date" name="gueltigBis" class="form-control" value="<fmt:formatDate type = "date" value = "${modulkatalog.gueltigBis}" pattern="YYYY-MM-dd" />" required>
 					</div>
 				</div>
 				

@@ -79,7 +79,7 @@
 				</div>
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">ECTS Punkte</label>
+					<label class="col-2 col-form-label">ECTS-Punkte</label>
 					<div class="col-10">
 						<input type="text" name="titel" class="form-control" placeholder="ECTS Punkte eingeben"
 							value="${modul.ectsPunkte}">
@@ -143,19 +143,19 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Name</label>
 					<div class="col-3">
-						<input type="text" name="name" class="form-control js-form-name" placeholder="Neuer Name eingeben" value="${lerneinheit.name}" required>
+						<input type="text" name="name" class="form-control js-form-name" placeholder="Name" value="${lerneinheit.name}" required>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Präsenzzeit (h)</label>
 					<div class="col-3">
-						<input type="text" name="praesenzzeit" class="form-control js-form-praesenzzeit" placeholder="Neues Präsenzzeit" value="${lerneinheit.praesenzzeit}" required>
+						<input type="text" name="praesenzzeit" class="form-control js-form-praesenzzeit" placeholder="Präsenzzeit" value="${lerneinheit.praesenzzeit}" required>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Selbsstudium (h)</label>
+					<label class="col-2 col-form-label">Selbststudium (h)</label>
 					<div class="col-3">
-						<input type="text" name="selbststudium" class="form-control js-form-selbsttudium" placeholder="Neues Selbsstudium" value="${lerneinheit.selbststudium}" required>
+						<input type="text" name="selbststudium" class="form-control js-form-selbsttudium" placeholder="Selbststudium" value="${lerneinheit.selbststudium}" required>
 					</div>
 				</div>
 
