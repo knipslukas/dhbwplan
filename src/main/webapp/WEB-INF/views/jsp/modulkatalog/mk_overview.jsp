@@ -62,6 +62,7 @@
 	                			<tr>
 <%-- 					                <td scope="row" class="align-middle">${modulkatalog.MKID}</td> --%>
 					                <td scope="row" class="align-middle">${modulkatalog.name}</td>
+					                <td scope="row" class="align-middle">${modulkatalog.studienrichtung.studiengang.name} - ${modulkatalog.studienrichtung.name}</td>
 					                <td scope="row" class="align-middle"><fmt:formatDate type = "date" 
          											value = "${modulkatalog.gueltigVon}" /></td>
 					                <td scope="row" class="align-middle"><fmt:formatDate type = "date" 
@@ -76,7 +77,7 @@
 	                			<td></td>
 	                			<td></td>
 	                			<td></td>
-
+	                			<td></td>
 	                		</tr>
 	                	</c:otherwise>
 	                </c:choose>

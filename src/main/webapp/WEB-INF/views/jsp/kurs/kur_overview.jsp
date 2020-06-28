@@ -75,7 +75,9 @@
 								<td>Keine Kurse vorhanden</td>
 								<td></td>
 								<td></td>
-
+								<td></td>
+								<td></td>
+								<td></td>
 							</tr>
 						</c:otherwise>
 					</c:choose>

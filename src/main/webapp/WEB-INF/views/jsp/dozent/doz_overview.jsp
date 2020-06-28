@@ -48,7 +48,7 @@
 <!-- 	                  <th scope="col"><strong>Dozenten Nummer</strong></th> -->
 	                  <th scope="col"><strong>Nachname</strong></th>
 	                  <th scope="col"><strong>Vorname</strong></th>
-	                  <th scope="col"><strong>Email</strong></th>
+	                  <th scope="col"><strong>E-Mail</strong></th>
 	                  <th scope="col"><strong>Telefon</strong></th>
 	                  <th scope="col"><strong>Aktionen</strong></th>
 	                </tr>

@@ -46,7 +46,7 @@
 	                	<select class="form-control" id="modulkatalog" name="modulkatalogID">
 		                	<option disabled selected>Modulkatalog auswählen</option>
 		                	<c:forEach items="${modulkatalogList}" var="modulkatalog">
-		                		<option value="${modulkatalog.MKID}">${modulkatalog.name} ${modulkatalog.gueltigVon} ${modulkatalog.gueltigVon}</option>
+		                		<option value="${modulkatalog.MKID}">${modulkatalog.name}</option>
 		                	</c:forEach>
 		                </select>
 	                </div>

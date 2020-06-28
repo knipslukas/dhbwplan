@@ -91,7 +91,7 @@
 				<c:choose>
 					<c:when test="${dozent.intern }">
 						<div class="form-group row">
-			            	<label class="col-2 col-form-label">DHBW Intern</label>
+			            	<label class="col-2 col-form-label">DHBW-intern</label>
 			            	<div class="col-10">
 			            		<input checked class="js-toggle-intern" type="checkbox" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="intern" data-style="mr-1" data-onstyle="danger">
 			            	</div>
@@ -117,7 +117,7 @@
 					</c:when>
 					<c:otherwise>
 						<div class="form-group row">
-			            	<label class="col-2 col-form-label">DHBW Intern</label>
+			            	<label class="col-2 col-form-label">DHBW-intern</label>
 			            	<div class="col-10">
 			            		<input class="js-toggle-intern" type="checkbox" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="intern" data-style="mr-1" data-onstyle="danger">
 			            	</div>
