@@ -225,13 +225,13 @@
 	        <!-- Versuch, Präsenzzeiträume hinzuzufügen -->
 	        
 	      <div class="mt-5">
-	      <label class="col col-form-label"><font size="5">Mögliche Fächer</font></label>
+	      <label class="col col-form-label"><font size="5">Mögliche Fächer:</font></label>
 			<table class="table table-hover" STYLE="margin-bottom: 50px;">
 				<thead class="thead-light">
 					<tr>
-						<th scope="col"><strong>Modul</strong></th>
-						<th scope="col"><strong>Lerneinheit</strong></th>
-						<th scope="col"><strong>Aktionen</strong></th>
+						<th scope="col"><strong>Modul:</strong></th>
+						<th scope="col"><strong>Lerneinheit:</strong></th>
+						<th scope="col"><strong>Aktionen:</strong></th>
 					</tr>
 				</thead>
 				<tbody class="js-table">
@@ -246,7 +246,7 @@
 		<!-- Lerneinheiten hinzufügen -->
 		  <form class="pb-3 js-form-dozanleg">
 	        <div class="form-group row">
-	         <label for="anrede" class="col-2 col-form-label">Modul</label>
+	         <label for="anrede" class="col-2 col-form-label">Modul:</label>
 	                <div class="col-10">
 		                <select class="form-control js-mod-input">
 		                	<option disabled selected value="0">Modul Auswählen</option>
@@ -259,7 +259,7 @@
 	        </div>
 	         
 	        <div class="form-group row d-none js-lee-form">
-	         <label for="anrede" class="col-2 col-form-label">Lerneinheit</label>
+	         <label for="anrede" class="col-2 col-form-label">Lerneinheit:</label>
 	                <div class="col-10">
 		                <select class="form-control js-lee-input" >
 		                	<option disabled selected value="0">Lerneinheit Auswählen</option>
