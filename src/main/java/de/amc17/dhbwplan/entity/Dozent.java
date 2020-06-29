@@ -53,6 +53,7 @@ public class Dozent implements Serializable {
 	
 	private Zeitpraeferenzen zeitpraef;
 	
+	@Column(length = 1000)
 	private String notiz;
 	
 	private boolean studiengangsleiter;

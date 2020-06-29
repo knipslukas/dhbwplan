@@ -75,6 +75,9 @@ public class DozentService {
 						aDozent.getUser().setEmail(aDozent.getEmail());
 					}
 				}
+				if (oDozent.getKannhalten() != null) {
+					aDozent.setKannhalten(oDozent.getKannhalten());
+				}
 				dozentRepository.save(aDozent);
 			} else {
 				LOG.warn("Dozent not found");

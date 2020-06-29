@@ -76,7 +76,8 @@ public class ModulController {
 	}
 
 	@PostMapping(path = "/update/{aID}")
-	public String updateModul(RedirectAttributes redirectAttributes, @ModelAttribute Modul aModul) {
+	public String updateModul(@PathVariable int aID, RedirectAttributes redirectAttributes, @ModelAttribute Modul aModul) {
+		aModul.setMID(aID);
 		if (mModulService.updateModul(aModul)) {
 			redirectAttributes.addAttribute("modulUpdated", true);
 		} else {

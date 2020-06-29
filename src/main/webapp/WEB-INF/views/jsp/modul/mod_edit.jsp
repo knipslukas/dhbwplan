@@ -24,7 +24,7 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Bezeichnung</label>
 					<div class="col-10">
-						<input type="text" name="titel" class="form-control" placeholder="Bezeichnung eingeben"
+						<input type="text" name="bezeichnung" class="form-control" placeholder="Bezeichnung eingeben"
 							value="${modul.bezeichnung}">
 					</div>
 				</div>
@@ -32,7 +32,7 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Studienjahr</label>
 					<div class="col-10">
-						<input type="text" name="titel" class="form-control" placeholder="Studienjahr eingeben"
+						<input type="text" name="studienjahr" class="form-control" placeholder="Studienjahr eingeben"
 							value="${modul.studienjahr}">
 					</div>
 				</div>
@@ -41,7 +41,7 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Moduldauer</label>
 					<div class="col-10">
-						<input type="text" name="titel" class="form-control" placeholder="Moduldauer eingeben"
+						<input type="text" name="moduldauer" class="form-control" placeholder="Moduldauer eingeben"
 							value="${modul.moduldauer}">
 					</div>
 				</div>
@@ -49,7 +49,7 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Modulart</label>
 					<div class="col-10">
-						<input type="text" name="titel" class="form-control" placeholder="Modulart eingeben"
+						<input type="text" name="modulart" class="form-control" placeholder="Modulart eingeben"
 							value="${modul.modulart}">
 					</div>
 				</div>
@@ -57,7 +57,7 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Prüfungsleistung</label>
 					<div class="col-10">
-						<input type="text" name="titel" class="form-control" placeholder="Prüfungsleistung eingeben"
+						<input type="text" name="pruefungsleistung" class="form-control" placeholder="Prüfungsleistung eingeben"
 							value="${modul.pruefungsleistung}">
 					</div>
 				</div>
@@ -65,7 +65,7 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Beschreibung</label>
 					<div class="col-10">
-						<input type="text" name="titel" class="form-control" placeholder="Beschreibung eingeben"
+						<input type="text" name="beschreibung" class="form-control" placeholder="Beschreibung eingeben"
 							value="${modul.beschreibung}">
 					</div>
 				</div>
@@ -73,7 +73,7 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Sprache</label>
 					<div class="col-10">
-						<input type="text" name="titel" class="form-control" placeholder="Sprache eingeben"
+						<input type="text" name="sprache" class="form-control" placeholder="Sprache eingeben"
 							value="${modul.sprache}">
 					</div>
 				</div>
@@ -81,17 +81,19 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">ECTS-Punkte</label>
 					<div class="col-10">
-						<input type="text" name="titel" class="form-control" placeholder="ECTS Punkte eingeben"
+						<input type="text" name="ectsPunkte" class="form-control" placeholder="ECTS Punkte eingeben"
 							value="${modul.ectsPunkte}">
 					</div>
 				</div>
+				
+				<!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				
 				<!-- Final Buttons-->
 				<div class="finalButtons">
 					<button type="submit" class="btn btn-success">Speichern </button>
 					<button type="reset" class="btn btn-danger">Zurücksetzen </button>
 				</div>
-
-				<h1 id="info"></h1>
 			</form>
 
 
@@ -168,10 +170,6 @@
 
 			<!-- Das hier übermittelt dem Server die ID von Modul, da diese für das Update benötigt wird -->
 			<input type="hidden" class="js-form-mid" value="${modul.MID}">
-
-			<!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-
 
 
 			<!-- Ende Formular -->

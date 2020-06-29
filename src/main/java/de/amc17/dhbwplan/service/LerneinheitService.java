@@ -15,7 +15,7 @@ import de.amc17.dhbwplan.repository.LerneinheitRepository;
 @Service
 public class LerneinheitService {
 	@Resource
-	private LerneinheitRepository LerneinheitRepository;
+	private LerneinheitRepository lerneinheitRepo;
 
 	private static final Logger LOG = LogManager.getLogger(UserService.class.getName());
 
@@ -24,7 +24,7 @@ public class LerneinheitService {
 			if (String.valueOf(aLerneinheit.getPraesenzzeit()) == null) aLerneinheit.setPraesenzzeit(0);
 			if (String.valueOf(aLerneinheit.getSelbststudium()) == null) aLerneinheit.setSelbststudium(0);
 			if (aLerneinheit.getName() == "") aLerneinheit.setName("Keine Daten");
-			LerneinheitRepository.save(aLerneinheit);
+			lerneinheitRepo.save(aLerneinheit);
 		} catch (Exception e) {
 			return null;
 		}
@@ -33,7 +33,7 @@ public class LerneinheitService {
 
 	public boolean deleteLerneinheit(int aLEID) {
 		try {
-			LerneinheitRepository.deleteById(aLEID);
+			lerneinheitRepo.deleteById(aLEID);
 		} catch (Exception e) {
 			return false;
 		}
@@ -43,8 +43,8 @@ public class LerneinheitService {
 	public Lerneinheit updateLerneinheit(Lerneinheit aLerneinheit) {
 		try {
 			Lerneinheit oLerneinheit;
-			if ((oLerneinheit = LerneinheitRepository.findByLEID(aLerneinheit.getLEID())) != null) {
-				LerneinheitRepository.save(aLerneinheit);
+			if ((oLerneinheit = lerneinheitRepo.findByLEID(aLerneinheit.getLEID())) != null) {
+				lerneinheitRepo.save(aLerneinheit);
 			} else {
 				LOG.warn("Lerneinheit not found");
 				return null;
@@ -59,9 +59,9 @@ public class LerneinheitService {
 	public List<Lerneinheit> getAllLerneinheit(String aName) {
 		try {
 			if (aName != null) {
-				return LerneinheitRepository.findAllByName(aName);
+				return lerneinheitRepo.findAllByName(aName);
 			}
-			List<Lerneinheit> list = LerneinheitRepository.findByOrderByNameAsc();
+			List<Lerneinheit> list = lerneinheitRepo.findByOrderByNameAsc();
 			if (!list.isEmpty()) {
 				return list;
 			} else
@@ -74,7 +74,7 @@ public class LerneinheitService {
 
 	public Lerneinheit getLerneinheitByID(int aLEID) {
 		try {
-			return LerneinheitRepository.findByLEID(aLEID);
+			return lerneinheitRepo.findByLEID(aLEID);
 		} catch (Exception e) {
 			return null;
 		}
@@ -82,7 +82,7 @@ public class LerneinheitService {
 	
 	public List<Lerneinheit> getAllLee(Modul modul) {
 		try {
-			return LerneinheitRepository.findAllByModulOrderByNameAsc(modul);
+			return lerneinheitRepo.findAllByModulOrderByNameAsc(modul);
 		}catch(Exception e) {
 			LOG.error("Could not load LEE"+e);
 			return null;
