@@ -23,14 +23,14 @@
 
 	
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Name</label>
+	                <label class="col-2 col-form-label">Name:</label>
 	                <div class="col-10">
 	                	<input type="text" name="name" class="form-control" placeholder="Vorlesungsname eingeben" value="${vorlesung.name }" required>
 	                </div>
 	            </div>
 	
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Vorlesungsstunden</label>
+	                <label class="col-2 col-form-label">Vorlesungsstunden:</label>
 	                <div class="col-10">
 	                	<input type="text" name="vorlesungsstunden" class="form-control" placeholder="Vorlesungsstunden eingeben" value="${vorlesung.vorlesungsstunden }" required>
 	                </div>

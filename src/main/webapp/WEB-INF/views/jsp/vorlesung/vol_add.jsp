@@ -22,14 +22,14 @@
 			<form class="pb-3 js-form-dozanleg" method="POST" action="/vorlesung/add">
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Name</label>
+					<label class="col-2 col-form-label">Name:</label>
 					<div class="col-10">
 						<input type="text" name="name" class="form-control" placeholder="Name eingeben">
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Vorlesungsstunden</label>
+					<label class="col-2 col-form-label">Vorlesungsstunden:</label>
 					<div class="col-10">
 						<input type="text" name="vorlesungsstunden" class="form-control"
 							placeholder="Vorlesungsstunden eingeben" required>

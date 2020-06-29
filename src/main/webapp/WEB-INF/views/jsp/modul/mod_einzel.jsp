@@ -51,64 +51,58 @@
     	<div class="row">
 	    	<div class="card col-sm-12 col-md-11 col-lg-8 mx-auto doz-card">
 	    		<div class="card-header text-center">
-	    			<h1><i class="fas fa-university fa-4x mb-5 mt-3"></i></h1>
+	    			<h1><i class="fas fa-graduation-cap fa-4x mb-5 mt-3"></i></h1>
 	    			<h1 class="card-title"><strong>${modul.bezeichnung}</strong></h1>	    		
 	    		</div>
 	   			<div class="card-body">
-	   				<div class="row text-center border border-left-0 border-right-0 border-top-0">
-	   					<div class="col-6"><p><strong>Bezeichnung</strong></p></div>
-	   					<div class="col-6">
-	   						<p>${modul.bezeichnung}</p>
-	   					</div>
-	   				</div>
-	   				<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
-	   					<div class="col-6"><p><strong>Studienjahr</strong></p></div>
-	   					<div class="col-6">
+	   				<div class="row text-left border border-left-0 border-right-0 border-top-0">
+	   					<div class="col-6"><p><strong>Studienjahr:</strong></p></div>
+	   					<div class="col-6 ">
 	   						<p>${modul.studienjahr}</p>
 	   					</div>
-	   					<div class="col-6"><p><strong>Moduldauer</strong></p></div>
-	   					<div class="col-6">
+	   					<div class="col-6"><p><strong>Moduldauer (Semester):</strong></p></div>
+	   					<div class="col-6 ">
 	   						<p>${modul.moduldauer}</p>
 	   					</div>
-	   					<div class="col-6"><p><strong>Modulkatalog</strong></p></div>
-	   					<div class="col-6">
-	   						<p>${modulkatalog.name}</p>
+	   					<div class="col-6"><p><strong>Modulkatalog:</strong></p></div>
+	   					<div class="col-6 ">
+	   						<p><a href="/modulkatalog/show/${modulkatalog.MKID}">${modulkatalog.name}</a></p>
 	   					</div>
 	   				</div>
-	   				<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
-	   					<div class="col-6"><p><strong>Modulart</strong></p></div>
-	   					<div class="col-6">
+	   				<div class="row mt-4 text-left border border-left-0 border-right-0 border-top-0">
+	   					<div class="col-6"><p><strong>Modulart:</strong></p></div>
+	   					<div class="col-6 ">
 	   						<p>${modul.modulart}</p>
 	   					</div>
-	   					<div class="col-6"><p><strong>Prüfungsleistung</strong></p></div>
-	   					<div class="col-6">
+	   					<div class="col-6"><p><strong>Prüfungsleistung:</strong></p></div>
+	   					<div class="col-6 ">
 	   						<p>${modul.pruefungsleistung}</p>
 	   					</div>
 	   				</div>
-	   				<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
-	   					<div class="col-6"><p><strong>Beschreibung</strong></p></div>
-	   					<div class="col-6">
+	   				<div class="row mt-4 text-left border border-left-0 border-right-0 border-top-0">
+	   					<div class="col-6"><p><strong>Beschreibung:</strong></p></div>
+	   					<div class="col-6 ">
 	   						<p>${modul.beschreibung}</p>
 	   					</div>
-	   					<div class="col-6"><p><strong>Sprache</strong></p></div>
-	   					<div class="col-6">
+	   					<div class="col-6"><p><strong>Sprache:</strong></p></div>
+	   					<div class="col-6 ">
 	   						<p>${modul.sprache}</p>
 	   					</div>
 	   				</div>
-	   				<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
-	   					<div class="col-6"><p><strong>ECTS-Punkte</strong></p></div>
+	   				<div class="row mt-4 text-left border border-bottom-0 border-left-0 border-right-0 border-top-0">
+	   					<div class="col-6"><p><strong>ECTS-Punkte:</strong></p></div>
 	   					<div class="col-6">
 	   						<p>${modul.ectsPunkte}</p>
 	   					</div>
 					</div>
-					<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
-						<div class="col-6"><p><strong>Lerneinheiten</strong></p></div>
-						<table class="table table-hover">
+					<div class="mt-4">
+						<table class="table table tab-einzel">
+							<caption> Lerneinheiten: </caption>
 							<thead class="thead-light">
 								<tr>
-									<th scope="col"><strong>Name</strong></th>
-									<th scope="col"><strong>Präsenzzeit</strong></th>
-									<th scope="col"><strong>Selbsstudium</strong></th>
+									<th scope="col"><strong>Name:</strong></th>
+									<th scope="col"><strong>Präsenzzeit:</strong></th>
+									<th scope="col"><strong>Selbsstudium:</strong></th>
 								</tr>
 							</thead>
 							<tbody class="js-table">

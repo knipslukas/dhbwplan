@@ -22,7 +22,7 @@
 			<form class="pb-3 js-form-dozanleg" method="POST" action="/modul/update/${modul.MID }">
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Bezeichnung</label>
+					<label class="col-2 col-form-label">Bezeichnung:</label>
 					<div class="col-10">
 						<input type="text" name="titel" class="form-control" placeholder="Bezeichnung eingeben"
 							value="${modul.bezeichnung}">
@@ -30,7 +30,7 @@
 				</div>
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Studienjahr</label>
+					<label class="col-2 col-form-label">Studienjahr:</label>
 					<div class="col-10">
 						<input type="text" name="titel" class="form-control" placeholder="Studienjahr eingeben"
 							value="${modul.studienjahr}">
@@ -39,7 +39,7 @@
 
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Moduldauer</label>
+					<label class="col-2 col-form-label">Moduldauer:</label>
 					<div class="col-10">
 						<input type="text" name="titel" class="form-control" placeholder="Moduldauer eingeben"
 							value="${modul.moduldauer}">
@@ -47,7 +47,7 @@
 				</div>
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Modulart</label>
+					<label class="col-2 col-form-label">Modulart:</label>
 					<div class="col-10">
 						<input type="text" name="titel" class="form-control" placeholder="Modulart eingeben"
 							value="${modul.modulart}">
@@ -55,7 +55,7 @@
 				</div>
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Prüfungsleistung</label>
+					<label class="col-2 col-form-label">Prüfungsleistung:</label>
 					<div class="col-10">
 						<input type="text" name="titel" class="form-control" placeholder="Prüfungsleistung eingeben"
 							value="${modul.pruefungsleistung}">
@@ -63,7 +63,7 @@
 				</div>
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Beschreibung</label>
+					<label class="col-2 col-form-label">Beschreibung:</label>
 					<div class="col-10">
 						<input type="text" name="titel" class="form-control" placeholder="Beschreibung eingeben"
 							value="${modul.beschreibung}">
@@ -71,7 +71,7 @@
 				</div>
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Sprache</label>
+					<label class="col-2 col-form-label">Sprache:</label>
 					<div class="col-10">
 						<input type="text" name="titel" class="form-control" placeholder="Sprache eingeben"
 							value="${modul.sprache}">
@@ -79,7 +79,7 @@
 				</div>
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">ECTS-Punkte</label>
+					<label class="col-2 col-form-label">ECTS-Punkte:</label>
 					<div class="col-10">
 						<input type="text" name="titel" class="form-control" placeholder="ECTS Punkte eingeben"
 							value="${modul.ectsPunkte}">

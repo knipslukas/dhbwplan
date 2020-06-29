@@ -51,37 +51,29 @@
     	<div class="row"> 
 	    	<div class="card col-sm-12 col-md-11 col-lg-8 mx-auto doz-card">
 	    		<div class="card-header text-center">
-	    			<h1><i class="fas fa-chalkboard-teacher fa-4x mb-5 mt-3"></i></h1>
+	    			<h1><i class="fas fa-university fa-4x mb-5 mt-3"></i></h1>
 					<h1 class="card-title"><strong>${studiengang.name}</strong></h1>
 	    		
 	    		</div>
 	   			<div class="card-body">
-	   				<div class="row text-center border border-left-0 border-right-0 border-top-0">
-	   					<div class="col-6"><p><strong>Beschreibung</strong></p></div>
+	   				<div class="row text-left border border-bottom-0 border-left-0 border-right-0 border-top-0">
+	   					<div class="col-6"><p><strong>Beschreibung:</strong></p></div>
 	   					<div class="col-6">
 							   <p>${studiengang.beschreibung}</p> <!-- wird nach Fertigstellung des Controllers durch untenstehende Zeile ersetzt-->
 							   <!--<p>${studiengang.name }</p>-->
 	   					</div>
 	   				</div>
-	   				<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
-	   					<div class="col-6"><p><strong>Studiengangsnummer</strong></p></div>
-	   					<div class="col-6">
-							   <p>${studiengang.stID}</a></p> <!-- wird nach Fertigstellung des Controllers durch untenstehende Zeile ersetzt-->
-							   <!--<p>${studiengang.beschreibung }</p>-->
-	   					</div>
-	   				</div>
-	   			</div>
+
 	    	 
 	    	
 	    		    	<!-- Start Content -->
 	 <!--    <div class="mt-5"> -->
-	<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0"> 
-	    <div class="col-12">
-	         <table class="table table-hover" STYLE="margin-bottom: 50px; width:430px; text-align:left; margin-left: auto; margin-right: auto;">
+	<div class="mt-4"> 
+	         <table class="table table-hover tab-einzel" >
 	              <caption>Studiengangsrichtungen:</caption>
 	              <thead class="thead-light">
 	                <tr>
-	                  <th scope="col"><strong>Name</strong></th>
+	                  <th scope="col"><strong>Name:</strong></th>
 	                
 	                </tr>
 	              </thead>

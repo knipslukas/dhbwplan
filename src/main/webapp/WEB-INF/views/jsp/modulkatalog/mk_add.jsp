@@ -27,7 +27,7 @@
 
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Name</label>
+					<label class="col-2 col-form-label">Name:</label>
 					<div class="col-10">
 						<input type="text" name="name" class="form-control"
 							placeholder="Name eingeben" required>
@@ -35,7 +35,7 @@
 				</div>
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Studienrichtung</label>
+					<label class="col-2 col-form-label">Studienrichtung:</label>
 					<div class="col-10">
 						<select class="form-control" name="studienrichtung_riid" required>
 							<option disabled selected>Bitte Auswählen</option>
@@ -59,7 +59,7 @@
 
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Gültig von</label>
+					<label class="col-2 col-form-label">Gültig von:</label>
 					<div class="col-10">
 						<input type="date" name="gueltigVon" class="form-control"
 							placeholder="Gueltig ab" required>
@@ -67,7 +67,7 @@
 				</div>
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Gültig bis</label>
+					<label class="col-2 col-form-label">Gültig bis:</label>
 					<div class="col-10">
 						<input type="date" name="gueltigBis" class="form-control"
 							placeholder="Gueltig bis" required>

@@ -22,14 +22,14 @@
 	        <form class="pb-3 js-form-dozanleg" method="POST" action="/modul/add">	      
 	        	  
 	            <div class="form-group row">
-	                <label for="Bezeichnung" class="col-2 col-form-label">Bezeichnung</label>
+	                <label for="Bezeichnung" class="col-2 col-form-label">Bezeichnung:</label>
 	                <div class="col-10">
 						<input type="text" name="bezeichnung" class="form-control" placeholder="Bezeichnung eingeben" required>
 	                </div>
 	            </div>
 	
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Studienjahr</label>
+	                <label class="col-2 col-form-label">Studienjahr:</label>
 	                <div class="col-10">
 	                	<select class="form-control" name="studienjahr">
 	                		<option disabled selected>Bitte Auswählen</option>
@@ -41,7 +41,7 @@
 	            </div>
 	            
 	              <div class="form-group row">
-	                <label class="col-2 col-form-label">Modulkatalog</label>
+	                <label class="col-2 col-form-label">Modulkatalog:</label>
 	                <div class="col-10">
 	                	<select class="form-control" id="modulkatalog" name="modulkatalogID">
 		                	<option disabled selected>Modulkatalog auswählen</option>
@@ -53,7 +53,7 @@
 	            </div>
 	
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Moduldauer</label>
+	                <label class="col-2 col-form-label">Moduldauer:</label>
 	                <div class="col-10">
 						<select class="form-control" name="moduldauer">
 	                		<option disabled selected>Bitte Auswählen</option>
@@ -64,7 +64,7 @@
 	            </div>
 	            
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Modulart</label>
+	                <label class="col-2 col-form-label">Modulart:</label>
 	                <div class="col-10">
 	                	<select class="form-control" name="modulart">
 	                		<option disabled selected>Bitte Auswählen</option>
@@ -75,7 +75,7 @@
 	            </div>
 	
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Pruefungsleistung</label>
+	                <label class="col-2 col-form-label">Pruefungsleistung:</label>
 	                <div class="col-10">
 	                	<select class="form-control" name="pruefungsleistung">
 	                		<option disabled selected>Bitte Auswählen</option>
@@ -86,14 +86,14 @@
 	            </div>
 	            
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Beschreibung</label>
+	                <label class="col-2 col-form-label">Beschreibung:</label>
 	                <div class="col-10">
 	                	<input type="text" name="beschreibung" class="form-control" placeholder="Beschreibung eingeben" required>
 	                </div>
 	            </div>
 	
 				<div class="form-group row">
-	            	<label class="col-2 col-form-label">Sprache</label>
+	            	<label class="col-2 col-form-label">Sprache:</label>
 	            	<div class="col-10">
 	            		<select class="form-control" name="sprache">
 	                		<option disabled selected>Bitte Auswählen</option>
@@ -104,7 +104,7 @@
 	            </div>
 	            
 		        <div class="form-group row">
-		            	<label class="col-2 col-form-label">ECTS-Punkte</label>
+		            	<label class="col-2 col-form-label">ECTS-Punkte:</label>
 		            	<div class="col-10">
 		            		<input type="number" name="ectsPunkte" class="form-control" placeholder="ECTS-Punkte eingeben" required>
 		            	</div>
