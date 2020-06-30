@@ -22,13 +22,13 @@
 			<form class="pb-3 js-form-dozanleg" method="POST" action="/studiengang/add">	      
 					
 				<div class="form-group row">
-					<label for="anrede" class="col-2 col-form-label">Studiengang</label>
+					<label for="anrede" class="col-2 col-form-label">Studiengang:</label>
 					<div class="col-10">
 						<input type="text" name="name" class="form-control" placeholder="Studiengangsname eingeben">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Beschreibung</label>
+					<label class="col-2 col-form-label">Beschreibung:</label>
 					<div class="col-10">
 						<textarea class="form-control" name="beschreibung" placeholder="Hier können Sie eine Beschreibung ergänzen"></textarea>
 					</div>

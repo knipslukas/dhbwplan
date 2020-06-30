@@ -22,7 +22,7 @@
 	        <form class="pb-3 js-form-dozanleg" method="POST" action="/dozent/update/${dozent.DID }">	      
 	        	  
 	            <div class="form-group row">
-	                <label for="anrede" class="col-2 col-form-label">Anrede</label>
+	                <label for="anrede" class="col-2 col-form-label">Anrede:</label>
 	                <div class="col-10">
 		                <select class="form-control" id="anrede" name="anrede">
 		                	<c:choose>
@@ -47,42 +47,42 @@
 	            </div>
 	
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Titel</label>
+	                <label class="col-2 col-form-label">Titel:</label>
 	                <div class="col-10">
 	                	<input type="text" name="titel" class="form-control" placeholder="Titel eingeben" value="${dozent.titel }">
 	            	</div>
 	            </div>
 	
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Vorname</label>
+	                <label class="col-2 col-form-label">Vorname:</label>
 	                <div class="col-10">
 	                	<input type="text" name="vorname" class="form-control" placeholder="Vorname eingeben" value="${dozent.vorname }" required>
 	                </div>
 	            </div>
 	
 	            <div class="form-group row mb-5">
-	                <label class="col-2 col-form-label">Nachname</label>
+	                <label class="col-2 col-form-label">Nachname:</label>
 	                <div class="col-10">
 						<input type="text" name="nachname" class="form-control" placeholder="Nachname eingeben" value="${dozent.nachname }" required>	                
 	                </div>
 	            </div>
 	            
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Adresse</label>
+	                <label class="col-2 col-form-label">Adresse:</label>
 	                <div class="col-10">
 	                	<input type="text" name="strassehaus" class="form-control" placeholder="Straße und Hausnummer eingeben" value="${dozent.strassehaus }" required>
 	                </div>
 	            </div>
 	
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Postleitzahl</label>
+	                <label class="col-2 col-form-label">Postleitzahl:</label>
 	                <div class="col-10">
 	                	<input type="text" name="plz" class="form-control" placeholder="Postleitzahl eingeben" value="${dozent.plz }" required>
 	                </div>
 	            </div>
 	            
 	            <div class="form-group row mb-5">
-	                <label class="col-2 col-form-label">Stadt</label>
+	                <label class="col-2 col-form-label">Stadt:</label>
 	                <div class="col-10">
 	                	<input type="text" name="stadt" class="form-control" placeholder="Stadt eingeben" value="${dozent.stadt }" required>
 	                </div>
@@ -91,7 +91,7 @@
 				<c:choose>
 					<c:when test="${dozent.intern }">
 						<div class="form-group row">
-			            	<label class="col-2 col-form-label">DHBW-intern</label>
+			            	<label class="col-2 col-form-label">DHBW-intern:</label>
 			            	<div class="col-10">
 			            		<input checked class="js-toggle-intern" type="checkbox" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="intern" data-style="mr-1" data-onstyle="danger">
 			            	</div>
@@ -99,7 +99,7 @@
 			            
 			            <div class="collapse js-collapse-intern">
 			            	<div class="form-group row">
-				                <label class="col-2 col-form-label">Unternehmen</label>
+				                <label class="col-2 col-form-label">Unternehmen:</label>
 				                <div class="col-10">
 				                	<input type="text" name="unternehmen" class="form-control js-toggle-untern" placeholder="Unternehmen eingeben" value="${dozent.unternehmen }">
 				                </div>
@@ -108,7 +108,7 @@
 			            
 			            <div class="collapse js-collapse-stuleiter show">
 				            <div class="form-group row">
-				            	<label class="col-2 col-form-label">Studiengangsleiter</label>
+				            	<label class="col-2 col-form-label">Studiengangsleiter:</label>
 				            	<div class="col-10">
 				            		<input <c:if test="${dozent.studiengangsleiter}">checked</c:if> type="checkbox" class="js-toggle-stuleiter" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="studiengangsleiter" data-style="mr-1" data-onstyle="danger">
 				            	</div>
@@ -117,7 +117,7 @@
 					</c:when>
 					<c:otherwise>
 						<div class="form-group row">
-			            	<label class="col-2 col-form-label">DHBW-intern</label>
+			            	<label class="col-2 col-form-label">DHBW-intern:</label>
 			            	<div class="col-10">
 			            		<input class="js-toggle-intern" type="checkbox" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="intern" data-style="mr-1" data-onstyle="danger">
 			            	</div>
@@ -125,7 +125,7 @@
 			            
 			            <div class="collapse js-collapse-intern show">
 			            	<div class="form-group row">
-				                <label class="col-2 col-form-label">Unternehmen</label>
+				                <label class="col-2 col-form-label">Unternehmen:</label>
 				                <div class="col-10">
 				                	<input type="text" name="unternehmen" class="form-control js-toggle-untern" placeholder="Unternehmen eingeben" value="${dozent.unternehmen }">
 				                </div>
@@ -134,7 +134,7 @@
 			            
 			            <div class="collapse js-collapse-stuleiter">
 				            <div class="form-group row">
-				            	<label class="col-2 col-form-label">Studiengangsleiter</label>
+				            	<label class="col-2 col-form-label">Studiengangsleiter:</label>
 				            	<div class="col-10">
 				            		<input type="checkbox" class="js-toggle-stuleiter" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="studiengangsleiter" data-style="mr-1" data-onstyle="danger">
 				            	</div>
@@ -144,28 +144,28 @@
 				</c:choose>
 	
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">E-Mail</label>
+	                <label class="col-2 col-form-label">E-Mail:</label>
 	                <div class="col-10">
 	                	<input type="text" name="email" class="form-control" placeholder="E-Mail eingeben" value="${dozent.email }" required>
 	                </div>
 	            </div>
 	
 	            <div class="form-group row mb-5">
-	                <label class="col-2 col-form-label">Telefonnummer</label>
+	                <label class="col-2 col-form-label">Telefonnummer:</label>
 	                <div class="col-10">
 	                	<input type="text" name="telefonnummer" class="form-control" placeholder="Telefonnummer eingeben" value="${dozent.telefonnummer }" required>
 	                </div>
 	            </div>
 	
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Schwerpunkte</label>
+	                <label class="col-2 col-form-label">Schwerpunkte:</label>
 	                <div class="col-10">
 	                	<input type="text" name="schwerpunkt" class="form-control" placeholder="Schwerpunkte eingeben" value="${dozent.schwerpunkt }">
 	                </div>
 	            </div>
 	
 	            <div class="form-group row">
-	                <label for="timespaces" class="col-2 col-form-label">Zeitpräferenzen</label>
+	                <label for="timespaces" class="col-2 col-form-label">Zeitpräferenzen:</label>
 	                <div class="col-10">
 	                	<select class="form-control" id="timespaces" name="zeitpraef">
 		                	<c:choose>
@@ -199,7 +199,7 @@
 	            </div>
 	
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Notizen</label>
+	                <label class="col-2 col-form-label">Notizen:</label>
 	                <div class="col-10">
 	                	<textarea class="form-control" name="notiz" placeholder="Hier können Sie Notizen ergänzen">${dozent.notiz }</textarea>
 	                </div>
@@ -225,13 +225,13 @@
 	        <!-- Versuch, Präsenzzeiträume hinzuzufügen -->
 	        
 	      <div class="mt-5">
-	      <label class="col col-form-label"><font size="5">Mögliche Fächer</font></label>
+	      <label class="col col-form-label"><font size="5">Mögliche Fächer:</font></label>
 			<table class="table table-hover" STYLE="margin-bottom: 50px;">
 				<thead class="thead-light">
 					<tr>
-						<th scope="col"><strong>Modul</strong></th>
-						<th scope="col"><strong>Lerneinheit</strong></th>
-						<th scope="col"><strong>Aktionen</strong></th>
+						<th scope="col"><strong>Modul:</strong></th>
+						<th scope="col"><strong>Lerneinheit:</strong></th>
+						<th scope="col"><strong>Aktionen:</strong></th>
 					</tr>
 				</thead>
 				<tbody class="js-table">
@@ -246,7 +246,7 @@
 		<!-- Lerneinheiten hinzufügen -->
 		  <form class="pb-3 js-form-dozanleg">
 	        <div class="form-group row">
-	         <label for="anrede" class="col-2 col-form-label">Modul</label>
+	         <label for="anrede" class="col-2 col-form-label">Modul:</label>
 	                <div class="col-10">
 		                <select class="form-control js-mod-input">
 		                	<option disabled selected value="0">Modul Auswählen</option>
@@ -259,7 +259,7 @@
 	        </div>
 	         
 	        <div class="form-group row d-none js-lee-form">
-	         <label for="anrede" class="col-2 col-form-label">Lerneinheit</label>
+	         <label for="anrede" class="col-2 col-form-label">Lerneinheit:</label>
 	                <div class="col-10">
 		                <select class="form-control js-lee-input" >
 		                	<option disabled selected value="0">Lerneinheit Auswählen</option>

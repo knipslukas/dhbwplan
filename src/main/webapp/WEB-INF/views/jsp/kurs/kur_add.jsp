@@ -22,14 +22,14 @@
 			<form name="generalForm" class="pb-3 js-form-dozanleg" method="POST" action="/kurs/add">
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Name</label>
+					<label class="col-2 col-form-label">Name:</label>
 					<div class="col-10">
 						<input type="text" name="name" class="form-control" placeholder="Name eingeben" required>
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Jahrgang</label>
+					<label class="col-2 col-form-label">Jahrgang:</label>
 					<div class="col-10">
 						<input type="number" name="jahrgang" class="form-control" placeholder="Jahrgang eingeben"
 							required>
@@ -40,7 +40,7 @@
 				
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Studienrichtung</label>
+					<label class="col-2 col-form-label">Studienrichtung:</label>
 					<div class="col-10">
 						<select class="form-control" name="studienrichtung_riid" required>
 							<option disabled selected>Bitte Auswählen</option>
@@ -63,7 +63,7 @@
 				
 				
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Studiengangsleiter</label>
+					<label class="col-2 col-form-label">Studiengangsleiter:</label>
 					<div class="col-10">
 						<select class="form-control" name="dozent_DID" required>
 							<option disabled selected>Bitte Auswählen</option>
@@ -86,7 +86,7 @@
 				
 				
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Anzahl Studierende</label>
+					<label class="col-2 col-form-label">Anzahl Studierende:</label>
 					<div class="col-10">
 						<input type="number" name="anzahlStudierende" class="form-control"
 							placeholder="Anzahl Studierende eingeben" required>

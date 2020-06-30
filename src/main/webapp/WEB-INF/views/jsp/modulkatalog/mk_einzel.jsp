@@ -52,20 +52,20 @@
     	<div class="row">
 	    	<div class="card col-sm-12 col-md-11 col-lg-8 mx-auto doz-card">
 	    		<div class="card-header text-center">
-	    			<h1><i class="fas fa-chalkboard-teacher fa-4x mb-5 mt-3"></i></h1>
+	    			<h1><i class="fas fa-book fa-4x mb-5 mt-3"></i></h1>
 	    			<h1 class="card-title"><strong>${modulkatalog.name}</strong></h1>
 	   			</div>
 	    	
 	    	<div class="card-body">
 	    	
-	    		<div class="row text-center border border-left-0 border-right-0 border-top-0">
+	    		<div class="row text-left border border-left-0 border-right-0 border-top-0">
 	   					<div class="col-6"><p><strong>Studienrichtung:</strong></p></div>
 	   					<div class="col-6">
-	   						<p>${modulkatalog.studienrichtung.studiengang.name} - ${modulkatalog.studienrichtung.name}</p>
+	   						<p><a href="/studiengang/show/${modulkatalog.studienrichtung.studiengang.stID}">${modulkatalog.studienrichtung.studiengang.name} - ${modulkatalog.studienrichtung.name}</a></p>
 	   					</div>
 	   				</div>
 	    	
-	   			<div class="row text-center border border-left-0 border-right-0 border-top-0 pt-3">
+	   			<div class="row text-left border border-left-0 border-right-0 border-top-0 pt-3">
 	   				<div class="col-6"><p><strong>Gültig von:</strong></p></div>
 	   				<div class="col-6">
 	   					<p><fmt:formatDate type = "date" 
@@ -78,17 +78,14 @@
 	   				</div>
 	   			</div>
 	   			
-	    	</div>   			
-	   			<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">     
-	
-			      	<div class="col-12">
-					<table class="table table-hover" STYLE="margin-bottom: 50px; 
-							width:430px; text-align:left; margin-left: auto; margin-right: auto;">
+	    	  			
+	   			<div class="mt-4">
+					<table class="table table-hover tab-einzel" >
 						<caption>Module:</caption>
 						<thead class="thead-light">
 							<tr>
-								<th scope="col"><strong>Name</strong></th>
-								<th scope="col"><strong>Beschreibung</strong></th>
+								<th scope="col"><strong>Name:</strong></th>
+								<th scope="col"><strong>Beschreibung:</strong></th>
 							</tr>
 						</thead>
 						<tbody class="js-table">

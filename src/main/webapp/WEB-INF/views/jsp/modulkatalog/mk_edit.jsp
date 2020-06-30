@@ -23,7 +23,7 @@
 			<form class="pb-3 js-form-dozanleg" method="POST" action="/modulkatalog/update/${modulkatalog.MKID}">
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Name</label>
+					<label class="col-2 col-form-label">Name:</label>
 					<div class="col-10">
 						<input type="text" name="name" class="form-control" placeholder="Bezeichnung eingeben"
 							value="${modulkatalog.name}">
@@ -31,7 +31,7 @@
 				</div>
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Studienrichtung</label>
+					<label class="col-2 col-form-label">Studienrichtung:</label>
 					<div class="col-10">
 						<select class="form-control" name="studienrichtung_riid" required name="studienrichtung" class="form-control">
 							<option disabled selected>Bitte Auswählen</option>
@@ -54,14 +54,14 @@
 				</div>
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Gültig von</label>
+					<label class="col-2 col-form-label">Gültig von:</label>
 					<div class="col-10">
 						<input type="date" name="gueltigVon" class="form-control" value="<fmt:formatDate type = "date" value = "${modulkatalog.gueltigVon}" pattern="YYYY-MM-dd" />" required>
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Gültig bis</label>
+					<label class="col-2 col-form-label">Gültig bis:</label>
 					<div class="col-10">
 						<input type="date" name="gueltigBis" class="form-control" value="<fmt:formatDate type = "date" value = "${modulkatalog.gueltigBis}" pattern="YYYY-MM-dd" />" required>
 					</div>

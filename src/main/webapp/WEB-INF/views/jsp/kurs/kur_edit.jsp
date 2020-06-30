@@ -22,21 +22,21 @@
 	        <form class="pb-3 js-form-dozanleg" method="POST" action="/kurs/update/${kurs.KID}">	      
 	        	
 	             <div class="form-group row">
-	                <label class="col-2 col-form-label">Name</label>
+	                <label class="col-2 col-form-label">Name:</label>
 	                <div class="col-10">
 						<input type="text" name="name" class="form-control" placeholder="Kursname eingeben" value="${kurs.name}" required>	                
 	                </div>
 	            </div>
 	
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Jahrgang</label>
+	                <label class="col-2 col-form-label">Jahrgang:</label>
 	                <div class="col-10">
 						<input type="number" name="jahrgang" class="form-control" placeholder="Kursjahrgang eingeben" value="${kurs.jahrgang}" required>	                
 	                </div>
 	            </div>
 	            
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Studienrichtung</label>
+					<label class="col-2 col-form-label">Studienrichtung:</label>
 					<div class="col-10">
 						<select class="form-control" required name="studienrichtung" class="form-control">
 							<c:choose>
@@ -62,7 +62,7 @@
 				
 				
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Studiengangsleiter</label>
+					<label class="col-2 col-form-label">Studiengangsleiter:</label>
 					<div class="col-10">
 						<select class="form-control" name="dozent" required>
 							<c:choose>
@@ -90,7 +90,7 @@
 				
 	            
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Anzahl der Studierenden</label>
+	                <label class="col-2 col-form-label">Anzahl der Studierenden:</label>
 	                <div class="col-10">
 						<input type="text" name="anzahlStudierende" class="form-control" placeholder="Anzahl der Studiernden eingeben" value="${kurs.anzahlStudierende}" required>	                
 	                </div>

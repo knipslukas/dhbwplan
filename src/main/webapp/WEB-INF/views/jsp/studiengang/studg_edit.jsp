@@ -24,7 +24,7 @@
 
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Studiengang</label>
+					<label class="col-2 col-form-label">Studiengang:</label>
 					<div class="col-10">
 						<input type="text" name="name" class="form-control" placeholder="Studiengangsname eingeben"
 							value="${studiengang.name }">
@@ -32,7 +32,7 @@
 				</div>
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Beschreibung</label>
+					<label class="col-2 col-form-label">Beschreibung:</label>
 					<div class="col-10">
 						<input type="text" name="beschreibung" class="form-control"
 							placeholder="Hier können Sie eine Beschreibung ergänzen"

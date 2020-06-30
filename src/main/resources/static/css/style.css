@@ -312,6 +312,12 @@ a:hover
 }
 caption {
 	font-weight: bold;
+	font-size: 15px;
 	caption-side: top; 
 	color: black;
+}
+
+.tab-einzel {
+	margin-bottom: 50px; 
+	text-align:left; 
 }
