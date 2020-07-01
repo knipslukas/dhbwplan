@@ -29,38 +29,120 @@
 					</div>
 				</div>
 
+				
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Studienjahr:</label>
+	                <label for="studienjahr" class="col-2 col-form-label">Studienjahr:</label>
+	                <div class="col-10">
+	                	<%-- Dropdown Auswahl für Anrede > 3mal zum Anlegen der Dropdowns für den jeweils ausgewählten Wert  --%>
+		                <select class="form-control" id="studienjahr" name="studienjahr">
+		                	<c:choose>
+		                		<c:when test="${modul.studienjahr eq '1' }">
+		                			<option value="1" selected>Studienjahr 1</option>
+		                			<option value="2">Studienjahr 2</option>
+		                			<option value="3">Studienjahr 3</option>
+		                		</c:when>
+		                		<c:when test="${modul.studienjahr eq '2' }">
+		                			<option value="1">Studienjahr 1</option>
+		                			<option value="2" selected>Studienjahr 2</option>
+		                			<option value="3">Studienjahr 3</option>
+		                		</c:when>
+		                		<c:otherwise>
+		                			<option value="1">Studienjahr 1</option>
+		                			<option value="2">Studienjahr 2</option>
+		                			<option value="3" selected>Studienjahr 3</option>
+		                		</c:otherwise>
+		                	</c:choose>
+		                </select>
+	                </div>
+	            </div>
+
+				<div class="form-group row">
+					<label class="col-2 col-form-label">Modulkatalog:</label>
 					<div class="col-10">
-						<input type="text" name="studienjahr" class="form-control" placeholder="Studienjahr eingeben"
-							value="${modul.studienjahr}">
+						<select class="form-control" required name="modulkatalog" class="modulkatalog">
+							<c:choose>
+								<c:when test="${modulkatalogList ne null}">
+										<c:forEach items="${modulkatalogList}" var="mkid">
+											<c:choose>
+												<c:when test="${!(mkid.MKID eq modulkatalog.MKID)}">
+													<option value="${mkid.MKID}">${modulkatalog.name} </option>
+												</c:when> 
+												<c:when test="${mkid.MKID eq modulkatalog.MKID}">
+													<option value="${mkid.MKID}" selected>${modulkatalog.name}</option>
+												</c:when>
+											</c:choose>
+										</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<option disabled>Kein Modulkatalog vorhanden</option>
+								</c:otherwise>
+							</c:choose>
+						</select>
 					</div>
 				</div>
 
+				
+				<div class="form-group row">
+	                <label for="moduldauer" class="col-2 col-form-label">Moduldauer:</label>
+	                <div class="col-10">
+	                	<%-- Dropdown Auswahl für Anrede > 3mal zum Anlegen der Dropdowns für den jeweils ausgewählten Wert  --%>
+		                <select class="form-control" id="moduldauer" name="moduldauer">
+		                	<c:choose>
+		                		<c:when test="${modul.moduldauer eq '1' }">
+		                			<option value="1" selected>1 Semester</option>
+		                			<option value="2">2 Semester</option>
+		                		</c:when>
+		                		<c:otherwise>
+		                			<option value="1">1 Semester</option>
+		                			<option value="2" selected>2 Semester</option>
+		                		</c:otherwise>
+		                	</c:choose>
+		                </select>
+	                </div>
+	            </div>
+				
+				
+				
+				<div class="form-group row">
+	                <label for="modulart" class="col-2 col-form-label">Modulart:</label>
+	                <div class="col-10">
+	                	<%-- Dropdown Auswahl für Anrede > 3mal zum Anlegen der Dropdowns für den jeweils ausgewählten Wert  --%>
+		                <select class="form-control" id="modulart" name="modulart">
+		                	<c:choose>
+		                		<c:when test="${modul.modulart eq 'Pflichtmodul' }">
+		                			<option value="Pflichtmodul" selected>Pflichtmodul</option>
+		                			<option value="Kernmodul">Kernmodul</option>
+		                		</c:when>
+		                		<c:otherwise>
+		                			<option value="Pflichtmodul">Pflichtmodul</option>
+		                			<option value="Kernmodul" selected>Kernmodul</option>
+		                		</c:otherwise>
+		                	</c:choose>
+		                </select>
+	                </div>
+	            </div>
+				
+
 
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Moduldauer:</label>
-					<div class="col-10">
-						<input type="text" name="moduldauer" class="form-control" placeholder="Moduldauer eingeben"
-							value="${modul.moduldauer}">
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<label class="col-2 col-form-label">Modulart:</label>
-					<div class="col-10">
-						<input type="text" name="modulart" class="form-control" placeholder="Modulart eingeben"
-							value="${modul.modulart}">
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<label class="col-2 col-form-label">Prüfungsleistung:</label>
-					<div class="col-10">
-						<input type="text" name="pruefungsleistung" class="form-control" placeholder="Prüfungsleistung eingeben"
-							value="${modul.pruefungsleistung}">
-					</div>
-				</div>
+	                <label for="pruefungsleistung" class="col-2 col-form-label">Prüfungsleistung:</label>
+	                <div class="col-10">
+	                	<%-- Dropdown Auswahl für Anrede > 3mal zum Anlegen der Dropdowns für den jeweils ausgewählten Wert  --%>
+		                <select class="form-control" id="pruefungsleistung" name="pruefungsleistung">
+		                	<c:choose>
+		                		<c:when test="${modul.pruefungsleistung eq 'Klausur' }">
+		                			<option value="Klausur" selected>Klausur</option>
+		                			<option value="Seminararbeit">Seminararbeit</option>
+		                		</c:when>
+		                		<c:otherwise>
+		                			<option value="Klausur">Klausur</option>
+		                			<option value="Seminararbeit" selected>Seminararbeit</option>
+		                		</c:otherwise>
+		                	</c:choose>
+		                </select>
+	                </div>
+	            </div>
+				
 
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Beschreibung:</label>
@@ -70,13 +152,26 @@
 					</div>
 				</div>
 
+
+				
 				<div class="form-group row">
-					<label class="col-2 col-form-label">Sprache:</label>
-					<div class="col-10">
-						<input type="text" name="sprache" class="form-control" placeholder="Sprache eingeben"
-							value="${modul.sprache}">
-					</div>
-				</div>
+	                <label for="sprache" class="col-2 col-form-label">Prüfungsleistung:</label>
+	                <div class="col-10">
+	                	<%-- Dropdown Auswahl für Anrede > 3mal zum Anlegen der Dropdowns für den jeweils ausgewählten Wert  --%>
+		                <select class="form-control" id="sprache" name="sprache">
+		                	<c:choose>
+		                		<c:when test="${modul.sprache eq 'Deutsch' }">
+		                			<option value="Deutsch" selected>Deutsch</option>
+		                			<option value="Englisch">Englisch</option>
+		                		</c:when>
+		                		<c:otherwise>
+		                			<option value="Deutsch">Deutsch</option>
+		                			<option value="Englisch" selected>Englisch</option>
+		                		</c:otherwise>
+		                	</c:choose>
+		                </select>
+	                </div>
+	            </div>
 
 				<div class="form-group row">
 					<label class="col-2 col-form-label">ECTS-Punkte:</label>
