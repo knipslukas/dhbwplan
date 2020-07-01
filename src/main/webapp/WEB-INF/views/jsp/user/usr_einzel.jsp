@@ -53,8 +53,15 @@
 	   	<div class="alert dozentuebersicht d-flex align-items-center" role="alert">
 			<h1 class="text-white my-1">User Einstellungen</h1>
 			<c:if test="${!error }">
-				<button type="button" class="btn ml-auto DHBWbutton" data-toggle="modal" data-target="#deleteModal">Löschen</button>
-				<a href="/user/show" class="btn ml-2 DHBWbutton">Zurück</a>
+				<c:choose>
+					<c:when test="${!ownUser }">
+			   			<button type="button" class="btn ml-auto DHBWbutton" data-toggle="modal" data-target="#deleteModal">Löschen</button>
+			   			<a href="/user/show" class="btn ml-2 DHBWbutton">Zurück</a>
+			   		</c:when>
+			   		<c:otherwise>
+			   			<a href="/user/show" class="btn ml-auto DHBWbutton">Zurück</a>
+			   		</c:otherwise>
+			   	</c:choose>
 			</c:if>
         </div>
     	<!-- Ende Orentierungszeile -->
@@ -73,18 +80,18 @@
 		    			<h1 class="card-title"><strong>Administrator ${user.displayName}</strong></h1>
 		    		</div>
 		   			<div class="card-body">
-		   				<div class="row text-center border border-left-0 border-right-0 border-top-0">
-		   					<div class="col-6"><p><strong>Anzeigename</strong></p></div>
+		   				<div class="row text-left border border-left-0 border-right-0 border-top-0">
+		   					<div class="col-6"><p><strong>Anzeigename:</strong></p></div>
 		   					<div class="col-6">
 		   						<p>${user.displayName }</p>
 		   					</div>
 		   				</div>
-		   				<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
-		   					<div class="col-6"><p><strong>E-Mail</strong></p></div>
+		   				<div class="row mt-4 text-left border border-left-0 border-right-0 border-top-0">
+		   					<div class="col-6"><p><strong>E-Mail:</strong></p></div>
 		   					<div class="col-6">
 		   						<p><a href="mailto:${dozent.email }">${dozent.email }</a></p>
 		   					</div>
-		   					<div class="col-6"><p><strong>Username</strong></p></div>
+		   					<div class="col-6"><p><strong>Username:</strong></p></div>
 		   					<div class="col-6">
 		   						<p>${user.username}</p>
 		   					</div>

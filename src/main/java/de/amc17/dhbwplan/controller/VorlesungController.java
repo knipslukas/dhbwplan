@@ -51,13 +51,13 @@ public class VorlesungController {
 		return "redirect:/vorlesung/";
 	}
 
-	@PostMapping(path = "/update/{aID}")
+	@PostMapping(path = "/update/{vID}")
 	public String updateVorlesung(RedirectAttributes redirectAttributes, @ModelAttribute Vorlesung aVorlesung) {
 		if (mVorlesungService.updateVorlesung(aVorlesung)) {
-			redirectAttributes.addAttribute("VorlesungUpdated", true);
+			redirectAttributes.addAttribute("vorlesungUpdated", true);
 		}
 		else {
-			redirectAttributes.addAttribute("VorlesungUpdated", false);
+			redirectAttributes.addAttribute("vorlesungUpdated", false);
 		}
 		return "redirect:/vorlesung/show/"+aVorlesung.getVID();
 	}
@@ -87,7 +87,7 @@ public class VorlesungController {
 		 
 	 }
 	 
-	 @GetMapping(value = "/edit/{dID}")
+	 @GetMapping(value = "/edit/{vID}")
 	 public String editVorlesung(Model model, @PathVariable int vID) {
 		 model.addAttribute("vorlesung", mVorlesungService.getVorlesungByVID(vID));
 		 model.addAttribute("pageTitle", "DHBW - Vorlesung bearbeiten");

@@ -51,31 +51,84 @@
     	<div class="row">
 	    	<div class="card col-sm-12 col-md-11 col-lg-8 mx-auto doz-card">
 	    		<div class="card-header text-center">
-	    			<h1><i class="fas fa-chalkboard-teacher fa-4x mb-5 mt-3"></i></h1>
+	    			<h1><i class="fas fa-user-graduate fa-4x mb-5 mt-3"></i></h1>
 	    			<h1 class="card-title"><strong>${kurs.name} </strong></h1>
-	    			<h6 class="text-secondary">Kurs</h6>
 	    		
 	    		</div>
-	   			<div class="card-body">
-	   				<div class="row text-center border border-left-0 border-right-0 border-top-0">
-	   					<div class="col-6"><p><strong>Name</strong></p></div>
-	   					<div class="col-6">
-	   						<p>${kurs.name}</p>
-	   					</div>
-	   				</div>
-	   				<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
-	   					<div class="col-6"><p><strong>Jahrgang</strong></p></div>
-	   					<div class="col-6">
-	   						<p>${kurs.jahrgang}</p>
+	   			<div class="card-body">	   				
+	   				   				
+	   				<div class="row mt-4 text-left border border-left-0 border-right-0 border-top-0">
+	   					<div class="col-6"><p><strong>Studienrichtung:</strong></p></div>
+	   					<div class="col-6 ">
+	   						<p><a href="/studiengang/show/${kurs.studienrichtung.studiengang.stID}"> ${kurs.studienrichtung.studiengang.name} - ${kurs.studienrichtung.name} </a></p>
 	   					</div>
 	   				</div>
 	   				
-	   				<div class="row mt-4 text-center">
-	   					<div class="col-6"><p><strong>Anzahl Studierende </strong></p></div>
-	   					<div class="col-6">
+	   				<div class="row mt-4 text-left border border-left-0 border-right-0 border-top-0">
+	   					<div class="col-6"><p><strong>Jahrgang:</strong></p></div>
+	   					<div class="col-6 ">
+	   						<p>${kurs.jahrgang}</p>
+	   					</div>
+	   				</div>
+	
+					<div class="row mt-4 text-left border border-left-0 border-right-0 border-top-0">
+	   					<div class="col-6"><p><strong>Studiengangsleiter:</strong></p></div>
+	   					<div class="col-6 ">
+	   						<p>${kurs.dozent.anrede} ${kurs.dozent.vorname} ${kurs.dozent.nachname}</p>
+	   					</div>
+	   				</div>
+	
+	   				
+	   				<div class="row mt-4 text-left">
+	   					<div class="col-6"><p><strong>Anzahl Studierende:</strong></p></div>
+	   					<div class="col-6 ">
 	   						<p>${kurs.anzahlStudierende}</p>
 	   					</div>
 	   				</div>
+	         
+	        <!-- Versuch, Präsenzzeiträume hinzuzufügen -->
+	<!--        <div>
+	       <label class="col-2 col-form-label">Präsenzzeiträume</label>
+	       </div> -->
+	      <div class="mt-4">
+			<table class="table table-hover tab-einzel" >
+				<caption>Präsenzzeiträume:</caption>
+				<thead class="thead-light">
+					<tr>
+						<th scope="col"><strong>Semester:</strong></th>
+						<th scope="col"><strong>Von:</strong></th>
+						<th scope="col"><strong>Bis:</strong></th>
+					</tr>
+				</thead>
+				<tbody class="js-table">
+				<!-- 	Beispieleintrag -->
+					<c:choose>
+						<c:when test="${przListe ne null }">
+							<c:forEach items="${przListe}" var="przListe">
+								<tr>
+									<td scope="row" class="align-middle">${przListe.semester }</td>
+									<td scope="row" class="align-middle">${przListe.von }</td>
+									<td scope="row" class="align-middle">${przListe.bis }</td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr class="table-warning">
+								<td>Keine Präsenzzeiträume vorhanden</td>
+								<td></td>
+								<td></td>
+								<td></td>
+
+							</tr>
+						</c:otherwise>
+					</c:choose>
+
+				</tbody>
+			</table>
+			
+			
+			
+		</div>
 	   			</div>
 	    	</div>
 		</div>
@@ -86,7 +139,7 @@
 			<div class="modal-content">
 				<div class="modal-body">
 					<h1><strong>Achtung!</strong></h1>
-					<h4>Wollen Sie wirklich ${kurs.name}  löschen?</h4>
+					<h4>Wollen Sie wirklich den Kurs ${kurs.name}  löschen?</h4>
 				</div>
 				
 				<div class="modal-footer">

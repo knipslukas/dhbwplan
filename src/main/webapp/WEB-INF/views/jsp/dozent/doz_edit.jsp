@@ -24,7 +24,7 @@
 	        <form class="pb-3 js-form-dozanleg" method="POST" action="/dozent/update/${dozent.DID }">	      
 	        	<%-- Bearbeiten Anrede  --%>  
 	            <div class="form-group row">
-	                <label for="anrede" class="col-2 col-form-label">Anrede</label>
+	                <label for="anrede" class="col-2 col-form-label">Anrede:</label>
 	                <div class="col-10">
 	                	<%-- Dropdown Auswahl für Anrede > 3mal zum Anlegen der Dropdowns für den jeweils ausgewählten Wert  --%>
 		                <select class="form-control" id="anrede" name="anrede">
@@ -51,7 +51,7 @@
 				
 				<%-- Bearbeiten Titel mit Text Input-Box --%>
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Titel</label>
+	                <label class="col-2 col-form-label">Titel:</label>
 	                <div class="col-10">
 	                	<input type="text" name="titel" class="form-control" placeholder="Titel eingeben" value="${dozent.titel }">
 	            	</div>
@@ -59,7 +59,7 @@
 		
 				<%-- Bearbeiten Vorname mit Text Input-Box --%>
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Vorname</label>
+	                <label class="col-2 col-form-label">Vorname:</label>
 	                <div class="col-10">
 	                	<input type="text" name="vorname" class="form-control" placeholder="Vorname eingeben" value="${dozent.vorname }" required>
 	                </div>
@@ -67,7 +67,7 @@
 	
 				<%-- Bearbeiten Nachname mit Text Input-Box --%>	
 	            <div class="form-group row mb-5">
-	                <label class="col-2 col-form-label">Nachname</label>
+	                <label class="col-2 col-form-label">Nachname:</label>
 	                <div class="col-10">
 						<input type="text" name="nachname" class="form-control" placeholder="Nachname eingeben" value="${dozent.nachname }" required>	                
 	                </div>
@@ -75,7 +75,7 @@
 	            
 	            <%-- Bearbeiten Straße und Hausnummer mit Text Input-Box --%>
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Adresse</label>
+	                <label class="col-2 col-form-label">Adresse:</label>
 	                <div class="col-10">
 	                	<input type="text" name="strassehaus" class="form-control" placeholder="Straße und Hausnummer eingeben" value="${dozent.strassehaus }" required>
 	                </div>
@@ -83,7 +83,7 @@
 				
 				<%-- Bearbeiten PLZ mit Text Input-Box --%>
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Postleitzahl</label>
+	                <label class="col-2 col-form-label">Postleitzahl:</label>
 	                <div class="col-10">
 	                	<input type="text" name="plz" class="form-control" placeholder="Postleitzahl eingeben" value="${dozent.plz }" required>
 	                </div>
@@ -91,7 +91,7 @@
 	            
 	            <%-- Bearbeiten Stadt mit Text Input-Box --%>
 	            <div class="form-group row mb-5">
-	                <label class="col-2 col-form-label">Stadt</label>
+	                <label class="col-2 col-form-label">Stadt:</label>
 	                <div class="col-10">
 	                	<input type="text" name="stadt" class="form-control" placeholder="Stadt eingeben" value="${dozent.stadt }" required>
 	                </div>
@@ -103,7 +103,7 @@
 					<%-- Zustand:1 Wenn Dozent.intern gleich Ja/true --%>
 					<c:when test="${dozent.intern }">
 						<div class="form-group row">
-			            	<label class="col-2 col-form-label">DHBW Intern</label>
+			            	<label class="col-2 col-form-label">DHBW-intern:</label>
 			            	<div class="col-10">
 			            		<%-- Tag als checked (Ja/True) setzen --%>
 			            		<input checked class="js-toggle-intern" type="checkbox" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="intern" data-style="mr-1" data-onstyle="danger">
@@ -113,7 +113,7 @@
 			            <%-- Eingabefeld für Unternehmen bleibt eingeklappt (colapse) da dann Unternehmenwert automatisch gesetzt ist. --%>
 			            <div class="collapse js-collapse-intern">
 			            	<div class="form-group row">
-				                <label class="col-2 col-form-label">Unternehmen</label>
+				                <label class="col-2 col-form-label">Unternehmen:</label>
 				                <div class="col-10">
 				                	<input type="text" name="unternehmen" class="form-control js-toggle-untern" placeholder="Unternehmen eingeben" value="${dozent.unternehmen }">
 				                </div>
@@ -123,7 +123,7 @@
 			            <%-- Bei intern gleich Ja (true) Tag für Studiengangsleiter anzeigen --%>
 			            <div class="collapse js-collapse-stuleiter show">
 				            <div class="form-group row">
-				            	<label class="col-2 col-form-label">Studiengangsleiter</label>
+				            	<label class="col-2 col-form-label">Studiengangsleiter:</label>
 				            	<div class="col-10">
 				            		<%-- Wenn Studiengansleiter gleich Ja(true) dann Studiengansleiter Checkbox gleich checked(ja/true) --%>
 				            		<input <c:if test="${dozent.studiengangsleiter}">checked</c:if> type="checkbox" class="js-toggle-stuleiter" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="studiengangsleiter" data-style="mr-1" data-onstyle="danger">
@@ -134,7 +134,7 @@
 					<%-- Zustand:2 Wenn Dozent.intern gleich Nein/false --%>
 					<c:otherwise>
 						<div class="form-group row">
-			            	<label class="col-2 col-form-label">DHBW Intern</label>
+			            	<label class="col-2 col-form-label">DHBW-intern:</label>
 			            	<div class="col-10">
 			            		<%-- darum hier kein checked --%>
 			            		<input class="js-toggle-intern" type="checkbox" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="intern" data-style="mr-1" data-onstyle="danger">
@@ -143,7 +143,7 @@
 			            <%--Anzeigen des Bearbeiten Text Feld für Unternehmen --%>
 			            <div class="collapse js-collapse-intern show">
 			            	<div class="form-group row">
-				                <label class="col-2 col-form-label">Unternehmen</label>
+				                <label class="col-2 col-form-label">Unternehmen:</label>
 				                <div class="col-10">
 				                	<input type="text" name="unternehmen" class="form-control js-toggle-untern" placeholder="Unternehmen eingeben" value="${dozent.unternehmen }">
 				                </div>
@@ -152,7 +152,7 @@
 			            <%--Nicht anzeigen des Tags für studiengangleiter,weil Studiengangleiter nur ausgewählt werden kann, wenn Dozent auch Intern angestellt ist --%>
 			            <div class="collapse js-collapse-stuleiter">
 				            <div class="form-group row">
-				            	<label class="col-2 col-form-label">Studiengangsleiter</label>
+				            	<label class="col-2 col-form-label">Studiengangsleiter:</label>
 				            	<div class="col-10">
 				            		<input type="checkbox" class="js-toggle-stuleiter" data-toggle="toggle" data-size="sm" data-on="Ja" data-off="Nein" name="studiengangsleiter" data-style="mr-1" data-onstyle="danger">
 				            	</div>
@@ -163,7 +163,7 @@
 				
 				<%-- Bearbeiten Email mit Text Input-Box --%>
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">E-Mail</label>
+	                <label class="col-2 col-form-label">E-Mail:</label>
 	                <div class="col-10">
 	                	<input type="text" name="email" class="form-control" placeholder="E-Mail eingeben" value="${dozent.email }" required>
 	                </div>
@@ -171,7 +171,7 @@
 	
 				<%-- Bearbeiten Telefonnummer mit Text Input-Box --%>
 	            <div class="form-group row mb-5">
-	                <label class="col-2 col-form-label">Telefonnummer</label>
+	                <label class="col-2 col-form-label">Telefonnummer:</label>
 	                <div class="col-10">
 	                	<input type="text" name="telefonnummer" class="form-control" placeholder="Telefonnummer eingeben" value="${dozent.telefonnummer }" required>
 	                </div>
@@ -179,7 +179,7 @@
 	
 				<%-- Bearbeiten Schwerpunkt mit Text Input-Box --%>
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Schwerpunkte</label>
+	                <label class="col-2 col-form-label">Schwerpunkte:</label>
 	                <div class="col-10">
 	                	<input type="text" name="schwerpunkt" class="form-control" placeholder="Schwerpunkte eingeben" value="${dozent.schwerpunkt }">
 	                </div>
@@ -187,7 +187,7 @@
 	            
 				<%-- Bearbeiten Zeitpräferenzen mit Dropdown Auswahlfenster --%>
 	            <div class="form-group row">
-	                <label for="timespaces" class="col-2 col-form-label">Zeitpräferenzen</label>
+	                <label for="timespaces" class="col-2 col-form-label">Zeitpräferenzen:</label>
 	                <div class="col-10">
 	                	<%-- Erstellen der Dropdowns > 4-mal für den jeweiligen vorherig ausgewählten Wert --%>
 	                	<select class="form-control" id="timespaces" name="zeitpraef">
@@ -223,7 +223,7 @@
 	
 				<%-- Bearbeiten Notizen mit Text Input-Box --%>
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Notizen</label>
+	                <label class="col-2 col-form-label">Notizen:</label>
 	                <div class="col-10">
 	                	<textarea class="form-control" name="notiz" placeholder="Hier können Sie Notizen ergänzen">${dozent.notiz }</textarea>
 	                </div>
@@ -240,15 +240,209 @@
 	                <button type="submit" class="btn btn-success">Speichern </button>
 	                <button type="reset" class="btn btn-danger">Zurücksetzen </button>
 	            </div>
-	
+				
 	        </form>
 	
-	        <%-- Ende Formular --%>
-	
-	        <%-- Ende Content --%>
+	        <!-- Ende Formular -->
+			<!-- Beginn Doz-7-1 -->
+	        
+	        <!-- Versuch, Präsenzzeiträume hinzuzufügen -->
+	        
+	      <div class="mt-5">
+	      <label class="col col-form-label"><font size="5">Mögliche Fächer:</font></label>
+			<table class="table table-hover" STYLE="margin-bottom: 50px;">
+				<thead class="thead-light">
+					<tr>
+						<th scope="col"><strong>Modul:</strong></th>
+						<th scope="col"><strong>Lerneinheit:</strong></th>
+						<th scope="col"><strong>Aktionen:</strong></th>
+					</tr>
+				</thead>
+				<tbody class="js-table">
+				<!-- 	Beispieleintrag -->
+					
+
+				</tbody>
+			</table>
+			
+		</div>
+		
+		<!-- Lerneinheiten hinzufügen -->
+		  <form class="pb-3 js-form-dozanleg">
+	        <div class="form-group row">
+	         <label for="anrede" class="col-2 col-form-label">Modul:</label>
+	                <div class="col-10">
+		                <select class="form-control js-mod-input">
+		                	<option disabled selected value="0">Modul Auswählen</option>
+		                	<c:forEach items="${modulListe}" var="modul">
+		                		<option value="${modul.MID}">${modul.bezeichnung}</option>
+		                	</c:forEach>
+		                </select>
+	                </div>
+	               
+	        </div>
+	         
+	        <div class="form-group row d-none js-lee-form">
+	         <label for="anrede" class="col-2 col-form-label">Lerneinheit:</label>
+	                <div class="col-10">
+		                <select class="form-control js-lee-input" >
+		                	<option disabled selected value="0">Lerneinheit Auswählen</option>
+		                
+		                </select>
+	                </div>
+	               
+	        </div>    
+	           
+	 
+	          <input type="hidden" value="${dozent.DID }" class="js-dozid">
+             
+              <!-- Das hier muss IMMER dazu, das hilft Spring zu erkennen, ob Angriffe auf die Übertragung stattgefunden haben oder nicht -->
+	         <!-- Muss das dazu??? <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> -->
+	            
+			</form>
+			
+			
+	               <!-- Final Buttons-->
+	            <div class="finalButtons" STYLE="margin-bottom: 50px;">
+	                <button type="button" class="btn btn-success d-none js-submit-lee">Speichern </button>
+	               
+	            </div>
+	        <!-- Ende Doz-7-1 -->
+	        <!-- Ende Content -->
 	    </div>
 	</div>
 	
 	<script src="${pageContext.request.contextPath}/static/js/dozent.js"></script>
+	
+	<script>
+
+		$(".js-mod-input").change(function () {
+			if ($(".js-mod-input").val() == 0) {
+				alert("Bitte ein Modul auswählen");
+			}
+			else {
+				$.ajax({
+					url: "/dozent/getLee/"+$(".js-mod-input").val(),
+					type: "GET",
+					success: function(result) {
+						renderLeeInput(result);
+					},
+					error: function(status) {
+						alert("Eingabe nicht möglich! HTTP Fehler: "+status.status);
+					}
+				})
+			}
+		});
+
+		function renderLeeInput(lees) {
+			$(".js-lee-input").html(function() {
+				var list = "";
+				
+				$.each(lees, function(i, lee) {
+					list += '<option value="'+lee.leid+'">'+lee.name+'</option>';
+				})
+				if (list!=""){
+					$(".js-submit-lee").removeClass("d-none");
+					return list;
+				}else{
+					list += "<option disabled selected>Keine Lerneinheiten vorhanden</option>";
+					$(".js-submit-lee").addClass("d-none");
+					return list;
+				}
+			})
+			$(".js-lee-form").removeClass("d-none");
+		}
+		
+		$(".js-submit-lee").click(function(){
+			var lee = new Object();
+			lee.leid = $(".js-lee-input").val();
+			lee.dozid = $(".js-dozid").val();
+			$.ajax({
+				url: "/dozent/addLEE",
+				type: "POST",
+			    contentType: "application/json",
+			    data:JSON.stringify(lee),
+			    success: function(result){
+				    
+				    getList();
+			    },
+		    	error: function(status) {
+			    	alert("Eingabe nicht möglich! HTTP Fehler: "+status.status);
+			    }
+			})
+			$(".js-form-semester").val("");
+			$(".js-form-von").val("");
+			$(".js-form-bis").val("");
+		});
+		
+			
+		$(document).ready(function(){
+			getList();
+		});
+	
+		function getList() {
+			$.ajax({
+				url: "/dozent/getAllLee/"+$(".js-dozid").val(),
+				type: "GET",
+				success: function (result) {						
+						renderList(result);
+	
+				},
+				error: function(status) {
+					alert("Eingabe nicht möglich! HTTP Fehler: "+status.status);
+				}
+			})
+		}
+	
+		function renderList(entrys) {
+			$(".js-table").html(function() {
+				var list = "";
+				$.each(entrys, function(i, lee) {
+					list += "<tr>";
+					list += "<td>"+lee.modulName+"</td>";
+					list += "<td>"+lee.name+"</td>";
+					list += '<td class="js-lee-delete'+lee.leid+'"><button style="cursor:pointer" onClick="deleteLEE('+lee.leid+')"><i class="fas fa-trash-alt"></i></button></td>';
+					list += "</tr>";
+				})
+				if (list!=""){
+					return list;
+				}else{
+					list += "<tr class='table-warning'>";
+					list += "<td>Keine Module/Lerneinheiten vorhanden</td>";
+					list += "<td></td>";
+					list += "<td></td>";
+					list += "</tr>";
+					return list;
+				}
+			})
+		
+		}
+	
+		function deleteLEE(leid){
+			$(".js-lee-delete"+leid).html(function () {
+				return '<i class="fas fa-spinner fa-pulse"></i>';
+			})
+			var dto = new Object();
+			dto.dozid = $(".js-dozid").val();
+			dto.leid = leid;
+			console.table(dto)
+			$.ajax({
+				url:"/dozent/deleteLee",
+				type:"POST",
+				contentType:"application/json",
+				data:JSON.stringify(dto),
+				success: function(result){
+					getList();
+					
+					},
+				error: function(status){
+					alert("Eingabe nicht möglich! HTTP Fehler: "+status.status);
+					console.table(status);
+					}
+			})	
+		}
+		
+		
+	</script>
 
 </template:template>

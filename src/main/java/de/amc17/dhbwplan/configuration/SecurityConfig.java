@@ -12,12 +12,20 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	
-
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http 
+		http
+			.csrf()
+				.ignoringAntMatchers("/modul/addLEE")
+				.ignoringAntMatchers("/modul/deleteLEE/**")
+				.ignoringAntMatchers("/studiengang/addSturi")
+				.ignoringAntMatchers("/studiengang/deleteSturi/**")
+				.ignoringAntMatchers("/kurs/addPRZ")
+				.ignoringAntMatchers("/kurs/deletePRZ/**")
+				.ignoringAntMatchers("/dozent/addLEE")
+				.ignoringAntMatchers("/dozent/deleteLee")
+				.and()
 			.authorizeRequests()
 				.antMatchers("/static/**").permitAll()
 				.antMatchers("/setup").permitAll()
@@ -36,15 +44,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.logoutUrl("/usrlgt")
 				.permitAll();
 	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-	    return new BCryptPasswordEncoder();
+		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Bean
-    public AuthenticationManager customAuthenticationManager() throws Exception {
-        return authenticationManager();
-    }
-	
+	public AuthenticationManager customAuthenticationManager() throws Exception {
+		return authenticationManager();
+	}
+
 }

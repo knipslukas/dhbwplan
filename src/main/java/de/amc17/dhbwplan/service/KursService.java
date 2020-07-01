@@ -7,8 +7,10 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import de.amc17.dhbwplan.entity.Kurs;
+import de.amc17.dhbwplan.entity.Praesenzzeitraum;
 import de.amc17.dhbwplan.repository.KursRepository;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -50,9 +52,17 @@ public class KursService {
 
 	public boolean updateKurs(Kurs aKurs) {
 		try {
-			// TO-DO: Testen
-			kursRepository.save(aKurs);
-
+			Kurs oKurs;
+			if ((oKurs = kursRepository.findByKID(aKurs.getKID()))!= null) { 
+				oKurs.setName(aKurs.getName());
+				oKurs.setJahrgang(aKurs.getJahrgang());
+				oKurs.setStudienrichtung(aKurs.getStudienrichtung());
+				oKurs.setDozent(aKurs.getDozent());
+				kursRepository.save(oKurs);
+			} else {
+				LOG.warn("Kurs not found");
+				return false;
+			}
 		} catch (Exception e) {
 			LOG.error(e);
 			return false;
@@ -99,5 +109,7 @@ public class KursService {
 			return null;
 		}
 	}
+	
+
 
 }

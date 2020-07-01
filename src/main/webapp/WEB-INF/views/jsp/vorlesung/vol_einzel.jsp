@@ -53,18 +53,18 @@
 	    		<div class="card-header text-center">
 	    			<h1><i class="fas fa-calendar-alt fa-4x mb-5 mt-3"></i></h1>
 	    			<h1 class="card-title"><strong>${vorlesung.name}</strong></h1>
-	    				<h6 class="text-secondary">Vorlesung</h6>
+
 	    		
 	    		</div>
 	   			<div class="card-body">
-	   				<div class="row text-center border border-left-0 border-right-0 border-top-0">
-	   					<div class="col-6"><p><strong>Name</strong></p></div>
+	   				<div class="row text-left border border-left-0 border-right-0 border-top-0">
+	   					<div class="col-6"><p><strong>Name:</strong></p></div>
 	   					<div class="col-6">
 	   						<p>${vorlesung.name}</p>
 	   					</div>
 	   				</div>
-	   				<div class="row mt-4 text-center border border-left-0 border-right-0 border-top-0">
-	   					<div class="col-6"><p><strong>Vorlesungsstunden</strong></p></div>
+	   				<div class="row mt-4 text-left border border-left-0 border-right-0 border-top-0">
+	   					<div class="col-6"><p><strong>Vorlesungsstunden:</strong></p></div>
 	   					<div class="col-6">
 	   						<p>${vorlesung.vorlesungsstunden}</p>
 	   					</div>
@@ -89,6 +89,6 @@
 			</div>
 		</div>
 	</div>
-	<script src="${pageContext.request.contextPath}/static/js/dozent.js"></script>
+	<script src="${pageContext.request.contextPath}/static/js/vorlesung.js"></script>
 
 </template:template>

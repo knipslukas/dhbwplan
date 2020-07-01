@@ -1,6 +1,7 @@
 package de.amc17.dhbwplan.entity;
 
 import java.io.Serializable;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -8,8 +9,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Praesenzzeitraum implements Serializable {
@@ -26,11 +31,15 @@ public class Praesenzzeitraum implements Serializable {
 	
 	private int semester;
 	
-	@Temporal(TemporalType.TIME)
 	private Date von;
+
 	
-	@Temporal(TemporalType.TIME)
 	private Date bis;
+	
+	@ManyToOne 
+	@JoinColumn(name="kurs_ID")
+	@JsonIgnore
+	private Kurs kurs;
 	
 	public int getPID() {
 		return PID;
@@ -53,6 +62,7 @@ public class Praesenzzeitraum implements Serializable {
 	}
 
 	public void setVon(Date von) {
+		
 		this.von = von;
 	}
 
@@ -63,4 +73,14 @@ public class Praesenzzeitraum implements Serializable {
 	public void setBis(Date bis) {
 		this.bis = bis;
 	}
+
+	public Kurs getKurs() {
+		return kurs;
+	}
+
+	public void setKurs(Kurs kurs) {
+		this.kurs = kurs;
+	}
+	
+	
 }
