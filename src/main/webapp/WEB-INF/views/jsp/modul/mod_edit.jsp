@@ -64,11 +64,11 @@
 								<c:when test="${modulkatalogList ne null}">
 										<c:forEach items="${modulkatalogList}" var="mkid">
 											<c:choose>
-												<c:when test="${!(mkid.MKID eq modulkatalog.MKID)}">
-													<option value="${mkid.MKID}">${modulkatalog.name} </option>
+												<c:when test="${!(mkid.MKID eq modul.modulkatalog.MKID)}">
+													<option value="${mkid.MKID}">${mkid.name} </option>
 												</c:when> 
-												<c:when test="${mkid.MKID eq modulkatalog.MKID}">
-													<option value="${mkid.MKID}" selected>${modulkatalog.name}</option>
+												<c:when test="${mkid.MKID eq modul.modulkatalog.MKID}">
+													<option value="${mkid.MKID}" selected>${mkid.name}</option>
 												</c:when>
 											</c:choose>
 										</c:forEach>

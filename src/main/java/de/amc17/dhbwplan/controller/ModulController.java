@@ -116,6 +116,7 @@ public class ModulController {
 		model.addAttribute("modul", mModulService.getModulByID(dID));
 		model.addAttribute("pageTitle", "DHBW - Modul bearbeiten");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
+		model.addAttribute("modulkatalogList", mModulkatalogService.getAllModulkatalog());
 		return "modul/mod_edit";
 	}
 
