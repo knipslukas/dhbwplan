@@ -75,7 +75,7 @@
 	            </div>
 	
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Pruefungsleistung:</label>
+	                <label class="col-2 col-form-label">Prüfungsleistung:</label>
 	                <div class="col-10">
 	                	<select class="form-control" name="pruefungsleistung">
 	                		<option disabled selected>Bitte Auswählen</option>
