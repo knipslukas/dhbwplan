@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import de.amc17.dhbwplan.entity.Kurs;
 import de.amc17.dhbwplan.entity.Praesenzzeitraum;
+import de.amc17.dhbwplan.entity.Studienrichtung;
 import de.amc17.dhbwplan.repository.KursRepository;
 
 import java.util.Comparator;
@@ -108,6 +109,16 @@ public class KursService {
 		} catch (Exception e) {
 			return null;
 		}
+	}
+
+	public List<Kurs> getAllKursByStudRichId(Studienrichtung sturi) {
+		try {
+			return kursRepository.findAllByStudienrichtung(sturi);
+		}
+		catch (Exception e) {
+			LOG.error("Couldn't load Kurse By Studienrichtung! " + e);
+		}
+		return null;
 	}
 	
 

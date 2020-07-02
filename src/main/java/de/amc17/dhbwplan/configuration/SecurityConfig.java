@@ -25,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.ignoringAntMatchers("/kurs/deletePRZ/**")
 				.ignoringAntMatchers("/dozent/addLEE")
 				.ignoringAntMatchers("/dozent/deleteLee")
+				.ignoringAntMatchers("/vorlesungsplaner/**")
 				.and()
 			.authorizeRequests()
 				.antMatchers("/static/**").permitAll()
