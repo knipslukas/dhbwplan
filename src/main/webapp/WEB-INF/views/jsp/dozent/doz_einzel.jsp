@@ -120,6 +120,36 @@
 	   						<p>${dozent.notiz }</p>
 	   					</div>
 	   				</div>
+	   				<div class="mt-4">
+						<table class="table table tab-einzel">
+							<caption> Lerneinheiten: </caption>
+							<thead class="thead-light">
+								<tr>
+									<th scope="col"><strong>Modul:</strong></th>
+									<th scope="col"><strong>Lerneinheit:</strong></th>
+								</tr>
+							</thead>
+							<tbody class="js-table">
+								<c:choose>
+									<c:when test="${not empty dozent.kannhalten}">
+										<c:forEach items="${dozent.kannhalten}" var="lee">
+											<tr>
+												<td scope="row" class="align-middle">${lee.modul.bezeichnung}</td>
+												<td scope="row" class="align-middle">${lee.name }</td>
+											</tr>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+										<tr class="table-warning">
+											<td>Keine Lerneinheiten vorhanden</td>
+											<td></td>
+										</tr>
+									</c:otherwise>
+								</c:choose>			
+							</tbody>
+						</table>
+					</div>
+	   				
 	   				
 	   				
 	   			</div>
