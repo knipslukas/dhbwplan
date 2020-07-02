@@ -33,7 +33,7 @@
 				<div class="form-group row">
 	                <label for="studienjahr" class="col-2 col-form-label">Studienjahr:</label>
 	                <div class="col-10">
-	                	<%-- Dropdown Auswahl für Anrede > 3mal zum Anlegen der Dropdowns für den jeweils ausgewählten Wert  --%>
+	                	<%-- Dropdown Auswahl für studienjahr > 3mal zum Anlegen der Dropdowns für den jeweils ausgewählten Wert  --%>
 		                <select class="form-control" id="studienjahr" name="studienjahr">
 		                	<c:choose>
 		                		<c:when test="${modul.studienjahr eq '1' }">
@@ -85,7 +85,7 @@
 				<div class="form-group row">
 	                <label for="moduldauer" class="col-2 col-form-label">Moduldauer:</label>
 	                <div class="col-10">
-	                	<%-- Dropdown Auswahl für Anrede > 3mal zum Anlegen der Dropdowns für den jeweils ausgewählten Wert  --%>
+	                	<%-- Dropdown Auswahl für moduldauer > 3mal zum Anlegen der Dropdowns für den jeweils ausgewählten Wert  --%>
 		                <select class="form-control" id="moduldauer" name="moduldauer">
 		                	<c:choose>
 		                		<c:when test="${modul.moduldauer eq '1' }">
@@ -106,7 +106,7 @@
 				<div class="form-group row">
 	                <label for="modulart" class="col-2 col-form-label">Modulart:</label>
 	                <div class="col-10">
-	                	<%-- Dropdown Auswahl für Anrede > 3mal zum Anlegen der Dropdowns für den jeweils ausgewählten Wert  --%>
+	                	<%-- Dropdown Auswahl für modulart > 3mal zum Anlegen der Dropdowns für den jeweils ausgewählten Wert  --%>
 		                <select class="form-control" id="modulart" name="modulart">
 		                	<c:choose>
 		                		<c:when test="${modul.modulart eq 'Pflichtmodul' }">
@@ -127,7 +127,7 @@
 				<div class="form-group row">
 	                <label for="pruefungsleistung" class="col-2 col-form-label">Prüfungsleistung:</label>
 	                <div class="col-10">
-	                	<%-- Dropdown Auswahl für Anrede > 3mal zum Anlegen der Dropdowns für den jeweils ausgewählten Wert  --%>
+	                	<%-- Dropdown Auswahl für pruefungsleistung > 3mal zum Anlegen der Dropdowns für den jeweils ausgewählten Wert  --%>
 		                <select class="form-control" id="pruefungsleistung" name="pruefungsleistung">
 		                	<c:choose>
 		                		<c:when test="${modul.pruefungsleistung eq 'Klausur' }">
@@ -155,9 +155,9 @@
 
 				
 				<div class="form-group row">
-	                <label for="sprache" class="col-2 col-form-label">Prüfungsleistung:</label>
+	                <label for="sprache" class="col-2 col-form-label">Sprache:</label>
 	                <div class="col-10">
-	                	<%-- Dropdown Auswahl für Anrede > 3mal zum Anlegen der Dropdowns für den jeweils ausgewählten Wert  --%>
+	                	<%-- Dropdown Auswahl für Sprache > 3mal zum Anlegen der Dropdowns für den jeweils ausgewählten Wert  --%>
 		                <select class="form-control" id="sprache" name="sprache">
 		                	<c:choose>
 		                		<c:when test="${modul.sprache eq 'Deutsch' }">
