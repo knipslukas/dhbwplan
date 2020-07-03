@@ -1,5 +1,6 @@
 package de.amc17.dhbwplan.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +35,22 @@ public class VorlesungsplanningController {
 	public String getOverview(Model model){
 		model.addAttribute("pageTitle", "DHBW - Vorlesungsplaner");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
+		model.addAttribute("sturiList", sturiServ.getAllStudienrichtung(""));
 		return "vorlesungsplaner/volplan_overview";
 	}
 	
 	@PostMapping(value = "kurse", consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public List<Kurs> getAllKurse(@RequestBody KursDto dto) {
-		return kursServ.getAllKursByStudRichId(sturiServ.getStudienrichtungByID(dto.getStudienrichtung_riid()));
+	public List<KursDto> getAllKurse(@RequestBody KursDto dto) {
+		List<Kurs> kurse = kursServ.getAllKursByStudRichId(sturiServ.getStudienrichtungByID(dto.getStudienrichtung_riid())); 
+		List<KursDto> dtos = new ArrayList<KursDto>();
+		for(Kurs kurs: kurse) {
+			KursDto kursdto = new KursDto();
+			kursdto.setKid(kurs.getKID());
+			kursdto.setName(kurs.getName());
+			kursdto.setJahrgang(kurs.getJahrgang());
+			dtos.add(kursdto);
+		}
+		return dtos;
 	}
 }
