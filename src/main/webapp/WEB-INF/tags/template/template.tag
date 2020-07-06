@@ -29,7 +29,7 @@
 	    
 	  	<!-- SCRIPTS -->
 		<!-- JQuery -->
-		<script src="${pageContext.request.contextPath}/static/jquery/jquery-3.4.1.min.js"></script>
+		<script src="${pageContext.request.contextPath}/static/jquery/jquery-3.5.1.min.js"></script>
 		<!-- Bootstrap core JavaScript -->
 		<script src="${pageContext.request.contextPath}/static/bootstrap/bootstrap.min.js"></script>
 		<!-- Popper JS -->

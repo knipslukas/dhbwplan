@@ -20,7 +20,7 @@
 					<a class="nav-link navigationlist" href="/">Home</a>
 	            </li>
 	            <li class="nav-item">
-	                <a class="nav-link navigationlist" href="/vorlesung">Vorlesungsplaner</a>
+	                <a class="nav-link navigationlist" href="/vorlesungsplaner">Vorlesungsplaner</a>
 	            </li>
 	
 	            <li class="nav-item dhbw_listenpunkt" >

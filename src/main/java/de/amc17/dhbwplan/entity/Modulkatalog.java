@@ -39,9 +39,9 @@ public class Modulkatalog implements Serializable {
 	@JsonIgnore
 	private Studienrichtung studienrichtung;
 	
-	private Date gueltigVon;
+	private Date gueltigvon;
 	
-	private Date gueltigBis;
+	private Date gueltigbis;
 	
 	public Studienrichtung getStudienrichtung() {
 		return studienrichtung;
@@ -68,27 +68,20 @@ public class Modulkatalog implements Serializable {
 	}
 	
 	public Date getGueltigVon() {
-		return gueltigVon;
-	}
-	
-	public void setname(String name) {
-		this.name = name;
+		return gueltigvon;
 	}
 
-	public String getname() {
-		return name;
-	}
 
 	public void setGueltigVon(Date gueltigVon) {
-		this.gueltigVon = gueltigVon;
+		this.gueltigvon = gueltigVon;
 	}
 
 	public Date getGueltigBis() {
-		return gueltigBis;
+		return gueltigbis;
 	}
 
 	public void setGueltigBis(Date gueltigBis) {
-		this.gueltigBis = gueltigBis;
+		this.gueltigbis = gueltigBis;
 	}
 	
 	public List<Modul> getModul() {

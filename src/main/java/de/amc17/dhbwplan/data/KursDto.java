@@ -12,7 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 public class KursDto {
-
+	
+	private int kid;
 
 	private String name; 
 	
@@ -62,6 +63,14 @@ public class KursDto {
 
 	public void setAnzahlStudierende(int anzahlStudierende) {
 		this.anzahlStudierende = anzahlStudierende;
+	}
+
+	public int getKid() {
+		return kid;
+	}
+
+	public void setKid(int kid) {
+		this.kid = kid;
 	}
 
 }
