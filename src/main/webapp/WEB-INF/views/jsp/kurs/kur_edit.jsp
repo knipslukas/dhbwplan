@@ -169,14 +169,14 @@
 	        <div class="form-group row">
 	                <label class="col-2 col-form-label">Von</label>
 	                <div class="col-3">
-						<input type="date" name="von" class="form-control js-form-von" id=test placeholder="Neues Startdatum" value="<fmt:formatDate type = "date" value = "${praesenzzeitraum.von}" pattern="YYYY-MM-dd" />" required>	                
+						<input type="date" name="von" class="form-control js-form-von" id=test placeholder="Neues Startdatum" value="<fmt:formatDate type = "date" value = "${praesenzzeitraum.von}" pattern="dd-MM-YYYY" />" required>	                
 	                </div>
 	        </div>    
 	           
 	        <div class="form-group row">
 	                <label class="col-2 col-form-label">Bis</label>
 	                <div class="col-3">
-						<input type="date" name="bis" class="form-control js-form-bis" placeholder="Neues Enddatum" value="<fmt:formatDate type = "date" value = "${praesenzzeitraum.bis}" pattern="YYYY-MM-dd" />" required>	                
+						<input type="date" name="bis" class="form-control js-form-bis" placeholder="Neues Enddatum" value="<fmt:formatDate type = "date" value = "${praesenzzeitraum.bis}" pattern="dd-MM-YYYY" />" required>	                
 	                </div>
 	         </div> 
 	         
