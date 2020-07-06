@@ -20,7 +20,7 @@
     		<h4>Kurs und Studienjahr auswählen</h4>
     		<form role="form">
     			<div class="form-row">
-    				<div class="form-group col-3">
+    				<div class="form-group col-4">
 	    				<label for="sturi">Studiengang/Studienrichtung</label>
 	    				<select class="js-sturi-select custom-select">
 	    					<option value="0" disabled selected>Studienrichtung auswählen</option>
@@ -36,23 +36,14 @@
 	    					</c:choose>
 	    				</select>
 	    			</div>
-	    			<div class="form-group col-3 d-none js-kurs-group">
+	    			<div class="form-group col-4 d-none js-kurs-group">
 	    				<label for="kurs">Kurs</label>
 	    				<select class="js-kurs-select custom-select">
 	    				</select>
 	    			</div>
-	    			<div class="form-group col-3 d-none js-jahr-group">
+	    			<div class="form-group col-4 d-none js-jahr-group">
 	    				<label for="jahr">Studienjahr</label>
 	    				<select class="js-jahr-select custom-select">
-	    					<option value="0">Studienjahr auswählen</option>
-	    					<option value="1">1 Studienjahr</option>
-	    					<option value="2">2 Studienjahr</option>
-	    					<option value="3">3 Studienjahr</option>
-	    				</select>
-	    			</div>
-	    			<div class="form-group col-3  js-jahr-group">
-	    				<label for="modulkatalog">Modulkatalog</label>
-	    				<select class="js-modkat-select custom-select">
 	    					<option value="0">Studienjahr auswählen</option>
 	    					<option value="1">1 Studienjahr</option>
 	    					<option value="2">2 Studienjahr</option>

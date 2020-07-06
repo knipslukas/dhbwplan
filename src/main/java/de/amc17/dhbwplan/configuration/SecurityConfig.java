@@ -16,16 +16,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-			.csrf()
-				.ignoringAntMatchers("/modul/addLEE")
-				.ignoringAntMatchers("/modul/deleteLEE/**")
-				.ignoringAntMatchers("/studiengang/addSturi")
-				.ignoringAntMatchers("/studiengang/deleteSturi/**")
-				.ignoringAntMatchers("/kurs/addPRZ")
-				.ignoringAntMatchers("/kurs/deletePRZ/**")
-				.ignoringAntMatchers("/dozent/addLEE")
-				.ignoringAntMatchers("/dozent/deleteLee")
-				.ignoringAntMatchers("/vorlesungsplaner/**")
+			.csrf().ignoringAntMatchers("**")
 				.and()
 			.authorizeRequests()
 				.antMatchers("/static/**").permitAll()

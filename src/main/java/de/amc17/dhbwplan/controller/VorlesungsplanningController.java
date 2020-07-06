@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import de.amc17.dhbwplan.data.KursDto;
 import de.amc17.dhbwplan.entity.Kurs;
+import de.amc17.dhbwplan.entity.Modulkatalog;
 import de.amc17.dhbwplan.service.KursService;
+import de.amc17.dhbwplan.service.ModulkatalogService;
 import de.amc17.dhbwplan.service.StudienrichtungService;
 import de.amc17.dhbwplan.service.UserService;
 
@@ -30,6 +32,9 @@ public class VorlesungsplanningController {
 	
 	@Autowired
 	private StudienrichtungService sturiServ;
+	
+	@Autowired
+	private ModulkatalogService modulkServ;
 	
 	@GetMapping(value = "") 
 	public String getOverview(Model model){
@@ -52,5 +57,13 @@ public class VorlesungsplanningController {
 			dtos.add(kursdto);
 		}
 		return dtos;
+	}
+	
+	@PostMapping(value = "jahr", consumes = "application/json")
+	@ResponseBody
+	public Modulkatalog getOverview(@RequestBody KursDto dto) {
+		Kurs kurs = kursServ.getKursByID(dto.getKid());		
+		Modulkatalog modkat = modulkServ.getModulkatalogByYear(kurs.getJahrgang(), kurs.getStudienrichtung());
+		return modkat;
 	}
 }
