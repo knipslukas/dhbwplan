@@ -107,8 +107,8 @@
 							<c:forEach items="${przListe}" var="przListe">
 								<tr>
 									<td scope="row" class="align-middle">${przListe.semester }</td>
-									<td scope="row" class="align-middle">${przListe.von }</td>
-									<td scope="row" class="align-middle">${przListe.bis }</td>
+								    <td scope="row" class="align-middle"><fmt:formatDate type = "date" value = "${przListe.von}" /></td>
+         						    <td scope="row" class="align-middle"><fmt:formatDate type = "date" value = "${przListe.bis}" /></td>
 								</tr>
 							</c:forEach>
 						</c:when>
