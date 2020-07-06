@@ -44,7 +44,7 @@
 	    			<div class="form-group col-4 d-none js-jahr-group">
 	    				<label for="jahr">Studienjahr</label>
 	    				<select class="js-jahr-select custom-select">
-	    					<option value="0">Studienjahr auswählen</option>
+	    					<option value="0" disabled selected>Studienjahr auswählen</option>
 	    					<option value="1">1 Studienjahr</option>
 	    					<option value="2">2 Studienjahr</option>
 	    					<option value="3">3 Studienjahr</option>
@@ -55,7 +55,12 @@
 		</div>
 	    <!-- Start Content -->
 	    <div class="mt-5">
-	         <table class="table table-hover">
+	    	<div class="js-spinner d-none mb-5">
+	    		<div class="justify-content-center d-flex">
+		    		<i class="fas fa-spinner fa-pulse fa-4x justify-content-center"></i>
+		    	</div>
+	    	</div>
+	         <table class="table table-hover js-modul-group d-none">
 	              <thead class="thead-light">
 	                <tr>
 	                  <th scope="col"><strong>Modul</strong></th>
@@ -63,27 +68,7 @@
 	                  <th scope="col"><strong>Dozent finden</strong></th>
 	                </tr>
 	              </thead>
-	              <tbody>
-	                <!-- Beispieleintrag --> 
-	                <c:choose>
-	                	<c:when test="${vorlesungList ne null }">
-	                		<c:forEach items="${vorlesungList}" var="vorlesung">
-	                			<tr>
-					                <td scope="row" class="align-middle">${vorlesung.name}</td>
-					                <td scope="row" class="align-middle">${vorlesung.vorlesungsstunden}</td>
-					                <td scope="row" class="align-middle"><a href="/vorlesung/show/${vorlesung.VID}" class="btn btn-sm btn-secondary">Anzeigen</a></td>
-				                </tr>
-	                		</c:forEach>
-	                	</c:when>
-	                	<c:otherwise>
-	                		<tr class="table-warning">
-	                			<td>Keine Einträge vorhanden</td>
-	                			<td></td>
-	                			<td></td>
-	                		</tr>
-	                	</c:otherwise>
-	                </c:choose>
-	
+	              <tbody class="js-modul-table">
 	              </tbody>
 	         </table>
 	    </div>
@@ -123,6 +108,7 @@
 					list = "";
 					list = '<option disabled selected>Es konnten keine Kurse gefunden werden</option>';
 					$(".js-jahr-group").addClass("d-none");
+					$(".js-modul-group").addClass("d-none");
 					return list;
 				}
 			});
@@ -133,20 +119,23 @@
 		$(".js-kurs-select").change(function() {
 			if ($(".js-kurs-select").val() != "0") {
 				$(".js-jahr-group").removeClass("d-none");
+				$(".js-jahr-select").val("0");
 			}
+			$(".js-modul-group").addClass("d-none");
 		})
 		
 		$(".js-jahr-select").change(function() {
 			if ($(".js-jahr-select").val() != "0") {
-				var sturiid = new Object();
-				sturiid.studienrichtung_riid = $(".js-sturi-select").val();
+				var vorlesungsdto = new Object();
+				vorlesungsdto.kid = $(".js-kurs-select").val();
+				vorlesungsdto.studienjahr = $(".js-jahr-select").val();
 				$.ajax({
-					url: "/vorlesungsplaner/kurse/",
+					url: "/vorlesungsplaner/jahr/",
 					type: "POST",
 					contentType: "application/json",
-					data: JSON.stringify(sturiid),
+					data: JSON.stringify(vorlesungsdto),
 					success: function(result) {
-						renderKurse(result);
+						renderListe(result);
 					},
 					error: function(status) {
 						alert("Eingabe nicht möglich! HTTP Fehler: "+status.status);
@@ -154,5 +143,40 @@
 				})
 			}
 		})
+		
+		function renderListe(module) {
+			$(".js-modul-table").html(function() {
+				var list = "";
+				$.each(module, function(i, modul) {
+					$.each(modul.lerneinheiten, function(i, lee) {
+						list += '<tr>';
+						list += '<td>'+modul.bezeichnung+'</td>';
+						list += '<td>'+lee.name+'</td>';
+						list += '<td><a class="btn btn-sm btn-secondary" href="#">Dozent finden</a></td>';
+						list += '</tr>';
+					})
+				})
+				if (module != "") {
+					return list;
+				}
+				else {
+					list += '<tr class="table-warning">';
+					list += '<td>Keine Module/Lerneinheiten gefunden</td>';
+					list += '<td></td>';
+					list += '<td></td>';
+					list += '</tr>';
+					return list;
+				}
+			});
+			$(".js-modul-group").removeClass("d-none");
+		}
+
+		$(document)
+			.ajaxStart(function () {
+				$(".js-spinner").removeClass("d-none");
+			})
+			.ajaxStop(function () {
+				$(".js-spinner").addClass("d-none");
+			})		
 	</script>
 </template:template>
