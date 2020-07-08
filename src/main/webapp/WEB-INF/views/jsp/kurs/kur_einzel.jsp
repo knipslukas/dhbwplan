@@ -2,6 +2,7 @@
 <%@ taglib prefix="template" tagdir="/WEB-INF/tags/template"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <template:template pageTitle="${pageTitle}">
     <template:navbar user="${currentUser}" />
@@ -107,8 +108,8 @@
 							<c:forEach items="${przListe}" var="przListe">
 								<tr>
 									<td scope="row" class="align-middle">${przListe.semester }</td>
-									<td scope="row" class="align-middle">${przListe.von }</td>
-									<td scope="row" class="align-middle">${przListe.bis }</td>
+								    <td scope="row" class="align-middle"><fmt:formatDate type = "date" value = "${przListe.von}" /></td>
+         						    <td scope="row" class="align-middle"><fmt:formatDate type = "date" value = "${przListe.bis}" /></td>
 								</tr>
 							</c:forEach>
 						</c:when>
