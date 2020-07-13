@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/500</location>
+	</error-page>
+	<error-page>
+    	<error-code>404</error-code>
+    	<location>/404</location>
+	</error-page>
+	
+</web-app>

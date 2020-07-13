@@ -11,7 +11,7 @@
 	<groupId>de.amc17</groupId>
 	<artifactId>dhbwplan</artifactId>
 	<version>0.0.1</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<name>dhbwplan</name>
 	<description>Tool for planning the lessons</description>
 
@@ -65,14 +65,12 @@
 		<dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <scope>runtime</scope>
         </dependency>
  		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 			<scope>provided</scope>
-			</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+		</dependency>
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-core</artifactId>
@@ -120,8 +118,9 @@
 
 		</dependency>
 	</dependencies>
+	
 	<build>
-		<finalName>${artifactId}</finalName>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -130,7 +129,6 @@
 					<profiles>
 						<profile>
 							<id>test</id>
-							<spring.profiles.active>test</spring.profiles.active>
 						</profile>
 						<profile>
 							<id>prod</id>

@@ -36,12 +36,6 @@
 		<script src="${pageContext.request.contextPath}/static/js/umd/popper.min.js"></script>
 		<script src="${pageContext.request.contextPath}/static/fontawesome/fontawesome.js"></script> 
 		<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
-	    
-	
-	
-		
-	    <script src="http://localhost:35729/livereload.js"></script>
-	   	<script src="${pageContext.request.contextPath}/static/js/global.js"></script>
 		
 	</head>
 
