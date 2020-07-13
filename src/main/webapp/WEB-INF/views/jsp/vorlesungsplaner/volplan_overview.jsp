@@ -146,13 +146,14 @@
 		
 		function renderListe(module) {
 			$(".js-modul-table").html(function() {
+				var kid = $(".js-kurs-select").val();
 				var list = "";
 				$.each(module, function(i, modul) {
 					$.each(modul.lerneinheiten, function(i, lee) {
 						list += '<tr>';
 						list += '<td>'+modul.bezeichnung+'</td>';
 						list += '<td>'+lee.name+'</td>';
-						list += '<td><a class="btn btn-sm btn-secondary" href="#">Dozent finden</a></td>';
+						list += '<td><a class="btn btn-sm btn-secondary" href="/vorlesungsplaner/find/'+lee.leid+'/'+kid+'">Dozent finden</a></td>';
 						list += '</tr>';
 					})
 				})
