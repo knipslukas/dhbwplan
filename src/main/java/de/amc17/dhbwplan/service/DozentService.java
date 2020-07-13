@@ -149,7 +149,11 @@ public class DozentService {
 
 	public List<Dozent> findDozentWithLerneinheit(Lerneinheit lerneinheit) {
 		try {
-			return dozentRepository.findAllByKannhalten(lerneinheit);
+			List<Dozent> dozenten = dozentRepository.findAllByKannhalten(lerneinheit);
+			if (dozenten.isEmpty()) {
+				return null;
+			}
+			return dozenten;
 		}
 		catch (Exception e) {
 			LOG.error("Couldn't load Dozenten by LEE! "+e);

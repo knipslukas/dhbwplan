@@ -12,7 +12,7 @@
 	   	
        	<div class="alert dozentuebersicht d-flex align-items-center" role="alert">
 			<h1 class="text-white my-1">Dozenten für: ${kurs.name } - ${lerneinheit.name}</h1>
-			<a href="/vorlesungsplaner" class="btn ml-2 DHBWbutton ml-auto">Zurück</a>
+			<button class="btn ml-2 DHBWbutton ml-auto" onClick="window.close();">Zurück</button>
         </div>
         
 	    <!-- Ende Orentierungszeile -->
@@ -28,13 +28,25 @@
 	                </tr>
 	              </thead>
 	              <tbody class="js-modul-table">
-	              		<c:forEach items="${dozentList }" var="dozent">
-	              			<tr>
-	              				<td>${dozent.vorname } ${dozent.nachname }</td>
-	              				<td>${dozent.email }</td>
-	              				<td><button type="button" class="btn btn-secondary btn-sm" onClick="openModal('${dozent.anrede}', '${dozent.nachname }', '${dozent.email }')">Anschreiben</button></td>
-	              			</tr>
-	              		</c:forEach>
+	              		<c:choose>
+	              			<c:when test="${dozentList ne null }">
+	              				<c:forEach items="${dozentList }" var="dozent">
+			              			<tr>
+			              				<td>${dozent.vorname } ${dozent.nachname }</td>
+			              				<td>${dozent.email }</td>
+			              				<td><button type="button" class="btn btn-secondary btn-sm" onClick="openModal('${dozent.anrede}', '${dozent.nachname }', '${dozent.email }')">Anschreiben</button></td>
+			              			</tr>
+			              		</c:forEach>
+	              			</c:when>
+	              			<c:otherwise>
+	              				<tr class="table-warning">
+	              					<td>Keine Dozenten vorhanden</td>
+	              					<td></td>
+	              					<td></td>
+	              				</tr>
+	              			</c:otherwise>
+	              		</c:choose>
+	              		
 	              </tbody>
 	         </table>
 	    </div>

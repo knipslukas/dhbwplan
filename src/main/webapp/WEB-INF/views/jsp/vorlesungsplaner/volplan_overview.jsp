@@ -153,7 +153,7 @@
 						list += '<tr>';
 						list += '<td>'+modul.bezeichnung+'</td>';
 						list += '<td>'+lee.name+'</td>';
-						list += '<td><a class="btn btn-sm btn-secondary" href="/vorlesungsplaner/find/'+lee.leid+'/'+kid+'">Dozent finden</a></td>';
+						list += '<td><a class="btn btn-sm btn-secondary" href="/vorlesungsplaner/find/'+lee.leid+'/'+kid+'" target="_blank">Dozent finden</a></td>';
 						list += '</tr>';
 					})
 				})
