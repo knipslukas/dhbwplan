@@ -57,10 +57,8 @@
 	                	<c:when test="${vorlesungList ne null }">
 	                		<c:forEach items="${vorlesungList}" var="vorlesung">
 	                			<tr>
-<%-- 					                <td scope="row" class="align-middle">${vorlesung.VID}</td> --%>
-					                <td scope="row" class="align-middle">${vorlesung.VID}</td>
-					                <td scope="row" class="align-middle">${vorlesung.Name}</td>
-					                <td scope="row" class="align-middle">${vorlesung.Vorlesungsstunden}</td>
+					                <td scope="row" class="align-middle">${vorlesung.name}</td>
+					                <td scope="row" class="align-middle">${vorlesung.vorlesungsstunden}</td>
 					                <td scope="row" class="align-middle"><a href="/vorlesung/show/${vorlesung.VID}" class="btn btn-sm btn-secondary">Anzeigen</a></td>
 				                </tr>
 	                		</c:forEach>
@@ -70,8 +68,6 @@
 	                			<td>Keine Vorlesung vorhanden</td>
 	                			<td></td>
 	                			<td></td>
-	                			<td></td>
-
 	                		</tr>
 	                	</c:otherwise>
 	                </c:choose>

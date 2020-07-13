@@ -128,6 +128,12 @@
 		    <groupId>com.h2database</groupId>
 		    <artifactId>h2</artifactId>
 		    <scope>runtime</scope>
+    </dependency>
+    <dependency>
+		    <groupId>org.codehaus.groovy</groupId>
+		    <artifactId>groovy-jdk14</artifactId>
+		    <version>1.6.9</version>
+
 		</dependency>
 	</dependencies>
 	<build>

@@ -43,17 +43,17 @@
 	        <form class="pb-3 js-form-dozanleg" method="POST" action="/user/add">	      
 	
 	            <div class="form-group row mb-5">
-	                <label class="col-2 col-form-label">Username</label>
+	                <label class="col-2 col-form-label">Username:</label>
 	                <div class="col-10">
 						<input type="text" name="username" class="form-control" placeholder="Username eingeben" required>	                
 	                </div>
 	            </div>
 	            
 	            <div class="form-group row mb-5">
-	                <label class="col-2 col-form-label">Verknüpfter Dozent</label>
+	                <label class="col-2 col-form-label">Verknüpfter Dozent:</label>
 	                <div class="col-10">
 	                	<select class="form-control" id="dozent" name="dozID">
-		                	<option disabled selected>Dozent Auswählen</option>
+		                	<option disabled selected>Dozent auswählen</option>
 		                	<c:forEach items="${dozentList}" var="dozent">
 		                		<option value="${dozent.DID }">${dozent.vorname } ${dozent.nachname }</option>
 		                	</c:forEach>
@@ -62,14 +62,14 @@
 	            </div>
 	            
 	            <div class="form-group row">
-	                <label class="col-2 col-form-label">Vorläufiges Passwort</label>
+	                <label class="col-2 col-form-label">Vorläufiges Passwort:</label>
 	                <div class="col-10">
 	                	<input type="password" name="pwd_1" class="form-control" placeholder="Passwort eingeben" required>
 	                </div>
 	            </div>
 	
 				<div class="form-group row mb-5">
-	                <label class="col-2 col-form-label">Passwort wiederholen</label>
+	                <label class="col-2 col-form-label">Passwort wiederholen:</label>
 	                <div class="col-10">
 	                	<input type="password" name="pwd_2" class="form-control" placeholder="Passwort wiederholen" required>
 	                </div>

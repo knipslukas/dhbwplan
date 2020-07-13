@@ -1,33 +1,26 @@
 package de.amc17.dhbwplan.service;
 
 
-import java.util.Optional;
-
-import javax.annotation.Resource;
-import java.util.Date;
-
-import org.springframework.stereotype.Service;
-
-import de.amc17.dhbwplan.entity.Modulkatalog;
-import de.amc17.dhbwplan.repository.ModulkatalogRepository;
-
+import java.util.Calendar;
 import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
+
+import de.amc17.dhbwplan.entity.Modul;
+import de.amc17.dhbwplan.entity.Modulkatalog;
+import de.amc17.dhbwplan.entity.Studienrichtung;
+import de.amc17.dhbwplan.repository.ModulkatalogRepository;
 
 
 @Service
 public class ModulkatalogService {
 
 	@Resource
-	private ModulkatalogRepository ModulkatalogRepository;
+	private ModulkatalogRepository modulkatalogRepository;
 	
 	private static final Logger LOG = LogManager.getLogger(UserService.class.getName());
 
@@ -35,7 +28,7 @@ public class ModulkatalogService {
 	public Modulkatalog addModulkatalog(Modulkatalog aModulkatalog) {
 		
 		try {
-			ModulkatalogRepository.save(aModulkatalog);
+			modulkatalogRepository.save(aModulkatalog);
 		} catch (Exception e) {
 			return null;
 		}
@@ -45,7 +38,7 @@ public class ModulkatalogService {
 
 	public boolean deleteModulkatalog(int MKID) {
 		try {
-			ModulkatalogRepository.deleteById(MKID);
+			modulkatalogRepository.deleteById(MKID);
 		} catch (Exception e){
 			return false;
 		}
@@ -55,10 +48,12 @@ public class ModulkatalogService {
 	public boolean updateModulkatalog(Modulkatalog aModulkatalog) {
 		try {
 			Modulkatalog oModulkatalog;
-			if ((oModulkatalog = ModulkatalogRepository.findByMKID(aModulkatalog.getMKID())) != null) { 
-						aModulkatalog.setGueltigVon(oModulkatalog.getGueltigVon());
-						aModulkatalog.setGueltigBis(oModulkatalog.getGueltigBis());
-				ModulkatalogRepository.save(aModulkatalog);
+			if ((oModulkatalog = modulkatalogRepository.findByMKID(aModulkatalog.getMKID())) != null) { 
+						oModulkatalog.setGueltigVon(aModulkatalog.getGueltigVon());
+						oModulkatalog.setGueltigBis(aModulkatalog.getGueltigBis());
+						oModulkatalog.setStudienrichtung(aModulkatalog.getStudienrichtung());
+						oModulkatalog.setName(aModulkatalog.getName());
+				modulkatalogRepository.save(oModulkatalog);
 			} else {
 				LOG.warn("Modulkatalog not found");
 				return false;
@@ -71,12 +66,9 @@ public class ModulkatalogService {
 		return true;
 	}
 
-	public List<Modulkatalog> getAllModulkatalog(Date GültigVon, Date GültigBis) {		
+	public List<Modulkatalog> getAllModulkatalog() {		
 		try {
-			if (GültigVon != null) {
-				return ModulkatalogRepository.findAll();		
-			}
-			List<Modulkatalog> list = ModulkatalogRepository.findAll();
+			List<Modulkatalog> list = modulkatalogRepository.findAll();
 			if (!list.isEmpty()) {
 				return list;
 			}
@@ -89,8 +81,40 @@ public class ModulkatalogService {
 
 	public Modulkatalog getModulkatalogByID(int MKID) {
 		try {
-			return ModulkatalogRepository.findByMKID(MKID); 
+			return modulkatalogRepository.findByMKID(MKID); 
 		} catch (Exception e ){
+			return null;
+		}
+	}
+	
+	public List<Modulkatalog> getAllMOK(Studienrichtung studienrichtung) {
+		try {
+			return modulkatalogRepository.findAllByStudienrichtung(studienrichtung);
+		}catch(Exception e) {
+			LOG.error("Could not load MOK"+e);
+      return null;
+    }
+}
+	public List<Modul> getAllModul(int modulID) {
+		try {
+			Modulkatalog modulk = modulkatalogRepository.findById(modulID).get();
+			return modulk.getModul();
+		}
+		catch(Exception e) {
+			LOG.error("Couldn't load Kurslist" + e);
+			return null;
+		}
+	}
+
+	public Modulkatalog getModulkatalogByYear(int jahrgang, Studienrichtung studienrichtung) {
+		try {
+			Calendar calendar = Calendar.getInstance();
+			calendar.set(jahrgang, 9, 01);
+			Modulkatalog modkat = modulkatalogRepository.findByStudienrichtungAndGueltigvonLessThanEqualAndGueltigbisGreaterThan(studienrichtung, calendar.getTime(), calendar.getTime());
+			return modkat;
+		}
+		catch (Exception e) {
+			LOG.error("Couldn't load Modulkatalog by Year! "+e);
 			return null;
 		}
 	}

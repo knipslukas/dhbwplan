@@ -37,7 +37,7 @@ public class VorlesungController {
 		else {
 			redirectAttributes.addAttribute("vorlesungCreated", false);
 		}
-		return "redirect:/vorlesung/getAll/";
+		return "redirect:/vorlesung/";
 	}
 
 	@GetMapping(value = "/delete/{aID}")
@@ -48,26 +48,28 @@ public class VorlesungController {
 		else {
 			redirectAttributes.addAttribute("vorlesungDeleted", false);
 		}
-		return "redirect:/vorlesung/getAll";
+		return "redirect:/vorlesung/";
 	}
 
-	@PostMapping(path = "/update/{aID}")
+	@PostMapping(path = "/update/{vID}")
 	public String updateVorlesung(RedirectAttributes redirectAttributes, @ModelAttribute Vorlesung aVorlesung) {
 		if (mVorlesungService.updateVorlesung(aVorlesung)) {
-			redirectAttributes.addAttribute("VorlesungUpdated", true);
+			redirectAttributes.addAttribute("vorlesungUpdated", true);
 		}
 		else {
-			redirectAttributes.addAttribute("VorlesungUpdated", false);
+			redirectAttributes.addAttribute("vorlesungUpdated", false);
 		}
-		return "redirect:/Vorlesung/show/"+aVorlesung.getVID();
+		return "redirect:/vorlesung/show/"+aVorlesung.getVID();
 	}
 	 
 	 @GetMapping(value="") 
 	 public String getAllVorlesung(Model model, @RequestParam (required = false) String name, 
-			 @RequestParam (required = false) int vorlesungsstunden, @RequestParam(required = false) Object vorlesungDeleted,
+			 @RequestParam (required = false) String vorlesungsstunden, @RequestParam(required = false) Object vorlesungDeleted,
 			 @RequestParam(required = false) Object vorlesungCreated) {
-		 
-		 model.addAttribute("vorlesungList", mVorlesungService.getAllVorlesung(name, vorlesungsstunden));
+		 if (vorlesungsstunden == null) {
+			 vorlesungsstunden = "0";
+		 }
+		 model.addAttribute("vorlesungList", mVorlesungService.getAllVorlesung(name, Integer.parseInt(vorlesungsstunden)));
 		 model.addAttribute("vorlesungDeleted", vorlesungDeleted);
 		 model.addAttribute("vorlesungCreated", vorlesungCreated);
 		 model.addAttribute("pageTitle", "DHBW - Übersicht Vorlesungen");
@@ -85,7 +87,7 @@ public class VorlesungController {
 		 
 	 }
 	 
-	 @GetMapping(value = "/edit/{dID}")
+	 @GetMapping(value = "/edit/{vID}")
 	 public String editVorlesung(Model model, @PathVariable int vID) {
 		 model.addAttribute("vorlesung", mVorlesungService.getVorlesungByVID(vID));
 		 model.addAttribute("pageTitle", "DHBW - Vorlesung bearbeiten");

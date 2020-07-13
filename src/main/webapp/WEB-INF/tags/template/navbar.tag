@@ -20,25 +20,19 @@
 					<a class="nav-link navigationlist" href="/">Home</a>
 	            </li>
 	            <li class="nav-item">
-	                <a class="nav-link navigationlist" href="/kurs">Kurse</a>
+	                <a class="nav-link navigationlist" href="/vorlesungsplaner">Vorlesungsplaner</a>
 	            </li>
 	
 	            <li class="nav-item dhbw_listenpunkt" >
-	                <a class="nav-link navigationlist" href="/dozent">Dozenten</a>
+	                <a class="nav-link navigationlist" href="/modul">Modul</a>
 	            </li>
-				<li class="nav-item dropdown dhbw_listenpunkt">
-	                <a class="nav-link dropdown-toggle navigationlist" href="#" id="navbarDropdownMenuLink" role="button"
-	                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                       Veranstaltungen
-	                </a>
-	                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-	                    <a class="dropdown-item navigationlist" href="#">Studienrichtungen</a>
-
-	                    <a class="dropdown-item navigationlist" href="#">Modulübersicht</a>
-
-	                    <a class="dropdown-item navigationlist" href="#">Lerneinheiten</a>
-	                </div>
+	             <li class="nav-item dhbw_listenpunkt" >
+	                <a class="nav-link navigationlist" href="/kurs">Kurse</a>
 	            </li>
+	             <li class="nav-item dhbw_listenpunkt" >
+	                <a class="nav-link navigationlist" href="/dozent">Dozent</a>
+	            </li>
+
 	            <li class="dhbw_user nav-item dropdown">
 	                <a class="nav-link dropdown-toggle navigationlist" href="#" id="navbarDropdownMenuLink" role="button"
 	                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

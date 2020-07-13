@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  dhbwplan-container:
+    image: dhbwplan:1
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"

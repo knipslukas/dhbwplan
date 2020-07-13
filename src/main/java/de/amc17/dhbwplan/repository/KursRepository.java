@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 import de.amc17.dhbwplan.entity.Kurs;
+import de.amc17.dhbwplan.entity.Studienrichtung;
 
 public interface KursRepository extends CrudRepository<Kurs, Integer> {
 
@@ -19,4 +20,6 @@ public interface KursRepository extends CrudRepository<Kurs, Integer> {
 	public List<Kurs> findAll();
 
 	public Kurs findByKID(int id);
+
+	public List<Kurs> findAllByStudienrichtung(Studienrichtung sturi);
 }
