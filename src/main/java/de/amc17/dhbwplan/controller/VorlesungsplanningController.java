@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +16,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import de.amc17.dhbwplan.data.KursDto;
 import de.amc17.dhbwplan.data.VorlesungsplanDto;
 import de.amc17.dhbwplan.entity.Kurs;
+import de.amc17.dhbwplan.entity.Lerneinheit;
 import de.amc17.dhbwplan.entity.Modul;
 import de.amc17.dhbwplan.entity.Modulkatalog;
+import de.amc17.dhbwplan.service.DozentService;
 import de.amc17.dhbwplan.service.KursService;
+import de.amc17.dhbwplan.service.LerneinheitService;
 import de.amc17.dhbwplan.service.ModulkatalogService;
 import de.amc17.dhbwplan.service.StudienrichtungService;
 import de.amc17.dhbwplan.service.UserService;
@@ -38,12 +42,30 @@ public class VorlesungsplanningController {
 	@Autowired
 	private ModulkatalogService modulkServ;
 	
+	@Autowired
+	private LerneinheitService lernServ;
+	
+	@Autowired
+	private DozentService dozentServ;
+	
 	@GetMapping(value = "") 
 	public String getOverview(Model model){
 		model.addAttribute("pageTitle", "DHBW - Vorlesungsplaner");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
 		model.addAttribute("sturiList", sturiServ.getAllStudienrichtung(""));
 		return "vorlesungsplaner/volplan_overview";
+	}
+	
+	@GetMapping(value = "find/{lee}/{kid}")
+	public String findDozent(@PathVariable int lee, @PathVariable int kid, Model model) {
+		Lerneinheit lerneinheit = lernServ.getLerneinheitByID(lee);
+		model.addAttribute("lerneinheit", lerneinheit);
+		model.addAttribute("modul", lerneinheit.getModul());
+		model.addAttribute("kurs", kursServ.getKursByID(kid));
+		model.addAttribute("dozentList", dozentServ.findDozentWithLerneinheit(lerneinheit));
+		model.addAttribute("pageTitle", "DHBW - Vorlesungsplaner");
+		model.addAttribute("currentUser", userServ.getCurrentUser());
+		return "vorlesungsplaner/find_dozent";
 	}
 	
 	@PostMapping(value = "kurse", consumes = "application/json", produces = "application/json")

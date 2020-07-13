@@ -147,4 +147,14 @@ public class DozentService {
 		}
 	}
 
+	public List<Dozent> findDozentWithLerneinheit(Lerneinheit lerneinheit) {
+		try {
+			return dozentRepository.findAllByKannhalten(lerneinheit);
+		}
+		catch (Exception e) {
+			LOG.error("Couldn't load Dozenten by LEE! "+e);
+			return null;
+		}
+	}
+
 }
