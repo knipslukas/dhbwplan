@@ -134,7 +134,7 @@
 		   			</ul>
 				</div>
 				
-				<a href="\vorlesung" class="col-2 p-3 Hover_box infobild justify-content-center d-flex">					
+				<a href="\vorlesungsplaner" class="col-2 p-3 Hover_box infobild justify-content-center d-flex">					
 					<h4><i class="far fa-calendar-alt fa-5x Hover_Icon"  ></i></h4>					
 				</a>
 

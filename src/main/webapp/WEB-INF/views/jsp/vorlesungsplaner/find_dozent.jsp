@@ -48,7 +48,7 @@
 	        <button type="button" class="close" data-dismiss="modal">&times;</button>
 	      </div>
 	      <div class="modal-body">
-	        <textarea readonly class="js-message form-control" style="height:90%">
+	        <textarea class="js-message form-control" style="height:90%">
 	        	
 	        </textarea>
 	      </div>
