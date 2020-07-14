@@ -37,7 +37,7 @@ public class Modul implements Serializable {
 
 	private String pruefungsleistung;
 
-	@Column(length = 1000)
+	@Column(length = 4000)
 	private String beschreibung;
 
 	private String sprache;

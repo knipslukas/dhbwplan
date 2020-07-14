@@ -162,7 +162,7 @@
 	        <div class="form-group row">
 	                <label class="col-2 col-form-label">Semester (Nr.)</label>
 	                <div class="col-3">
-						<input type="text" name="semester" class="form-control js-form-semester" placeholder="Neues Semester eingeben" value="${praesenzzeitraum.semester}" required>	                
+						<input type="number" name="semester" class="form-control js-form-semester" placeholder="Neues Semester eingeben" value="${praesenzzeitraum.semester}" required>	                
 	                </div>
 	        </div>
 	         
@@ -252,7 +252,7 @@
 				
 				$.each(entrys, function(i, prz) {
 					list += "<tr>";
-					list += "<td>"+prz.semester+"</td>";
+					list += "<td>"+prz.semester+".</td>";
 					var temp = DateFormat.format.date(prz.von, "dd.MM.yyyy");
 					list += "<td>"+temp+"</td>";
 					var temp2 = DateFormat.format.date(prz.bis, "dd.MM.yyyy");

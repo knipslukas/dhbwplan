@@ -61,7 +61,7 @@
 	                			<tr>
 					                <td scope="row" class="align-middle">${modul.bezeichnung }</td>
 					                <td scope="row" class="align-middle">${modul.modulart }</td>
-					                <td scope="row" class="align-middle">${modul.studienjahr }</td>
+					                <td scope="row" class="align-middle">${modul.studienjahr }.</td>
 					                <td scope="row" class="align-middle">${modul.ectsPunkte }</td>
 					                <td scope="row" class="align-middle"><a href="/modul/show/${modul.MID}" class="btn btn-sm btn-secondary">Anzeigen</a></td>
 				                </tr>

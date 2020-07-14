@@ -58,7 +58,7 @@
 	   				<div class="row text-left border border-left-0 border-right-0 border-top-0">
 	   					<div class="col-6"><p><strong>Studienjahr:</strong></p></div>
 	   					<div class="col-6 ">
-	   						<p>${modul.studienjahr}</p>
+	   						<p>${modul.studienjahr}.</p>
 	   					</div>
 	   					<div class="col-6"><p><strong>Moduldauer (Semester):</strong></p></div>
 	   					<div class="col-6 ">
@@ -111,8 +111,8 @@
 										<c:forEach items="${leeList}" var="lee">
 											<tr>
 												<td scope="row" class="align-middle">${lee.name }</td>
-												<td scope="row" class="align-middle">${lee.praesenzzeit}</td>
-												<td scope="row" class="align-middle">${lee.selbststudium}</td>
+												<td scope="row" class="align-middle">${lee.praesenzzeit} Stunden</td>
+												<td scope="row" class="align-middle">${lee.selbststudium} Stunden</td>
 											</tr>
 										</c:forEach>
 									</c:when>

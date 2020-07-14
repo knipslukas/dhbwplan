@@ -28,6 +28,7 @@ public class Studiengang implements Serializable {
 	
 	private String name;
 	
+	@Column(length = 4000)
 	private String beschreibung;
 	
 	@OneToMany (mappedBy="studiengang")

@@ -81,6 +81,7 @@
 	                		<option disabled selected>Bitte Auswählen</option>
 		                	<option value="Klausur">Klausur</option>
 		                	<option value="Seminararbeit">Seminararbeit</option>
+		                	<option value="Alternative Prüfungsleistung">Alternative Prüfungsleistung</option>
 	                	</select>
 	                </div>
 	            </div>
@@ -116,7 +117,7 @@
 	            <!-- Final Buttons-->
 	            <div class="finalButtons">
 	                <button type="submit" class="btn btn-success">Speichern </button>
-	                <button type="reset" class="btn btn-danger">Zuruecksetzen </button>
+	                <button type="reset" class="btn btn-danger">Zurücksetzen </button>
 	            </div>
 	
 	        </form>

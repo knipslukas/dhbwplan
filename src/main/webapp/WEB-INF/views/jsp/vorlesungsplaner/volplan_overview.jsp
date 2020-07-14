@@ -101,14 +101,14 @@
 				$.each(result, function(i, kurs) {
 					list += '<option value="'+kurs.kid+'">'+kurs.name+' - '+kurs.jahrgang+'</option>';
 				})
+				$(".js-jahr-group").addClass("d-none");
+				$(".js-modul-group").addClass("d-none");
 				if (result != "") {
 					return list;
 				}
 				else {
 					list = "";
 					list = '<option disabled selected>Es konnten keine Kurse gefunden werden</option>';
-					$(".js-jahr-group").addClass("d-none");
-					$(".js-modul-group").addClass("d-none");
 					return list;
 				}
 			});

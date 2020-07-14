@@ -110,7 +110,7 @@ public class KursController {
 		model.addAttribute("pageTitle", "DHBW - Kurs bearbeiten");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
 	    model.addAttribute("studienrichtungList", mStudiengangrichtungService.getAllStudienrichtung(""));
-	    model.addAttribute("dozentenList", mDozentService.getAllDozent(null, null));
+	    model.addAttribute("dozentenList", mDozentService.getAllStudiengangsleiter());
 		return "kurs/kur_edit";
 	}
 
@@ -119,7 +119,7 @@ public class KursController {
 		model.addAttribute("pageTitle", "DHBW - Kurs Anlegen");
 		model.addAttribute("currentUser", userServ.getCurrentUser());
 	    model.addAttribute("studienrichtungList", mStudiengangrichtungService.getAllStudienrichtung(""));
-	    model.addAttribute("dozentenList", mDozentService.getAllDozent(null, null));
+	    model.addAttribute("dozentenList", mDozentService.getAllStudiengangsleiter());
 		return "kurs/kur_add";
 	}
 

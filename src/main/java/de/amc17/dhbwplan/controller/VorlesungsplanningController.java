@@ -88,13 +88,16 @@ public class VorlesungsplanningController {
 	public List<Modul> getOverview(@RequestBody VorlesungsplanDto dto) {
 		Kurs kurs = kursServ.getKursByID(dto.getKid());		
 		Modulkatalog modkat = modulkServ.getModulkatalogByYear(kurs.getJahrgang(), kurs.getStudienrichtung());
-		List<Modul> module = modkat.getModul();
-		List<Modul> outputMod = new ArrayList<Modul>();
-		for (Modul modul : module) {
-			if (modul.getStudienjahr() == dto.getStudienjahr()) {
-				outputMod.add(modul);
+		if (modkat != null) {
+			List<Modul> module = modkat.getModul();
+			List<Modul> outputMod = new ArrayList<Modul>();
+			for (Modul modul : module) {
+				if (modul.getStudienjahr() == dto.getStudienjahr()) {
+					outputMod.add(modul);
+				}
 			}
+			return outputMod;
 		}
-		return outputMod;
+		return null;
 	}
 }

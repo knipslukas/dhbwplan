@@ -133,10 +133,17 @@
 		                		<c:when test="${modul.pruefungsleistung eq 'Klausur' }">
 		                			<option value="Klausur" selected>Klausur</option>
 		                			<option value="Seminararbeit">Seminararbeit</option>
+		                			<option value="Alternative Prüfungsleistung">Alternative Prüfungsleistung</option>
+		                		</c:when>
+		                		<c:when test="${modul.pruefungsleistung eq 'Seminararbeit' }">
+		                			<option value="Klausur">Klausur</option>
+		                			<option value="Seminararbeit" selected>Seminararbeit</option>
+		                			<option value="Alternative Prüfungsleistung">Alternative Prüfungsleistung</option>
 		                		</c:when>
 		                		<c:otherwise>
 		                			<option value="Klausur">Klausur</option>
-		                			<option value="Seminararbeit" selected>Seminararbeit</option>
+		                			<option value="Seminararbeit">Seminararbeit</option>
+		                			<option value="Alternative Prüfungsleistung" selected>Alternative Prüfungsleistung</option>
 		                		</c:otherwise>
 		                	</c:choose>
 		                </select>
@@ -246,13 +253,13 @@
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Präsenzzeit (h)</label>
 					<div class="col-3">
-						<input type="text" name="praesenzzeit" class="form-control js-form-praesenzzeit" placeholder="Präsenzzeit" value="${lerneinheit.praesenzzeit}" required>
+						<input type="number" name="praesenzzeit" class="form-control js-form-praesenzzeit" placeholder="Präsenzzeit" value="${lerneinheit.praesenzzeit}" required>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-2 col-form-label">Selbststudium (h)</label>
 					<div class="col-3">
-						<input type="text" name="selbststudium" class="form-control js-form-selbsttudium" placeholder="Selbststudium" value="${lerneinheit.selbststudium}" required>
+						<input type="number" name="selbststudium" class="form-control js-form-selbsttudium" placeholder="Selbststudium" value="${lerneinheit.selbststudium}" required>
 					</div>
 				</div>
 
@@ -320,8 +327,8 @@
 					$.each(entrys, function (i, lee) {
 						list += "<tr>";
 						list += "<td>" + lee.name + "</td>";
-						list += "<td>" + lee.praesenzzeit + "</td>";
-						list += "<td>" + lee.selbststudium + "</td>";
+						list += "<td>" + lee.praesenzzeit + " Stunden</td>";
+						list += "<td>" + lee.selbststudium + " Stunden</td>";
 						list += '<td><button onClick="deleteLEE(' + lee.leid + ')"><i class="fas fa-trash-alt"></i></button></td>';
 						list += "</tr>";
 					})
